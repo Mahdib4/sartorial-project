@@ -45,7 +45,7 @@ export function Hero({ desktop, tablet, mobile }: HeroProps) {
           { media: "(max-width: 1279px)", film: tablet },
         ]}
         label="Hands chalking, cutting and stitching a suit in the Sartorial atelier"
-        paused={paused}
+        paused={paused || !revealed}
         priority
         fill
         onProgress={(f) => {
@@ -58,6 +58,7 @@ export function Hero({ desktop, tablet, mobile }: HeroProps) {
       <div className="px-gutter pb-9 md:pb-12">
         <motion.p
           className="label mb-5 text-white/80 md:mb-7"
+          data-reveal
           variants={LABEL}
           initial={initial}
           animate={animate}
@@ -71,6 +72,7 @@ export function Hero({ desktop, tablet, mobile }: HeroProps) {
             <span key={line} className="block overflow-hidden pb-[0.06em]">
               <motion.span
                 className="block"
+                data-reveal
                 variants={RISE}
                 initial={initial}
                 animate={animate}
@@ -84,6 +86,7 @@ export function Hero({ desktop, tablet, mobile }: HeroProps) {
 
         <motion.div
           className="mt-8 flex flex-col gap-8 md:mt-10 md:flex-row md:items-end md:justify-between"
+          data-reveal
           variants={ACTIONS}
           initial={initial}
           animate={animate}

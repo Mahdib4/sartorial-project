@@ -15,18 +15,18 @@ export function CategoryBanners({ banners, label }: { banners: Banner[]; label: 
   return (
     // The carousel's own viewport is one banner wide; letting it overflow into
     // the wrapper's right padding is what shows the next banner at the edge.
-    <div className="overflow-hidden pr-[12vw] pl-1 md:pr-[20vw] lg:pr-[26vw]">
+    <div className="overflow-hidden pr-[12vw] pl-1 md:pr-[20vw] xl:pr-[26vw]">
       <SnapCarousel label={label} gap={4} classNames={{ viewport: "overflow-visible!", controls: "pr-0 pl-[calc(var(--gutter)-0.25rem)]", slide: "opacity-100!" }}>
         {banners.map((banner) => (
-          <Link key={banner.key} href={banner.href} draggable={false} className="on-dark group/banner relative block aspect-[4/5] overflow-hidden text-white sm:aspect-[16/10] lg:aspect-[19/10]">
+          <Link key={banner.key} href={banner.href} draggable={false} className="on-dark group/banner relative block aspect-[4/5] overflow-hidden text-white sm:aspect-[16/10] lg:aspect-[16/9] xl:aspect-[19/10]">
             <div className="absolute inset-0 transition-transform duration-[1600ms] ease-out-expo group-hover/banner:scale-[1.04]">
-              <Picture shot={banner.image} alt="" sizes="(min-width: 1024px) 74vw, (min-width: 768px) 80vw, 88vw" ratio="fill" position={banner.position} />
+              <Picture shot={banner.image} alt="" sizes="(min-width: 1280px) 74vw, (min-width: 768px) 80vw, 88vw" ratio="fill" position={banner.position} />
             </div>
             <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,rgba(18,17,14,0.68)_0%,rgba(18,17,14,0)_50%)]" />
             <div className="absolute inset-x-0 bottom-0 flex flex-col gap-4 p-5 md:flex-row md:items-end md:justify-between md:p-8">
               <div>
                 <p className="label mb-3 text-white/80">{banner.line}</p>
-                <p className="display-md lg:text-[clamp(2.25rem,4.4vw,4.25rem)]">{banner.title}</p>
+                <p className="display-md xl:text-[clamp(2.25rem,4.4vw,4.25rem)]">{banner.title}</p>
               </div>
               <span className="inline-flex h-11 items-center gap-3 self-start bg-white px-5 text-[13px] tracking-[0.04em] text-ink md:self-auto">
                 <span aria-hidden className="h-3 w-px bg-current opacity-60" />

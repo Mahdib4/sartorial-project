@@ -10,15 +10,25 @@ import { cn } from "@/lib/cn";
  * font-size class sets it. `fill="width"` stretches it to its container instead.
  * `withCity` adds DHAKA beneath, as in the full logo.
  */
-export function Wordmark({ className, withCity = false, fill = "type" }: { className?: string; withCity?: boolean; fill?: "type" | "width" }) {
+export function Wordmark({
+  className,
+  withCity = false,
+  fill = "type",
+  decorative = false,
+}: {
+  className?: string;
+  withCity?: boolean;
+  fill?: "type" | "width";
+  /** Hide it from assistive tech, e.g. inside a link that already names itself. */
+  decorative?: boolean;
+}) {
   const top = WORD_SPAN.top;
   const bottom = withCity ? CITY_SPAN.bottom : WORD_SPAN.bottom;
   return (
     <svg
       viewBox={`0 ${top} ${LOGO.width} ${bottom - top}`}
       className={cn("block fill-current", fill === "width" ? "h-auto w-full" : withCity ? "h-[1.1em] w-auto" : "h-[0.78em] w-auto", className)}
-      role="img"
-      aria-label={withCity ? `${SITE.name} ${SITE.city}` : SITE.name}
+      {...(decorative ? { "aria-hidden": true } : { role: "img", "aria-label": withCity ? `${SITE.name} ${SITE.city}` : SITE.name })}
       focusable="false"
     >
       {LOGO.word.map((glyph, i) => (

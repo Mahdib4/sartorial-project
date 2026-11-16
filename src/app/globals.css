@@ -266,17 +266,6 @@ button:disabled {
   transform: scale(1.045);
 }
 
-/* ── Marquee ────────────────────────────────────────────────── */
-
-@keyframes marquee-x {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
 @keyframes fade-up {
   from {
     opacity: 0;

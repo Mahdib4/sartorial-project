@@ -4,7 +4,7 @@
    0.40s  SARTORIAL rises, letter by letter, out of its baseline
    1.75s  the tiger: its outline drawn outward from the eyes, then inked in
    3.05s  DHAKA settles beneath
-   4.45s  the logo lifts away; the ivory dissolves into the page (to 5.7s)
+   4.45s  the logo lifts away; the ivory dissolves into the page (to 5.8s)
 
    Driven entirely by CSS so it starts with the first paint. The head script
    (src/lib/intro-script.ts) sets html[data-intro] to:
@@ -28,10 +28,11 @@
   --pl-city: 3.05s;
   --pl-city-step: 0.07s;
   --pl-leave: 4.45s;
-  --pl-veil: 4.75s;
+  --pl-veil: 4.85s;
 
   position: fixed;
   inset: 0;
+  min-width: 100vw; /* under a classic scrollbar too, so the logo centres on the screen */
   z-index: 100;
   display: grid;
   place-items: center;
@@ -40,7 +41,9 @@
   cursor: default;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-  animation: pl-veil-out 0.95s var(--pl-fade) var(--pl-veil) forwards;
+  animation:
+    pl-veil-out 0.95s var(--pl-fade) var(--pl-veil) forwards,
+    pl-gone 0s linear calc(var(--pl-veil) + 0.95s) forwards;
 }
 
 /* The composition is drawn in the logo's own proportions, centred both ways. */
@@ -50,7 +53,7 @@
   height: auto;
   overflow: visible;
   fill: currentColor;
-  animation: pl-logo-out 0.5s cubic-bezier(0.55, 0, 1, 0.45) var(--pl-leave) forwards;
+  animation: pl-logo-out 0.5s var(--pl-fade) var(--pl-leave) forwards;
 }
 @media (min-width: 768px) {
   .pl-logo {
@@ -62,20 +65,20 @@
 .pl-glyph {
   transform-box: fill-box;
   animation:
-    pl-rise 1.15s var(--pl-settle) calc(var(--pl-word) + var(--pl-i) * var(--pl-word-step)) both,
-    pl-in 0.75s linear calc(var(--pl-word) + var(--pl-i) * var(--pl-word-step)) both;
+    pl-rise 1.4s cubic-bezier(0.25, 1, 0.5, 1) calc(var(--pl-word) + var(--pl-i) * var(--pl-word-step)) both,
+    pl-in 0.9s cubic-bezier(0.33, 1, 0.68, 1) calc(var(--pl-word) + var(--pl-i) * var(--pl-word-step)) both;
 }
 .pl-glyph-city {
   animation:
-    pl-rise 0.95s var(--pl-settle) calc(var(--pl-city) + var(--pl-i) * var(--pl-city-step)) both,
-    pl-in 0.6s linear calc(var(--pl-city) + var(--pl-i) * var(--pl-city-step)) both;
+    pl-rise 1.15s cubic-bezier(0.25, 1, 0.5, 1) calc(var(--pl-city) + var(--pl-i) * var(--pl-city-step)) both,
+    pl-in 0.75s cubic-bezier(0.33, 1, 0.68, 1) calc(var(--pl-city) + var(--pl-i) * var(--pl-city-step)) both;
 }
 
 /* The tiger: a short lift as its outline is drawn, then the ink fills in. */
 .pl-tiger {
   transform-box: fill-box;
   animation:
-    pl-lift 1.7s var(--pl-settle) var(--pl-tiger) both,
+    pl-lift 1.8s cubic-bezier(0.25, 1, 0.5, 1) calc(var(--pl-tiger) + 0.35s) both,
     pl-in 0.5s linear var(--pl-tiger) both;
 }
 .pl-tiger-lines path {
@@ -86,11 +89,11 @@
   stroke-dasharray: 1 1;
   opacity: 0;
   animation:
-    pl-draw 1.25s var(--pl-draw) calc(var(--pl-tiger) + var(--pl-d)) both,
-    pl-lines-out 0.4s var(--pl-fade) calc(var(--pl-tiger) + 1.75s) both;
+    pl-draw 0.95s cubic-bezier(0.33, 0, 0.2, 1) calc(var(--pl-tiger) + var(--pl-d)) both,
+    pl-lines-out 0.4s var(--pl-fade) calc(var(--pl-tiger) + 1.9s) both;
 }
 .pl-tiger-ink {
-  animation: pl-in 0.85s var(--pl-fade) calc(var(--pl-tiger) + 0.8s) both;
+  animation: pl-in 0.85s var(--pl-fade) calc(var(--pl-tiger) + 0.95s) both;
 }
 
 @keyframes pl-rise {
@@ -130,23 +133,40 @@
     transform: translateY(-10px);
   }
 }
-/* Two names for the same dissolve: a visitor's skip must start a new animation,
-   not retime the scheduled one (which would end it on the spot). */
+/* Two names for each part of the dissolve: a visitor's skip must start new
+   animations, not retime the scheduled ones (which would end them on the spot).
+   Opacity alone, so the fade stays on the compositor; visibility follows after. */
 @keyframes pl-veil-out {
   to {
     opacity: 0;
-    visibility: hidden;
   }
 }
 @keyframes pl-veil-skip {
   to {
     opacity: 0;
+  }
+}
+@keyframes pl-gone {
+  to {
+    visibility: hidden;
+  }
+}
+@keyframes pl-gone-skip {
+  to {
     visibility: hidden;
   }
 }
 
 html[data-intro="leave"] .pl {
-  animation: pl-veil-skip 0.7s var(--pl-fade) forwards;
+  animation:
+    pl-veil-skip 0.7s var(--pl-fade) forwards,
+    pl-gone-skip 0s linear 0.7s forwards;
+}
+/* Classic (always-visible) scrollbars take the ivory until the curtain lifts.
+   Colour only, so nothing reflows when it goes. */
+html[data-intro="play"]:not([data-intro-revealed]),
+html[data-intro="wait"] {
+  scrollbar-color: #f6f3ec #f6f3ec;
 }
 html[data-intro="wait"] .pl,
 html[data-intro="wait"] .pl * {
@@ -166,7 +186,16 @@ html[data-intro="done"] .pl {
   .pl-tiger-lines path {
     animation: none;
   }
+  /* !important: the site-wide reduced-motion rule would otherwise make these instant.
+     A fade is not motion, so the dissolve keeps its length. */
   .pl {
-    animation: pl-veil-out 0.8s var(--pl-fade) 1.2s forwards;
+    animation:
+      pl-veil-out 0.8s var(--pl-fade) 1.2s forwards,
+      pl-gone 0s linear 2s forwards;
+    animation-duration: 0.8s, 0s !important;
+  }
+  html[data-intro="leave"] .pl {
+    animation-duration: 0.5s, 0s !important;
+    animation-delay: 0s, 0.5s !important;
   }
 }

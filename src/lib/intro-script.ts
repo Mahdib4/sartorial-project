@@ -1,3 +1,5 @@
+import { INTRO_EVENT, INTRO_STORAGE_KEY } from "@/lib/intro-constants";
+
 /**
  * The opening animation's conductor, inlined into <head> so it runs before the
  * first paint (see components/layout/Preloader.tsx and preloader.css).
@@ -48,12 +50,19 @@ function conductor(storageKey: string, eventName: string) {
   };
 
   const scrollKeys = [" ", "PageDown", "PageUp", "ArrowDown", "ArrowUp", "Home", "End"];
+  const modifiers = ["Shift", "Control", "Alt", "Meta", "CapsLock"];
   const onInput = (e: Event) => {
     if (!running()) return;
+    if (e.type === "keydown") {
+      const k = e as KeyboardEvent;
+      // A lone modifier (or a browser shortcut) is not a wish to skip.
+      if (k.metaKey || k.ctrlKey || k.altKey || modifiers.indexOf(k.key) > -1) return;
+    }
     if (e.type === "wheel" || e.type === "touchmove" || (e.type === "keydown" && scrollKeys.indexOf((e as KeyboardEvent).key) > -1)) {
       e.preventDefault();
     }
-    if (e.type !== "touchmove" && phase() === "play") setPhase("leave");
+    // Once the curtain is already lifting, let it finish rather than restarting the fade.
+    if (e.type !== "touchmove" && phase() === "play" && !root.hasAttribute("data-intro-revealed")) setPhase("leave");
   };
 
   const onAnimation = (e: Event) => {
@@ -91,8 +100,5 @@ function conductor(storageKey: string, eventName: string) {
   if (document.visibilityState === "hidden") setPhase("wait");
   else start();
 }
-
-export const INTRO_STORAGE_KEY = "sartorial:intro";
-export const INTRO_EVENT = "sartorial:intro";
 
 export const INTRO_SCRIPT = `(${conductor.toString()})(${JSON.stringify(INTRO_STORAGE_KEY)},${JSON.stringify(INTRO_EVENT)})`;

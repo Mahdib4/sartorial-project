@@ -1,11 +1,14 @@
+"use client";
+
 import type { CSSProperties } from "react";
 import { CITY_SPAN, LOGO, WORD_SPAN } from "@/components/brand/logo";
 import "./preloader.css";
 
-/** Between the tiger's eyes: its outline draws outward from here, so the gaze arrives first. */
+/** Between the tiger's eyes: its outline draws outward from here, so the gaze arrives first
+ * (the silhouette of the head, which spans the whole face, comes last). */
 const GAZE = { x: 659, y: 48 };
 /** How long the outline takes to spread from the eyes to the edge of the head. */
-const SPREAD = 0.32;
+const SPREAD = 0.5;
 /** Specks smaller than this (logo px) are not drawn as lines, only inked: drawn, they flicker like dust. */
 const SPECK = 10;
 
@@ -20,7 +23,8 @@ const vars = (v: Record<string, string | number>) => v as CSSProperties;
  * Every shape is the logo's own (see components/brand/logo.ts), placed at its
  * original position, so the finished frame is the logo exactly. It is rendered on
  * the server and driven by CSS (preloader.css), so it is on screen from the first
- * paint and runs without waiting for JavaScript. The script in the document head
+ * paint and runs without waiting for JavaScript. (It is a client component only so
+ * its path data travels once, in a cached script, not in every page's payload.) The script in the document head
  * (lib/intro-script.ts) plays it once per visit, lets a click, key or scroll skip it, and
  * tells the page when the curtain lifts.
  */
@@ -48,7 +52,7 @@ export function Preloader() {
           </clipPath>
           {/* The tiger's lines are drawn inside its own shapes, so they never add weight to the finished mark */}
           <clipPath id="pl-tiger-shape">
-            <path d={ink} clipRule="evenodd" />
+            <use href="#pl-ink" clipRule="evenodd" />
           </clipPath>
         </defs>
 
@@ -59,11 +63,11 @@ export function Preloader() {
         </g>
 
         <g className="pl-tiger">
-          <path className="pl-tiger-ink" d={ink} fillRule="evenodd" />
+          <path id="pl-ink" className="pl-tiger-ink" d={ink} fillRule="evenodd" />
           <g className="pl-tiger-lines" clipPath="url(#pl-tiger-shape)">
             {tiger.contours.map((c, i) =>
               Math.max(c.box[2], c.box[3]) < SPECK ? null : (
-                <path key={i} d={c.d} pathLength={1} style={vars({ "--pl-d": `${((distance[i] / far) * SPREAD).toFixed(3)}s` })} />
+                <path key={i} d={c.d} pathLength={1} style={vars({ "--pl-d": `${((c.box[2] > 100 ? 1 : distance[i] / far) * SPREAD).toFixed(3)}s` })} />
               ),
             )}
           </g>

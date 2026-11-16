@@ -81,7 +81,7 @@ export default function HomePage() {
           label="Classic categories"
           banners={[
             { key: "suits", title: "Suits", line: "Two-piece and three-piece", href: categoryHref(getCategory(`${C}/suits`)!), image: shot(`${C}/suits/bespoke-tailored-suits-trio-01`), position: "50% 30%" },
-            { key: "black-tie", title: "Black tie", line: "Dinner suits and velvet", href: "/clothing/classic/suits?occasion=Black+tie", image: shot(`${C}/suits/black-tie-evening-tuxedos-trio-01`), position: "50% 35%" },
+            { key: "black-tie", title: "Black tie", line: "Dinner suits and velvet", href: "/clothing/classic/suits?occasion=Black+tie", image: shot(`${C}/suits/black-tie-evening-tuxedos-trio-01`), position: "50% 5%" },
             { key: "shirts", title: "Shirts", line: "Four collars", href: categoryHref(getCategory(`${C}/shirts`)!), image: shot(`${C}/shirts/bespoke-blue-chambray-and-poplin-shirts-stack-01`), position: "50% 60%" },
             { key: "trousers", title: "Trousers", line: "Side tabs and single pleats", href: categoryHref(getCategory(`${C}/trousers`)!), image: shot(`${C}/trousers/tailored-side-tab-trousers-stack-01`), position: "50% 40%" },
             { key: "jackets", title: "Jackets", line: "Blazers, tweeds and safari", href: categoryHref(getCategory(`${C}/sports-jackets`)!), image: shot(`${C}/suits/mid-grey-flannel-two-piece-suit-03`), position: "50% 40%" },

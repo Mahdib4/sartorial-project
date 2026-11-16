@@ -65,7 +65,7 @@ export function SiteFooter({ groups }: { groups: NavGroup[] }) {
 
       {/* Wordmark, the width of the page */}
       <div aria-hidden className="overflow-hidden px-gutter pt-10 md:pt-14">
-        <Wordmark fill="width" className="text-line select-none" />
+        <Wordmark fill="width" decorative className="text-line select-none" />
       </div>
 
       <div className="grid gap-x-10 gap-y-12 px-gutter py-12 md:py-16 lg:grid-cols-12">

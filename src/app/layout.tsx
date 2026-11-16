@@ -50,7 +50,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-dvh flex-col">
         <Preloader />
         <noscript>
-          <style>{`[data-reveal],[data-text-reveal] span{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}`}</style>
+          <style>{`[data-reveal],[data-text-reveal] span{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}.pl{display:none!important}`}</style>
         </noscript>
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[80] focus:bg-ink focus:px-4 focus:py-3 focus:text-[13px] focus:text-white">
           Skip to content

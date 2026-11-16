@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { INTRO_EVENT } from "@/lib/intro-script";
+import { INTRO_EVENT } from "@/lib/intro-constants";
 
 function subscribe(onChange: () => void) {
   window.addEventListener(INTRO_EVENT, onChange);

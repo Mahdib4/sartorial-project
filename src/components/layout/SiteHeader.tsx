@@ -166,8 +166,8 @@ export function SiteHeader({ menus }: { menus: NavMenu[] }) {
             </div>
 
             {/* Centre: wordmark */}
-            <Link href="/" aria-label="Sartorial, home" className="justify-self-center" onMouseEnter={closeSoon}>
-              <Wordmark className="text-[17px] xs:text-[19px] md:text-[23px]" />
+            <Link href="/" aria-label="Sartorial, home" className="flex items-center self-stretch justify-self-center" onMouseEnter={closeSoon}>
+              <Wordmark decorative className="text-[17px] xs:text-[19px] md:text-[23px]" />
             </Link>
 
             {/* Right: actions */}
