@@ -1,0 +1,237 @@
+/* ══ Card stack ═════════════════════════════════════════════
+   Adapted from Bencho (blocks/card-stack, MIT).
+
+   A pile of cards that fans out on approach. All of the
+   geometry is in CardStack.tsx — one rotation per card about a
+   point well below the block — and what is here is the
+   material: what a card is made of, how six of them
+   overlapping stay separate, and the one card that slides out
+   of the fan under the pointer. */
+
+/* The order Tailwind declares its cascade layers in, restated so
+   that it holds even if this sheet is ever loaded ahead of the
+   site's own: `components` must sit above the reset and below the
+   utilities. A second statement of the same order changes nothing. */
+@layer theme, base, components, utilities;
+
+/* ── the box the caller sizes ───────────────────────────────
+   The stage inside is 472 units by 328, and one unit is this
+   box's width divided by 472 — so the block is as wide as it is
+   allowed to be and everything in it scales together. In a
+   cascade layer so a utility class handed in through
+   `className` (max-w-none, w-[320px], mx-auto) wins. */
+@layer components {
+  .stk-fit {
+    position: relative;
+    width: 100%;
+    max-width: 472px;
+  }
+}
+
+.stk-fit {
+  /* what --stk-u below is measured against */
+  container-type: inline-size;
+}
+
+.stk {
+  position: relative;
+  /* one unit. A pixel where container units are not understood,
+     so the block is its drawn size there rather than nothing. */
+  --stk-u: 1px;
+  /* ── THE AIR IN THIS BOX IS AIR ───────────────────────────
+     The stage is nearly three times the width of the pile,
+     because it has to hold the fan at its widest — and a
+     cursor crossing it on its way somewhere else must not open
+     anything. So the stage takes no pointer events and the two
+     things inside it that are real take them back: the hit
+     pad, which is the pile's own footprint until the fan is
+     out, and the cards. */
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@supports (width: 1cqi) {
+  .stk {
+    --stk-u: calc(100cqi / var(--stk-w, 472));
+  }
+}
+
+/* what you have to be touching for the fan to open. Its box is
+   set in the component, because it is the pile's footprint when
+   shut and the fan's when open. */
+.stk-hit {
+  position: absolute;
+  pointer-events: auto;
+}
+
+/* a card can be taken out to look at, so it is a button */
+.stk-card {
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  pointer-events: auto;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  /* NO `will-change`: it would hold a composited layer per card,
+     permanently, to save one frame on a hover that may never
+     come. The browser promotes these on its own once the spring
+     starts moving them. */
+  transition: opacity 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stk-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: var(--stk-r, 0px);
+  background: var(--fill-slab, var(--card));
+  /* ── how six identical rectangles stay six ────────────────
+     The shadow does it — a real one, tight and close, because
+     these are cards lying on each other rather than panels
+     floating over a page. The lit rim is the dark theme's half
+     of the same job and is nearly invisible in the light. */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.035),
+    0 1px 2px rgba(var(--shadow-rgb, 23, 24, 26), 0.1),
+    0 8px 18px -6px rgba(var(--shadow-rgb, 23, 24, 26), 0.16);
+  /* `translate` and not `transform`, which is the whole point
+     of it being here: the card above is being turned by a
+     spring every frame, and a transition on the same property
+     would be two animations arguing over one value.
+
+     the way DOWN: slow and eased at both ends, so a card left
+     behind by a quick sweep sinks back rather than dropping */
+  transition:
+    translate 480ms var(--stk-ease, ease),
+    box-shadow 480ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* the hairline, by OUTLINE rather than by shadow: the card's
+   box-shadow is already spoken for, and an outline draws beside
+   it instead of instead of it */
+[data-stroke="on"] .stk-face {
+  outline: 1px solid var(--pane-edge);
+  outline-offset: -1px;
+}
+
+/* ── the card you are pointing at leaves the fan ───────────
+   Along its own axis, because the face is inside the rotated
+   card — so it slides out radially, the way a card is drawn
+   from a hand, rather than simply moving up the screen. And the
+   shadow GROWS: this one is lifted off the deck. */
+.stk-face[data-lift] {
+  translate: 0 calc(var(--stk-lift, 20px) * -1);
+  /* the way UP waits a beat before it goes, so a fast sweep
+     leaves the cards it only grazed where they are, and lifts
+     the one it slows on */
+  transition:
+    translate 300ms cubic-bezier(0.2, 0.7, 0.3, 1) 15ms,
+    box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 15ms;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.045),
+    0 2px 5px rgba(var(--shadow-rgb, 23, 24, 26), 0.12),
+    0 18px 32px -10px rgba(var(--shadow-rgb, 23, 24, 26), 0.28);
+}
+
+/* the ring goes on the face, which is the thing you can see */
+.stk .stk-card:focus-visible {
+  outline: none;
+}
+
+.stk .stk-card:focus-visible .stk-face {
+  outline: 2px solid var(--focus, var(--ink));
+  outline-offset: 2px;
+}
+
+/* ── the card in view ──────────────────────────────────────
+   One element flying from the card's place to the middle,
+   turning over once on the way (see VIEW_AT in CardStack.tsx).
+   Its corner is the card's own at the card's size, so it lands
+   at the same roundness, scaled. */
+.stk-view {
+  position: absolute;
+  z-index: 20;
+  pointer-events: auto;
+  cursor: default;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.stk .stk-view:focus,
+.stk .stk-view:focus-visible {
+  outline: none;
+}
+
+.stk-view-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: var(--stk-vr, 0px);
+  background: var(--fill-slab, var(--card));
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.045),
+    0 4px 10px rgba(var(--shadow-rgb, 23, 24, 26), 0.12),
+    0 28px 48px -16px rgba(var(--shadow-rgb, 23, 24, 26), 0.32);
+}
+
+.stk-view-face[data-back] {
+  transform: rotateY(180deg);
+}
+
+/* the tilt layer: holds both faces in the card's 3D space and
+   eases after the pointer, so the lean follows a hand rather
+   than snapping to it, and settles back level when the hand
+   leaves */
+.stk-view-tilt {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* the card in view goes back on TOP, so the ones it passed move
+   down a slot. Only for that moment: the fan is held open and
+   its springs are at rest, so a transition here argues with
+   nothing */
+.stk[data-shuffle] .stk-card {
+  transition:
+    opacity 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 460ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* the photograph fills the face and takes its corner */
+.stk .stk-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  border-radius: inherit;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stk-view-tilt {
+    transition: none;
+  }
+
+  .stk-face,
+  .stk-face[data-lift] {
+    transition-duration: 1ms;
+    transition-delay: 0ms;
+  }
+}

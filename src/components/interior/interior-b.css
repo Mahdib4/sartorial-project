@@ -1,0 +1,47 @@
+/* ─────────────────────────────────────────────────────────────
+   Interior — batch B
+   floating-label · loading-button · logo-marquee · blur-up-image ·
+   text-reveal · segmented-control · filter-grid · load-more ·
+   inline-validation · show-more · press-depth · scroll-spy
+
+   Adapted from interior.dev (MIT) — https://github.com/ddoemonn/interior
+
+   None of these twelve components uses a keyframe, utility class or
+   CSS variable from upstream's app/globals.css: their motion is driven
+   by `motion` and their look by Tailwind utilities. (Upstream's global
+   prefers-reduced-motion block already exists in src/app/globals.css.)
+
+   What lives here is the one thing utilities cannot reach: the paint
+   the browser puts on an autofilled text field. It applies to the
+   <input> of FloatingLabelInput and InlineValidation (class `ib-field`,
+   `data-tone="light" | "dark"`).
+
+   Plain CSS on purpose — no Tailwind directives — so it behaves the
+   same whether it is @imported into globals.css or imported as its own
+   stylesheet.
+   ───────────────────────────────────────────────────────────── */
+
+/* Chromium / Safari paint autofilled fields pale blue or yellow and force
+   their own text colour. An inset shadow is the only thing that covers that
+   background; --ib-field-fill is the colour of the surface the field sits on. */
+.ib-field:-webkit-autofill,
+.ib-field:-webkit-autofill:hover,
+.ib-field:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--color-ink, #1c1b17);
+  caret-color: var(--color-ink, #1c1b17);
+  box-shadow: 0 0 0 1000px var(--ib-field-fill, #ffffff) inset;
+}
+
+.ib-field[data-tone="dark"]:-webkit-autofill,
+.ib-field[data-tone="dark"]:-webkit-autofill:hover,
+.ib-field[data-tone="dark"]:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ffffff;
+  caret-color: #ffffff;
+  box-shadow: 0 0 0 1000px var(--ib-field-fill, var(--color-ink, #1c1b17)) inset;
+}
+
+/* Firefox tints autofilled fields with a filter instead. Kept in its own rule:
+   a browser that does not know :autofill would otherwise drop the block above. */
+.ib-field:autofill {
+  filter: none;
+}

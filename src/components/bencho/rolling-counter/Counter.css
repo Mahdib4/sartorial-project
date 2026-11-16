@@ -1,0 +1,170 @@
+/* ══ Rolling counter ═════════════════════════════════════
+   Adapted from Bencho (blocks/rolling-counter, MIT). Every
+   length that differs between the two sizes arrives as a custom
+   property from Counter.tsx; the defaults here are the block as
+   drawn ("md"). */
+
+/* The order Tailwind declares its cascade layers in, restated so
+   that it holds even if this sheet is ever loaded ahead of the
+   site's own: `components` must sit above the reset and below the
+   utilities. A second statement of the same order changes nothing. */
+@layer theme, base, components, utilities;
+
+/* In a cascade layer so a utility class handed in through
+   `className` can place the block; the rest is its own. */
+@layer components {
+  .rct {
+    position: relative;
+  }
+}
+
+.rct {
+  font-family: var(--font-ui);
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  box-sizing: border-box;
+  /* the same inset round each key — above, below and at the box's
+     end — and the key's corner is the box's less that inset, so
+     the keys sit concentric in it at any Corner */
+  padding: var(--rct-pad, 5px);
+  border-radius: var(--rct-r, 0px);
+  background: var(--fill-slab, var(--card));
+  color: var(--fill-on, var(--ink));
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+[data-stroke="on"] .rct {
+  box-shadow: 0 0 0 1px var(--pane-edge);
+}
+
+.rct-btn {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: var(--rct-key, 40px);
+  height: var(--rct-cell, 46px);
+  flex: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--rct-in, 0px);
+  background: color-mix(in srgb, var(--fill-on, #17181a) 6%, var(--fill-slab, #ffffff));
+  color: inherit;
+  cursor: pointer;
+  transition:
+    scale 200ms cubic-bezier(0.3, 0.9, 0.4, 1),
+    background-color 160ms ease,
+    opacity 160ms ease;
+  -webkit-tap-highlight-color: transparent;
+  /* a held key is a held key, not the start of a text selection
+     or a long-press menu */
+  touch-action: manipulation;
+}
+
+.rct-btn svg {
+  display: block;
+}
+
+.rct-btn:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--fill-on, #17181a) 10%, var(--fill-slab, #ffffff));
+}
+
+.rct-btn:active:not(:disabled) {
+  scale: 0.9;
+  transition-duration: 110ms;
+}
+
+/* the end of the range: the key is still there, and says no */
+.rct-btn:disabled {
+  opacity: 0.32;
+  cursor: not-allowed;
+}
+
+.rct .rct-btn:focus-visible,
+.rct .rct-num:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--fill-slab, #ffffff),
+    0 0 0 4px var(--focus, var(--signal, #17181a));
+}
+
+/* the number hugs its digits and the buttons hug the number:
+   a column arriving or leaving animates its own width, so the
+   box grows and shrinks with the count rather than keeping
+   room for five digits it is not showing */
+.rct-num {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0 var(--rct-gutter, 14px);
+  height: var(--rct-cell, 46px);
+  font-size: var(--rct-font, 30px);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  line-height: var(--rct-cell, 46px);
+  cursor: ns-resize;
+  touch-action: none;
+  border-radius: var(--rct-in, 0px);
+}
+
+/* the window the digits roll in. The fade at its top and bottom
+   edge is a mask, and a mask would take the number's focus ring
+   with it — so it is on this inner element, not on .rct-num. */
+.rct-win {
+  display: flex;
+  justify-content: center;
+  height: var(--rct-cell, 46px);
+  -webkit-mask-image: linear-gradient(transparent, #000 20%, #000 80%, transparent);
+  mask-image: linear-gradient(transparent, #000 20%, #000 80%, transparent);
+}
+
+.rct-pair {
+  display: flex;
+}
+
+.rct-col {
+  display: block;
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  height: var(--rct-cell, 46px);
+  transition:
+    width 320ms cubic-bezier(0.3, 1.2, 0.4, 1),
+    opacity 220ms ease;
+}
+
+.rct-col[data-on] {
+  width: 0.64em;
+  opacity: 1;
+}
+
+.rct-strip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  will-change: transform;
+}
+
+.rct-strip > span {
+  display: block;
+  flex: none;
+  height: var(--rct-cell, 46px);
+}
+
+.rct-sep {
+  display: block;
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    width 320ms cubic-bezier(0.3, 1.2, 0.4, 1),
+    opacity 220ms ease;
+}
+
+.rct-sep[data-on] {
+  width: 0.26em;
+  opacity: 1;
+}

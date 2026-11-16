@@ -1,0 +1,3615 @@
+{
+ "images": {
+  "classic/blazers/classic-navy-blazer-and-grey-trousers-ensemble-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAACwBACdASoUABkAPu1qsFCppaSiqAqpMB2JaQAAKUGDMzMrPvwR3v9HEpXrbn4AAP7D+TaEcusUaKuZDGS+TcjAM/8PxM4SDrpwy3JteTZrZGvebVZYcm1z6D/E45Hr+VDLyZ/XQWD0Wda0BgAAAA==",
+   "bg": "#c2c2c2",
+   "name": "Classic Navy Blazer & Grey Trousers Ensemble - 01"
+  },
+  "classic/blazers/classic-navy-tailored-blazer-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQBACdASoUABkAPu1kqk6ppaOiMAgBMB2JZwAAW+uV61XWOhBRsCkGcziQaxFAAAD+7UBaKBw8koit5Q8uXo5y/tdzxB/YLyOSZfSSqRQptfDajI2R2cK6eC58UwEAAAA=",
+   "bg": "#eaeaea",
+   "flat": true,
+   "name": "Classic Navy Tailored Blazer - 01"
+  },
+  "classic/blazers/classic-navy-worsted-blazer-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADQBACdASoUABkAPu1sqFCppiOiqA1RMB2JQBZwATbD4EuvCL3E+aE6F3lYFbwUAAD90XSw0mA4Kn58rBWkjRBcRNbq+2VRWm41Z4hXIMrq12IGRBP4pUxceyLLFVhAb8vO4T6yzVr7XyxIZR4AAA==",
+   "bg": "#70654a",
+   "name": "Classic Navy Worsted Blazer - 01"
+  },
+  "classic/blazers/tobacco-brown-hopsack-blazer-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAACwBACdASoUABkAPu1urVEppqQiqAqpMB2JYwCsAAp07cCQZYZjOG5Lm+OstSAAALFdPOEi+YrinUq+vzqgou/Mj6OebvwERd80xK3Y0zfP+kBPfZ9oLhZvqUgbo0lB5Fx/Phn1QiPgTd9wAAA=",
+   "bg": "#45402f",
+   "name": "Tobacco Brown Hopsack Blazer - 01"
+  },
+  "classic/casual-jackets/dark-olive-cotton-twill-casual-field-jacket-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAABwBACdASoUABkAPu1qrlEppaQiqAqpMB2JZwAAIWobMK3HoESDFTAt90JKwAD+8W0l7U2kSqMtGGPD2VG9LBvZrAlrWt+9YKm7du3plgXInwQjPvr1mZXYxUGGbwqWhCPUAAAA",
+   "bg": "#181314",
+   "name": "Dark Olive Cotton Twill Casual Field Jacket - 01"
+  },
+  "classic/casual-jackets/olive-cotton-twill-safari-jacket-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAwBQCdASoUAB4APu1srVEppiQiqAqpMB2JaACdMoSEIA79DAz8KC29qGfMv/cqbbleAAD+sYYA30L8OKrdRIMu7vG85NwTCWEPfMDpJ/uiDfGpCeRYyV0K9qwE/gS07G7H52x34U/FhsV9lQ7zabaHyrWgPPAKSEEfMJn8Rcz2XpVUZCP0b1R/GV9W6ZAA",
+   "bg": "#ea9f52",
+   "name": "Olive Cotton-Twill Safari Jacket - 01"
+  },
+  "classic/casual-jackets/terracotta-casual-overshirt-jacket-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAADwBACdASoUAB4APuFUpE2opCOiN/qoARAcCWIAnS+gAcdoLW7OS6IEw3828s5l2wAA/u1IWKHZL2Qnf8+H79pEfAsKoULgPtrivCioNphMZRWo3EZjZLbQQFfIs8E+scy2WnV7EYAnHJyWpj1KMGMaOCVfCwavi3OO6l2POtjaoAAA",
+   "bg": "#e6b383",
+   "name": "Terracotta Casual Overshirt Jacket - 01"
+  },
+  "classic/shirts/bespoke-blue-chambray-and-poplin-shirts-stack-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAACQBQCdASoUABkAPuFeqU2opSQiMAwBEBwJaACdMuOCmCXBwVjoqlNL/OkAp03nFdrb6IvXAAD+4M3cG6kMgI0bL67x9L22bEYiB4GiFW7ZtaPdmcgqRy9096WRZntJFP5pkj6tdXfpo+ZJNHazGkC2iQBy47KEiBJH6sCnU4v88VlE3hvu94wrHM3bAAAA",
+   "bg": "#a57654",
+   "name": "Bespoke Blue Chambray & Poplin Shirts Stack - 01"
+  },
+  "classic/shirts/bespoke-button-down-shirt-white-flat-lay-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAACwAwCdASoUABkAPu1qqk8ppiOiMBgIATAdiWcAyrQQ78oUMu6McAD+6mhUPUNUFWwUR+zKuWti6PX6b6lJNtlTTgJa952xlU+Jalrnh7kAAA==",
+   "bg": "#e7e3d8",
+   "flat": true,
+   "name": "Bespoke Button-Down Shirt White Flat Lay - 01"
+  },
+  "classic/shirts/bespoke-dress-shirt-pale-pink-flat-lay-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADQAwCdASoUABkAPuleqE2pJSQiN/VYASAdCUAWHYIeALcLjpMPzQAA/ucJ0xZLLBpLjDwbBvr47ke0KwKtJVnP3F6IXOxP/rTlH2Tx0J/fdaCDGFtWkuKgsGkAAA==",
+   "bg": "#dfdbcf",
+   "flat": true,
+   "name": "Bespoke Dress Shirt Pale Pink Flat Lay - 01"
+  },
+  "classic/shirts/bespoke-dress-shirts-collection-flat-lay-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAABwBACdASoUABkAPu1gqU4ppSOiMBgMATAdiUAYG4aN7xDyKPWpIHggL+4AAAD+6mp+PYLTtg1MQRBw08ETJes0psvofR5UvauTHM7VCT9RHANhwgEN2QSj0AA=",
+   "bg": "#d1d1c7",
+   "name": "Bespoke Dress Shirts Collection Flat Lay - 01"
+  },
+  "classic/shirts/bespoke-dress-shirts-trio-flat-lay-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADwAwCdASoUABkAPuVepU2pJSOiMAwBIByJZwDA3CHfxsJHaNNxz24QAP7tM6Q1D1qjAR/Bvyf7lPVdXN78/me17IHq8pvoz0UfHOyiC6BJlAAA",
+   "bg": "#eee5de",
+   "flat": true,
+   "name": "Bespoke Dress Shirts Trio Flat Lay - 01"
+  },
+  "classic/shirts/bespoke-oxford-shirt-sky-blue-flat-lay-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACwBACdASoUABkAPu1kqE4ppaOiMAgBMB2JZADE2CHf3rAdGfeJZnP4f6mTftfgAP7vvOXubaKs2oagL835Yy8k8/HJ9R1c0xUdC72ZcvfFIobmurPtSHqQ16rr5kMrnyAbcvF0qAA=",
+   "bg": "#faf5ea",
+   "flat": true,
+   "name": "Bespoke Oxford Shirt Sky Blue Flat Lay - 01"
+  },
+  "classic/shirts/bespoke-pinstripe-and-poplin-shirts-stack-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAACQBQCdASoUABkAPu1kqE2ppaOiMAgBMB2JZgCdMoPNTjgEDfmx1bVA78AVFEKNp4EuqMl8kAD+4eyWfoRxripiMOZVOVrRDx17S6v3AtIt/KjiFENlg5CnhprJ9NVcOmmAImMorgLwvLc27rQ5Q9bmN3joP+iwOOOAk4UMBNGAkItsieWlYlyKKA16HdfBbVAQqPWeGsEm2f2OxrLyAAAA",
+   "bg": "#b2825d",
+   "name": "Bespoke Pinstripe & Poplin Shirts Stack - 01"
+  },
+  "classic/shirts/the-button-down-collar-shirt-burgundy-white-dress-stripe-01": {
+   "w": 1920,
+   "h": 1920,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAABQBACdASoUABQAPu1mqk2ppaQiMAgBMB2JZQAAUrof4y2GTHFL9YUIFw8AAP7tYXMD7vGNB9hlONCFbHienczccvUmj/t2oLgKEfw3iO9RttE15d6crAAA",
+   "bg": "#e8ecf0",
+   "flat": true,
+   "name": "The Button Down Collar Shirt Burgundy-White Dress Stripe - 01"
+  },
+  "classic/shirts/the-button-down-collar-shirt-burgundy-white-dress-stripe-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABwBACdASoUABkAPu1eq06ppKOiMBgMATAdiUAZVoIbyYhlddkTBm8e3SHTAAD+6oKZHSoXn0tVMTLZ7Dbx9HbvIcL0IoicilwfckbTV3s+KggkgAAAAA==",
+   "bg": "#e5e8eb",
+   "flat": true,
+   "name": "The Button Down Collar Shirt Burgundy-White Dress Stripe - 02"
+  },
+  "classic/shirts/the-classic-crisp-dress-shirt-white-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAAAwBQCdASoUAB4APu1qsFAppaSiqAqpMB2JZgCxHtDBMxvlx/tdNOvYfUdJuX/EfVqVwAD8U9u8pWR1RA6m+dKVjIfuaTR2zhkO8P7oMDT6pWfFwpvmw7PefeBMGTPT2tA++rMdo9xNJIS2PlD7xET4sxm2v2C5yovsJKL/tV1D4BKaP73x8EmeuCaQBYQxgSw0t3AAAAA=",
+   "bg": "#d49762",
+   "name": "The Classic Crisp Dress Shirt White - 01"
+  },
+  "classic/shirts/the-classic-crisp-dress-shirt-white-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAADQBQCdASoUAB4APu1sq1EppaOiqAqpMB2JZgCdMw46gBLii47W7XLvFAWhbrSBMSoZ50X0OKgAAMq0AVVl3ggaXUbffMMDIKsbEgb1WR78Oqppr57p/X6ZWZ2vFW03Vj//5a3ZaECfFN9D/3GrUNbzSm5W6m59J39qG/deIwvL0XNFpjMoNir/0BBWG6d/IByHv+Qq+he4DABbh8SfsWYAAAA=",
+   "bg": "#bd763e",
+   "name": "The Classic Crisp Dress Shirt White - 02"
+  },
+  "classic/shirts/the-classic-crisp-dress-shirt-white-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAAAwBQCdASoUAB4APu1qr1CppaQiqAqpMB2JZACdM2h4wAg300WIyYC38eElNJ6Q0/wqMACgY6CUewOA+pN8eMTWqOlQTM3/TzkWgf12ey65U5DD8CuYYkmOi+lIPqTaat8PgZwaiovND1RXU/sIk3YeuVUMgMMnndiwEXIdqRts+CZcG7I7zQ/09Yxb5CzLacAAAA==",
+   "bg": "#bb7741",
+   "name": "The Classic Crisp Dress Shirt White - 03"
+  },
+  "classic/shirts/the-cutaway-collar-shirt-blue-01": {
+   "w": 1920,
+   "h": 1920,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQBACdASoUABQAPu1qq08ppiOiMBgIATAdiWUAxNgQ7MmuIulzdXFoUAD+7T72YNl/wIqxOAbyUHSz48fUM6r4QxbjZ0l0PhO70UqxEMn+XV6cAAA=",
+   "bg": "#e1e5e8",
+   "flat": true,
+   "name": "The Cutaway Collar Shirt Blue - 01"
+  },
+  "classic/shirts/the-cutaway-collar-shirt-blue-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADwBACdASoUABkAPu1krU+ppSQiMBgIATAdiUAX5wIeFZRWd409VMgYBU5xhqAVBAAA/uqAzdsfCaHwbRpCW5q75sHgAZdMQxU9/JDw2ME6u0dvrRWSO8nDDyCHmAAA",
+   "bg": "#e3e6e8",
+   "flat": true,
+   "name": "The Cutaway Collar Shirt Blue - 02"
+  },
+  "classic/shirts/the-cutaway-collar-shirt-blue-white-gingham-check-01": {
+   "w": 1920,
+   "h": 1920,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAABwBACdASoUABQAPu1qqU8ppiOiMBgIATAdiWUAtsgQ8QN6wL/hfCZ0rNWOgAD+6o8j2bTU9CGJwZ29t2TkvcM/ZeKcaIH+uYJxXROyRvC8Kzxo0jcXRWFgAAA=",
+   "bg": "#e5e9ed",
+   "flat": true,
+   "name": "The Cutaway Collar Shirt Blue-White Gingham Check - 01"
+  },
+  "classic/shirts/the-cutaway-collar-shirt-blue-white-gingham-check-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABQBACdASoUABkAPu1wsVIppiSiqAgBMB2JYwDDNBEcoVUUpeTOvPdSENAAAP7qcf0WIoluh+P4WmvapSr2XkTsvLCLAgGAI+9UoMOYhW5bvVALeAAAAA==",
+   "bg": "#e3e6e9",
+   "flat": true,
+   "name": "The Cutaway Collar Shirt Blue-White Gingham Check - 02"
+  },
+  "classic/shirts/the-dramatic-button-down-collar-shirt-blue-white-bengal-stripe-01": {
+   "w": 1920,
+   "h": 1920,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAACQBACdASoUABQAPu1qq08ppiOiMBgIATAdiWcAzBwN2u9xDsKmGvT8uRhXmAAA/uqW2l8cAyoxwwFhiQ/A07McYRrNfG4vOwYEFHr+M/9xXp8V6+p+h6AAAAA=",
+   "bg": "#dbe2e9",
+   "flat": true,
+   "name": "The Dramatic Button Down Collar Shirt Blue-White Bengal Stripe - 01"
+  },
+  "classic/shirts/the-dramatic-button-down-collar-shirt-blue-white-bengal-stripe-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwAwCdASoUABkAPu1qqFAppiOiqA1RMB2JZQC7ABEcjkbf1oL3OwMAAP7qdbMmDuDOpvn7WB2rbawng5CmGqGvcHvPUOE+64HJ/fFkmn7EADOsxdhsZIAAAAA=",
+   "bg": "#e0e4e7",
+   "flat": true,
+   "name": "The Dramatic Button Down Collar Shirt Blue-White Bengal Stripe - 02"
+  },
+  "classic/shirts/the-dramatic-button-down-collar-shirt-mini-check-01": {
+   "w": 1920,
+   "h": 1920,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABQBACdASoUABQAPu1oq08ppiOpsBgIATAdiWkAACncZFw7I03pSYufDRAAAP7tYPhaBwXeuphf2DZHAoKe7vZO9s3lLqnS2QLly7ectAphFBAo8MAAAA==",
+   "bg": "#ebeff2",
+   "flat": true,
+   "name": "The Dramatic Button Down Collar Shirt Mini Check - 01"
+  },
+  "classic/shirts/the-dramatic-button-down-collar-shirt-mini-check-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQBACdASoUABkAPu1sqVCppiOiqA1RMB2JaQDL4BEcdpmS3cDVuYSAAAD+6oIR51DrK4oJd+ZQmsvbtoFameXWvfor4oDaxnAYyVCaIPVT7jhwAAA=",
+   "bg": "#e5e9eb",
+   "flat": true,
+   "name": "The Dramatic Button Down Collar Shirt Mini Check - 02"
+  },
+  "classic/shirts/the-semi-spread-collar-shirt-white-01": {
+   "w": 1920,
+   "h": 1920,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwBACdASoUABQAPu1qq08ppiOiMBgIATAdiWkAzjgQ7/9+UIg5IypEHzAA/up2dyix37NRiglAJ5l8YmPH9PJvvoB1gAAA",
+   "bg": "#e2e4e6",
+   "flat": true,
+   "name": "The Semi Spread Collar Shirt White - 01"
+  },
+  "classic/shirts/the-semi-spread-collar-shirt-white-02": {
+   "w": 1920,
+   "h": 2399,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAABwBACdASoUABkAPu1wsFIppiSiqAgBMB2JaQDM0BEc2nYLgniNjiS8owQJAAD+6nHd/St9iDx9aAsA7F90dxnPHub/1IyAAAA=",
+   "bg": "#e0e3e5",
+   "flat": true,
+   "name": "The Semi Spread Collar Shirt White - 02"
+  },
+  "classic/shirts/twin-pocket-safari-shirt-pale-pink-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAABwBACdASoUABkAPu1or1CppaSiqAqpMB2JYgCdM2iBSAiVksfKAkJn5pl7AACscM8KL56Gcu/0abuJkhj/HHCUvOfXfL/Kn6jxxZ9hc1gpqvaAIfFA2Jf2+GwyypJISOjfkzWS/q1GJl0T7Ry3qZPUPC68AAAA",
+   "bg": "#c48552",
+   "name": "Twin-Pocket Safari Shirt Pale Pink - 01"
+  },
+  "classic/shirts/twin-pocket-safari-shirt-pale-pink-02": {
+   "w": 1920,
+   "h": 2399,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADwBACdASoUABkAPu1gq1AppKOisBgIATAdiUAVJHzAEAaEROYMKleau6pxcfkuQAAAoFzIpOpNaJFK73Jl8X/x76z+HxnGxft13g2MIiiVwNmZW0V6kBGbB4ZL5zh1G86+gXmpY+Qtl1v7uOhPSXbgAAA=",
+   "bg": "#b97c4e",
+   "name": "Twin-Pocket Safari Shirt Pale Pink - 02"
+  },
+  "classic/shirts/twin-pocket-safari-shirt-pale-pink-03": {
+   "w": 1920,
+   "h": 2401,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAAAQBQCdASoUABkAPu1wsFKppiSiqAgBMB2JagCdMoR7KBHuv3C27qfpWX8nZJYydZkAANxSk6ZfRWad4Vv6Qq9ntV9myDbeNsHGoBVpVEXOgunbIEWl4IVcRSsB+euUaEfkilJoVRPqGG/Ypu/RLCH+8EmXP6TLzHAl3uwAAAA=",
+   "bg": "#cd7b31",
+   "name": "Twin-Pocket Safari Shirt Pale Pink - 03"
+  },
+  "classic/shirts/twin-pocket-safari-shirt-pale-pink-04": {
+   "w": 1920,
+   "h": 2401,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADQAwCdASoUABkAPu1srFEppiQiqAqpMB2JYgBVfYG3Jt1sCNirVAAA+mvIQAAmTJcjaGo+vyd8GhiXcw8iy/+HVth2v/yOd7PMD1C0dKcSmahIgrRUNeu/ho0bvLa8cn+a/lqlzCtT2EQU5HP6HxFasp4iK4mJ8AA=",
+   "bg": "#805030",
+   "name": "Twin-Pocket Safari Shirt Pale Pink - 04"
+  },
+  "classic/shirts/twin-pocket-safari-shirt-pale-pink-05": {
+   "w": 1920,
+   "h": 1974,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAADwBACdASoUABUAPu1krE6ppaQiKA1RMB2JZgCdMtU86BPnLJpUNgVCA+08ehBkrAAA3ckgC6fw3oBS7C2nswM2BDb4zmPVvCMUHL0ceZf+NeL7k6SsQCvhCK56u/uPV/N8hBgcb3dxWrIqvhUpEyUIkgTN+Uc0t7BUAAAA",
+   "bg": "#c17238",
+   "name": "Twin-Pocket Safari Shirt Pale Pink - 05"
+  },
+  "classic/sports-jackets/charcoal-textured-wool-sports-jacket-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAACQBACdASoUABkAPu1qr1CppiQiqAqpMB2JYwCo9BDXhFCWmyC+d2rFFfrW9LgA/sJYenrdMXsZbnjrLJJlH3i4x/QqxsVKrnfqt1pRj5hn0YUqPgTY6pnwc67soaxjT/3sYmPK2nggFghkTqGwFMMGVp7WGM9OL9MsUcuBwjHAT5gAAAA=",
+   "bg": "#d0bea7",
+   "name": "Charcoal Textured Wool Sports Jacket - 01"
+  },
+  "classic/sports-jackets/grey-brown-tweed-norfolk-sports-jacket-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAADwBACdASoUABkAPuFep02opSOiMAwBEBwJYwC7ACHfcQsCfc7en9ML60zIN0/sFjAA/vMdOmno1s3gyz05Q37p/NI0zVdM+qT/AZzZf106o3O4i6bTQ7+eyziR9aOFH0CPlxh9wxtd3LH3cnemAAAA",
+   "bg": "#4e402e",
+   "name": "Grey-Brown Tweed Norfolk Sports Jacket - 01"
+  },
+  "classic/sports-jackets/grey-brown-tweed-norfolk-sports-jacket-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAABQBQCdASoUABkAPu1cqE2ppKQiN/VYATAdiWcAy6QPSZQ8CyRrt3ZH8GAXvvw3J4GDeAAA/vDfr1fH3X9jdwWnkLDCEbQg82CsFRjKKtpL3Se1u3jhwdMQZjg1YNecDWzA4sIVoh5AAAAA",
+   "bg": "#211811",
+   "name": "Grey-Brown Tweed Norfolk Sports Jacket - 02"
+  },
+  "classic/sports-jackets/light-grey-micro-check-sports-jacket-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACQBACdASoUABkAPu1oqU+ppiOiKA1RMB2JYwCw7AXHTJiWr14sQaT4a3+TY6AA9yntp3pvTwO9mm2rEDTXzdUCANDoR3pi4SiSzkzzkBeqqBqi1wzs+ZvN5Fi8CmzNe5V1CscmOqtGFeaGmIiq0IJOC3I4BAsQAAA=",
+   "bg": "#504d38",
+   "name": "Light Grey Micro-Check Sports Jacket - 01"
+  },
+  "classic/suits/bespoke-tailored-suits-trio-01": {
+   "w": 1920,
+   "h": 1337,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwAwCdASoUAA4APu1kqU2ppaOiMAgBMB2JYwC06B6S+Ob+xzam8AD+23YoVfKIZ1q5KPQY4AOkx2tMepHnA4IcFS9UKG8/kuzFwXHzvngdOmAA",
+   "bg": "#3a1d1c",
+   "name": "Bespoke Tailored Suits Trio - 01"
+  },
+  "classic/suits/black-tie-evening-tuxedos-trio-01": {
+   "w": 1920,
+   "h": 1445,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAwCdASoUAA8APu1kqk4ppaQiMAgBMB2JQBYdg3PfiufkyGp044AA/vDfre+xu9YpFr5Blb3SiE4SfejqetfF53TqmKUlI3D/q5FgrOXLtlam8oC83oAA",
+   "bg": "#421724",
+   "name": "Black Tie Evening Tuxedos Trio - 01"
+  },
+  "classic/suits/charcoal-double-breasted-bespoke-suit-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwBQCdASoUABkAPu1qq08ppiOpsBgIATAdiWMAtOgQtgWNQX4R8f22QCEfon+H0MjqAAD+0nCTwzTwTn+gSi2WxH5tWd5COK5J3GY239xLxpMzPbpnNhdTrxCAk0qy7jAhFcoRpE8o5nZFfdf09Yz3H1wfXfwA",
+   "bg": "#7c6a57",
+   "name": "Charcoal Double-Breasted Bespoke Suit - 01"
+  },
+  "classic/suits/charcoal-three-piece-bespoke-suit-01": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACQAwCdASoUAA0APu1iqU2ppaQiMAgBMB2JQBYdg9K8+8PuvkYAAP2YBkjcO2HtFDqBHdHF4YQky2GY7b2VON+gd6Wh6acLupW4AA==",
+   "bg": "#493326",
+   "name": "Charcoal Three-Piece Bespoke Suit - 01"
+  },
+  "classic/suits/charcoal-three-piece-bespoke-suit-02": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAQBACdASoUAA0APu1iqU2ppaQiMAgBMB2JQBOgA3Sr6fgHpf0PI987IAD+U9Qa/KCyd6kI5754Mh+wsKDDWgMiTS7Y5jUM6WZJSuqEAAA=",
+   "bg": "#82664d",
+   "name": "Charcoal Three-Piece Bespoke Suit - 02"
+  },
+  "classic/suits/charcoal-three-piece-bespoke-suit-03": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAADQBACdASoUABkAPuVgpU2pJaOiMAwBIByJZQC7ABuxfCv8qVdNho0LWswHPYKUAAD8XaCX5ap0wVEZf26JXkSgL84IPWnUmszTN97MP8E3S77j68/qQwNZwM1GIs1h0Omfe4QOrcOWfoUEc6bjQAAA",
+   "bg": "#886f5a",
+   "name": "Charcoal Three-Piece Bespoke Suit - 03"
+  },
+  "classic/suits/charcoal-three-piece-bespoke-suit-04": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAwCdASoUAA0APu1iqk2ppaQiMAgBMB2JYwAAShvftD8L3UMXwAAA+32/q2t/PxfPn1hkrb8/b8mRj/QfAv87LzkwgxdXUy9I0Nj5gdEiAAAA",
+   "bg": "#423224",
+   "name": "Charcoal Three-Piece Bespoke Suit - 04"
+  },
+  "classic/suits/charcoal-three-piece-bespoke-suit-05": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACQAwCdASoUAA0APu1iqU2ppaOiMAgBMB2JYwCsACbE2VjGUS/4AK/lGrLvUEWmOcrhmQMXAefCoFR3ug+BZ2R6fDDbbb6kI4h9/jQkAAA=",
+   "bg": "#746354",
+   "name": "Charcoal Three-Piece Bespoke Suit - 05"
+  },
+  "classic/suits/charcoal-three-piece-bespoke-suit-06": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACwBACdASoUABkAPtlepE2oJaOiN/qoAQAbCWUAnQAbo4I0/niuB1uWCc3hWOrgAP62N73uTMJP0sAP77YTFNL0Wcos9VaKZO7+52iR+NGcnN9CfmzWThMwxaSspPG/3ZXTTybWOQ3GAsXQFwlmbgj+GdMR9szAAAA=",
+   "bg": "#947861",
+   "name": "Charcoal Three-Piece Bespoke Suit - 06"
+  },
+  "classic/suits/classic-black-bespoke-tuxedo-01": {
+   "w": 1920,
+   "h": 2588,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABQBQCdASoUABsAPu1qrVEppaQiqAqpMB2JaAC7MzLwtBqDp6seV32LMLj9zk5wXUcsdbAA/u6hmfGOObec0qhaf1x1TJUJ9S/RBa9LJWuNBFyUnclddG9QXLU54bPKmZoNahGWuBrDLknTknAIcEjbbYvaYpu2SZJhrsE8/Maft1Mx9qNWSj9MDQm9doAA",
+   "bg": "#723338",
+   "name": "Classic Black Bespoke Tuxedo - 01"
+  },
+  "classic/suits/classic-charcoal-double-breasted-worsted-suit-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAACwBACdASoUABkAPu1iq0+ppSOiMBgIATAdiWcAACO+ZhdqqCQlFTqu278g1foAAP7zgoDRmYWDQuNW/V5PbYUd6aaloBj4dNe3Pi7/7HtSajfPpF93pR5JfvwgufSMqoPhs/sD40ryxirSfmk/jw35waSLKfD4Z7cIAAAA",
+   "bg": "#fefefd",
+   "flat": true,
+   "name": "Classic Charcoal Double-Breasted Worsted Suit - 01"
+  },
+  "classic/suits/classic-charcoal-single-breasted-worsted-suit-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAACwBACdASoUABkAPu1qqlAppiOiqA1RMB2JaQAAJq57bu7AFktMc+BOH35+D7RAAP7zgHsOZT7ys/xhme38B1OdrCiglazjtyyLmL2pNj26C84dcaKOY/3ZMISaSgmY7YGLE4kRS7Vx6M6og2xsXZiYuPgHwEW+u7WRF51Q7YAAAA==",
+   "bg": "#fefcf9",
+   "flat": true,
+   "name": "Classic Charcoal Single-Breasted Worsted Suit - 01"
+  },
+  "classic/suits/classic-grey-two-piece-suit-01": {
+   "w": 1920,
+   "h": 2877,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAABwBQCdASoUAB4APu1crE2ppKSiMBgMATAdiWUAuDA0b26283QTDRRuw2wPNbFtehX2uhYAAP7Pz0doTGKok/qJNILCilaVCXlpRwYAoIiAiGNhEJl3T7M4/LpU7vOLbWKIrLCmv3CZokLmAAA=",
+   "bg": "#625449",
+   "name": "Classic Grey Two-Piece Suit - 01"
+  },
+  "classic/suits/classic-grey-two-piece-suit-02": {
+   "w": 1920,
+   "h": 2877,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAQBQCdASoUAB4APulep02pJSOiN/VYASAdCWUAyJhCDZNgqNRUNYawY1hBtWNeFWEAAP7QHe0RnXvXugJXN1Gnfx0uTNgRNX12tGpLPMakYpR0LNDRVCfLE6mD3md+IOLnOkzOJm+6t8AAAAA=",
+   "bg": "#69584d",
+   "name": "Classic Grey Two-Piece Suit - 02"
+  },
+  "classic/suits/classic-grey-two-piece-suit-03": {
+   "w": 1920,
+   "h": 2877,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADwBACdASoUAB4APu1mqk8ppaOiMBgIATAdiWUAxvQyyMJZqpbmu9iiOyt1+XgZJQAA/tAj0amhFnbQABCcx8TjNKrRfNxFt4OneLX/FfoS1zGZFq3W1KdIL+Iub860LLp3C4G7/uLPAAAA",
+   "bg": "#6b5b55",
+   "name": "Classic Grey Two-Piece Suit - 03"
+  },
+  "classic/suits/deep-navy-three-piece-peak-lapel-suit-01": {
+   "w": 1920,
+   "h": 2877,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAwBQCdASoUAB4APuVipk2pJaOiMAwBIByJZQC3uBCbpGakhDypvRj+mX6KwjZzf24QAAD+FD9pd8aY9PADj2hcx2eqx9kqw94rk5FrnTUE2P1kjAGOkGDKjHA1m8dVXCXblFw6Sc4cF8KLAIUwAme49oBmgb3iMqEzGCgA",
+   "bg": "#6e645a",
+   "name": "Deep Navy Three-Piece Peak-Lapel Suit - 01"
+  },
+  "classic/suits/deep-navy-three-piece-peak-lapel-suit-02": {
+   "w": 1920,
+   "h": 2877,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAACQBQCdASoUAB4APulep02pJSOiN/VYASAdCWIAgboRzle6Fr7BF9pQ9pAnIxJUwVv4X0Y/AAD9EatfdbgehuKPDNQunAPcto6kP8+fhkdxX2hLA8NVXOqW54HBnRL6nflhgKRVc9irz/AVdv9HpHT4sgTPjQ7BdeT0JxIOssfDIAAA",
+   "bg": "#695b51",
+   "name": "Deep Navy Three-Piece Peak-Lapel Suit - 02"
+  },
+  "classic/suits/deep-navy-three-piece-peak-lapel-suit-03": {
+   "w": 1920,
+   "h": 2877,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAABwBQCdASoUAB4APu1aqE2ppKQiN/VYATAdiWgAgAASWixF6mihGbqzIOvoI+5jBfcsMo2IAPZgxLkgQzbtJrpvlMwCN9LWgNRcTjwDrxHTyDG3oK+WNDlbde9gB/Bc2mNRl5Bm1C3Sw81ST0bUgDXKH/pU6Uz0hnmVEqxORLi+6kEyofmv8HPFk83gjDwuAAA=",
+   "bg": "#4a4658",
+   "name": "Deep Navy Three-Piece Peak-Lapel Suit - 03"
+  },
+  "classic/suits/ivory-double-breasted-tuxedo-01": {
+   "w": 1920,
+   "h": 2583,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAACQBQCdASoUABsAPu1sq1EppaOiqAqpMB2JZACnFBEdsyTmVtSZAH+7Gv1xpuZ5QKljR0f+AAD+7o6/4ySdk7N+SQNTJYktN96iA0zY2WnYA9R1mynHQUmkt2FecUC2ZXkJMEWXLXuFjFKjlaIzXU+kfMfUKd/uxGVmXvmlkwTZNAcjxgy9JquAXQSnM3AIZaRW4AOAAAA=",
+   "bg": "#672c3e",
+   "name": "Ivory Double-Breasted Tuxedo - 01"
+  },
+  "classic/suits/light-grey-double-breasted-peak-lapel-suit-01": {
+   "w": 1920,
+   "h": 2877,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAACwBACdASoUAB4APuVgp02pJaOiMAwBIByJZQC06Buc1BmkGgehGZfkCDnLXkqAAP6A1Z65PlDiwf7VND0LUP+P5fRnELxKWKNXQSJNIp2agda9a41KdVuy0j5l6YjOkG37gAAA",
+   "bg": "#514842",
+   "name": "Light Grey Double-Breasted Peak-Lapel Suit - 01"
+  },
+  "classic/suits/light-grey-double-breasted-peak-lapel-suit-02": {
+   "w": 1920,
+   "h": 2877,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAABwBACdASoUAB4APu1mqU2ppaQiMAgBMB2JZQCw7BAtShSLBzG4jbwwXDSFYAD+21akC/fvKbgLX0jvFMqxOzmPw7YczddlDmTph99Llvw/x7ZTSGK9HQxxHm6RQ9GyakflHLj/OcK3NOJsQAA=",
+   "bg": "#61584d",
+   "name": "Light Grey Double-Breasted Peak-Lapel Suit - 02"
+  },
+  "classic/suits/light-grey-double-breasted-peak-lapel-suit-03": {
+   "w": 1920,
+   "h": 2877,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAwBQCdASoUAB4APu1oq04ppiQiMAgBMB2JYwC7M0xC2SU8vnMCsclGo+koaYmonuLnwAD3CSCbF4Rphqh/18mzEpwQILL9/ufp6A4zMulnm5BhJDVXGBJjchj2u25tqDJDmTlfKh3+PpcpioCvz+3B5AIpFtV6JVJs34AA",
+   "bg": "#948473",
+   "name": "Light Grey Double-Breasted Peak-Lapel Suit - 03"
+  },
+  "classic/suits/mid-grey-flannel-two-piece-suit-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAABwBQCdASoUABkAPu1oqk8ppiOiMBgIATAdiWUAv+wQ70QJyhBc/zsgqN5Sgs0rMvDNwaIAAP7x8ZDg929Uv+IieDcI14Es48zxMJcRqRF8uRkt2stJiuolQLd1ulndx6Oe08ekiaNRoTPIXrs3RFq9TXbJvbRztC3QvwD4P+8PWID74TqlvdZfjAAAAA==",
+   "bg": "#efe6d8",
+   "name": "Mid-Grey Flannel Two-Piece Suit - 01"
+  },
+  "classic/suits/mid-grey-flannel-two-piece-suit-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAABQBQCdASoUABkAPu1irVAppSQisBgIATAdiWMAwzQQ70QOEOU/VFeTTMDT9EViF9GSfiAA/vHVjL5Q6n+rpIU4vDC6GVYpE7ZZVsQfL7BrIOa+V04imm4Paw4F4o+w1UYs9kcy7dTnGVqES7HSq/kYu0z5aCX5VG9aeot9X0F3oZKeyTEdgZ6lAAA=",
+   "bg": "#f2e9db",
+   "name": "Mid-Grey Flannel Two-Piece Suit - 02"
+  },
+  "classic/suits/mid-grey-flannel-two-piece-suit-03": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADwAwCdASoUAA0APu1iqU2ppaOiMAgBMB2JYwCdABjTbUDzDhhp9UIAAPzbTwn3supVNz4wrKTSPFv8TU+bupfvpkjB1rT390BsusEAkmu8K5ORJaAsrSZ0tioUAAAA",
+   "bg": "#f8f6ed",
+   "flat": true,
+   "name": "Mid-Grey Flannel Two-Piece Suit - 03"
+  },
+  "classic/suits/mid-grey-flannel-two-piece-suit-04": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAAAQBQCdASoUABkAPu1grFAppSQisBgIATAdiWcAy6QQpAnMZcDKHh4KeqHGJYYQLSAAAP6/x3i14dF2zRBs1boZDjdpOKcJ5nKr7Paf8TjsJf178XTWxOiQC8CMA9rUdafJUdHj2UedtCo4GBLe5YUGv/tgjviT9RDgAA==",
+   "bg": "#a59c93",
+   "name": "Mid-Grey Flannel Two-Piece Suit - 04"
+  },
+  "classic/suits/midnight-navy-double-breasted-tuxedo-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAACwAwCdASoUABkAPtleo02oJaMiN/qoAQAbCWcAAFu6Wn5gd2rYgAD+7om9+j7/S/bfvOpsKid6mv2tgwerEL8UsxBcPGr2DilJ3Rr/Cem+pIAAAAA=",
+   "bg": "#272728",
+   "name": "Midnight Navy Double-Breasted Tuxedo - 01"
+  },
+  "classic/suits/midnight-navy-double-breasted-tuxedo-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAwCdASoUABkAPu1irFAppSQisBgIATAdiWcAznQQ78erKkd1468AAP7o5b8cry/iUY8xbptgMAs8wqWcthjCmGemFuh34RAAAA==",
+   "bg": "#131111",
+   "name": "Midnight Navy Double-Breasted Tuxedo - 02"
+  },
+  "classic/suits/tobacco-brown-velvet-dinner-suit-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADwAwCdASoUABkAPuFWpU2opKOiN/qoARAcCWcAAFtq2NcnX/4JVxKAAP7r9uf2yF88FdloMUdXJ611lHqLAQyej4/C88itsQ5uxpxepiWW/cAA",
+   "bg": "#2c2c2c",
+   "name": "Tobacco Brown Velvet Dinner Suit - 01"
+  },
+  "classic/suits/tobacco-brown-velvet-dinner-suit-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAABQBACdASoUABkAPt1YpU2opSOiN/qoARAbiWcAAFuyNVrOq4xxG6lk1AvUAP7r5OIw7QalotTPoLZPuRbJJMJtkOpW6OYyr3aWfXA2R3I7nx/1AAA=",
+   "bg": "#2d2d2e",
+   "name": "Tobacco Brown Velvet Dinner Suit - 02"
+  },
+  "classic/suits/tobacco-brown-velvet-dinner-suit-03": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACQAwCdASoUABkAPu1krE+ppSQiMBgIATAdiWcAAC51Ts49uGYgAP7r9Rtv7b8PRRRTOPoSEnrsK7SOuDxxk7yO1S4nwn1xLKpf46juAAA=",
+   "bg": "#0d0807",
+   "name": "Tobacco Brown Velvet Dinner Suit - 03"
+  },
+  "classic/suits/velvet-and-navy-double-breasted-tuxedos-duo-01": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAACQAwCdASoUAA0APu1iqU2ppaOiMAgBMB2JZwAAW+uciGBz3YZgAP7o30MZHcfifOko/K++7ptyIWZktH+63oAA",
+   "bg": "#0b0c0e",
+   "name": "Velvet & Navy Double-Breasted Tuxedos Duo - 01"
+  },
+  "classic/suits/velvet-and-navy-double-breasted-tuxedos-duo-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAACQBACdASoUAB4APuVio02pJaMiMAwBIByJZQDNwBRirHk2t2B1E5mbJ6H4VcAA/tp2EIbSFM0XM24z2v/CCWvr3bvedjcLdHReZm8oWaB/4DznpwV7EPc8ZEbGx4GLwc67ZYtjsEKrjISqAAA=",
+   "bg": "#3c393a",
+   "name": "Velvet & Navy Double-Breasted Tuxedos Duo - 02"
+  },
+  "classic/suits/velvet-and-navy-double-breasted-tuxedos-duo-03": {
+   "w": 1920,
+   "h": 2399,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAABwBACdASoUABkAPuliq02pJakiMBgMASAdCWcAAC54LdxUs6OpRXgS7pqsAAD+8tl0tAeyRaS//UtihU999J0bdqjRlv79xqsrpJKK7FzqIYHWTuv5zGpAAAA=",
+   "bg": "#28292a",
+   "name": "Velvet & Navy Double-Breasted Tuxedos Duo - 03"
+  },
+  "classic/trousers/tailored-side-tab-trousers-stack-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAACwBQCdASoUABkAPu1qr1CppaQiqAqpMB2JQBOmUGf7BB2J3YdWg7qWFGCbkmenuUSIoMz5nuAA/uwk4JFy3lSpGLa7g2ydxTk+L3v8oSCFdGt20gG6G2I85WByWXVoaHI9Zp7ItzKQKK07tCRluKAo/aVdYL+4D6hd5RdNlF08jMOabkAoevfzbYiwnEuAauz63AAA",
+   "bg": "#966e46",
+   "name": "Tailored Side-Tab Trousers Stack - 01"
+  },
+  "classic/trousers/tailored-side-tab-trousers-stack-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAADwBACdASoUABkAPu1sq1EppaOiqAqpMB2JQBOmUAAfnQUD1YQDrTf6uOn+qnwArwAA/Ji8n2RrQvTu0camYd3h2syblBI1tulu8ZmCIAveEoGbTNYj0yxIYW3df3wni6A6G1x5CHHnuodxwweGX1uZnM9N7S9vsCfNvRhq/IXRtbFs6DamGhmZ/YNK/v8/sAA=",
+   "bg": "#856845",
+   "name": "Tailored Side-Tab Trousers Stack - 02"
+  },
+  "classic/trousers/tailored-single-pleat-trouser-dark-brown-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAADwBACdASoUAB4APuVepU2pJSOiMAwBIByJZACdMtPxgEI7xj43XmVuwoYcis0K3QAA/pSJAKJqsbCNVkm4IY8MSgpRskOkz7y3cbhgnVHvvnjXKObCrfG1Psdrmss3WMdd+jJ++S9SRDsDtMUTkspXdT4rWH4OriJXRhMi0R53SSwRVbTKPr75lQDjc0cIpBgCLpLiD3jFFYZ7q5kj4DKN0dxIAAAA",
+   "bg": "#ecb782",
+   "name": "Tailored Single-Pleat Trouser Dark Brown - 01"
+  },
+  "classic/trousers/tailored-twill-trouser-dark-brown-01": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACQAwCdASoUAA0APu1kqk4ppaQiMAgBMB2JZwAAQeMu2kXOTVgAAP7x30AT7+2uLElzPuS2q6WcuEE6tHWGt+hzncHhwhvwfRMjwAAA",
+   "bg": "#ffffff",
+   "flat": true,
+   "cut": true,
+   "name": "Tailored Twill Trouser Dark Brown - 01"
+  },
+  "classic/trousers/tailored-twill-trouser-dark-brown-02": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADwAwCdASoUAA0APu1iqU2ppaOiMAgBMB2JYwAAWnqOHe4jKQdyNvCYAP7zfw8AX0ebNOnfy2Ku9NWyUHEowrf2NHj/o2mIB314/GWusg7lo4YAAAA=",
+   "bg": "#fdfdfd",
+   "flat": true,
+   "name": "Tailored Twill Trouser Dark Brown - 02"
+  },
+  "classic/trousers/tailored-twill-trouser-khaki-01": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAwCdASoUAA0APu1kqU4ppaOiMAgBMB2JQAALfiY98HlDvz4MXQAA/vHcL/UWd0JxVi+lh8hsicznHgbwz9BVZQ5F5T9dTLPiLkGIAAA=",
+   "bg": "#f9f9f9",
+   "flat": true,
+   "name": "Tailored Twill Trouser Khaki - 01"
+  },
+  "classic/trousers/tailored-twill-trouser-khaki-02": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAACwAwCdASoUAA0APu1oqk6ppiQiMAgBMB2JZQAATvwfKHAUdYG8AAD+83twTk6g7+QrRel3VjxvDLPjqkJRagAA",
+   "bg": "#ffffff",
+   "flat": true,
+   "cut": true,
+   "name": "Tailored Twill Trouser Khaki - 02"
+  },
+  "classic/trousers/tailored-twill-trouser-khaki-taupe-01": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAACwAwCdASoUAA0APu1iqk2ppaQiMAgBMB2JZwAATvwfKHAUdYOQAAD+8de9N6HR1pf5IT0IW5lkgDExu55RLYiEAgA=",
+   "bg": "#ffffff",
+   "flat": true,
+   "cut": true,
+   "name": "Tailored Twill Trouser Khaki Taupe - 01"
+  },
+  "classic/trousers/tailored-twill-trouser-khaki-taupe-02": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAwCdASoUAA0APu1iqU2ppaOiMAgBMB2JZQAAWnQlOdL7ppN2ck7AAP7x0c+5WMTLOkyBaaYgaRRdWWWTO+SsScLDcDb6MAA=",
+   "bg": "#fbfcfc",
+   "flat": true,
+   "name": "Tailored Twill Trouser Khaki Taupe - 02"
+  },
+  "classic/trousers/tailored-wool-drawstring-trouser-mid-grey-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAABQBQCdASoUAB4APu1sq08ppiOiMBgIATAdiWIAsR9aRCAUzio9XfcCV4aFnkEviPNsaoAA/tNUmiPlfpw7CmSPEvpy+bLANwHW6RIt3xAmM7JKKc0P3zfEmsZ3LKndvKh6AkUAaRkv0YPEaGC12nTqmdv8P7TQoFMVvqc8T9qsauMGGwf8EV6qEYAAAA==",
+   "bg": "#dba375",
+   "name": "Tailored Wool Drawstring Trouser Mid Grey - 01"
+  },
+  "classic/trousers/tailored-wool-drawstring-trouser-mid-grey-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAAAQBgCdASoUAB4APu1sqk6ppqOiMBgIATAdiWQAnTKEeY+pgc3UfCJV2bTe9WyMl35yj1qATN1lmAAA/t6WtOMI3mFfS4zeXPymOrLtcoi4c/7n+/KDcxlQi/Z5pnzGyoqLo87asEo3lC5FB5K2gnm+xoSdEH5GJuSBzsJI6AvazWIcMzBvj+DXD28d7Cjf6QZVAexRIAA=",
+   "bg": "#de9f67",
+   "name": "Tailored Wool Drawstring Trouser Mid Grey - 02"
+  },
+  "classic/trousers/tailored-wool-drawstring-trouser-mid-grey-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAACwBQCdASoUAB4APu1mq0+ppSOiMBgIATAdiWoAsR7VPgAVCD2N1EsJOltaLZVNZJNp7Xgq1QAA/uffBkSyvnbXj4NRfzMKKm+0HtTIzu/rumn6fT2DIQhR2iKIoUbIviWxLWm9Axaekss+bixrihJuu3wp7nUJF9Vnbvb8yQLDU8RBw0IuCyXqEzAcBzFFula8zDynA2EAAA==",
+   "bg": "#f8c487",
+   "name": "Tailored Wool Drawstring Trouser Mid Grey - 03"
+  },
+  "classic/trousers/tailored-wool-flannel-trouser-charcoal-grey-01": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACwAwCdASoUAA0APu1kqU2ppaQiMAgBMB2JaQAAQx8v5CWwyi80AAD+8eCWmz4WQ1XxjHRyJbCZquR8G3Aw4A+tOfqa4e6axJXSrfr1QAA=",
+   "bg": "#ffffff",
+   "flat": true,
+   "cut": true,
+   "name": "Tailored Wool Flannel Trouser Charcoal Grey - 01"
+  },
+  "classic/trousers/tailored-wool-flannel-trouser-charcoal-grey-02": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAwCdASoUAA0APu1iqU2ppaOiMAgBMB2JZwAARna7M4ZOSW3jb4AA/vHgZv1AIWuw9i8mx1l15DZqOafmncOqBUURigw3KnkrjwIhX9UrUBOQ9WgQAA==",
+   "bg": "#fbfdfe",
+   "flat": true,
+   "name": "Tailored Wool Flannel Trouser Charcoal Grey - 02"
+  },
+  "classic/trousers/tailored-wool-trouser-dark-grey-01": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAwCdASoUAA0APu1kqU2ppaQiMAgBMB2JZwAAWlxfYDh4lTZ9JSAA/vN/DwzLp+ev78tUj1YTPVBCBRKX5A4z5kpHFQSZ6K9in5eAAAA=",
+   "bg": "#fcfdfe",
+   "flat": true,
+   "name": "Tailored Wool Trouser Dark Grey - 01"
+  },
+  "classic/trousers/tailored-wool-trouser-dark-grey-02": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACQAwCdASoUAA0APu1iqU2ppaOiMAgBMB2JaQAAQx8v7wUQ3IAAAP7x4DS3N4Bt188N+s75gwHgdc12NAO7qwBQx1mpDbAigAAAAA==",
+   "bg": "#ffffff",
+   "flat": true,
+   "cut": true,
+   "name": "Tailored Wool Trouser Dark Grey - 02"
+  },
+  "classic/trousers/tailored-wool-trouser-dark-navy-01": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQBACdASoUAA0APu1kqk4ppaQiMAgBMB2JZwAAXKrUVyIyUkFv1wDyEAD+8d8fh7Dl42vtkU/fixL/y/7NnlbqMcRDzDVUYz5lSDJUrbZ2plMU7A6+XgAA",
+   "bg": "#fafefe",
+   "flat": true,
+   "name": "Tailored Wool Trouser Dark Navy - 01"
+  },
+  "classic/trousers/tailored-wool-trouser-dark-navy-02": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAACwAwCdASoUAA0APu1mq04ppaQiMAgBMB2JaQAAV4Pz5nsCXNR7wAD+84GcJPxdiz32LVqVYdIbGxuEfMhXTBu88ufTCY4RAAA=",
+   "bg": "#ffffff",
+   "flat": true,
+   "cut": true,
+   "name": "Tailored Wool Trouser Dark Navy - 02"
+  },
+  "edit/belt-black-trouser": {
+   "w": 1920,
+   "h": 1800,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAADwBACdASoUABMAPu1oqk2ppiQiMAgBMB2JZgCdMsmX+AkaCRSZMs8XV9G2fwivcUAA/tO06paaBlZVqU1OJO5EUmzR/9pCrR/UDML5sO8ZLUAaMHTVc0F9LMC6VoQE8lhUe+V39CaYFPytdhxhqud4hDjirc/StpgQAA==",
+   "bg": "#c47d41",
+   "from": "classic/shirts/the-classic-crisp-dress-shirt-white-03",
+   "focus": "50% 30%"
+  },
+  "edit/belt-drawstring": {
+   "w": 1920,
+   "h": 1674,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAADwBACdASoUABEAPu1aqE2ppKOiN/VYATAdiWIAsR7T+gAV77KZnlzlygN4l3dURcAA/tgK2h5QypiI/dUkHztnJyUzPU9AcXYKbkdpb3YX9/BI7wLhXnZAuIjKOk/48rQ4dL6pvjMzZHiic4w/mM0EfxEWdlDn0Uhpy9zcAAA=",
+   "bg": "#fedaa1",
+   "flat": true,
+   "from": "classic/trousers/tailored-wool-drawstring-trouser-mid-grey-03",
+   "focus": "50% 30%"
+  },
+  "edit/belt-pleat": {
+   "w": 1920,
+   "h": 1656,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAQBQCdASoUABEAPu1kqE2ppaQiMBgMATAdiWYAuzNofHgTCKOLERXGD08u/7r0BtQAAP3fBWvA1J/amU4D4xWWsUAd6/ueOjvp3sITBfZqm0K5ywUkuF1Q1db2XtT5oivSXF4EeGHgT5AYrxb6Sf3vVtShvVvN5ezgAAAA",
+   "bg": "#de9c66",
+   "from": "classic/trousers/tailored-single-pleat-trouser-dark-brown-01",
+   "focus": "50% 30%"
+  },
+  "edit/belt-white-trouser": {
+   "w": 1920,
+   "h": 1681,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADwAwCdASoUABIAPu1crU2ppKSiMBgMATAdiUAABDtZuBJe2dogOJcwAPXGxUPbhEbkJnE2pq+SUwQ1JLu/z5aqzP+XxlrnN+O9TTnreb6ZzwhftSPtUfROClhhDe8EQS/gwoHEBMetEAAA",
+   "bg": "#975c31",
+   "from": "classic/shirts/twin-pocket-safari-shirt-pale-pink-04",
+   "focus": "50% 30%"
+  },
+  "edit/cuff-barrel": {
+   "w": 1920,
+   "h": 1936,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAABQBACdASoUABQAPuFeqk2opSQiMAwBEBwJZQDMHCHfwKSC7A0P340PJdugAP7oUt5Cln1+FCFkKTcBttdFsJ22jpjqoZDR1AAAAA==",
+   "bg": "#e5e9ec",
+   "flat": true,
+   "from": "classic/shirts/the-button-down-collar-shirt-burgundy-white-dress-stripe-02",
+   "focus": "50% 55%"
+  },
+  "edit/cuff-charcoal": {
+   "w": 1920,
+   "h": 1509,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAACwAwCdASoUABAAPu1iqU2ppaOiMAgBMB2JZQC2yBm/O9Gf/8kOQAD+66rfHKn8zeFsgpm29Y9uFHCPphdhy4ExQUzL+7cIBHM218ctHnHM5J1yJdcGOAAA",
+   "bg": "#fefefa",
+   "flat": true,
+   "from": "classic/suits/classic-charcoal-single-breasted-worsted-suit-01",
+   "focus": "50% 55%"
+  },
+  "edit/cuff-navy-suit": {
+   "w": 1920,
+   "h": 1838,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwBQCdASoUABMAPu1gpk6ppSMiMBgMATAdiUAVx5f4K23PZz8AxDM1Ju5S8K/2iW52EAD+5F9+jEOiQNS2HcfLkOSAk2LNy01ypqBppn/Sb+ED1PQ0iuwH0uQaDogB8RFkxE1CHvz8pxNRJWs0G3gYX/wAAAAA",
+   "bg": "#131845",
+   "from": "classic/suits/deep-navy-three-piece-peak-lapel-suit-03",
+   "focus": "50% 55%"
+  },
+  "edit/cuff-safari": {
+   "w": 1531,
+   "h": 1574,
+   "widths": [
+    480,
+    800,
+    1280,
+    1531
+   ],
+   "blur": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAACQBACdASoUABUAPu1qq08ppiOiMBgIATAdiWIArAAPS4IR5y5We+vDHjCzDAAA/gPWw6zC4u9NwaaUd9hqEesn3haNuuK+7uzWHBrMGot/pOn/FknMJSLqJTTZoHsEja4aSH/0Urj2Q1fJmAAAAA==",
+   "bg": "#e8a97e",
+   "from": "classic/shirts/twin-pocket-safari-shirt-pale-pink-05",
+   "focus": "50% 55%"
+  },
+  "edit/cuff-tuxedo": {
+   "w": 1920,
+   "h": 1666,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAAAwBACdASoUABEAPuVgpU2pJaOiMAwBIByJZwDKtCHw2A+RCljBDn5EecAA/uYX3Q6tHqmlD7j1Wdll41MfGJBuqeHxOwq9YAA=",
+   "bg": "#282322",
+   "from": "classic/suits/midnight-navy-double-breasted-tuxedo-02",
+   "focus": "50% 55%"
+  },
+  "edit/cuff-velvet": {
+   "w": 1920,
+   "h": 1600,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAABQAwCdASoUABEAPu1ur1KppiQiqAgBMB2JZwDKAAxapQUKEAD+6//hPXg9kF0v2IkdZhFqJTTXjw4kbZI/8NO9L/e+i+KISIAAAA==",
+   "bg": "#18110f",
+   "from": "classic/suits/tobacco-brown-velvet-dinner-suit-03",
+   "focus": "50% 55%"
+  },
+  "edit/footwear-black-heritage": {
+   "w": 1920,
+   "h": 1867,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAABQBQCdASoUABMAPu1gqU6ppSOiMBgMATAdiUAToAG4RHc2YXBtjUXbGYehkltwwqbKScAA+g+iEJeMnhED1csz6oTo5iWuw0kbgrepSwcBwTixhoraGGoCcEEdW4WE6czRazi/+fbPWaBeZPwo5ZuQM241hbGALWLgfMb7AAA=",
+   "bg": "#b5927e",
+   "from": "heritage/achkans/black-velvet-embroidered-collar-achkan-03",
+   "focus": "50% 100%"
+  },
+  "edit/footwear-black-loafers": {
+   "w": 1920,
+   "h": 2187,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAABwBACdASoUABcAPu1mqk2ppaQiMAgBMB2JZQC+SBi52APdZBJTGBuDgsAT/AD+v3yHf0mrbMWzrnXBF6OxRmgN8XWp3zWMWBk2ebT0yX5KY98owCF9+5Z2416YGb8ziIq6IA7TMmVR4AAA",
+   "bg": "#5d514a",
+   "from": "classic/suits/classic-grey-two-piece-suit-01",
+   "focus": "50% 100%"
+  },
+  "edit/footwear-black-loafers-seated": {
+   "w": 1920,
+   "h": 1984,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAAAQBACdASoUABUAPu1oqU+ppiOiKA1RMB2JYwC2yA65cSHykdKzHLxUAAD+ARbB/0WLw1DwbJJCxOx2mrtpanCYMJ9LJRw86OPWL2TmLhRJajbtYApa7nSlkSxvpbxcwiZOYxkHxhG1AAAA",
+   "bg": "#7c726f",
+   "from": "classic/suits/classic-grey-two-piece-suit-03",
+   "focus": "50% 100%"
+  },
+  "edit/footwear-black-oxfords": {
+   "w": 1574,
+   "h": 1574,
+   "widths": [
+    480,
+    800,
+    1280,
+    1574
+   ],
+   "blur": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAACwBACdASoUABQAPu1cqk6ppKOiMBgMATAdiWQAgOk9oC8Oa/poOsWxg+wvi3wAAPyfZ42TcCkpjhJmVx+d62GMJLlcs4a//OxHvr/4D6vJI7iIekdiLyDwDuoWTKkaJYuw4pBfRUBaqR2lOGmXcGDYALAAAA==",
+   "bg": "#e3a162",
+   "from": "classic/shirts/the-classic-crisp-dress-shirt-white-01",
+   "focus": "50% 100%"
+  },
+  "edit/footwear-black-oxfords-suit": {
+   "w": 1920,
+   "h": 1628,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACwBACdASoUABEAPu1wsFKppiSiqAgBMB2JZQDImA3x6BGzhdDjlB2WFjiYEbGMAP39/PuwxZLPo0xnBXtLhgxihPMHwKS3z4dQ514GnQ+G3qFNOQWsf/Fhf0vqizwAAAA=",
+   "bg": "#766552",
+   "from": "classic/suits/charcoal-three-piece-bespoke-suit-06"
+  },
+  "edit/footwear-brogues": {
+   "w": 1914,
+   "h": 2184,
+   "widths": [
+    480,
+    800,
+    1280,
+    1914
+   ],
+   "blur": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAABwBQCdASoUABcAPu1mqk6ppaOiKA1RMB2JYwC7ITuGLAw5fuFUb4tJq2JUHti+0nQZxBwAAP71scP65kTUlOHEH9Yzq6XD52/RPRWWbP06ZJAuUsaSJOpTM/WiEpV/yui5jWQBZgO/D0jS0IRie8AA",
+   "bg": "#76624a",
+   "from": "classic/sports-jackets/charcoal-textured-wool-sports-jacket-01",
+   "focus": "50% 100%"
+  },
+  "edit/footwear-brown-laceups": {
+   "w": 1920,
+   "h": 2103,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAQBACdASoUABYAPu1kqE2ppaOiMAgBMB2JZwCyzBguJpHCJzsdyqjHgAD+FJ14k0rc29jr3vursUL7aDt335wrte6MGBWnntgNxGJ83tV3RlMYeyUHUiAAAAA=",
+   "bg": "#72675a",
+   "from": "classic/suits/light-grey-double-breasted-peak-lapel-suit-01",
+   "focus": "50% 100%"
+  },
+  "edit/footwear-brown-laceups-seated": {
+   "w": 1920,
+   "h": 2055,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABwBACdASoUABUAPtVWoU2oJKMiN+gBABqJZwDImCTwaYIjxCQnBzHY53OiAAD+0J1URPNVqKEq9t9Ak6mHtHsegVB/bVrsqNajvkGjvYsu01CJpcp2XsTYlFYUAAAA",
+   "bg": "#675d51",
+   "from": "classic/suits/light-grey-double-breasted-peak-lapel-suit-02",
+   "focus": "50% 100%"
+  },
+  "edit/footwear-heritage-loafers": {
+   "w": 1920,
+   "h": 1852,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAABwBACdASoUABMAPu1oqk8ppiOiKA1RMB2JQBYjepARyDvHvCzJ5SyZ8R4EpgD+5MtZYAmMaQl/TSpbjL6nRMK5bXPOLFVPWlEpc1F3u+d2CoZmaI0R6cXTvxi1l9oosq1VtcibU8bxs+JSwgkAAAAA",
+   "bg": "#b48b71",
+   "from": "heritage/jodhpuri-jackets/ivory-embossed-open-front-jodhpuri-jacket-01",
+   "focus": "50% 100%"
+  },
+  "edit/footwear-monk-straps": {
+   "w": 1920,
+   "h": 1267,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABQBACdASoUAA0APu1iqk2ppaQiMAgBMB2JYgCdMoR4GCZg0sx16sx1/2BgAN2Z2p8YTyBfQqJ7t4yaebEgtMFxv2x3d9BU5BAPShtk1stsdkn1ziaOSjdFcBAAAA==",
+   "bg": "#896e4b",
+   "from": "classic/trousers/tailored-side-tab-trousers-stack-01",
+   "focus": "50% 100%"
+  },
+  "edit/footwear-monk-straps-2": {
+   "w": 1920,
+   "h": 1382,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAwCdASoUAA4APu1iqU2ppaQiMAgBMB2JQBOmUABoEUYwWQg4M+AA/tCRQQxc+JXpgcVgRG4APGy4WMqEIxEygMBRLwd0X/623Ru12tqgWRsxZjvlTAAA",
+   "bg": "#65482a",
+   "from": "classic/trousers/tailored-side-tab-trousers-stack-02",
+   "focus": "50% 100%"
+  },
+  "edit/footwear-suede-derbies": {
+   "w": 1920,
+   "h": 1781,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAACQBACdASoUABMAPu1ur1IppiQiqAgBMB2JYwCw7AqytO5NcqOBwaA+QZAmrQAA/qoPTwPsDLXX0NbpoAWVQxlx0WYlLq8yrZNUU/DURRRxH/WRlak1MJxVU2CVA2hD2p1C9fqFL9AZuBueiu8f5EeoyDgG6jVhrHjAAA==",
+   "bg": "#7c7366",
+   "from": "classic/suits/mid-grey-flannel-two-piece-suit-01",
+   "focus": "50% 100%"
+  },
+  "edit/footwear-suede-derbies-2": {
+   "w": 1920,
+   "h": 1600,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAABwBACdASoUABEAPu1qq1EppaOiqAqpMB2JZwDOOAxO33d99/17y77jybLk4AD+8W0v9EUuXKidM5r+GB0hZVmyVzyAb6WrQe9ZpsqYyyFP6if1ggqDh2YAkqWkzFW4aURTtB1qbR7hDBQoAAA=",
+   "bg": "#9c938a",
+   "from": "classic/suits/mid-grey-flannel-two-piece-suit-04",
+   "focus": "50% 100%"
+  },
+  "edit/footwear-suede-loafers": {
+   "w": 1846,
+   "h": 1691,
+   "widths": [
+    480,
+    800,
+    1280,
+    1846
+   ],
+   "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAABwBACdASoUABIAPu1kq06ppaQiKA1RMB2JQBdgASVupw/e6oHlpduEKOp2MAD7EDECGCRFMcEINI19N6Pceg/xQFsT0bojWz9VFxjzoT+Xxlu3nk2lLBJ3wPpY5JNiKz2l9eX5Tiaoa3ePiRqaCgIQAAA=",
+   "bg": "#c58654",
+   "from": "classic/shirts/twin-pocket-safari-shirt-pale-pink-02",
+   "focus": "50% 100%"
+  },
+  "edit/footwear-tan-monks": {
+   "w": 1920,
+   "h": 1727,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADQAwCdASoUABIAPu1mq08ppaOiKA1RMB2JQBfnAOn79ghaVrShxAAA/YjoUEcpnQ/16Qa2VPUD7A4Fn0dtgYTrHYjW/46uk6H7gzjlft0Xh/yUFqnLrFc2Pi8/ou/SB6fRtw5lXVbSbQXQrwAAAA==",
+   "bg": "#c7ad95",
+   "from": "heritage/achkans/powder-blue-silk-embroidered-collar-achkan-01",
+   "focus": "50% 100%"
+  },
+  "edit/footwear-tassel-loafers": {
+   "w": 1920,
+   "h": 1963,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAACQBACdASoUABQAPu1iqU2ppaQiMBgMATAdiWQAsRugAJvvlyVWScazi8vtIwAA93Ser146M0BBZ3rj7NrjR0/E4zVNRQmrjfl2qjYhgpitrxoF2O2h2wPp9fEmrD/RIKy6I8Nh7qLtxqAPfmAJJXqnKNAIjqQgH8SJbYEjggA=",
+   "bg": "#eeb06d",
+   "from": "classic/trousers/tailored-single-pleat-trouser-dark-brown-01",
+   "focus": "50% 100%"
+  },
+  "edit/kurta-under-brocade": {
+   "w": 1889,
+   "h": 2419,
+   "widths": [
+    480,
+    800,
+    1280,
+    1889
+   ],
+   "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABwBACdASoUABoAPu1wr1KppiQiqAgBMB2JYwAAFVlM6vcdz4hechDaXoKFAAD+6dedcEGplsIT6eaUitZhUJNoLFnAyIKX6phdJ94OoaXrdt5KcBFhBD7Et2E4wyx4cMXFvWspnGeBNNsZmIeDwUMS4E19/MbSkWu5eAAA",
+   "bg": "#4c3c33",
+   "from": "heritage/jodhpuri-jackets/blush-peach-floral-brocade-nehru-jacket-02"
+  },
+  "edit/kurta-under-ivory": {
+   "w": 1920,
+   "h": 2233,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAwBQCdASoUABcAPu1eqE4ppKOiMBgMATAdiWMAsR9kAVg/F+Vp/xYqY3F4zqV02CVefAD+i9sbxFywg/QAgiSvJUArQOoTYVs8UHiLLA5K1O0mC5gAMCsCnWxGrFOl8dfbNvA6nlRyatBomSqcbXKBNa4AAA==",
+   "bg": "#8a705b",
+   "from": "heritage/jodhpuri-jackets/ivory-embossed-open-front-jodhpuri-jacket-02"
+  },
+  "edit/kurta-under-sage": {
+   "w": 1920,
+   "h": 2161,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAwCdASoUABcAPulkq02pJiQiMBgMASAdCWUAABv8LRlc4Tsjks88APa8Z3E9o/Msam2AEW6bdHbk97VwsM+MPYfS4/Pe3b5hWL1o9a9X9V7IpF2j7rNA0OTmd+v0HB2QAA==",
+   "bg": "#322720",
+   "from": "heritage/jodhpuri-jackets/sage-green-brocade-nehru-jacket-01"
+  },
+  "edit/kurta-under-taupe": {
+   "w": 1920,
+   "h": 2413,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAADQBACdASoUABkAPtFWok2oJKMiN+gBABoJQBOma0iEB3WLZnmH9IQ2/uN/rzbcuAD+1iINuSfC0/sxMAAFGn6UORA2FY+H+CUH3XlPArUrCkeVv/gVqX8j4CYsvPxT8eBcub54AbL7hoGvWoKLzXXmG2RP8EUAjOFSCk0SU1JKFQ8DKLOZXMBfUiZAfzV5UBaMtEAA",
+   "bg": "#b9a188",
+   "from": "heritage/jodhpuri-jackets/taupe-silk-wool-nehru-jacket-02"
+  },
+  "edit/pocket-square-bandhgala": {
+   "w": 1889,
+   "h": 1889,
+   "widths": [
+    480,
+    800,
+    1280,
+    1889
+   ],
+   "blur": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAABwBACdASoUABQAPu1oqk+ppiOiKA1RMB2JZwDMHBGRL/D8h7u6ocgJVfkeIAD+26GldzUTpYyN1Ury3UimWCSsMcfN7/Dzqa2oQAAA",
+   "bg": "#3c383b",
+   "from": "heritage/bandhgala-suits/midnight-navy-bandhgala-suit-04",
+   "focus": "50% 45%"
+  },
+  "edit/pocket-square-brocade": {
+   "w": 1920,
+   "h": 1818,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAwBACdASoUABMAPu1qrFEppaQiqAqpMB2JYwCw7A2rN1a0FO+UvjeuAwAA/r+vUo9re68Qb1IicIFFt/ZDN0x9LocJg44NaWw+GTnYYHmyfEEv5cMzEwCnVWPQuvQ/iMqmzkw7R3LAAA==",
+   "bg": "#432f20",
+   "from": "heritage/jodhpuri-jackets/champagne-gold-brocade-jodhpuri-jacket-03",
+   "focus": "50% 45%"
+  },
+  "edit/pocket-square-grey-suit": {
+   "w": 1920,
+   "h": 1949,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADQBACdASoUABQAPu1crU4ppKSiMBgMATAdiWUAzfwOEcBannH/hwVS2yOIpGeR8ADLwrceYyOIpI0xKCFhxX1izMCOhw+HpChwAxqyr/HCnqkU38akewkYcNMW05o4gnHzYQ/RoIxuc5uOyQyyeh9QAAA=",
+   "bg": "#9a9085",
+   "from": "classic/suits/light-grey-double-breasted-peak-lapel-suit-03",
+   "focus": "50% 45%"
+  },
+  "edit/pocket-square-nehru": {
+   "w": 1920,
+   "h": 1920,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAACwBACdASoUABQAPu1qsFAppiUiqAqpMB2JZQC+SBBfcTnNeGoG/Aq33nkfMnoAAL63NSXWC8j42U9z7qjYsMjIgm7Lt0f4t6UryA3AJaxwVh/Yk3CmBJWMbWHxyeebZNxEdAAA",
+   "bg": "#958069",
+   "from": "heritage/jodhpuri-jackets/taupe-silk-wool-nehru-jacket-03",
+   "focus": "50% 45%"
+  },
+  "edit/pocket-square-purple": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADwBACdASoUABkAPu1eqE6ppKOiMBgMATAdiWUAsR8JwSEpPDaUvpt2d2KxQA5SkUAA+pH1oBlmMSTQo1tTyGheB5XKFcKpxgd6ivs4WB4FsQVgduw4KxiHfS/IkO85ElPuh/3oCaU5sDmK/qAAAA==",
+   "bg": "#6f624e",
+   "from": "classic/blazers/tobacco-brown-hopsack-blazer-01",
+   "focus": "50% 45%"
+  },
+  "edit/pocket-square-velvet": {
+   "w": 1920,
+   "h": 1951,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAACwBACdASoUABQAPtVWok2oJKMiN+gBABqJZACdAB4ROiw7L3motF/pS0MsAGy8AP7emCdYzIKyaLXDapFsXxbNWSWLidN+7Kqk9DF+uXPLpACg8moIL7t7UeqV7x0mc56nchjCLCPExanStNJGlD5ppsEAAA==",
+   "bg": "#836d44",
+   "from": "heritage/achkans/black-velvet-embroidered-collar-achkan-02",
+   "focus": "50% 45%"
+  },
+  "edit/pocket-square-white": {
+   "w": 1831,
+   "h": 2288,
+   "widths": [
+    480,
+    800,
+    1280,
+    1831
+   ],
+   "blur": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAwBACdASoUABkAPulkqk2pJiQiMBgMASAdCWUAw3AIM8LeTfYJgd4Q7aAA/s37rkqORLXdlds4Bn1wiLv1WRDt7djHG10aJfypJs/xeocPed5eosOlfzOtaulnjDI7yRUnJdQAAAA=",
+   "bg": "#7e7464",
+   "from": "classic/blazers/classic-navy-worsted-blazer-01",
+   "focus": "50% 45%"
+  },
+  "edit/tie-gold-print": {
+   "w": 1920,
+   "h": 1921,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAACwBACdASoUABQAPu1mq08ppaOiKA1RMB2JQBmaAX+PPEuy6ZTvGsoMXcisEhewAP7zgrkEsbzjBhOIzpnH+ywTrEKAPuMkDDfIddVm1N6nOenaA971ValPtFRXGwN3BhTOnrmSld4fxKQGRJnxSJjhi8KX4n1QL2Val1UuclYY4AAA",
+   "bg": "#fefefd",
+   "flat": true,
+   "from": "classic/suits/classic-charcoal-single-breasted-worsted-suit-01",
+   "focus": "50% 40%"
+  },
+  "edit/tie-green": {
+   "w": 1920,
+   "h": 2037,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAABwBACdASoUABUAPuFeqU2opSQiMAwBEBwJZQCsMw6B5dfSnQxWoA3QdH2oAAD9HA45DnxNQIKllQxsj9bZsWpNgztn/LzZssawiIIlKylzrsmSJWmFpmnugtUyLN8+IpkouQAA",
+   "bg": "#695c55",
+   "from": "classic/suits/classic-grey-two-piece-suit-02",
+   "focus": "50% 40%"
+  },
+  "edit/tie-grey-tweed": {
+   "w": 1856,
+   "h": 2231,
+   "widths": [
+    480,
+    800,
+    1280,
+    1856
+   ],
+   "blur": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACQBACdASoUABgAPu1srFEppaQiqAqpMB2JZQC90AwhvMMaGFCpAJ3nU7LepqAA/mQLmrbTAL8OEc/gf6exQ1VxRzdNIXYi5AAhGsRQQn3GiLaoPESgghC0vpm/908NBhuOckAAAAA=",
+   "bg": "#9b8c74",
+   "from": "classic/sports-jackets/light-grey-micro-check-sports-jacket-01",
+   "focus": "50% 40%"
+  },
+  "edit/tie-navy-dot": {
+   "w": 1920,
+   "h": 1920,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAACwBACdASoUABQAPulcp02pJSOiN/VYASAdCWkAAC0f2aYThJ3wOdFKE07+MBeAAP7zdTmY6pI3ovTqthZ1OFtbkEljTdR4VoZaAu/FUU/wfU9UefTcwFtVJ3ptNzAs1pFATzAv3c1p8kAtubTgAAAA",
+   "bg": "#fcfcfc",
+   "flat": true,
+   "from": "classic/suits/classic-charcoal-double-breasted-worsted-suit-01",
+   "focus": "50% 40%"
+  },
+  "edit/tie-paisley": {
+   "w": 1904,
+   "h": 2380,
+   "widths": [
+    480,
+    800,
+    1280,
+    1904
+   ],
+   "blur": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwBACdASoUABkAPu1kqk2ppaQiMBgMATAdiWUAt7gJEuzgTS9dgKJ5pU8Kbx431AAA/F1aylzMLZrKWM2G/eK4BiRhQ+2NZgfzpDrf1hjyCTGKkAE+RKFeoo0AhRe93JDjsFZhK4gAAA==",
+   "bg": "#6f695d",
+   "from": "classic/blazers/classic-navy-worsted-blazer-01",
+   "focus": "50% 40%"
+  },
+  "edit/tie-rust-print": {
+   "w": 1920,
+   "h": 2014,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAABQBACdASoUABUAPu1eqE6ppKOiMBgMATAdiWMAt7gMdjRS9xOvWFnljEGwAP7lNvdfkTj7vhmebixbBXpEL5kEOIyk9pVpMszRuvPeir4Lvg8Nfk/jXbHBQ3Hqf6HTY7NiWwVkEgOugAAA",
+   "bg": "#443f52",
+   "from": "classic/suits/deep-navy-three-piece-peak-lapel-suit-03",
+   "focus": "50% 40%"
+  },
+  "edit/trouser-apricot": {
+   "w": 1920,
+   "h": 1760,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAwBACdASoUABIAPu1ep06ppKMjMBgMATAdiWcAxvQMOyyGT7mc6N/DCAAA/ujwOpdj/t4GRx7dW5Xw+5W0z7vc7y8bQLB4koXQlqkEXIDmDN+wAAA=",
+   "bg": "#373230",
+   "from": "heritage/sherwanis/apricot-raw-silk-zardosi-sherwani-01",
+   "focus": "50% 60%"
+  },
+  "edit/trouser-blue-achkan": {
+   "w": 1920,
+   "h": 1868,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAACQBACdASoUABMAPu1krE+ppSQiMBgIATAdiWMAABQdHKCCJlxl2x6x072XRvAA/vEZNNoabKowwAFLZn32OYroHGFThAWt+PzS9clImKoRMeY+tvrlsMFaA+Wcszqq+fs1YKEznQ8TlXZXHIvL0L8AAAA=",
+   "bg": "#a78f79",
+   "from": "heritage/achkans/powder-blue-silk-embroidered-collar-achkan-02",
+   "focus": "50% 60%"
+  },
+  "edit/trouser-champagne": {
+   "w": 1920,
+   "h": 1622,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADwAwCdASoUABEAPu1oqk+ppj+iKA1T8B2JZwDDNAyNqDB/sb3aCxHAAP7Lpor/Ud+IVKOvQ7srFs9NNR3MwT83rmUMv8WYtby/mO5RkrqkAAAA",
+   "bg": "#403632",
+   "from": "heritage/jodhpuri-jackets/champagne-gold-brocade-jodhpuri-jacket-01",
+   "focus": "50% 60%"
+  },
+  "edit/trouser-emerald": {
+   "w": 1920,
+   "h": 1759,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAwCdASoUABIAPuFgpU2opaOiN/VYARAcCWkAzFgK91AVTiOeTAAA/sv+bKuefTmogwUPfWhSSiySSMsQxjtxv4kfEV3zNseaCTuLN8fH7AAA",
+   "bg": "#524844",
+   "from": "heritage/sherwanis/emerald-dupioni-silk-sherwani-with-zardosi-01",
+   "focus": "50% 60%"
+  },
+  "edit/trouser-ivory-achkan": {
+   "w": 1920,
+   "h": 1840,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAAAQBQCdASoUABMAPu1irE2ppaSiKA1RMB2JQBYdgeYgrBgmI4e3Jc5ELl9AlV+6wzwYAPZexsP8YOTKwYUOTmd2xO9tARGrf/h1nX4+1gmtfHNeOYNAAnZ7PTI1vgr4ynu2eOCZP1pSGGuvDQf0tF1wAAA=",
+   "bg": "#dabaa3",
+   "from": "heritage/achkans/mocha-brown-silk-embroidered-collar-achkan-01",
+   "focus": "50% 60%"
+  },
+  "heritage/achkans/black-velvet-embroidered-collar-achkan-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAACwBQCdASoUAB4APu1oqk8ppiOiKA1RMB2JYgC7IUwGJQCYVy27M15eHEQrBkrOlgqlsptMcgAA/vTTm1BMQlJ8zfsH4BDBVvhgC1dwwTKT88RW998yzduwh97BKV6Kdz1B56iSgotJA60Rg4EHui62Glaxa2TmXrLzq2Q83I6skbytNS9bHMQkewNzETKTGWbt4Qh/4rfawrWeuu6l/pjpaJpj0AAA",
+   "bg": "#d7b884",
+   "name": "Black Velvet Embroidered-Collar Achkan - 01"
+  },
+  "heritage/achkans/black-velvet-embroidered-collar-achkan-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAAAwBQCdASoUAB4APu1orVCppaQiqAqpMB2JZAC7My/Bm+V31lw5tQcAtKkzvM101VTWAAD+w5T18PaDcvpezBMA0LsSpG24v+5vwNMVWv6fKRbetqOUp7GQuwgl1WbwdaQX4S3Th/EXzbJqFxgQFtbroOLWYgHosO61HEsbKlefzxMJJhEM1JDgOblf6CadMAsWBB+kh+59AJ1K5sf3GIsFAAA=",
+   "bg": "#d1a87f",
+   "name": "Black Velvet Embroidered-Collar Achkan - 02"
+  },
+  "heritage/achkans/black-velvet-embroidered-collar-achkan-03": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAABwBQCdASoUABkAPu1mrE8ppaQiMBgIATAdiWUAv2svwalYvCgcVOXQ5Ry3C3DXMvlpRIAAAP7tWrQw6Fwz2am9/uNxj9hEGjH9gK8Mu4AQ5rVV85OxpetElC9jyEaaRq11P5yydvURDW/8eE/3+bnOSVdISAGDPOv4LPVdf/jesdx7q4iE1pxuiKn+O/ZiJqrgAAAA",
+   "bg": "#b69c8b",
+   "name": "Black Velvet Embroidered-Collar Achkan - 03"
+  },
+  "heritage/achkans/champagne-gold-embroidered-achkan-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADwBACdASoUAB4APu1grFAppKQisBgIATAdiWcAvzgQ75WDrL6CM1smUZA4IjkUviAA/uv1GxsJT5ALMsS1T/IO7LE5xHDPxfOqWLaIw6WB46swSipEc5hVtcky9p8vQnALPm0cbih1rOAdWgAUQ+n8AAA=",
+   "bg": "#19130f",
+   "name": "Champagne Gold Embroidered Achkan - 01"
+  },
+  "heritage/achkans/champagne-gold-embroidered-achkan-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAADwBACdASoUAB4APu1wsVKppiSiqAgBMB2JZQDGfBCseMJPT4etE28Cw7CC+T9jsMAA/ujQck9Ke8JrGk8KOjpBZRlhOXjrlhskhMzDrMOD1VmQhEBSOTfrTyaGIGjc4oZig2qeDYmNDTY3wlo2fecxJC5vyh3IHsjEAAAA",
+   "bg": "#1e1611",
+   "name": "Champagne Gold Embroidered Achkan - 02"
+  },
+  "heritage/achkans/champagne-gold-embroidered-achkan-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAABQBACdASoUAB4APt1YpE2opSOiN/qoARAbiWcAxnwh3HL1IzA5zWlH970AAP7wy2k6AlWF8hPiJ/vz7imLKxO7dcwzGXQlBP2iVSK6w0/R7kveUKzJMc6vlHnF4n8QGAAAAA==",
+   "bg": "#322d29",
+   "name": "Champagne Gold Embroidered Achkan - 03"
+  },
+  "heritage/achkans/champagne-gold-embroidered-achkan-04": {
+   "w": 1920,
+   "h": 2401,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAACwBACdASoUABkAPu1eqk4ppKOiMBgMATAdiWcAygAQ7+/QDemEo9zwMk5sLjUwAP7uh1C1J2N/MTKpYLI5dahil9vSkMRqN75M8cGbKhr4Ce7x3exDgd64VD7UWdYs/KgAAA==",
+   "bg": "#15110f",
+   "name": "Champagne Gold Embroidered Achkan - 04"
+  },
+  "heritage/achkans/champagne-gold-embroidered-achkan-04-alt": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADwBACdASoUAB4APu1ysFKppqSiqAgBMB2JZwDDNBEptoh+ujNZoyiIwzG4HUObJ6AA/ujlE+vt8bUHjPyiETXS2IhHIiA3ZEYOanAq1Gf0dps0aEHvJ+rL5B06vD3WJ3UNT1jT5qPeJ3bu/0NbjLLLmAA=",
+   "bg": "#201a15",
+   "name": "Champagne Gold Embroidered Achkan - 04 Alt"
+  },
+  "heritage/achkans/mocha-brown-silk-embroidered-collar-achkan-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAACQBQCdASoUAB4APu1mq0+ppSOiMBgIATAdiUATplAApAHGQ12uyEHhzVlWMRe7q72WYP9OwAD+7VCOJL4Ljj81Gz3ZeqDDDgNhwI6tls58E9DokAlxmsHWX+3qq2uVN3fSchodgCNxB/a9wGaW7pEm92CJcIbv7FlaGBuMKMIXpjfjeKpk+MliS+jVc+gepdAAAA==",
+   "bg": "#e4c8b2",
+   "name": "Mocha Brown Silk Embroidered-Collar Achkan - 01"
+  },
+  "heritage/achkans/mocha-brown-silk-embroidered-collar-achkan-02": {
+   "w": 1920,
+   "h": 2879,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAABwBQCdASoUAB4APu1mqk+ppSOiMBgIATAdiWUAuwAQqgR0K6VCGj1Oh9UDbZQ0gAgIbUUAAP7nKwhSpnO0qFmtZ7eTpC0GzrTnXyaoQGKMKMU4FMZBPxu9DWRSbgIiKUWWKxFzFZCXL/A4Sk27uoQ0Uktcx34C2FIBBo2eqIjhkrvcqFX2zfo+P16BGqQAAAA=",
+   "bg": "#bcaca0",
+   "name": "Mocha Brown Silk Embroidered-Collar Achkan - 02"
+  },
+  "heritage/achkans/mocha-brown-silk-embroidered-collar-achkan-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAACQBQCdASoUAB4APu1srVEppaQiqAqpMB2JZQCdABDR6QWEPYZlvVR8+7yDRAckoB/Ijwd+AAD+w10HYc1rpM6MiPOBvBGCgVz94X/UmoILRRRvQ7EmqfLOtv+0ksQv965npnKjNvLP8c1TcbdYvGeEVYxjaMHqmR98yyTTtt+lgAAA",
+   "bg": "#a7958d",
+   "name": "Mocha Brown Silk Embroidered-Collar Achkan - 03"
+  },
+  "heritage/achkans/mocha-brown-silk-embroidered-collar-achkan-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAACQBQCdASoUAB4APt1apE2opSOiN/qoARAbiUATpygqTALdGKphjt/YK3FjuvLOkcuq78/3gAD+5yGsDtkyqrvcze5+Ougnrzk2S8cIyCpafFbIGUA+v6B+Ch1Olxcw+/v/IxDhl0iMWPpNUBTllyGMRbTN/7y9joEsoItvP1cQM5/SkR+Ee/vjpFAjrZodvuwAAA==",
+   "bg": "#e9c6ad",
+   "name": "Mocha Brown Silk Embroidered-Collar Achkan - 04"
+  },
+  "heritage/achkans/mocha-brown-silk-embroidered-collar-achkan-05": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAADwBACdASoUAB4APt1cpE2opaOiN/qoARAbiUAVHoOmsr06uOU/8/Gh3mjh2LN5omAA/sXQWHZvgyruACXDcoENaCTqWzCaUAnPtNM+XahJCeiKlWrc0kn0zJUBeH1HGhLnQvKH6KYLICNv5LHo+tNURgYU0LiM0+d8/yTJsJGOCez/Q8ZfHlgG9YrgVvunzzsGOl9Z5AAAAA==",
+   "bg": "#bca089",
+   "name": "Mocha Brown Silk Embroidered-Collar Achkan - 05"
+  },
+  "heritage/achkans/powder-blue-silk-embroidered-collar-achkan-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAADwBACdASoUAB4APu1mqU4ppaOiMAgBMB2JQBTihDd44jUD6RK7OfcP73n7doKHpWAA/ucroRnPzXgoQnwQ8j76i6UoahLFJN1xVP6eCLaVIl8t9l1oQk6dhdZON15JZ1awARdlYmFYnfjjEfB6SLVdjYeoDiSsDwbnHv4JYlbpc49CD/im7cQO+jJ5L62AAAA=",
+   "bg": "#cdb99c",
+   "name": "Powder Blue Silk Embroidered-Collar Achkan - 01"
+  },
+  "heritage/achkans/powder-blue-silk-embroidered-collar-achkan-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABwBQCdASoUAB4APu1iqE2ppaOiMBgMATAdiUAWHYaN/XXmLWlCsVACKc4vVHpnx9LV/gzAAP7vxaTP2xSuN6TA9GzC/H5xlJCdPLSF5SL1NEvM5SWRX75dp8Aifx6jBTrWGEwPDqsAzGnRveuyKvhnJVV/jqfvJbuisjdIevv2budGNaY7X7YJvSWMAAAA",
+   "bg": "#cfbfa3",
+   "name": "Powder Blue Silk Embroidered-Collar Achkan - 02"
+  },
+  "heritage/achkans/powder-blue-silk-embroidered-collar-achkan-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAACwBQCdASoUAB4APu1cqE2ppKOiN/VYATAdiWMAnTNMQaWSH3s9ruO6dYQzHBC6kUKHdg9NwgAA/ucjoS+KUs/F3vBI/Zq3SoOwRaKZW1iq8hiO1wXIFjuxIyw2g0djE/f6KEsIw5f18yFcH6q8BewLVdGDvQjUffZgEBNdDNNPEcUId4ihbkM5vCBqNAAA",
+   "bg": "#c6b5b1",
+   "name": "Powder Blue Silk Embroidered-Collar Achkan - 03"
+  },
+  "heritage/achkans/powder-blue-silk-embroidered-collar-achkan-04": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADwBACdASoUABkAPu1urFEppqQiqAqpMB2JZQCzgBGz8G9pCmnd9JijU1iCiYtWW4AA/tdQQNRuUlNN2kXNn/P7V4Dy7oQ2QXMX87XxDNqESMd2qzohfdCOKGfhVJ5D7GoaNhEBA0o5JB4uxnt/5qw0GAA=",
+   "bg": "#cac6ce",
+   "name": "Powder Blue Silk Embroidered-Collar Achkan - 04"
+  },
+  "heritage/bandhgala-suits/black-and-midnight-navy-bandhgala-suits-duo-01": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAADwAgCdASoUAA0APu1iqk4ppaQiMAgBMB2JaWllADdYAAD+8KK4CjzsrltIy0AuyAo7fJuYwgOAAA==",
+   "bg": "#000000",
+   "name": "Black & Midnight Navy Bandhgala Suits Duo - 01"
+  },
+  "heritage/bandhgala-suits/black-brass-button-bandhgala-suit-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAACwBACdASoUAB4APu1krVAppSQisBgIATAdiWcAAC5foFh8Yv8A6qkIr1mh+UAAAP7pPHPaKywONikaLKzpWa7iIvvIYG9HuXT+Dx5nZsdSOK3dQVuYenfxnizAhZ4wg34AAA==",
+   "bg": "#1a191a",
+   "name": "Black Brass-Button Bandhgala Suit - 01"
+  },
+  "heritage/bandhgala-suits/black-brass-button-bandhgala-suit-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAwBACdASoUABkAPu1kqU2ppaOiMBgMATAdiWcAz6AQ8Ml8xutg+iC5ZIgA/vQrWzeMvGwRnroJ2UImHu8Io0ywQ+wO3Ks/Ei3xKp1m9LlN2s5Z42geYAAA",
+   "bg": "#0d0b0a",
+   "name": "Black Brass-Button Bandhgala Suit - 02"
+  },
+  "heritage/bandhgala-suits/black-brass-button-bandhgala-suit-03": {
+   "w": 1920,
+   "h": 2399,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAACQBACdASoUABkAPu1mq04ppaQiMAgBMB2JZwDOdCHJ8S1UACoHsaki4I7CKAAA/vQqcF+KgrLfT/7zxCAdDtbVKzf0E9WpQAa/rPpO0PH6AM7mQ9dAAA==",
+   "bg": "#050304",
+   "name": "Black Brass-Button Bandhgala Suit - 03"
+  },
+  "heritage/bandhgala-suits/midnight-navy-bandhgala-suit-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAwCdASoUABkAPt1Yo02opSMiN/qoARAbiWcAAHwkQ3RUnPIcpgAA/vAJJ/vqijkwjw90F9ozpAbT/dYVD0e4jL2QvODlorBgAAAA",
+   "bg": "#2d2d2d",
+   "name": "Midnight Navy Bandhgala Suit - 01"
+  },
+  "heritage/bandhgala-suits/midnight-navy-bandhgala-suit-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwBACdASoUABkAPu1gpk4ppSMiMBgMATAdiWcAwoAPSvR1CDeUTRq6i14A63iLCQAA/vK0jKZYyDCIP91mIOvoCFEsl9yhukVqcVuDgtPpL7sZ1Yt72A9ClJd0k7rp4wyZgAAA",
+   "bg": "#272626",
+   "name": "Midnight Navy Bandhgala Suit - 02"
+  },
+  "heritage/bandhgala-suits/midnight-navy-bandhgala-suit-03": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADQBACdASoUABkAPu1mqU2ppaOiMAgBMB2JZwDGQB6M7Aj7va7Fo24n18NF3s5oAAD+9DLHatKxCiBvJE/9GPLoug2L94s1mDSjSvPwfDHims9CCcGGb1BnUwCVQcAA",
+   "bg": "#070606",
+   "name": "Midnight Navy Bandhgala Suit - 03"
+  },
+  "heritage/bandhgala-suits/midnight-navy-bandhgala-suit-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAACwBACdASoUAB4APu1mrE+ppSQiMBgIATAdiWcAxzAQ43kcxMNnd2vyap91cp4AAP7NT9hhRkXLQPisV3FWmR6FiDVYGZNEjFEyxQnwQa2KMCyAL5Gyv9mKo8LLCwTJ8iDp0AAA",
+   "bg": "#302b2a",
+   "name": "Midnight Navy Bandhgala Suit - 04"
+  },
+  "heritage/jodhpuri-jackets/blush-peach-floral-brocade-nehru-jacket-01": {
+   "w": 1920,
+   "h": 2401,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwAwCdASoUABkAPt1WpU2opKOiN/qoARAbiWcAxvQh4WxWul3mUEoAAP71cvmpoGRzawaVW4YNkSk7055sX40FF5+jmNVP3/XPJ4dy+T6+F2poZnjrEdRnZWdWgVL+NFFCgVxEAAAAAA==",
+   "bg": "#241f1d",
+   "name": "Blush Peach Floral Brocade Nehru Jacket - 01"
+  },
+  "heritage/jodhpuri-jackets/blush-peach-floral-brocade-nehru-jacket-01-alt": {
+   "w": 1542,
+   "h": 1926,
+   "widths": [
+    480,
+    800,
+    1280,
+    1542
+   ],
+   "blur": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAAAQBQCdASoUABkAPu1qqFAppiOiqA1RMB2JZQCdAA9riCKVudjoHBHN3Gy/VOCiaGKAAP7o7mSG84BillVFzUHbUrYZQeHVybOS4Pag3Q+D1cAW9tuWqyonrL9JHxMWGkcDuhWpcs9ZpIPwAOzJfsAA",
+   "bg": "#221b17",
+   "name": "Blush Peach Floral Brocade Nehru Jacket - 01 Alt"
+  },
+  "heritage/jodhpuri-jackets/blush-peach-floral-brocade-nehru-jacket-02": {
+   "w": 1920,
+   "h": 3161,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAACQBQCdASoUACEAPt1eqE2opaQiNVgMARAbiWUAyywWbULd+ZcfuoBtrXAqRCQM7be+4OoJAAD+9CRLyB+R2a4Q/pp5DgBfcsd/3wGxd46q1Ds/zpjFMg+HODgs4z3wpmrmMIRLXRtaAUJ3pa+thas+XCF+ZSqKmVUEtgAA",
+   "bg": "#473b33",
+   "name": "Blush Peach Floral Brocade Nehru Jacket - 02"
+  },
+  "heritage/jodhpuri-jackets/blush-peach-floral-brocade-nehru-jacket-03": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAABQBACdASoUABkAPu1kqE2ppaOiMAgBMB2JZQC3uCHhfOcWJnAA2iSmlDCAAP7w0iA8vEzAY/C3wAh4YuLfyud80XBNuC2gwK4PfSU2N4Dnjl/T3aoZEAAA",
+   "bg": "#100b08",
+   "name": "Blush Peach Floral Brocade Nehru Jacket - 03"
+  },
+  "heritage/jodhpuri-jackets/blush-pink-textured-nehru-jacket-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABwBQCdASoUAB4APu1gqU2ppSOiMBgMATAdiUAVhnHYNFBYG7X475UTCln4EYEDYrCl9aqAAP0SaUBZarV4naRuwAYayYk1pT5MhatUN/GAalSfbb/GVt8My1O8FMK1WZxBEaPI8q/qSfejDlePUZLDK7v4y2oKu2TTlYZ2wn6g4RJtUKv/AJs16QMU4AAA",
+   "bg": "#997b5e",
+   "name": "Blush Pink Textured Nehru Jacket - 01"
+  },
+  "heritage/jodhpuri-jackets/blush-pink-textured-nehru-jacket-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAABQBQCdASoUABkAPu1ur1IppiQiqAgBMB2JQBOmaZ8AAJbypoIJ58j6bX0VcDtjJrZan8AAoKsecw/R1VugM70Y7W2mhC36eAULrL9VTCSH/BI9aEBest0+NgODTnN5sK2/DMjNLLeb6fLYpIrcbogpHJcNSI+U2Wvh/zrXN5oQ5dWCM2XSV7Go8MQAAA==",
+   "bg": "#74582b",
+   "name": "Blush Pink Textured Nehru Jacket - 02"
+  },
+  "heritage/jodhpuri-jackets/blush-pink-textured-nehru-jacket-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAAAwBQCdASoUAB4APu1srlCppiQiqAqpMB2JQBUeghon5h2C8tAUOQ5z9SSe59bKXe9vAAD+r21LkOHLPbRDvHDn32l9Di9Lpj6klE3Zh8HUBEPo1t9jhxml0PomDIZ6AGZu1rJTZt3n7Xsd75DPS3+I+36xu+8xbES96A8cCr6vnktUP2fnawwAAAA=",
+   "bg": "#9b7f6a",
+   "name": "Blush Pink Textured Nehru Jacket - 03"
+  },
+  "heritage/jodhpuri-jackets/champagne-gold-brocade-jodhpuri-jacket-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAACQBACdASoUABkAPuFgqk2opaQiMAwBEBwJZQC7ABu0z7AHzmBtt71AUWBnHAAA/vFtL9DDAK5wl+dFGTjGWxqK/isjKsK8tr1WVQzt07R6jDmKF3ztOOzZpQfiFm458wICOwAA",
+   "bg": "#322924",
+   "name": "Champagne Gold Brocade Jodhpuri Jacket - 01"
+  },
+  "heritage/jodhpuri-jackets/champagne-gold-brocade-jodhpuri-jacket-02": {
+   "w": 1920,
+   "h": 2399,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABwBACdASoUABkAPu1mq02ppaQjMAgBMB2JZQCsM47DTtM4wtCcyeXtKFMQAAD+8NIgHtiH11rB+/FIYdqc+O79vnnK6vUkRIDBI4rY0NB+vyO7kFA+NtvR44WiF4AA",
+   "bg": "#130c08",
+   "name": "Champagne Gold Brocade Jodhpuri Jacket - 02"
+  },
+  "heritage/jodhpuri-jackets/champagne-gold-brocade-jodhpuri-jacket-03": {
+   "w": 1920,
+   "h": 2401,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAACQBACdASoUABkAPuVip02pJaOiMAwBIByJZQCC5Qiu9SPAHIBwJA0EfKRVxgAA/vDSb9iYX4Hp/YOWGWOG465qFGyvhpl/SsVdPb/Qoh/eawnoOcxrCTbHp0GuNytFTxuZkavTpMmtfgRtAAA=",
+   "bg": "#1d130e",
+   "name": "Champagne Gold Brocade Jodhpuri Jacket - 03"
+  },
+  "heritage/jodhpuri-jackets/ivory-embossed-open-front-jodhpuri-jacket-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAABQBQCdASoUAB4APu1sq08ppqQiMBgIATAdiUATpmmINQRsRCqtr60TNlS187OKKm33qjQA/tMsE9oRt4Hf+A70nuu7/vcA0A2xg7qb47i1ofkJNJWsCmiDJsv2W6By2H/WHm9B2TgUb3WdO1TVEFyGHzFp7CjyJwa1GKmK4oZ9fCvAjz1fssAA",
+   "bg": "#c5a58c",
+   "name": "Ivory Embossed Open-Front Jodhpuri Jacket - 01"
+  },
+  "heritage/jodhpuri-jackets/ivory-embossed-open-front-jodhpuri-jacket-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACQBQCdASoUAB4APulgpE2pJaMiMAwBIB0JYwCsM47DQIWV45Eu6BbGqN7ruoGjwnufTIP5oAD+rwnKwNS7dBDUOBYaqFbU/OYbTce6V8xgAWiEqOEgFID/XBEpuvzsoHeeLMIFsnAwmh45VUN1hDO1KxmtyY6L49W1dPCd/UHG3saVhkM3A5wAAAA=",
+   "bg": "#a0866c",
+   "name": "Ivory Embossed Open-Front Jodhpuri Jacket - 02"
+  },
+  "heritage/jodhpuri-jackets/ivory-embossed-open-front-jodhpuri-jacket-03": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADQBACdASoUABkAPu1qrlEppaQiqAqpMB2JZQC/OAmzLt/BZX/OZwC63pnNduCuAAD8sFBHVU/WhixzBDi7RNfw1wwz9Z0RM/IC2lS1bnANlJNeiazOhVIhxLazJfvyNjcOFDUe7AXHu5AHvKXZ4yL8AAA=",
+   "bg": "#a9968c",
+   "name": "Ivory Embossed Open-Front Jodhpuri Jacket - 03"
+  },
+  "heritage/jodhpuri-jackets/ivory-embossed-open-front-jodhpuri-jacket-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAACQBQCdASoUAB4APu1irE+ppSQiMBgIATAdiWMAqPQRdnEqzUUMVZf0vWPFsSbKAirCqoXNkAD+sY39WpFBYPBJVLBYs2JEoU2HZtxhkZCJuwx+j6Ny9lnH5azLAWasjehwx1tt82IcfIcS7QjWNeFVxlnBQoTvQcYm8Bwjwpe4VUmVLD4BlAAA",
+   "bg": "#bb9a86",
+   "name": "Ivory Embossed Open-Front Jodhpuri Jacket - 04"
+  },
+  "heritage/jodhpuri-jackets/ivory-floral-jacquard-jodhpuri-jacket-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAABQBQCdASoUAB4APu1mq06ppaQiKA1RMB2JQBOmUAA0WvD0j51+glTHJV5HkVrfuHK0qYAA/ucsxsKcYsETYg32Cka7hLFC1sHon9Lc0Lkgl5qzj+iZW1sJtHfhSDh9kAUC0mBdcxrFR8gyurihts0yHfkThbOh6S8K9FK0pHeOAdJTeRq+LDAA",
+   "bg": "#d3b299",
+   "name": "Ivory Floral Jacquard Jodhpuri Jacket - 01"
+  },
+  "heritage/jodhpuri-jackets/ivory-floral-jacquard-jodhpuri-jacket-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAAAwBQCdASoUAB4APuVepU2pJSOiMAwBIByJYwCdMswDQKvqO/vbX2wvwmB7yWQsdYN5DAD+3pnMgo1RyN6GZJG4RZ2INrlwfkaD97tek3jjdhZkcJZj4owpW6hnGW4ubYzYp1S/k0CNnE9oQ/ZYYbXLJYDNuAbKRZDRPQvivdU8KhZfOiCrF1wAAAA=",
+   "bg": "#a88c7a",
+   "name": "Ivory Floral Jacquard Jodhpuri Jacket - 02"
+  },
+  "heritage/jodhpuri-jackets/ivory-floral-jacquard-jodhpuri-jacket-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAABQBQCdASoUAB4APu1sq08ppiOiMBgIATAdiWMAnTNyQUkleq2pml0yNkjdo/P95PtUsBAA/rGNfLxiOPg06jwwWwtwkdM1uXnsscrUoGYuGQ/tv/C25UEM+4PNoxgOQwIZ5SoIE6pGjeEgwf64ITAJV/E4lLF4AAA=",
+   "bg": "#bf9e8a",
+   "name": "Ivory Floral Jacquard Jodhpuri Jacket - 03"
+  },
+  "heritage/jodhpuri-jackets/ivory-floral-jacquard-jodhpuri-jacket-04": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAADwBACdASoUABkAPu1srVEppiQiqAqpMB2JZQC7ABGVnPc0aoNqxg+mwLMF1cQNtdAA/lR71JIuW8PfowOZl84U1jspFFuq9lwWlb2oQm6tOgn0gbDtykpXyL2n0bTI3SJBRhG01hkOJFZlw7fisJ0f8o+BETRi0TAAAA==",
+   "bg": "#826d5c",
+   "name": "Ivory Floral Jacquard Jodhpuri Jacket - 04"
+  },
+  "heritage/jodhpuri-jackets/sage-green-brocade-nehru-jacket-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAwBACdASoUAB4APu1kqk2ppaQiMAgBMB2JZwCw7CHhUB6/Q6ksnvPR64AA/ujb3EGTpQOGW2wOJbE1jtJMMIWUSWSFPpSOq8qMKuhwFsxCkEAvSi6ltukI2RG2/N344AA=",
+   "bg": "#231812",
+   "name": "Sage Green Brocade Nehru Jacket - 01"
+  },
+  "heritage/jodhpuri-jackets/sage-green-brocade-nehru-jacket-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAABQBQCdASoUAB4APu1urVEppqQiqAqpMB2JZQAAId3eZktsAS/yiTDGBUzYLZwHhyxLbsQA/ujsF07ZUuC5pNgYFUPSB51nPa5S+VKFj2y95FeR5hlYHKGYOipF9PZ/GCPXJS7+KaPGnVPvON2G57gAhSw5h9V8jbaAAA==",
+   "bg": "#6e5f53",
+   "name": "Sage Green Brocade Nehru Jacket - 02"
+  },
+  "heritage/jodhpuri-jackets/sage-green-brocade-nehru-jacket-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADwBACdASoUAB4APt1epE2opaOiN/qoARAbiWUAuwAh33Ok0I3KOtIv1EMFpbXtrYAA/uv0/8+ELWR3iIGZBqaIYz5DKqcOvYImH0+FrwJoeW0XTlj7c8RFl0bRmkXH2Uvgpo8vn+ls7vIrDNgAAA==",
+   "bg": "#5e4d41",
+   "name": "Sage Green Brocade Nehru Jacket - 03"
+  },
+  "heritage/jodhpuri-jackets/taupe-silk-wool-nehru-jacket-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAABQBQCdASoUAB4APu1oq08ppiOiMBgIATAdiWMAwoAMWD7fpLiAMfZDpkFD81PSGk6tNAAA/tYK2pNCQBYlZSRLYGR4AVd8hzrluocMzyiAvqgGS3BICaXSu6IcQR0UC1zC1N3g91tFqsOoF96PMUNKlhdzbtMslY2M907pqg+XngGA7c48B9rIit3bJhh9qG0i4578WWaAAA==",
+   "bg": "#decfba",
+   "name": "Taupe Silk-Wool Nehru Jacket - 01"
+  },
+  "heritage/jodhpuri-jackets/taupe-silk-wool-nehru-jacket-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAABQBQCdASoUAB4APu1kq0+ppSOiMBgIATAdiWMAnQAPYH+vyZ1LpbThpgCw7FQr2qF4tgwA/t6cY/5+WVHivffXTktd3Se9Dbxj9KlhKx3NFWh5R1RPrUPMCRmwLi6c3jiCHQPAWvPjZG8YhQNeoUz/oQ4JXnkVq/h48gH6/3x3mi1Pk+AYNWCDgmPvrzbrxhzgAAAA",
+   "bg": "#ceb092",
+   "name": "Taupe Silk-Wool Nehru Jacket - 02"
+  },
+  "heritage/jodhpuri-jackets/taupe-silk-wool-nehru-jacket-03": {
+   "w": 1920,
+   "h": 2401,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAADwBACdASoUABkAPu1qrFEppaQiqAqpMB2JYwDDObAAx0wpbFFjkNAqlwPHo9sGDwAAzhoN90dU8W4M8fEn29fcIwTuaRQO1rxpnIIGzEoWBkVQ8EgdpwN9DlaA5hxcc/q77pBevJQmvXOTaS547OStJCddAfLSnLaRVbEMwAA=",
+   "bg": "#6d5f4b",
+   "name": "Taupe Silk-Wool Nehru Jacket - 03"
+  },
+  "heritage/sherwanis/apricot-raw-silk-zardosi-sherwani-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADQBACdASoUAB4APt1ao02opSMiN/qoARAbiWUAxvQh31GcnrJ5odREhYj36fuoDAD+7ogXI3TwO8DVYvpL2umNsd/Tj/JLzp/XvHVk3gUYe8v/HjDCVW7yeAAAAA==",
+   "bg": "#302d2c",
+   "name": "Apricot Raw Silk Zardosi Sherwani - 01"
+  },
+  "heritage/sherwanis/apricot-raw-silk-zardosi-sherwani-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABQBACdASoUABkAPu1mqk2ppaQiMAgBMB2JZQC90CHfMNp+kKb9cSccoXCAAP7uh1Dlgsd6LxnWN54JKtZC7nvzS+XSe3vfWK0lIti+28MRQYiZBMAAAA==",
+   "bg": "#0c0909",
+   "name": "Apricot Raw Silk Zardosi Sherwani - 02"
+  },
+  "heritage/sherwanis/apricot-raw-silk-zardosi-sherwani-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADQBACdASoUAB4APu1ur1IppiQiqAgBMB2JYwDCgAyWaE4w+Ox+pOPOZdxWZdWkAAD+6/+6sNWw5q75gNJvb59JdxuwVYehbRufQ/tDaqSawgTV2u05+qhQotEpypear2RSqUGAVm+3fXOP4jPgm4ZeRsel59d0AAA=",
+   "bg": "#3b2f28",
+   "name": "Apricot Raw Silk Zardosi Sherwani - 03"
+  },
+  "heritage/sherwanis/apricot-raw-silk-zardosi-sherwani-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAABwBACdASoUAB4APtlcpE2oJaOiN/qoAQAbCWUAAFu16cG1YxNeTQVpwKkLMAD+8Ng0T9EUzqUrghMG6DjsXDrn4oE+HPzfAxihSHI6YLSRCPjaB3/O9uzdpcA+lKjRF9HzT1pjnqcacvkZfl2/PwAA",
+   "bg": "#41342d",
+   "name": "Apricot Raw Silk Zardosi Sherwani - 04"
+  },
+  "heritage/sherwanis/apricot-raw-silk-zardosi-sherwani-05": {
+   "w": 1920,
+   "h": 2881,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAQBQCdASoUAB4APuFcqE2opSQiMAwBEBwJZQAAW+lCFMYVBQHQxVaG6fMJLbPOqZ0AAP7wytMrbg6/ozmnX5uIJn+DHETk4kqU+Kyj4AvpVeO3moezwwPDOTP3U5XK6ECVqD64wAAAAA==",
+   "bg": "#2e2826",
+   "name": "Apricot Raw Silk Zardosi Sherwani - 05"
+  },
+  "heritage/sherwanis/apricot-raw-silk-zardosi-sherwani-06": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAQBQCdASoUAB4APu1iqE2ppaOpMAgBMB2JYwCzgCHfgWQBKDoP8gRMdlIzjCRmCzAAAP7wysqqaZIHRkt8wp0wxyhRaUrqpEgQZgXx/H8k2CXLAGOpjpyNfoJVfzYow7PC5vnEE2AAAA==",
+   "bg": "#100b08",
+   "name": "Apricot Raw Silk Zardosi Sherwani - 06"
+  },
+  "heritage/sherwanis/blush-pink-raw-silk-zardosi-sherwani-01": {
+   "w": 1920,
+   "h": 2879,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADQBACdASoUAB4APuFUpE2opCOiN/qoARAcCWUAwoAh4AGli7cB4zKxpWNpiz772gD+6NBJamZD5xnqnEHuCa21b7ra/p18nT7oAaAXxCOOPIFrdkkLoYkY2DomoUnUQAAAAA==",
+   "bg": "#413a37",
+   "name": "Blush Pink Raw Silk Zardosi Sherwani - 01"
+  },
+  "heritage/sherwanis/blush-pink-raw-silk-zardosi-sherwani-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwBACdASoUABkAPu1kqU2ppaQsMAgBgB2JYwAAW+wDCjT/115819Zhk4AA/uL2ssHnYqvhSAanyR8+C29XYxhqy/0wWAYZWKObevL0tWC/Q31enCyCDwYF+AA=",
+   "bg": "#1c1512",
+   "name": "Blush Pink Raw Silk Zardosi Sherwani - 02"
+  },
+  "heritage/sherwanis/blush-pink-raw-silk-zardosi-sherwani-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADwBACdASoUAB4APu1wsFKppiSiqAgBMB2JQBfJAiE5DSUGFichFX9dQR1unvB0eMAA/uMpAteG0VIy/cTn5VcnE8DRginZN3wIQlCHeurBP4MdkhciCg7NgSVIhzu+RT5uB3Df3GKK9xS+j6rDLiIn3ALDNskpgAA=",
+   "bg": "#412926",
+   "name": "Blush Pink Raw Silk Zardosi Sherwani - 03"
+  },
+  "heritage/sherwanis/blush-pink-raw-silk-zardosi-sherwani-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACQBACdASoUAB4APu1oqk8ppiOiKA1RMB2JYwDG9BC43K8VeiGYa8YMzXKHOnAA/uMv98J7eIvWqWbZZVvvKe9TGHj+Pl4kredw8uf798/M1rqjD0XkX+f3BJ+uwmkGAQe1UrKM9sUBzzsbIfHqezM0qcN+eMAAAAA=",
+   "bg": "#725553",
+   "name": "Blush Pink Raw Silk Zardosi Sherwani - 04"
+  },
+  "heritage/sherwanis/emerald-dupioni-silk-sherwani-with-zardosi-01": {
+   "w": 1920,
+   "h": 2879,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADwBACdASoUAB4APt1ao02opSMiN/qoARAbiWcAyywh3ttof/tXR1eZIj1isfXQ2SgA/ujl/VrsQ5GQ14R/Jwu5ZSDZDE6tVJorsLrcAGwbEKsDKJNimyssxkzcAAAA",
+   "bg": "#423a37",
+   "name": "Emerald Dupioni Silk Sherwani with Zardosi - 01"
+  },
+  "heritage/sherwanis/emerald-dupioni-silk-sherwani-with-zardosi-02": {
+   "w": 1920,
+   "h": 2879,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADQBACdASoUAB4APtlco02oJaMpN/qoASAbCWcAzYQh1K6Kdg5ddWH2i9vMcmd+YAD+6+NTNiibu60ULmwrcxNU+Zpjp3aYlvbl8WAcdsP+hNN1EJV55xpvv0AAAA==",
+   "bg": "#413e3d",
+   "name": "Emerald Dupioni Silk Sherwani with Zardosi - 02"
+  },
+  "heritage/sherwanis/emerald-dupioni-silk-sherwani-with-zardosi-03": {
+   "w": 1920,
+   "h": 2401,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAACwBACdASoUABkAPu1oqk8ppiOiMBgIATAdiWcAygAN15nqUrt6LhhQ67gb1S8AAP7o8WRym6QVEfB1k4zSUvPPzwIPmHQVaUBlP5KGwmUavIGSmAA=",
+   "bg": "#16110f",
+   "name": "Emerald Dupioni Silk Sherwani with Zardosi - 03"
+  },
+  "heritage/sherwanis/emerald-dupioni-silk-sherwani-with-zardosi-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAACQBACdASoUAB4APt1cpE2opSOiN/qoARAbiWcAv+whz0opx0Ac3espSWlyIoAA/uv1xTZDMv3OIJtekZiHqGY/alyzk+j2vw0yEC24UVQzqMBx2zWAOAAQbAAAAA==",
+   "bg": "#403935",
+   "name": "Emerald Dupioni Silk Sherwani with Zardosi - 04"
+  },
+  "heritage/sherwanis/emerald-dupioni-silk-sherwani-with-zardosi-05": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAACwBACdASoUAB4APtlco02oJaMiN/qoAQAbCUAAC0ZlwYHm3JPvx/Uc0kea9/mAAP70MIc09c0bXVZIf94k0xpWkhi2PVeXwSx8B3TehvqgtZgIihCC/NLi1JKNRhZopG/qjb3yz2pPtCrZes5NKpWvgIdAgAAA",
+   "bg": "#101c16",
+   "name": "Emerald Dupioni Silk Sherwani with Zardosi - 05"
+  },
+  "heritage/sherwanis/emerald-dupioni-silk-sherwani-with-zardosi-06": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQBACdASoUAB4APt1apE2opSOiN/qoARAbiWMAt7gh39/fT+a6AbVe0AD+7pidr4ImGBcjttNbX3Yv45IOnEmXJQdVYwaXLvkSDRdYIp9zeDdfb4PPciZsqGr0u26aQGSOtIgA",
+   "bg": "#140f0b",
+   "name": "Emerald Dupioni Silk Sherwani with Zardosi - 06"
+  },
+  "heritage/sherwanis/emerald-dupioni-silk-sherwani-with-zardosi-07": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwBQCdASoUAB4APtlao02oJSMiN/qoAQAbCUAYG4MOFy7I60yR6SWXYS7v458w/lfeYAD+40ZYVv+YfQpVJ0bZlZm0G5mtZDixlG74LQ7hufE6PHNzwukVUAQHfwqaPX9uw5iz5NDw3gOo5+g5XnAPRxr6AAAA",
+   "bg": "#2c221a",
+   "name": "Emerald Dupioni Silk Sherwani with Zardosi - 07"
+  },
+  "heritage/sherwanis/midnight-black-embellished-sherwani-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAAAQBACdASoUAB4APu1krE+ppSQiMBgIATAdiWkAyFwQ75SLe7BM2145QAD+6MnFczBEwq12HznmYs34Z17OIMPWRx/uKQAAAAA=",
+   "bg": "#1f1814",
+   "name": "Midnight Black Embellished Sherwani - 01"
+  },
+  "heritage/sherwanis/midnight-black-embellished-sherwani-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQBQCdASoUABkAPuVkpE2pJiMiMAwBIByJZwDDcCHR2UNZY7edoFbHFIvXUd9hmLGwAP7r4wsqWSl1JUZSv2iCE9bYCI10rtrCkQc12WzTNMwD5ZKeLaAA",
+   "bg": "#312b2a",
+   "name": "Midnight Black Embellished Sherwani - 02"
+  },
+  "heritage/sherwanis/midnight-black-embellished-sherwani-03": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAwBACdASoUABkAPu1kq0+ppSOiMBgIATAdiWcAyFwQ4ZcrnRVm7r9vJwAA/uk8XdaCn/bICXPayzuZKHswPXyo2H9vf4xrdeD+eiAN1wFK44etHlvRxAAA",
+   "bg": "#1c1614",
+   "name": "Midnight Black Embellished Sherwani - 03"
+  },
+  "heritage/sherwanis/midnight-black-embellished-sherwani-04": {
+   "w": 1920,
+   "h": 2399,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADQBACdASoUABkAPu1mp02ppiOiMBgMATAdiWcAzBwQ8Mnrat+rl+pBv59DyTbTIAD+7D4y/lJ0cE21wgQbEtPkpGBUllo3Fsrv2eCoDtaxoKDQisT4LUxZ1dVgAAAA",
+   "bg": "#312b28",
+   "name": "Midnight Black Embellished Sherwani - 04"
+  },
+  "heritage/sherwanis/midnight-black-embellished-sherwani-05": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAwBACdASoUAB4APu1iq1AppSO0sBgIApAdiWcAtDQQ98QAIYEYxPEc3YAA/rkq8znS7+bWJwbGDfLjAl7lg+bZ32ylZY/XT2yACflELmo6AAAA",
+   "bg": "#2f2421",
+   "name": "Midnight Black Embellished Sherwani - 05"
+  },
+  "heritage/sherwanis/midnight-black-embellished-sherwani-06": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADwAwCdASoUAB4APu1mqk2ppaQiMAgBMB2JZQDG9CHgVHGAaMji04wAAP7LXNncZN8I1VpTI8vvCxM3QeehcAWDjF2Qik+FRxxwleDuj32oqARp6qkct2qcOwwsIsAA",
+   "bg": "#1c1411",
+   "name": "Midnight Black Embellished Sherwani - 06"
+  },
+  "heritage/sherwanis/midnight-black-embellished-sherwani-07": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwBACdASoUAB4APu1kqU4ppaOiMAgBMB2JZwDCgCHhpMq8xe2PTfxLCPh7g32qfQAA/vDMpcqISWS0oT8fF73aUCJV8EwvpYmkQfLvlu5GCqYM57i6AgMaafwvpITenyyAAA==",
+   "bg": "#332a24",
+   "name": "Midnight Black Embellished Sherwani - 07"
+  },
+  "heritage/sherwanis/midnight-black-embellished-sherwani-08": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwBACdASoUAB4APu1wsFIppiSiqAgBMB2JZQAAH5H8HccaUWk9Kk6FMgAA/u6djcqd11ndtUkDAo+AXYeUErfdKU0lqUHtRTsyESa6IJAyukDPiGOCAT0xAAA=",
+   "bg": "#0d0b0a",
+   "name": "Midnight Black Embellished Sherwani - 08"
+  },
+  "heritage/stoles/ivory-gold-embroidered-border-heritage-stole-ensemble-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAADwBACdASoUAB4APu1cqU4ppKOiMBgMATAdiWUAuwAG8TMXixnXnKz1MZ9GCd66SQAA2/qY8pN1RoSWsEOshJAk1DBTEoVEGJIH0Vz9Y7WTHq2KUGwFnbW0khnw8m1wzDZ0/tweDDMc66h4cRXtn/pRuh7bkHD09X6hkk1hS+K9rgaECWnHPIT+JwJrCRYvaTGqtH0AAAA=",
+   "bg": "#766051",
+   "name": "Ivory Gold Embroidered-Border Heritage Stole Ensemble - 01"
+  },
+  "heritage/stoles/ivory-gold-embroidered-border-heritage-stole-ensemble-02": {
+   "w": 1920,
+   "h": 2881,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAACQBQCdASoUAB4APulipE2pJaMiMAwBIB0JYwCdMvuDTqz/tRuU3QA1WzygzT73JtiGqggiAAD+3pKcY0YKwuhDuX5LYRzw4wxtMYkIUsK05IED5AO+lIG/Hyf3Ja5hmXL0GPsaMqcNKVPrgOPNSjduNxRUhlctlNgIVrIyPeRBxYxNFCrnmP1rm2EklurebooAAA==",
+   "bg": "#ac9a7f",
+   "name": "Ivory Gold Embroidered-Border Heritage Stole Ensemble - 02"
+  },
+  "heritage/stoles/ivory-gold-embroidered-border-heritage-stole-ensemble-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAABwBQCdASoUAB4APu1ur1IppiQiqAgBMB2JYwCdM1XBqf4yhp7GBv7TByK6HBoVp9RgRH6wAP7TJ9RPNNbzjX6ciE1IPT/OYavPnFmuMK3t+oND+ou8Jj2A94piDjfFZX/O2byQIo4FaNmtR7H2Plz/TC3+f5yng85JyVIer09fFe58ABMhbgAA",
+   "bg": "#caa788",
+   "name": "Ivory Gold Embroidered-Border Heritage Stole Ensemble - 03"
+  },
+  "heritage/stoles/ivory-gold-embroidered-border-heritage-stole-ensemble-04": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAADQBACdASoUABkAPu1mq08ppaOiKA1RMB2JYwCw7AqPlesaQR02x9guOD4+CxmAAAD+r57qBXyrS3tjDf3Qs7Gg4t2EA3M+ms5etMaZ2UAn9lE80LXqbX8y0KUnmnlb1tEfPnJiudwXGBaPtmY4pOgJcf6XaqtciAAAAA==",
+   "bg": "#bfa691",
+   "name": "Ivory Gold Embroidered-Border Heritage Stole Ensemble - 04"
+  },
+  "heritage/stoles/ivory-gold-embroidered-border-heritage-stole-ensemble-05": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABwBQCdASoUAB4APu1oq04ppiQiMAgBMB2JYwCdMtU/+CnHCTWQE8VPDciKnjT8h5iu9+fwAP7TSjtsvd7hzV4UVit1xto85WxdzpNXGu7Hsrxc3sGYVN9PbsTtp1mGkq/3tE3p40+/IHs3y7sVWFgVqv3xdAvhMC9hdi6+2U3T8nAA",
+   "bg": "#dfbfa4",
+   "name": "Ivory Gold Embroidered-Border Heritage Stole Ensemble - 05"
+  },
+  "heritage/stoles/ivory-gold-embroidered-border-heritage-stole-ensemble-06": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAABQBQCdASoUAB4APu1kq02ppaQiMBgMATAdiUATpljoNQGZ41eCVCXq5HFjAQctZWBt8igA/uceuRa0To4yFgzlejHP+/+Q4YQfWEfIXUgsA3Qvx9hqkV76lnVnSybqZc+qE+HKqEiRrTeip4cRdoyxFStwjBvs4B/MCHVTb0ZQMQMtWuTerrpQYAAAAA==",
+   "bg": "#dbb898",
+   "name": "Ivory Gold Embroidered-Border Heritage Stole Ensemble - 06"
+  },
+  "heritage/stoles/ivory-gold-embroidered-border-heritage-stole-ensemble-07": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAABwBQCdASoUAB4APu1qq1EppaOiqAqpMB2JYwCdM0xBC+zzDM4Lx19i3v83TCerH1F+IX2QAP7D/uYpxe7dZ70ra6HiI+DQhgFB1BzXL5TOdkmr/PpAkKaJ2Vb0LEtYOWhRbtpPFoBg990VwLQp0Wcr5h4I8vvRRBneGAUlVhAAAA==",
+   "bg": "#cfb196",
+   "name": "Ivory Gold Embroidered-Border Heritage Stole Ensemble - 07"
+  },
+  "heritage/stoles/ivory-gold-embroidered-border-heritage-stole-ensemble-08": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAABwBACdASoUAB4APu1qr1CppiQiqAqpMB2JQAAFO16mH7/bfmtmeqhpIrbCAAD+xX70pUnI+VooX7YJKeg+k+juVu/nwydHtk7+AMB88rWMmKqEE4wQMdkFyHB30AlYY9ieBHRsuodV3s+KmlYMyVaMoEPRYqnwL1lwgJQAAAA=",
+   "bg": "#c3a18b",
+   "name": "Ivory Gold Embroidered-Border Heritage Stole Ensemble - 08"
+  },
+  "heritage/stoles/ivory-gold-embroidered-border-heritage-stole-ensemble-09": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAACQBQCdASoUAB4APt1WpU2opKOiN/qoARAbiWMAuzMcCMgP2Dwix63WqbP+aQjtn8mUhkktXAD+w5xZLh0k8qqO5VDDN2rNKbCAaq2VTNb9Sk9FlGdxPi0Vhnpu7wgkCKJFad+bR6qDEFXXvZDxae8EPARiOsmexGeyQ7x+SvJMz7geb+XUAAAA",
+   "bg": "#af917d",
+   "name": "Ivory Gold Embroidered-Border Heritage Stole Ensemble - 09"
+  },
+  "still/atelier-basting": {
+   "w": 1920,
+   "h": 1080,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAABwAwCdASoUAAsAPu1iqU2ppaQiMAgBMB2JaQAAOKCWTaGAMMAA/pNS31BczQVpWD3kkfmiRLYdr2vrESb4cVoDOMthrDY/QAA=",
+   "bg": "#4c4c4c",
+   "from": "classic/suits/vitale-barberis-canonico-bespoke-suit-tailoring-film"
+  },
+  "still/atelier-buttonhole": {
+   "w": 1920,
+   "h": 1080,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAwCdASoUAAsAPu1kq04ppaQiMAgBMB2JaQAAWZcGqqpGJ2eEdgAA/tnytO4zrWxLRS084bpEHIhH9Km8auax6D+Cr3JbhOq5LwAA",
+   "bg": "#434343",
+   "from": "classic/suits/vitale-barberis-canonico-bespoke-suit-tailoring-film"
+  },
+  "still/atelier-canvas": {
+   "w": 1920,
+   "h": 1080,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADQAwCdASoUAAsAPu1kqk4ppaQiMAgBMB2JaQAAYb6fcoCNWullnAAA/u9bd0fiBcK2u3miGsEs5zUaNrEcMzbetV1WKzN1AAA=",
+   "bg": "#313131",
+   "from": "classic/suits/vitale-barberis-canonico-bespoke-suit-tailoring-film"
+  },
+  "still/atelier-cloth": {
+   "w": 1920,
+   "h": 1080,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADQAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JaQAAQxlraQUo3uH1TAAA/uNLMvKDGyFaksiVu+mS/jxW3DdE+82RAIAAAA==",
+   "bg": "#353535",
+   "from": "classic/suits/vitale-barberis-canonico-bespoke-suit-tailoring-film"
+  },
+  "still/atelier-label": {
+   "w": 1920,
+   "h": 1080,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADQAwCdASoUAAsAPu1oqk6ppiQiMAgBMB2JaQAAUz7UN/AOq3AbuEAA/ukG/6SBNj2/KScNnhUlO+/R2ybFBe0iwbQCJAAAAAA=",
+   "bg": "#6d6d6d",
+   "from": "classic/suits/vitale-barberis-canonico-bespoke-suit-tailoring-film"
+  },
+  "still/atelier-lapel": {
+   "w": 1920,
+   "h": 1080,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACwAwCdASoUAAsAPu1kqk4ppaQiMAgBMB2JaQAAOWx265HEmJ+dgAD8fmhfIijSHrrTR238dRL5y1JZ8gQtkHIHoxPpCfu7lAAAAA==",
+   "bg": "#6a6a6a",
+   "from": "classic/suits/vitale-barberis-canonico-bespoke-suit-tailoring-film"
+  },
+  "still/atelier-pattern": {
+   "w": 1920,
+   "h": 1080,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAACwAwCdASoUAAsAPu1krU6ppaSiMAgBMB2JaQAASl5NxnxsqziAAAD+z0oY3TlQoSLdGlJrYDYgrhVHiH/ibGAAAAA=",
+   "bg": "#686868",
+   "from": "classic/suits/vitale-barberis-canonico-bespoke-suit-tailoring-film"
+  },
+  "still/atelier-stitch": {
+   "w": 1920,
+   "h": 1080,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADQAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JaQAATrNTl36q9sfRIAAA/njqqkjcNONeVfLVO3rpXdVIffTw1x7OSsV7ZhWjgAA=",
+   "bg": "#323232",
+   "from": "classic/suits/vitale-barberis-canonico-bespoke-suit-tailoring-film"
+  },
+  "still/champagne-gold-zardosi-sherwani-01": {
+   "w": 864,
+   "h": 1080,
+   "widths": [
+    480,
+    800
+   ],
+   "blur": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAACwBACdASoUABkAPu1urlKppiQiqAgBMB2JQBUk4wA0aUxK8MOMYFe0Exh8t5LgAP70KzNaTHuOEGXm13Va4GRpeHMG2D/ebNE7AJiL1hVk4rWQYepoAyZFak/FPlvUauuPjd3M5knoQbjNHgAAAA==",
+   "bg": "#1e130d",
+   "from": "heritage/sherwanis/champagne-gold-zardosi-sherwani-with-velvet-stole-showcase"
+  },
+  "still/champagne-gold-zardosi-sherwani-02": {
+   "w": 864,
+   "h": 1080,
+   "widths": [
+    480,
+    800
+   ],
+   "blur": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAABQBACdASoUABkAPu1orE8ppiQiMBgIATAdiWUAwoAN2WMS3d1wCdVc9NAAAP70MtwrxxD++8ZN6aLGOLGqkDo2tzXwAVUSR5kPx/3SXraHWaxnSLtfJnkl5sN+r+cAAAA=",
+   "bg": "#050101",
+   "from": "heritage/sherwanis/champagne-gold-zardosi-sherwani-with-velvet-stole-showcase"
+  },
+  "still/champagne-gold-zardosi-sherwani-03": {
+   "w": 1920,
+   "h": 1080,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAwCdASoUAAsAPu1iqk2ppaQiMAgBMB2JYwBTAAdMWsMreafyGAAA/vQnTIUuLHcaoBROOqzBJgOeXaYD1eHLkMuAAAAA",
+   "bg": "#4c3522",
+   "from": "heritage/sherwanis/champagne-gold-zardosi-sherwani-with-velvet-stole-showcase"
+  },
+  "still/champagne-gold-zardosi-sherwani-04": {
+   "w": 1920,
+   "h": 1080,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAABwAwCdASoUAAsAPu1iqk2ppaQmMAgBMB2JZwDCgCHgSERz5gAA/vQwhzVi9xi2q2cHiMlQXYCiHqCAAAA=",
+   "bg": "#0b0603",
+   "from": "heritage/sherwanis/champagne-gold-zardosi-sherwani-with-velvet-stole-showcase"
+  },
+  "still/crimson-red-embellished-sherwani-01": {
+   "w": 864,
+   "h": 1080,
+   "widths": [
+    480,
+    800
+   ],
+   "blur": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAABwBACdASoUABkAPu1ur1IppiQiqAgBMB2JZFefUKVuoPzsPazuOI8DW3MYAAD+7D+mSf/V4+LOxzOtw6rwd5cUltw+0hAs6oH3L4mTQFZPK+DWEyqVasKsEi91K/+Js35XMVYrYYELOZNOcnwAAA==",
+   "bg": "#22120e",
+   "from": "heritage/sherwanis/crimson-red-embellished-sherwani-showcase"
+  },
+  "still/crimson-red-embellished-sherwani-02": {
+   "w": 1920,
+   "h": 1080,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAABQAwCdASoUAAsAPu1iqU2ppaQiMAgBMB2JQBOgBDw7xmJuwAD+6OVyXpBVNu86Fw7x8A/X95lOBZrOJj5pAAAA",
+   "bg": "#271611",
+   "from": "heritage/sherwanis/crimson-red-embellished-sherwani-showcase"
+  },
+  "still/crimson-red-embellished-sherwani-03": {
+   "w": 1920,
+   "h": 1080,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAAAwAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JYgAAetv1rBYAAP7t5TdvhTX8Qeoi8qULH/CmwhaWlzz366fqidAAAAA=",
+   "bg": "#3a1311",
+   "from": "heritage/sherwanis/crimson-red-embellished-sherwani-showcase"
+  },
+  "still/crimson-red-embellished-sherwani-04": {
+   "w": 864,
+   "h": 1080,
+   "widths": [
+    480,
+    800
+   ],
+   "blur": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAABwAwCdASoUABkAPu1wsFKppiSiqAgBMB2JZwDDcBEdoHPAJdAA/uyUBt1hdINbO1kbY4KGeGc7TEakjoAAAA==",
+   "bg": "#170b08",
+   "from": "heritage/sherwanis/crimson-red-embellished-sherwani-showcase"
+  },
+  "still/midnight-navy-geometric-weave-jodhpuri-jacket-01": {
+   "w": 864,
+   "h": 1080,
+   "widths": [
+    480,
+    800
+   ],
+   "blur": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAwCdASoUABkAPu1wsFIppiSnqAgBMB2JZwDH5BEcOkWVigHaioAA/tzV9dns7uJtiuG9tvKUg0bMRvi9jaNN1dmSbUAA",
+   "bg": "#1b110a",
+   "from": "heritage/jodhpuri-jackets/midnight-navy-geometric-weave-jodhpuri-jacket-showcase"
+  },
+  "still/midnight-navy-geometric-weave-jodhpuri-jacket-02": {
+   "w": 1920,
+   "h": 1080,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAACwAgCdASoUAAsAPu1iqU2ppaOiMAgBMB2JaQAAeyAA/vCM/tJlWvLSMwvJXMVMVool4AAA",
+   "bg": "#080504",
+   "from": "heritage/jodhpuri-jackets/midnight-navy-geometric-weave-jodhpuri-jacket-showcase"
+  },
+  "still/midnight-navy-geometric-weave-jodhpuri-jacket-03": {
+   "w": 1920,
+   "h": 1080,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAABQAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JaQDImBuYxnigAAD+8N+t9uQSK3Qv6zNeAMAA",
+   "bg": "#0d0806",
+   "from": "heritage/jodhpuri-jackets/midnight-navy-geometric-weave-jodhpuri-jacket-showcase"
+  },
+  "still/midnight-navy-gold-zardosi-sherwani-01": {
+   "w": 864,
+   "h": 1080,
+   "widths": [
+    480,
+    800
+   ],
+   "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQBACdASoUABkAPu1srVEppaQiqAqpMB2JaQDKtBEl6IPXau9P5wGGsq22HOfMAAD+8NF2klNPBt5DqZDiqXx1A+oVwM4Um4URIFzO/QWugmiAd4AAAA==",
+   "bg": "#0e0b0a",
+   "from": "heritage/sherwanis/midnight-navy-gold-zardosi-floral-sherwani-showcase"
+  },
+  "still/midnight-navy-gold-zardosi-sherwani-02": {
+   "w": 1920,
+   "h": 1080,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAACQAwCdASoUAAsAPu1iqk2ppaQiMAgBMB2JZ1L5VR0U/2TkRpOAAP7v5VAVqrOsqNBuuF8Uc+82WrD4CMZXzyqKGkAAAA==",
+   "bg": "#110d0c",
+   "from": "heritage/sherwanis/midnight-navy-gold-zardosi-floral-sherwani-showcase"
+  },
+  "still/midnight-navy-gold-zardosi-sherwani-03": {
+   "w": 1920,
+   "h": 1080,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADQAwCdASoUAAsAPu1iqk4ppaQiMAgBMB2JZwDA3CHIx/t/waJRLAAA/vGZwlsgNI8XktbZoKKErz6gOLlw8AAA",
+   "bg": "#14100c",
+   "from": "heritage/sherwanis/midnight-navy-gold-zardosi-floral-sherwani-showcase"
+  },
+  "still/midnight-navy-gold-zardosi-sherwani-04": {
+   "w": 864,
+   "h": 1080,
+   "widths": [
+    480,
+    800
+   ],
+   "blur": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAABwBACdASoUABkAPu1eqU4ppKQiMBgMATAdiWkAyNQQ+H3N0sQ2DjHs9x1fkAD+8xu6ZRVduCSqOaBtV5XGnvLVHDw+eQi8zUlnd5VHIwAAAA==",
+   "bg": "#080504",
+   "from": "heritage/sherwanis/midnight-navy-gold-zardosi-floral-sherwani-showcase"
+  },
+  "still/ochre-gold-brocade-achkan-01": {
+   "w": 1026,
+   "h": 1822,
+   "widths": [
+    480,
+    800,
+    1026
+   ],
+   "blur": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAACwBACdASoUACQAPu1urFGppiQipWzJMB2JQBTigI4f4iLXcuk/lZ3lmPVgE9kIAP5nDPi4l0/jVqWbCzzaJQFShHDuJplzeEOvbf5EKVpzHwKEG8Z5LwX/vjvOBECh2Y2yQ2R5u3IymTX7jRQaxtZ85OnwKGa56wGFm5V+kpc4o4H3Lk+gv+75q5PgZ6Qp4gLdROtAAAA=",
+   "bg": "#82613f",
+   "from": "heritage/achkans/ochre-gold-brocade-achkan-detail-02"
+  },
+  "still/ochre-gold-brocade-achkan-02": {
+   "w": 1034,
+   "h": 1840,
+   "widths": [
+    480,
+    800,
+    1034
+   ],
+   "blur": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAACQAwCdASoUACQAPu1oqlGppaOjqrgKATAdiWMAx+QAYVPuKhWAAP3o/10jySb7gDzU2Id10OP/XC23LRjshyuWd6sCmwZCuUiFeqw38vqtAbmqkpqm/XHfA1L+95G50bRwAAAA",
+   "bg": "#a57b45",
+   "from": "heritage/achkans/ochre-gold-brocade-achkan-detail-01"
+  },
+  "still/ochre-gold-brocade-achkan-03": {
+   "w": 1026,
+   "h": 1822,
+   "widths": [
+    480,
+    800,
+    1026
+   ],
+   "blur": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABQBQCdASoUACQAPuFcpU2opSOiNVgMARAcCUAW2QGxDKLaTv7lyuisMSqBsm9+qS7xUcAA3+91j/ImGSm1UhodB+OFmkl5wc65bJjOqjtaXoq3uAUnSdouDT2w2J2Ym+cfMbiX9iQav4pnvab3e7C1vSC1ksQ6UgpC5bf09uHFAAAA",
+   "bg": "#8a763c",
+   "from": "heritage/achkans/ochre-gold-brocade-achkan-detail-02"
+  },
+  "still/ochre-gold-brocade-achkan-04": {
+   "w": 1034,
+   "h": 1840,
+   "widths": [
+    480,
+    800,
+    1034
+   ],
+   "blur": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAADQBQCdASoUACQAPu1cp04ppKMiNVQMATAdiWMAABMwknqKbkU9yGNj1/t9CxUM4ku1FEBHzPSAAPZMrZzr3ebo8SOnEGBqMOZbMFdDf/g0RlhdD2ygGLn6JY/vjf+4V6Im3X7faYLgGSk8ivFdAodSoDGkrw8VnYFudUSEEkgr2aQAAAA=",
+   "bg": "#a07a43",
+   "from": "heritage/achkans/ochre-gold-brocade-achkan-detail-01"
+  },
+  "still/ochre-gold-brocade-achkan-05": {
+   "w": 1026,
+   "h": 1822,
+   "widths": [
+    480,
+    800,
+    1026
+   ],
+   "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAABQBQCdASoUACQAPu1isFEppKSiqrgKATAdiWMAw6wJ+yaxU0zd1oiRQaqSo8LAAUJtDQAA/lQy2Dhw8Tc2hASFQefV2FmLWA7ukOb6h0neowcMz3W3iOxQW+JsxltwziLSAj9WVhRbq/U/9e64lqaiDJxRKAkYxQAAAA==",
+   "bg": "#907544",
+   "from": "heritage/achkans/ochre-gold-brocade-achkan-detail-02"
+  }
+ },
+ "videos": {
+  "classic/suits/bespoke-navy-suit-hand-basting-craftsmanship-01": {
+   "w": 720,
+   "h": 1280,
+   "duration": 9.7,
+   "poster": {
+    "widths": [
+     480,
+     720
+    ],
+    "blur": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAADwBQCdASoUACQAPu1oqlAppaOiqqoBMB2JZQDE2BVtd7Xuq9Jlbhju+CkNUyYN9oTar0kGPvhKAAD+ueklelwmDtuQJYd8o0uCDTF5+OGcNemcGXJZTXs+2+US/80+79pXmKQqBLacAtknVxiBN/L/Sii9Z13RPcVDA8sygLW418FYkIMjAFr5VyAAAA=="
+   },
+   "name": "Bespoke Navy Suit Hand-Basting Craftsmanship - 01"
+  },
+  "classic/suits/bespoke-navy-suit-lapel-canvas-craftsmanship-02": {
+   "w": 720,
+   "h": 1280,
+   "duration": 19,
+   "poster": {
+    "widths": [
+     480,
+     720
+    ],
+    "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABwBQCdASoUACQAPu1gqk6ppSOiNVQIATAdiWcAxNgIZKtU17RSbawg8Yw3v0SnW/ktgNJgAP61M6kYnHGK9hb0RYfmuCwWkObEHMmmlOJdey2xJNumGmV8FIg1jDPp5CKPCN6AxrU1pSCjlQgJmfJYgl3x68Di/7IiAAAA"
+   },
+   "name": "Bespoke Navy Suit Lapel Canvas Craftsmanship - 02"
+  },
+  "classic/suits/vitale-barberis-canonico-bespoke-suit-tailoring-film": {
+   "w": 1280,
+   "h": 720,
+   "duration": 169.2,
+   "poster": {
+    "widths": [
+     480,
+     960,
+     1280
+    ],
+    "blur": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAACQAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JaQAAQxeau0+CTLyAAP7l1hlERoCHFh3witeAiFUCjEspexalKxOtw4AAAA=="
+   },
+   "audio": true,
+   "name": "Vitale Barberis Canonico Bespoke Suit Tailoring Film"
+  },
+  "film/hero-desktop": {
+   "w": 1600,
+   "h": 900,
+   "duration": 31.6,
+   "poster": {
+    "widths": [
+     480,
+     960,
+     1600
+    ],
+    "blur": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAABwAwCdASoUAAsAPu1iqk2ppaQiMAgBMB2JaQAAM6/e7MPt0AAA/uNBh/eQj6dv4+Zz/864b86JnDReTVQKG4CpgAA="
+   }
+  },
+  "film/hero-mobile": {
+   "w": 720,
+   "h": 1280,
+   "duration": 31.6,
+   "poster": {
+    "widths": [
+     480,
+     720
+    ],
+    "blur": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwBACdASoUACQAPt1apE2opSOiNUgBEBuJaQAAbgSNIOhcuNIWqHX242fp4AV15YAA/r996jKAKkBXKFYJHT7786NXYVTWkD71WKInW8IbjXj8dMxvOSum8zAAAA=="
+   }
+  },
+  "film/hero-tablet": {
+   "w": 1280,
+   "h": 720,
+   "duration": 31.6,
+   "poster": {
+    "widths": [
+     480,
+     960,
+     1280
+    ],
+    "blur": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAABwAwCdASoUAAsAPu1iqk2ppaQiMAgBMB2JaQAAM6/e7MQFqAAA/uNBh/eQj6dy4SwGe1VJbqvFPTkjUKT0bW4ITAAAAA=="
+   }
+  },
+  "heritage/achkans/black-velvet-embroidered-collar-achkan-showcase-01": {
+   "w": 720,
+   "h": 1280,
+   "duration": 19.6,
+   "poster": {
+    "widths": [
+     480,
+     720
+    ],
+    "blur": "data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAAAQBgCdASoUACQAPu1qq1AppiOipW5hMB2JYwC7M2QBGxyZ3ZQCJisrcw17zKXWyBP0s+r9EMNn5AAA/u1atDD8rfmNcLPBvASZGx1EFmdYpmMK9Pr3rRJ5fPRRAf1iTWV2TrHbLKbhrcAU65ufUGl/CMVIoHTH+Jhcx17iFSVnaTlVgCTxR+H+ZIwp+eexqnVK99YJLLLrUcOWgkW7rlAtgZxWFW2brIO7n5PLMZ241HVpAHnFvCMUDIBq8IAA"
+   },
+   "name": "Black Velvet Embroidered-Collar Achkan Showcase - 01"
+  },
+  "heritage/achkans/mocha-brown-and-powder-blue-silk-achkans-duo-showcase-01": {
+   "w": 720,
+   "h": 1280,
+   "duration": 26.8,
+   "poster": {
+    "widths": [
+     480,
+     720
+    ],
+    "blur": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAABwBACdASoUACQAPu1kq06ppaQpsBVaqTAdiWUAvVgJr85+2knvjvbz6A29EAD+w/uCPMrYIUF6uee8qB2wyuxvnw5snZ2wmH4UxwZ33dC+eDL5uKP5Zmo0J+6m6lwyjl1HPV/AAAA="
+   },
+   "name": "Mocha Brown & Powder Blue Silk Achkans Duo Showcase - 01"
+  },
+  "heritage/achkans/mocha-brown-silk-embroidered-collar-achkan-showcase-01": {
+   "w": 720,
+   "h": 1280,
+   "duration": 11.7,
+   "poster": {
+    "widths": [
+     480,
+     720
+    ],
+    "blur": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAACwBQCdASoUACQAPu1irE4ppaSiKqwBMB2JQBWA76wKbd5Up9o5GdQj2Xlln/f4LFL22Pb8OQAA/sP53D8Ff/Rujw8eCrreHKA757EpbXTsOTa9l1aTSTObIduCQtJ/CB9baYAPrGxIrcKKXS01+ekhOe8zIlky0DWAcnSbkZDQgAGZPmbf/zeVpffP5vEHTImmVyHbqjesF8VfuRgISdWLLBUoT8AA"
+   },
+   "name": "Mocha Brown Silk Embroidered-Collar Achkan Showcase - 01"
+  },
+  "heritage/achkans/mocha-brown-silk-embroidered-collar-achkan-showcase-02": {
+   "w": 720,
+   "h": 1280,
+   "duration": 19.7,
+   "poster": {
+    "widths": [
+     480,
+     720
+    ],
+    "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAACwBQCdASoUACQAPu1iqU4ppSOiNVQIATAdiWUAygAIM8YrN+KUZD1vM5ywbobDytyHJzl1acAA/sPhySRuqKi04Q3RromXe1ibcNe/UqKNWyd5gy/T/H1UgbyXPHpNLGT37LHNULD+FfdazBkLpnPwv930ZZ29LKipZtAA"
+   },
+   "name": "Mocha Brown Silk Embroidered-Collar Achkan Showcase - 02"
+  },
+  "heritage/achkans/ochre-gold-brocade-achkan-detail-01": {
+   "w": 720,
+   "h": 1280,
+   "duration": 9.2,
+   "poster": {
+    "widths": [
+     480,
+     720
+    ],
+    "blur": "data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAACQBgCdASoUACQAPuVcpk2pJSOiOrM4ASAciWIArDlBWH5dgDnxDilZJhasuicnrisSN3185Wr767NKkEAAAP61qXy03J15yaWAliS/K0vB9dPE/LwcHbVdK9lMsOf7oO7ci6cndVxCXpB62U8rpbYaXkGXJPhP08A145KCg5iFByMwA9vcJMDiDup7popeqNFsWq8F6cFwj6pFpYKAAAAA"
+   },
+   "name": "Ochre Gold Brocade Achkan Detail - 01"
+  },
+  "heritage/achkans/ochre-gold-brocade-achkan-detail-02": {
+   "w": 720,
+   "h": 1278,
+   "duration": 12.3,
+   "poster": {
+    "widths": [
+     480,
+     720
+    ],
+    "blur": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAABQBQCdASoUACQAPu1srFEppiQipWzJMB2JQBdgAPRUEu0y4dJDh0n1BDCG/O1cHQVRKAAA/mcM+LiXT8rHsynhRBw3fO9nD/KJj03uLD8jGcK0XLG3OX91+ykRtELAzTpl/IdmTmySHoqiCAeL8y8qZkJ4sDq4wLh5xHAwFuGBdOzOKu5vIACqSsnr0hfmIy+CgwAA"
+   },
+   "name": "Ochre Gold Brocade Achkan Detail - 02"
+  },
+  "heritage/achkans/powder-blue-silk-embroidered-collar-achkan-showcase-01": {
+   "w": 720,
+   "h": 1280,
+   "duration": 23,
+   "poster": {
+    "widths": [
+     480,
+     720
+    ],
+    "blur": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAADQBACdASoUACQAPuVWpU2ypCOiNVv4AlAciWUAyNQhOzOJfSXhYvIKlFNbMSoKwAD+5yr2ve0WOE+FxAcaBAXK58X8ZEzMwJ7FF7BTxkHv4EWjJK9X1NP10lwOffPnx2iOYHXmYWDAwGEoAAA="
+   },
+   "name": "Powder Blue Silk Embroidered-Collar Achkan Showcase - 01"
+  },
+  "heritage/jodhpuri-jackets/ivory-brocade-jodhpuri-jackets-duo-showcase-01": {
+   "w": 720,
+   "h": 1280,
+   "duration": 16.1,
+   "poster": {
+    "widths": [
+     480,
+     720
+    ],
+    "blur": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAADwBQCdASoUACQAPu1sq1EppaOiqrgKATAdiWUAuwALOWdEqd+zvHVRfDTvq04TvYwbvcP88LSCgAD9znAM+bruQbN3yj+tWAtrkG1+mdf8h/KQOUFBKBY47JwFVYrjFIuLJ1qe2dJwlp+JKgUxKl7pRTjHFQqFZRIA+l6U2TI6ahkthcCYAAAA"
+   },
+   "name": "Ivory Brocade Jodhpuri Jackets Duo Showcase - 01"
+  },
+  "heritage/jodhpuri-jackets/ivory-embossed-open-front-jodhpuri-jacket-showcase-01": {
+   "w": 720,
+   "h": 1280,
+   "duration": 18.6,
+   "poster": {
+    "widths": [
+     480,
+     720
+    ],
+    "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAACwBQCdASoUACQAPu1qqE8ppiOiKrgN+TAdiWMAw2fWARhyYBG4BbmnsaEmuzvGI+asEZaE8FAA/cwedAATmHI+ENt6dhOd5a6/Tk63jtoMrfrBx9xyg5Ad8M5gWtzgLN9VYLP9q7hg2A8vW3/1w+id/gpliLQu3E9dFxXq6mJNSM0LtUsop9agiPf2AAAA"
+   },
+   "name": "Ivory Embossed Open-Front Jodhpuri Jacket Showcase - 01"
+  },
+  "heritage/jodhpuri-jackets/ivory-floral-jacquard-jodhpuri-jacket-showcase-01": {
+   "w": 720,
+   "h": 1280,
+   "duration": 21.3,
+   "poster": {
+    "widths": [
+     480,
+     720
+    ],
+    "blur": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAADwBQCdASoUACQAPu1qrlCppaQipWzJMB2JYwCdMoABIB6QdJQa2uvawhVxayjIaD5nDFU12xWEAAD+jDRCrQUlCGTU9CBnY4kqU1yGKelzbUnFLlvX85+J+wDdN36HjKI01D3cQLnEyQ7sXW0e5RZ+rl7ju/5O6h4dkDqbOzY3V1szj21TXYc7TAhnG3pkAAA="
+   },
+   "name": "Ivory Floral Jacquard Jodhpuri Jacket Showcase - 01"
+  },
+  "heritage/jodhpuri-jackets/midnight-navy-geometric-weave-jodhpuri-jacket-showcase": {
+   "w": 1280,
+   "h": 720,
+   "duration": 7,
+   "poster": {
+    "widths": [
+     480,
+     960,
+     1280
+    ],
+    "blur": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAAAQAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JZwAAUiDPGAAA/vFOAkIp8WfmKfri1ZiwAA=="
+   },
+   "name": "Midnight Navy Geometric-Weave Jodhpuri Jacket Showcase"
+  },
+  "heritage/sherwanis/champagne-gold-zardosi-sherwani-with-velvet-stole-showcase": {
+   "w": 1280,
+   "h": 720,
+   "duration": 11.9,
+   "poster": {
+    "widths": [
+     480,
+     960,
+     1280
+    ],
+    "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAABQAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JQBadBC1+auzC4AD+9CtbYehcK9o4LAshHx7LyK6Y8AvHfD/QvkfNPYsSiHu0gAA="
+   },
+   "name": "Champagne Gold Zardosi Sherwani with Velvet Stole Showcase"
+  },
+  "heritage/sherwanis/crimson-red-embellished-sherwani-showcase": {
+   "w": 1280,
+   "h": 720,
+   "duration": 12.9,
+   "poster": {
+    "widths": [
+     480,
+     960,
+     1280
+    ],
+    "blur": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAwCdASoUAAsAPu1iqk2ppaQiMAgBMB2JZACw7CFejVIFMlZcaQMAAP7r9aFrlNzNGxZJgtgYi1eAh433CZKOH9Or0hu4OxFZNQAA"
+   },
+   "name": "Crimson Red Embellished Sherwani Showcase"
+  },
+  "heritage/sherwanis/midnight-navy-gold-zardosi-floral-sherwani-showcase": {
+   "w": 1280,
+   "h": 720,
+   "duration": 15.3,
+   "poster": {
+    "widths": [
+     480,
+     960,
+     1280
+    ],
+    "blur": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAAAwAwCdASoUAAsAPu1oqk6ppiQiMAgBMB2JZwAAWnE2uyYAAP7xL9a3AvipKaWP91tssRa8vyyO17AA"
+   },
+   "name": "Midnight Navy Gold-Zardosi Floral Sherwani Showcase"
+  },
+  "heritage/sherwanis/sartorial-heritage-zardosi-sherwanis-collection-showcase": {
+   "w": 1280,
+   "h": 560,
+   "duration": 16.5,
+   "poster": {
+    "widths": [
+     480,
+     960,
+     1280
+    ],
+    "blur": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAwCdASoUAAkAPu1kqU2ppaQiMAgBMB2JQBOmUABWfdwoC6EAUVAAAP70MsfAARV6QxisEWPLFYwDWZRnJOoEmwlXMprgociUiSNt0IAAAA=="
+   },
+   "name": "Sartorial Heritage Zardosi Sherwanis Collection Showcase"
+  },
+  "heritage/stoles/ivory-gold-embroidered-border-heritage-stole-showcase-01": {
+   "w": 720,
+   "h": 1280,
+   "duration": 19.6,
+   "poster": {
+    "widths": [
+     480,
+     720
+    ],
+    "blur": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAAAwBgCdASoUACQAPu1oqU6ppiOiKrgN+TAdiWMAwcwKJRxOGIw0s9z2U0BnstB9Mfo3iCa3XpF0vdoAAPtmYG9ldW/yCReBolaeBuMJqwLurSaRTvfsXQPQCYPx2odlV1YZ/3nLawvmp3siuxdBltTF1HjSQCI/nq6yMM/oRDgPdXYS6T0ubOA00AA="
+   },
+   "name": "Ivory Gold Embroidered-Border Heritage Stole Showcase - 01"
+  },
+  "heritage/stoles/ivory-gold-embroidered-border-heritage-stole-showcase-02": {
+   "w": 720,
+   "h": 1224,
+   "duration": 19.6,
+   "poster": {
+    "widths": [
+     480,
+     720
+    ],
+    "blur": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACwBQCdASoUACIAPu1gqU4ppSOiMBVdUTAdiWMAs4AKG7wy8aqJYYZ1ByXAzajTVeArUNzisAAAyhoVWiew6tY9IMmf+ZrGE1YP3bKBPVraCuZ3Ja7xA9otJsygfBGJbDpkwzjuMc9vOXHKoWHFW3SqrmGWFcPlNWZXZy24yjDbQxSujNBc9JevQAA="
+   },
+   "name": "Ivory Gold Embroidered-Border Heritage Stole Showcase - 02"
+  }
+ }
+}

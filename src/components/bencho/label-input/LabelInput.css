@@ -1,0 +1,330 @@
+/* ══ Label input ═══════════════════════════════════════════
+   Adapted from Bencho (blocks/label-input, MIT). A field that
+   is only its outline, as wide as it is given. */
+
+/* The order Tailwind declares its cascade layers in, restated so
+   that it holds even if this sheet is ever loaded ahead of the
+   site's own: `components` must sit above the reset and below the
+   utilities. A second statement of the same order changes nothing. */
+@layer theme, base, components, utilities;
+
+/* The box the caller places and sizes, in a cascade layer so a
+   utility class handed in through `className` wins: the width,
+   and the room kept above the field for the lifted label. */
+@layer components {
+  .lbi {
+    position: relative;
+    width: 100%;
+    padding-top: 12px;
+  }
+}
+
+.lbi {
+  display: block;
+  box-sizing: border-box;
+  font-family: var(--font-ui);
+  text-align: left;
+
+  /* ── the block's own inks ─────────────────────────────────
+     Read from the theme on light ground, and replaced wholesale
+     on dark: nothing below names a theme token directly, so the
+     two tones are these lines and no others. */
+  --lbi-ink: var(--fill-on, var(--ink));
+  --lbi-line: color-mix(in srgb, var(--fill-on, #17181a) 32%, var(--fill-slab, #ffffff));
+  --lbi-rest: var(--ink-4);
+  --lbi-lift: var(--ink-3);
+  --lbi-err: var(--ember, #b8431c);
+}
+
+/* for dark ground — a footer, a band of ink */
+.lbi[data-tone="dark"] {
+  --lbi-ink: #ffffff;
+  --lbi-line: rgba(255, 255, 255, 0.36);
+  --lbi-rest: rgba(255, 255, 255, 0.64);
+  --lbi-lift: rgba(255, 255, 255, 0.78);
+  --lbi-err: #f3a99c;
+  color-scheme: dark;
+}
+
+/* no fill: the field is only its outline */
+.lbi-box {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--lbi-h, 52px);
+  background: transparent;
+  cursor: text;
+}
+
+/* ── the outline ────────────────────────────────────────────
+   Always whole. At rest a hairline of grey; focused, the ink
+   at a hair heavier. The gap across the top is the only part
+   that moves. */
+.lbi-ring {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.lbi-ring path,
+.lbi-ring line {
+  fill: none;
+  stroke: var(--lbi-line);
+  stroke-width: 1;
+  stroke-linecap: butt;
+  transition:
+    stroke 220ms ease,
+    stroke-width 220ms ease;
+}
+
+.lbi[data-focus="true"] .lbi-ring path,
+.lbi[data-focus="true"] .lbi-ring line {
+  stroke: var(--lbi-ink);
+  stroke-width: 1.5;
+}
+
+/* something is wrong with what is in it: the line says so too */
+.lbi[data-invalid] .lbi-ring path,
+.lbi[data-invalid] .lbi-ring line {
+  stroke: var(--lbi-err);
+}
+
+/* the gap: whole at rest, parting from its middle when the
+   label lifts. The dash is longer than the path so offset 0
+   is the whole line and -1 is none of it. */
+.lbi-ring .lbi-gap {
+  stroke-dasharray: 1 2;
+  stroke-dashoffset: 0;
+  transition:
+    stroke 220ms ease,
+    stroke-width 220ms ease,
+    stroke-dashoffset 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lbi[data-up="true"] .lbi-ring .lbi-gap {
+  stroke-dashoffset: -1;
+}
+
+/* ── the label ──────────────────────────────────────────────
+   Its placeholder self in the middle of the field, and its
+   lifted self centred on the top edge — the second is the
+   first moved up by half the field and scaled from its left. */
+.lbi-label {
+  position: absolute;
+  left: var(--lbi-x, 14px);
+  top: 50%;
+  max-width: calc(100% - var(--lbi-x, 14px) * 2);
+  /* a label longer than its field is cut rather than run out of
+     it; the padding is headroom so the hop is not cut with it */
+  overflow: hidden;
+  padding: 4px 0;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  white-space: pre;
+  color: var(--lbi-rest);
+  transform-origin: left center;
+  transform: translateY(-50%);
+  transition:
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 220ms ease;
+  cursor: text;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.lbi[data-up="true"] .lbi-label {
+  transform: translateY(-50%) translateY(calc(var(--lbi-h, 52px) / -2)) scale(0.78);
+  color: var(--lbi-lift);
+}
+
+.lbi[data-focus="true"] .lbi-label {
+  color: var(--lbi-ink);
+}
+
+.lbi[data-invalid] .lbi-label {
+  color: var(--lbi-err);
+}
+
+.lbi-letters {
+  display: block;
+}
+
+.lbi-letters > span {
+  display: inline-block;
+}
+
+/* the hop: each letter lifts a hair and settles, one after the
+   next, so the word ripples as it rises */
+.lbi[data-focus="true"] .lbi-letters > span {
+  animation: lbi-hop 460ms cubic-bezier(0.3, 0.7, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 24ms);
+}
+
+.lbi .lbi-field {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 0 0 var(--lbi-x, 14px);
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  font: inherit;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  color: var(--lbi-ink);
+  caret-color: var(--lbi-ink);
+  /* the outline of the field IS its focus ring: it takes the ink
+     and thickens, and the label lifts out of it */
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.lbi .lbi-field:focus,
+.lbi .lbi-field:focus-visible {
+  outline: none;
+}
+
+/* ── a field the browser filled in by itself ───────────────
+   It may never tell the page, so the label would sit on top of
+   the address it has just written. Lift it on the browser's own
+   word that the field is filled. And keep the browser's wash off
+   the field: it has no fill of its own to be painted over, least
+   of all on dark ground — the wash and its ink are held off by a
+   delay rather than a duration, which a reduced-motion rule does
+   not shorten. */
+.lbi:has(.lbi-field:autofill) .lbi-label {
+  transform: translateY(-50%) translateY(calc(var(--lbi-h, 52px) / -2)) scale(0.78);
+  color: var(--lbi-lift);
+}
+
+.lbi:has(.lbi-field:autofill) .lbi-ring .lbi-gap {
+  stroke-dashoffset: -1;
+}
+
+.lbi .lbi-field:autofill {
+  -webkit-text-fill-color: var(--lbi-ink);
+  transition:
+    background-color 0s 600000s,
+    color 0s 600000s;
+}
+
+/* the reveal: the text passes through a soft blur rather than
+   snapping between dots and letters. Two names so a second
+   press restarts it. */
+.lbi-field[data-flip="1"] {
+  animation: lbi-flip-a 260ms ease-out;
+}
+
+.lbi-field[data-flip="0"] {
+  animation: lbi-flip-b 260ms ease-out;
+}
+
+.lbi-eye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--lbi-rest);
+  cursor: pointer;
+  transition:
+    color 160ms ease,
+    scale 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lbi-eye:hover {
+  color: var(--lbi-ink);
+}
+
+.lbi-eye:active {
+  scale: 0.96;
+}
+
+.lbi .lbi-eye:focus-visible {
+  outline: 1.5px solid var(--lbi-ink);
+  outline-offset: 0;
+}
+
+/* the two icons in one place, trading places */
+.lbi-eye svg {
+  grid-area: 1 / 1;
+  display: block;
+  transition:
+    opacity 220ms ease,
+    scale 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 220ms ease;
+}
+
+.lbi-eye svg:last-child {
+  opacity: 0;
+  scale: 0.7;
+  filter: blur(2px);
+}
+
+.lbi-eye[data-show="true"] svg:first-child {
+  opacity: 0;
+  scale: 0.7;
+  filter: blur(2px);
+}
+
+.lbi-eye[data-show="true"] svg:last-child {
+  opacity: 1;
+  scale: 1;
+  filter: none;
+}
+
+/* ── what is wrong, under the field ─────────────────────────
+   In line with the text in the field, not with its edge. */
+.lbi-error {
+  margin: 6px 0 0;
+  padding: 0 var(--lbi-x, 14px);
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: var(--lbi-err);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lbi-ring path,
+  .lbi-ring line,
+  .lbi-ring .lbi-gap,
+  .lbi-label {
+    transition-duration: 160ms;
+  }
+
+  .lbi[data-focus="true"] .lbi-letters > span,
+  .lbi-field {
+    animation: none;
+  }
+}
+
+@keyframes lbi-hop {
+  0% { transform: translateY(0); }
+  38% { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes lbi-flip-a {
+  from { filter: blur(3px); opacity: 0.5; }
+}
+
+@keyframes lbi-flip-b {
+  from { filter: blur(3px); opacity: 0.5; }
+}

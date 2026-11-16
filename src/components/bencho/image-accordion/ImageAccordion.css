@@ -1,0 +1,175 @@
+/* ══ Image accordion ════════════════════════════════════════
+   Adapted from Bencho (blocks/image-accordion, MIT).
+
+   A row of pictures, one of which opens under the pointer. The
+   arithmetic of who pays for that is in ImageAccordion.tsx —
+   one grow number per picture, each on a spring — and what is
+   here is the box they negotiate inside, the crop that keeps a
+   photograph a photograph while it happens, and the caption. */
+
+/* The order Tailwind declares its cascade layers in, restated so
+   that it holds even if this sheet is ever loaded ahead of the
+   site's own: `components` must sit above the reset and below the
+   utilities. A second statement of the same order changes nothing. */
+@layer theme, base, components, utilities;
+
+/* The box the caller is expected to size. In a cascade layer so a
+   utility class handed in through `className` (h-[70vh], max-w-…)
+   wins over these defaults; everything outside the layer is the
+   block's own and is not meant to be overridden. */
+@layer components {
+  .acc {
+    position: relative;
+    width: 100%;
+    /* takes its height from the container; the floor is only so a
+       container with no height of its own still shows a strip */
+    height: 100%;
+    min-height: 15rem;
+  }
+}
+
+.acc {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: var(--acc-gap, 4px);
+  /* the strip takes the SAME radius every picture takes. The clip
+     stays because flex widths land on fractions and a cell can
+     overhang its container by a sub-pixel. */
+  border-radius: var(--acc-r, 0px);
+  overflow: hidden;
+  font-family: var(--font-ui);
+  -webkit-user-select: none;
+  user-select: none;
+  /* a finger dragged across the strip should read as a hover rather
+     than as an attempt to scroll the page sideways */
+  touch-action: pan-y;
+}
+
+.acc-cell {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  /* ── the grow number is the WHOLE story ──────────────────
+     `flex-basis: 0` so nothing is reserved before the negotiation
+     starts, and `min-width: 0`, which is the one that bites: a
+     flex item will not shrink below its content by default. */
+  flex: var(--acc-grow, 1) 1 0;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: var(--acc-r, 0px);
+  background: var(--surface-2);
+  color: #fff;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.acc-cell .acc-img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  /* ── `cover`, and the height is what fixes the scale ──────
+     The strip's height never changes, so widening a cell admits
+     more of the photograph on each side and moves nothing that
+     was already showing — a window opening, not a picture being
+     pulled about. */
+  object-fit: cover;
+  -webkit-user-drag: none;
+}
+
+/* ── the caption, over a scrim ──────────────────────────────
+   White on a dark wash laid across the foot of the picture. Both
+   ignore the pointer, so the panel itself is always what is hit. */
+.acc-scrim {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 58%;
+  background: linear-gradient(
+    to top,
+    rgba(12, 11, 9, 0.66) 0%,
+    rgba(12, 11, 9, 0.3) 46%,
+    rgba(12, 11, 9, 0) 100%
+  );
+  pointer-events: none;
+}
+
+.acc-cap {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: clamp(14px, 1.7vw, 28px);
+  pointer-events: none;
+}
+
+/* one line each and cut with an ellipsis: a caption that re-wrapped
+   while its panel was being resized every frame would jump */
+.acc-sub,
+.acc-label {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+}
+
+.acc-sub {
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  opacity: 0.86;
+}
+
+.acc-label {
+  font-size: clamp(1.375rem, 2.3vw, 2.5rem);
+  /* tight, with room below so descenders survive the clip */
+  line-height: 1.02;
+  padding-bottom: 0.04em;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+/* ── the focus ring ─────────────────────────────────────────
+   Inside the panel, because the strip clips anything outside it;
+   and a box of its own laid over everything, because the panel's
+   own outline would be painted UNDER the photograph (which is
+   positioned, and so drawn after it). */
+.acc .acc-cell:focus-visible {
+  outline: none;
+}
+
+.acc .acc-cell:focus-visible::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 2px solid #fff;
+  border-radius: max(0px, calc(var(--acc-r, 0px) - 6px));
+  pointer-events: none;
+}
+
+/* ── narrow screens: a stack ────────────────────────────────
+   Under 768px the panels sit one above another, each about two
+   fifths of the viewport tall. The grow numbers are ignored, so
+   nothing swells, and the block's height is its content — a
+   height handed to it from outside does not apply here. */
+@media (max-width: 767.98px) {
+  .acc {
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+  }
+
+  .acc-cell {
+    flex: none;
+    height: 38vh;
+    min-height: 13.75rem;
+  }
+}

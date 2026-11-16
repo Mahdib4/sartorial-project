@@ -1,0 +1,205 @@
+/* ══ Toast stack ══════════════════════════════════════════════
+   Adapted from Bencho (blocks/toast-stack, MIT).
+
+   Up to three toasts stacked, fanning into a list on hover. The
+   front one is the slab; the tucked ones a barely-there grey —
+   both the same, so they read as paper behind paper rather than
+   a darkening ramp. */
+
+/* The order Tailwind declares its cascade layers in, restated so
+   that it holds even if this sheet is ever loaded ahead of the
+   site's own: `components` must sit above the reset and below the
+   utilities. A second statement of the same order changes nothing. */
+@layer theme, base, components, utilities;
+
+/* The box the caller places. It does NOT pin itself anywhere:
+   put it in a fixed wrapper, or hand `fixed bottom-4 right-4`
+   in through `className` — these defaults sit in a cascade layer
+   so a utility class wins over them. Its height is set by the
+   component and is only the shut stack's; the open list rises
+   out of the top of it. */
+@layer components {
+  .tst {
+    position: relative;
+    width: 380px;
+    max-width: calc(100vw - 2rem);
+  }
+}
+
+.tst {
+  font-family: var(--font-ui);
+  color: var(--fill-on, var(--ink));
+  --tst-mute: color-mix(in srgb, var(--fill-on, #17181a) 64%, var(--fill-slab, #ffffff));
+  --tst-wash: color-mix(in srgb, var(--fill-on, #17181a) 6%, var(--fill-slab, #ffffff));
+  /* the block is mostly air while the list is shut, and air must
+     not swallow a click meant for the page under it: only the
+     pad and the toasts take the pointer */
+  pointer-events: none;
+}
+
+/* what you have to be over for the list to stay apart */
+.tst-hit {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: auto;
+}
+
+.tst-toast {
+  position: absolute;
+  left: 0;
+  /* hung from the foot of the block: Framer lifts each one from
+     here, so the front toast is the one that never moves */
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 10px 0 16px;
+  border-radius: var(--tst-r, 0px);
+  background: var(--fill-slab, #ffffff);
+  /* a hairline and a little air under it. The demo keeps the
+     hairline behind [data-stroke] and has no shadow at all; these
+     float over a page that is the same white they are, so both
+     are always on here. */
+  box-shadow:
+    0 0 0 1px var(--pane-edge),
+    0 14px 32px -14px rgba(var(--shadow-rgb, 23, 24, 26), 0.3);
+  transform-origin: 50% 0;
+  pointer-events: auto;
+  transition:
+    background-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+/* the thumbnail sits the same 8px from three edges */
+.tst-toast[data-thumb] {
+  padding-left: 8px;
+}
+
+/* tucked: the same near-white for both, and a faint edge so each
+   sliver has a line to read by */
+.tst:not([data-open]) .tst-toast:not([data-front]) {
+  background: color-mix(in srgb, var(--fill-on, #17181a) 6%, var(--fill-slab, #ffffff));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--fill-on, #17181a) 8%, transparent);
+}
+
+/* only the front one is read while stacked; the rest are slivers */
+.tst-toast > * {
+  transition: opacity 220ms ease;
+}
+
+.tst:not([data-open]) .tst-toast:not([data-front]) > * {
+  opacity: 0;
+}
+
+.tst-toast .tst-thumb {
+  flex: none;
+  display: block;
+  width: 44px;
+  height: 56px;
+  max-width: none;
+  object-fit: cover;
+  border-radius: calc(var(--tst-r, 0px) * 0.6);
+  background: var(--surface-2);
+  -webkit-user-drag: none;
+}
+
+.tst-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tst-text b {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.01em;
+}
+
+.tst-text span {
+  display: block;
+  font-size: 13px;
+  line-height: 17px;
+  color: var(--tst-mute);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0em;
+}
+
+.tst-act {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 28px;
+  padding: 0 12px;
+  border: 0;
+  /* the demo's pill at its own corner of 20, square at 0 */
+  border-radius: calc(var(--tst-r, 0px) * 0.7);
+  background: var(--tst-wash);
+  color: inherit;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    scale 160ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 160ms ease;
+}
+
+.tst-act:hover {
+  background: color-mix(in srgb, var(--fill-on, #17181a) 11%, var(--fill-slab, #ffffff));
+}
+
+.tst-act:active {
+  scale: 0.96;
+}
+
+.tst-x {
+  flex: none;
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: calc(var(--tst-r, 0px) * 0.7);
+  background: none;
+  color: var(--tst-mute);
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.tst-x svg {
+  display: block;
+}
+
+.tst-x:hover {
+  background: var(--tst-wash);
+  color: var(--fill-on, var(--ink));
+}
+
+.tst .tst-act:focus-visible,
+.tst .tst-x:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--focus, var(--signal, #17181a));
+}

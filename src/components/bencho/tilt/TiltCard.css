@@ -1,0 +1,83 @@
+/* ══ Tilt ═══════════════════════════════════════════════════
+   Adapted from Bencho (blocks/tilt, MIT).
+
+   A picture card that gives under the pointer. Almost nothing
+   is here: the rotation, both gradients and the shadow are
+   written per frame from the pointer's position, and a rule
+   in this file that also had an opinion about any of them
+   would be a second author. What is left is the things that
+   are true whatever the pointer is doing. */
+
+/* The order Tailwind declares its cascade layers in, restated so
+   that it holds even if this sheet is ever loaded ahead of the
+   site's own: `components` must sit above the reset and below the
+   utilities. A second statement of the same order changes nothing. */
+@layer theme, base, components, utilities;
+
+/* The box the caller sizes: as wide as its container, and as
+   tall as the aspect ratio set on it by the component makes it.
+   In a cascade layer so a utility class handed in through
+   `className` wins over these defaults. */
+@layer components {
+  .tlt {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+}
+
+.tlt {
+  /* The frame is what the pointer is measured against and it is
+     deliberately the ONLY thing in here that never moves. It is
+     also a size container: the card inside measures its room
+     (the perspective and the sink) in this box's own height, so
+     the effect is the same at every size the card is drawn. */
+  container-type: size;
+}
+
+.tlt-card {
+  position: absolute;
+  inset: 0;
+  background-color: var(--surface-2);
+  overflow: hidden;
+  /* NO `will-change`. It would hold a composited layer for
+     every copy of this block on the page, permanently, to save
+     one frame on a hover that may never come. The browser
+     promotes this on its own once the transform starts
+     moving. */
+}
+
+/* `cover` in a fixed frame: the crop is the frame's */
+.tlt-card .tlt-img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  border-radius: inherit;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* ── the dent and the rim ───────────────────────────────────
+   One element, two gradients, both placed from the pointer —
+   the dark one under it and the light one at its mirror. It
+   inherits the corner rather than being told one, so the knob
+   only has to reach the card. */
+.tlt-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* whatever the caller lays over the photograph. Above the sheen,
+   so a caption is not dimmed by the dent passing under it. */
+.tlt-over {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}

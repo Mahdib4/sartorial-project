@@ -1,0 +1,257 @@
+/* ══ Like ═════════════════════════════════════════════════
+   Adapted from Bencho (blocks/like, MIT). The heart and its
+   burst; the count that rolled beside it is gone. */
+
+/* The order Tailwind declares its cascade layers in, restated so
+   that it holds even if this sheet is ever loaded ahead of the
+   site's own: `components` must sit above the reset and below the
+   utilities. A second statement of the same order changes nothing. */
+@layer theme, base, components, utilities;
+
+/* What a caller may reasonably want to restyle from outside — the
+   ink the heart is drawn in — sits in a cascade layer so a utility
+   class handed in through `className` (text-white over a dark
+   photograph) wins. The liked "Ink" heart is filled with the same
+   colour, so it follows. */
+@layer components {
+  .lk {
+    position: relative;
+    color: var(--fill-on, var(--ink));
+  }
+}
+
+.lk {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  box-sizing: border-box;
+  width: var(--lk-box, 40px);
+  height: var(--lk-box, 40px);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r, 0px);
+  font: inherit;
+  font-family: var(--font-ui);
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: scale 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── bare: the heart and nothing else ───────────────────────
+   No surface at all, so it can sit on a photograph; the box is
+   only the area a finger can hit. */
+.lk[data-variant="bare"] {
+  background: transparent;
+  border-radius: 0;
+}
+
+/* ── chip: the demo's slab, without its number ──────────────── */
+.lk[data-variant="chip"] {
+  background: var(--fill-slab, var(--card));
+}
+
+[data-stroke="on"] .lk[data-variant="chip"] {
+  box-shadow: inset 0 0 0 1px var(--pane-edge);
+}
+
+.lk:active {
+  scale: 0.96;
+}
+
+/* two rings, a light one and a dark one, so it is found on a
+   photograph of any tone */
+.lk:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--fill-slab, #fff),
+    0 0 0 4px var(--focus, var(--signal, #17181a));
+}
+
+.lk[data-variant="bare"]:focus-visible {
+  box-shadow:
+    inset 0 0 0 2px var(--focus, var(--signal, #17181a)),
+    inset 0 0 0 4px var(--fill-slab, #fff);
+}
+
+.lk-heart {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--lk-size, 20px);
+  height: var(--lk-size, 20px);
+}
+
+.lk-glyph {
+  position: relative;
+  z-index: 1;
+  display: grid;
+}
+
+.lk-glyph svg {
+  display: block;
+}
+
+/* liked: the fill takes its colour. No movement in this alone —
+   a heart that arrives already liked is simply drawn that way. */
+.lk-glyph[data-on] {
+  color: var(--lk-on);
+}
+
+/* pressed: the default landing — squeeze, swell past its size,
+   settle */
+.lk-glyph[data-pop] {
+  animation: lk-pop 520ms cubic-bezier(0.3, 1.5, 0.4, 1) both;
+}
+
+/* the heart is gone while the bloom happens, then springs in
+   from nothing, past its size and back */
+.lk[data-fx="Bloom"] .lk-glyph[data-pop] {
+  animation: lk-heart 760ms cubic-bezier(0.3, 1.6, 0.4, 1) both;
+}
+
+.lk-burst {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  pointer-events: none;
+}
+
+/* ── every length below is the demo's, times --lk-k ─────────
+   The burst was drawn against a 20px heart; --lk-k is this
+   heart's size over 20, so the ring and the confetti stay in
+   proportion to whatever heart they are thrown from. */
+
+/* the bloom: a full disc that grows, then hollows out from the
+   middle into a ring and thins to nothing — a border as wide as
+   the radius is a disc, and a border going to 0 is the hole */
+.lk-bloom {
+  position: absolute;
+  left: calc(-17px * var(--lk-k, 1));
+  top: calc(-17px * var(--lk-k, 1));
+  width: calc(34px * var(--lk-k, 1));
+  height: calc(34px * var(--lk-k, 1));
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: calc(17px * var(--lk-k, 1)) solid #cc8ef5;
+  animation: lk-bloom 560ms cubic-bezier(0.25, 0.8, 0.35, 1) both;
+}
+
+.lk[data-color="Ink"] .lk-bloom {
+  border-color: var(--lk-on);
+  animation-name: lk-bloom-ink;
+}
+
+/* seven spokes, each a pair of dots, thrown as the ring opens */
+.lk-spoke {
+  position: absolute;
+  left: 0;
+  top: 0;
+  rotate: var(--a);
+}
+
+.lk-spoke i {
+  position: absolute;
+  width: calc(5px * var(--lk-k, 1));
+  height: calc(5px * var(--lk-k, 1));
+  margin: calc(-2.5px * var(--lk-k, 1)) 0 0 calc(-2.5px * var(--lk-k, 1));
+  border-radius: 50%;
+  background: var(--c);
+  animation: lk-dot 620ms cubic-bezier(0.2, 0.8, 0.3, 1) 200ms both;
+}
+
+/* the pair sits either side of the spoke, one a little behind */
+.lk-spoke i:first-child {
+  --side: calc(-4px * var(--lk-k, 1));
+  --far: 0px;
+}
+
+.lk-spoke i:last-child {
+  --side: calc(4px * var(--lk-k, 1));
+  --far: calc(-5px * var(--lk-k, 1));
+  width: calc(4px * var(--lk-k, 1));
+  height: calc(4px * var(--lk-k, 1));
+  margin: calc(-2px * var(--lk-k, 1)) 0 0 calc(-2px * var(--lk-k, 1));
+}
+
+/* ── Firework: up and out, then they fall ────── */
+.lk-fw {
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: lk-fw-x 1000ms cubic-bezier(0.2, 0.7, 0.4, 1) var(--d) both;
+}
+
+.lk-fw i {
+  position: absolute;
+  left: calc(-2px * var(--lk-k, 1));
+  top: calc(-2px * var(--lk-k, 1));
+  width: calc(4px * var(--lk-k, 1));
+  height: calc(4px * var(--lk-k, 1));
+  border-radius: 50%;
+  animation: lk-fw-y 1000ms linear var(--d) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lk-glyph[data-pop],
+  .lk-bloom,
+  .lk-spoke i,
+  .lk-fw,
+  .lk-fw i {
+    animation: none;
+  }
+
+  .lk-burst {
+    display: none;
+  }
+}
+
+@keyframes lk-pop {
+  0% { scale: 0.6; }
+  45% { scale: 1.28; }
+  100% { scale: 1; }
+}
+
+@keyframes lk-heart {
+  0%, 28% { scale: 0; }
+  62% { scale: 1.25; }
+  100% { scale: 1; }
+}
+
+@keyframes lk-bloom {
+  0% { scale: 0.15; border-width: calc(17px * var(--lk-k, 1)); border-color: #e5484d; }
+  40% { scale: 1; border-width: calc(17px * var(--lk-k, 1)); border-color: #cc8ef5; }
+  75% { border-width: calc(2px * var(--lk-k, 1)); opacity: 1; }
+  100% { scale: 1.12; border-width: 0; opacity: 0; border-color: #cc8ef5; }
+}
+
+@keyframes lk-bloom-ink {
+  0% { scale: 0.15; border-width: calc(17px * var(--lk-k, 1)); }
+  40% { scale: 1; border-width: calc(17px * var(--lk-k, 1)); }
+  75% { border-width: calc(2px * var(--lk-k, 1)); opacity: 1; }
+  100% { scale: 1.12; border-width: 0; opacity: 0; }
+}
+
+@keyframes lk-dot {
+  0% { translate: calc(12px * var(--lk-k, 1)) var(--side); scale: 1; opacity: 0; }
+  12% { opacity: 1; }
+  100% {
+    translate:
+      calc((18px + var(--fly) * 14px) * var(--lk-k, 1) + var(--far))
+      calc(var(--side) * 1.6);
+    scale: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes lk-fw-x {
+  from { translate: 0 0; }
+  to { translate: var(--x) 0; }
+}
+
+@keyframes lk-fw-y {
+  0% { translate: 0 0; opacity: 1; animation-timing-function: cubic-bezier(0.2, 0.7, 0.4, 1); }
+  45% { translate: 0 var(--y); opacity: 1; animation-timing-function: cubic-bezier(0.5, 0, 0.8, 0.5); }
+  100% { translate: 0 calc(var(--y) + 30px * var(--lk-k, 1)); opacity: 0; }
+}

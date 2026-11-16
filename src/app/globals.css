@@ -1,0 +1,342 @@
+@import "tailwindcss";
+
+/* The site is light-only: `dark:` utilities (used inside the Interior
+   components) only apply under an explicit .dark ancestor, never from the OS. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─────────────────────────────────────────────────────────────
+   SARTORIAL — design tokens
+
+   One warm near-black, one warm paper, hairlines, and a single
+   oxblood accent used only for emphasis. Square corners
+   everywhere. Type is one geometric sans (Jost) with a Didone
+   serif (Bodoni Moda) reserved for the wordmark and italics.
+   ───────────────────────────────────────────────────────────── */
+
+@theme {
+  --color-ink: #1c1b17;
+  --color-ink-2: #45443e;
+  --color-ink-3: #6b6a63;
+  --color-mute: #93928b;
+  --color-line: #dedbd3;
+  --color-line-soft: #ebe9e3;
+  --color-paper: #f5f4f0;
+  --color-bone: #ebe8e1;
+  /* The tint behind studio (product-on-white) photographs. */
+  --color-studio: #f3f3f1;
+  --color-white: #ffffff;
+  --color-accent: #7b2a23;
+  --color-accent-soft: #f3e9e6;
+  --color-ok: #2f6b45;
+
+  --font-sans: "Jost Variable", "Century Gothic", "Futura", system-ui, sans-serif;
+  --font-serif: "Bodoni Moda Variable", "Didot", "Bodoni MT", Georgia, serif;
+
+  --tracking-label: 0.24em;
+  --tracking-display: -0.045em;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --breakpoint-xs: 26rem;
+  --breakpoint-3xl: 112rem;
+}
+
+:root {
+  --header-h: 64px;
+  --banner-h: 36px;
+  --gutter: 16px;
+
+  /* Interior (interior.dev) tokens, mapped to the Sartorial palette */
+  --bezel: #ffffff;
+  --panel: #ffffff;
+  --well: #ffffff;
+  --sub: var(--color-paper);
+  --hairline: rgba(28, 27, 23, 0.14);
+  --hairline-strong: rgba(28, 27, 23, 0.3);
+  --ink: var(--color-ink);
+  --ink-2: var(--color-ink-2);
+  --ink-3: var(--color-ink-3);
+  --accent: var(--color-accent);
+  --accent-soft: var(--color-accent-soft);
+  --moss: var(--color-ok);
+  --flag: #a8392a;
+  --shadow-float: 0 28px 56px -24px rgba(28, 27, 23, 0.25),
+    0 0 0 1px rgba(28, 27, 23, 0.06);
+  --shadow-lift: 0 1px 2px rgba(28, 27, 23, 0.04),
+    0 0 0 1px rgba(28, 27, 23, 0.11);
+  --shadow-well: inset 0 0 0 1px rgba(28, 27, 23, 0.14);
+  --shadow-cap: inset 0 0 0 1px rgba(28, 27, 23, 0.14);
+  --shadow-row: inset 0 0 0 1px rgba(28, 27, 23, 0.07);
+
+  /* Bencho (bencho.dev) tokens, mapped to the Sartorial palette */
+  --font-ui: var(--font-sans);
+  --font-num: var(--font-sans);
+  --bg: #ffffff;
+  --board: #ffffff;
+  --card: var(--color-paper);
+  --surface: var(--color-paper);
+  --surface-2: var(--color-bone);
+  --surface-3: #e2dfd7;
+  --ink-rgb: 28, 27, 23;
+  --ink-4: var(--color-ink-3);
+  --ink-5: var(--color-mute);
+  --on-ink: #ffffff;
+  --on-ink-rgb: 255, 255, 255;
+  --slab: var(--color-ink);
+  --on-slab: #ffffff;
+  --slab-dark: #121210;
+  --fill-slab: #ffffff;
+  --fill-on: var(--color-ink);
+  --fill-on-rgb: 28, 27, 23;
+  --pane: var(--fill-slab);
+  --pane-edge: rgba(28, 27, 23, 0.1);
+  --pane-thumb: rgba(28, 27, 23, 0.07);
+  --inlay: rgba(255, 255, 255, 0.55);
+  --inlay-hi: rgba(28, 27, 23, 0.09);
+  --elev-rgb: 255, 255, 255;
+  --glass-rgb: 255, 255, 255;
+  --shadow-rgb: 28, 27, 23;
+  --wash: 0.06;
+  --pick: var(--color-accent);
+  --signal: var(--color-accent);
+  --focus: var(--color-ink);
+  --ok: var(--color-ok);
+  --ember: #a8392a;
+  color-scheme: light;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --header-h: 72px;
+    --gutter: 20px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-white);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-white);
+}
+
+:focus-visible {
+  outline: 1.5px solid var(--color-ink);
+  outline-offset: 3px;
+}
+
+.on-dark :focus-visible,
+.on-dark:focus-visible {
+  outline-color: #fff;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* ── Type roles ─────────────────────────────────────────────── */
+
+@utility label {
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+@utility label-sm {
+  font-size: 10px;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Giant uppercase headline, tight tracking — the hero voice. */
+@utility display {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+  line-height: 0.9;
+  font-size: clamp(2.75rem, 8.2vw, 7.25rem);
+}
+
+@utility display-md {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+  line-height: 0.92;
+  font-size: clamp(2.25rem, 5.6vw, 5.25rem);
+}
+
+/* Light mixed-case headline — the editorial voice. */
+@utility headline {
+  font-weight: 300;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  font-size: clamp(2rem, 4.6vw, 4.5rem);
+}
+
+@utility headline-sm {
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  font-size: clamp(1.5rem, 2.4vw, 2.125rem);
+}
+
+@utility wordmark {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-optical-sizing: auto;
+}
+
+@utility px-gutter {
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ── Link underline that draws from the left ────────────────── */
+
+.link-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.45s var(--ease-out-expo);
+  padding-bottom: 2px;
+}
+
+.link-draw:hover,
+.link-draw:focus-visible,
+.link-draw[data-active="true"] {
+  background-size: 100% 1px;
+}
+
+.link-under {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  background-size: 100% 1px;
+  padding-bottom: 2px;
+  transition: background-size 0.45s var(--ease-out-expo);
+}
+
+.link-under:hover {
+  background-size: 0% 1px;
+}
+
+/* ── Image hover zoom ───────────────────────────────────────── */
+
+.zoom-frame {
+  overflow: hidden;
+}
+
+.zoom-frame .zoom-target {
+  transition: transform 1.4s var(--ease-out-expo);
+  will-change: transform;
+}
+
+.zoom-frame:hover .zoom-target,
+.zoom-frame:focus-visible .zoom-target {
+  transform: scale(1.045);
+}
+
+/* ── Marquee ────────────────────────────────────────────────── */
+
+@keyframes marquee-x {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes scroll-cue {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  45% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  55% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Room for the fixed header (and the announcement bar while it is showing). */
+@utility pt-header {
+  padding-top: calc(var(--header-h) + var(--banner-h));
+}
+
+/* Sticks just beneath the header, and slides up to the top edge while the
+   header is tucked away (SiteHeader publishes --header-shown as it hides). */
+@utility top-header {
+  top: var(--header-shown, calc(var(--header-h) + var(--banner-h)));
+  transition: top 0.5s var(--ease-out-expo);
+}
