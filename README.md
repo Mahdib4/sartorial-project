@@ -40,7 +40,21 @@ These were not part of the supplied content. Each is one edit in one file.
 | Prices | `price` on any product in `src/data/products.ts` | The piece shows "Price on request" |
 | Size scales | `src/config/site.ts` → `SIZE_SCALES` | Standard menswear scales are used; confirm they match the house |
 | Newsletter | `NEWSLETTER_WEBHOOK_URL` (see `.env.example`) | The sign-up form says the list is not open yet |
-| Logo | `src/components/ui/Wordmark.tsx` | The name is set in spaced Didone capitals |
+
+## The opening animation
+
+The first page a visitor opens shows the Sartorial Dhaka logo assembling itself on ivory: SARTORIAL rises letter by letter, the tiger is drawn above it and inked in, DHAKA settles beneath, and the ivory dissolves into the page (about 5.7 seconds).
+
+- It plays **once per visit** (per browser tab session). Reloading or navigating does not replay it. To see it again, open the site in a new tab or window, or add `?intro` to any address: `http://localhost:3000/?intro`.
+- A click, tap, key press or scroll skips straight to the dissolve.
+- Visitors who ask their system for reduced motion see the finished logo for a moment, then the dissolve.
+- Timing, easing and the ivory colour are CSS variables at the top of `src/components/layout/preloader.css`. The script that decides when it plays is `src/lib/intro-script.ts`.
+
+**The logo.** Every shape in the opening, the header and the footer is the logo's own: `scripts/trace-logo.py` traced the supplied logo (`assets/brand/sartorial-dhaka-logo.jpg`) into one vector path per letter plus the tiger, at their original positions, in `src/components/brand/logo.generated.json`. If the logo changes, replace the image and run (needs Python with `potracer`, `numpy` and `pillow`):
+
+```bash
+python scripts/trace-logo.py assets/brand/sartorial-dhaka-logo.jpg src/components/brand/logo.generated.json
+```
 
 ## How ordering works
 
@@ -66,10 +80,11 @@ src/
     products/[slug]/        Product pages
     bag/ wishlist/ search/ appointments/ bespoke/ client-services/
   components/
+    brand/                  The logo as vector paths (traced from the logo file)
     home/                   Home page sections
     catalog/                Collection and category pages
     product/                Product card, listing (filters, sort), gallery, size picker
-    layout/                 Header, mega menu, bag drawer, search, footer
+    layout/                 Opening animation, header, mega menu, bag drawer, search, footer
     shop/                   Bag lines, enquiry form
     ui/                     Picture, LoopVideo, Button, Icon, Rail …
     interior/               Components adapted from interior.dev
@@ -78,6 +93,8 @@ src/
 scripts/
   build-media.mjs           Turns the client's photos and films into web media
   media.config.mjs          Crops, film stills, trims and the hero edit
+  trace-logo.py             Traces the logo file into the paths in components/brand/
+assets/brand/               The logo file the paths were traced from
 ```
 
 ## Editing the catalogue
@@ -128,7 +145,7 @@ Three open-source (MIT) libraries are used throughout. Their licences are kept a
 
 | Library | Used for |
 | --- | --- |
-| [interior.dev](https://github.com/ddoemonn/interior) (`src/components/interior/`) | Announcement bar, hide-on-scroll header, drawers (bag, menu, filters), accordions, tabs, sort dropdown, filter grid, search-within, segmented controls, carousels, lightbox, modal, tooltips, text reveal, marquee, loading button, form fields, show-more, load-more, scroll-spy |
+| [interior.dev](https://github.com/ddoemonn/interior) (`src/components/interior/`) | Announcement bar, hide-on-scroll header, drawers (bag, menu, filters), accordions, tabs, sort dropdown, filter grid, search-within, segmented controls, carousels, lightbox, modal, tooltips, text reveal, loading button, form fields, show-more, load-more, scroll-spy |
 | [Bencho](https://github.com/cabralorenzo/bencho) (`src/components/bencho/`) | Collections image accordion, wishlist heart, size picker, bag quantity counter, toasts, shop-the-look tilt card, cloth-room card stack, newsletter field |
 | [react-useanimations](https://github.com/useAnimations/react-useanimations) (`src/components/ui/Icon.tsx`) | Animated icons: menu, search, bag, wishlist, play/pause, social |
 

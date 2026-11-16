@@ -2,7 +2,6 @@ import { CategoryBanners } from "@/components/home/CategoryBanners";
 import { CategoryExplorer } from "@/components/home/CategoryExplorer";
 import { CollectionsAccordion } from "@/components/home/CollectionsAccordion";
 import { Craft } from "@/components/home/Craft";
-import { CraftMarquee } from "@/components/home/CraftMarquee";
 import { FilmBand } from "@/components/home/FilmBand";
 import { Hero } from "@/components/home/Hero";
 import { MotionRail, type MotionItem } from "@/components/home/MotionRail";
@@ -129,8 +128,6 @@ export default function HomePage() {
       <div className="mt-20 md:mt-32">
         <Craft film={film(`${C}/suits/bespoke-navy-suit-lapel-canvas-craftsmanship-02`)} still={shot(`${C}/suits/charcoal-double-breasted-bespoke-suit-01`)} />
       </div>
-
-      <CraftMarquee />
     </main>
   );
 }

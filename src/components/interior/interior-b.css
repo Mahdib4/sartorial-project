@@ -1,12 +1,11 @@
 /* ─────────────────────────────────────────────────────────────
    Interior — batch B
-   floating-label · loading-button · logo-marquee · blur-up-image ·
-   text-reveal · segmented-control · filter-grid · load-more ·
-   inline-validation · show-more · press-depth · scroll-spy
+   floating-label · loading-button · text-reveal · segmented-control ·
+   filter-grid · load-more · inline-validation · show-more · scroll-spy
 
    Adapted from interior.dev (MIT) — https://github.com/ddoemonn/interior
 
-   None of these twelve components uses a keyframe, utility class or
+   None of these components uses a keyframe, utility class or
    CSS variable from upstream's app/globals.css: their motion is driven
    by `motion` and their look by Tailwind utilities. (Upstream's global
    prefers-reduced-motion block already exists in src/app/globals.css.)

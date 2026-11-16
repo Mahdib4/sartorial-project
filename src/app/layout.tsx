@@ -1,12 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import "@fontsource-variable/jost";
-import "@fontsource-variable/bodoni-moda";
-import "@fontsource-variable/bodoni-moda/wght-italic.css";
 import "./globals.css";
 import "@/components/interior/interior-a.css";
 import "@/components/interior/interior-b.css";
 import { BagDrawer } from "@/components/layout/BagDrawer";
 import { MobileMenu } from "@/components/layout/MobileMenu";
+import { Preloader } from "@/components/layout/Preloader";
 import { SearchOverlay } from "@/components/layout/SearchOverlay";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -14,6 +13,7 @@ import { Toaster } from "@/components/layout/Toaster";
 import { SITE } from "@/config/site";
 import { searchIndex } from "@/data/catalog";
 import { navGroups, navMenus } from "@/data/navigation";
+import { INTRO_SCRIPT } from "@/lib/intro-script";
 import { ShopProvider } from "@/store/shop";
 
 export const metadata: Metadata = {
@@ -42,8 +42,13 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   const groups = navGroups();
   return (
-    <html lang="en">
+    // The opening animation's script marks <html> before the first paint (see lib/intro-script.ts).
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: INTRO_SCRIPT }} />
+      </head>
       <body className="flex min-h-dvh flex-col">
+        <Preloader />
         <noscript>
           <style>{`[data-reveal],[data-text-reveal] span{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}`}</style>
         </noscript>

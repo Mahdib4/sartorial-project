@@ -1,0 +1,172 @@
+/* ─────────────────────────────────────────────────────────────
+   The opening: the Sartorial Dhaka logo on ivory.
+
+   0.40s  SARTORIAL rises, letter by letter, out of its baseline
+   1.75s  the tiger: its outline drawn outward from the eyes, then inked in
+   3.05s  DHAKA settles beneath
+   4.45s  the logo lifts away; the ivory dissolves into the page (to 5.7s)
+
+   Driven entirely by CSS so it starts with the first paint. The head script
+   (src/lib/intro-script.ts) sets html[data-intro] to:
+     play   running          wait  tab in the background: held
+     leave  skipped by the visitor: dissolve now
+     done   finished         skip  already seen this visit: never shown
+   ───────────────────────────────────────────────────────────── */
+
+.pl {
+  /* palette */
+  --pl-bg: #f6f3ec;
+  --pl-ink: #0d0d0b;
+  /* motion */
+  --pl-settle: cubic-bezier(0.19, 1, 0.22, 1);
+  --pl-draw: cubic-bezier(0.65, 0, 0.35, 1);
+  --pl-fade: cubic-bezier(0.4, 0, 0.2, 1);
+  /* timeline */
+  --pl-word: 0.4s;
+  --pl-word-step: 0.075s;
+  --pl-tiger: 1.75s;
+  --pl-city: 3.05s;
+  --pl-city-step: 0.07s;
+  --pl-leave: 4.45s;
+  --pl-veil: 4.75s;
+
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: var(--pl-bg);
+  color: var(--pl-ink);
+  cursor: default;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  animation: pl-veil-out 0.95s var(--pl-fade) var(--pl-veil) forwards;
+}
+
+/* The composition is drawn in the logo's own proportions, centred both ways. */
+.pl-logo {
+  display: block;
+  width: min(88vw, 800px);
+  height: auto;
+  overflow: visible;
+  fill: currentColor;
+  animation: pl-logo-out 0.5s cubic-bezier(0.55, 0, 1, 0.45) var(--pl-leave) forwards;
+}
+@media (min-width: 768px) {
+  .pl-logo {
+    width: min(70vw, 800px);
+  }
+}
+
+/* SARTORIAL and DHAKA: each letter rises out of its baseline and settles. */
+.pl-glyph {
+  transform-box: fill-box;
+  animation:
+    pl-rise 1.15s var(--pl-settle) calc(var(--pl-word) + var(--pl-i) * var(--pl-word-step)) both,
+    pl-in 0.75s linear calc(var(--pl-word) + var(--pl-i) * var(--pl-word-step)) both;
+}
+.pl-glyph-city {
+  animation:
+    pl-rise 0.95s var(--pl-settle) calc(var(--pl-city) + var(--pl-i) * var(--pl-city-step)) both,
+    pl-in 0.6s linear calc(var(--pl-city) + var(--pl-i) * var(--pl-city-step)) both;
+}
+
+/* The tiger: a short lift as its outline is drawn, then the ink fills in. */
+.pl-tiger {
+  transform-box: fill-box;
+  animation:
+    pl-lift 1.7s var(--pl-settle) var(--pl-tiger) both,
+    pl-in 0.5s linear var(--pl-tiger) both;
+}
+.pl-tiger-lines path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4; /* half of it shows, inside the clip */
+  stroke-linejoin: round;
+  stroke-dasharray: 1 1;
+  opacity: 0;
+  animation:
+    pl-draw 1.25s var(--pl-draw) calc(var(--pl-tiger) + var(--pl-d)) both,
+    pl-lines-out 0.4s var(--pl-fade) calc(var(--pl-tiger) + 1.75s) both;
+}
+.pl-tiger-ink {
+  animation: pl-in 0.85s var(--pl-fade) calc(var(--pl-tiger) + 0.8s) both;
+}
+
+@keyframes pl-rise {
+  from {
+    transform: translateY(104%);
+  }
+}
+@keyframes pl-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes pl-lift {
+  from {
+    transform: translateY(14px);
+  }
+}
+@keyframes pl-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes pl-lines-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes pl-logo-out {
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+/* Two names for the same dissolve: a visitor's skip must start a new animation,
+   not retime the scheduled one (which would end it on the spot). */
+@keyframes pl-veil-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes pl-veil-skip {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+html[data-intro="leave"] .pl {
+  animation: pl-veil-skip 0.7s var(--pl-fade) forwards;
+}
+html[data-intro="wait"] .pl,
+html[data-intro="wait"] .pl * {
+  animation-play-state: paused;
+}
+html[data-intro="skip"] .pl,
+html[data-intro="done"] .pl {
+  display: none;
+}
+
+/* Reduced motion: the finished logo, held for a moment, then the dissolve. */
+@media (prefers-reduced-motion: reduce) {
+  .pl-logo,
+  .pl-glyph,
+  .pl-tiger,
+  .pl-tiger-ink,
+  .pl-tiger-lines path {
+    animation: none;
+  }
+  .pl {
+    animation: pl-veil-out 0.8s var(--pl-fade) 1.2s forwards;
+  }
+}

@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import { ButtonLink } from "@/components/ui/Button";
 import { IconButton } from "@/components/ui/Icon";
 import { LoopVideo, type FilmSource } from "@/components/ui/LoopVideo";
+import { useIntroRevealed } from "@/lib/use-intro";
 
 type HeroProps = {
   desktop: FilmSource;
@@ -16,6 +17,11 @@ type HeroProps = {
 const EASE = [0.16, 1, 0.3, 1] as const;
 const LINES = ["Cut by hand.", "Made for one."];
 
+const fadeUp = (y: number) => ({ hidden: { opacity: 0, y }, shown: { opacity: 1, y: 0 } });
+const LABEL = fadeUp(10);
+const RISE = { hidden: { y: "105%" }, shown: { y: 0 } };
+const ACTIONS = fadeUp(14);
+
 /**
  * The opening frame: the atelier film, full-bleed and silent, with the house
  * line set large over it. A hairline at the foot tracks the film; the control
@@ -23,6 +29,10 @@ const LINES = ["Cut by hand.", "Made for one."];
  */
 export function Hero({ desktop, tablet, mobile }: HeroProps) {
   const reduce = useReducedMotion();
+  // The words wait for the opening animation's curtain to lift, so they are seen arriving.
+  const revealed = useIntroRevealed();
+  const initial = reduce ? false : "hidden";
+  const animate = revealed || reduce ? "shown" : "hidden";
   const [paused, setPaused] = useState(false);
   const bar = useRef<HTMLSpanElement>(null);
 
@@ -48,8 +58,9 @@ export function Hero({ desktop, tablet, mobile }: HeroProps) {
       <div className="px-gutter pb-9 md:pb-12">
         <motion.p
           className="label mb-5 text-white/80 md:mb-7"
-          initial={reduce ? false : { opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+          variants={LABEL}
+          initial={initial}
+          animate={animate}
           transition={{ duration: 1, delay: 0.25, ease: EASE }}
         >
           Bespoke tailoring&ensp;·&ensp;Dhaka
@@ -60,8 +71,9 @@ export function Hero({ desktop, tablet, mobile }: HeroProps) {
             <span key={line} className="block overflow-hidden pb-[0.06em]">
               <motion.span
                 className="block"
-                initial={reduce ? false : { y: "105%" }}
-                animate={{ y: 0 }}
+                variants={RISE}
+                initial={initial}
+                animate={animate}
                 transition={{ duration: 1.25, delay: 0.35 + i * 0.12, ease: EASE }}
               >
                 {line}
@@ -72,8 +84,9 @@ export function Hero({ desktop, tablet, mobile }: HeroProps) {
 
         <motion.div
           className="mt-8 flex flex-col gap-8 md:mt-10 md:flex-row md:items-end md:justify-between"
-          initial={reduce ? false : { opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
+          variants={ACTIONS}
+          initial={initial}
+          animate={animate}
           transition={{ duration: 1.1, delay: 0.75, ease: EASE }}
         >
           <div className="flex flex-col gap-3 xs:flex-row">

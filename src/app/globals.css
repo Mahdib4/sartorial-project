@@ -9,8 +9,8 @@
 
    One warm near-black, one warm paper, hairlines, and a single
    oxblood accent used only for emphasis. Square corners
-   everywhere. Type is one geometric sans (Jost) with a Didone
-   serif (Bodoni Moda) reserved for the wordmark and italics.
+   everywhere. Type is one geometric sans (Jost); the wordmark is
+   the house logo's own lettering (components/ui/Wordmark.tsx).
    ───────────────────────────────────────────────────────────── */
 
 @theme {
@@ -30,7 +30,6 @@
   --color-ok: #2f6b45;
 
   --font-sans: "Jost Variable", "Century Gothic", "Futura", system-ui, sans-serif;
-  --font-serif: "Bodoni Moda Variable", "Didot", "Bodoni MT", Georgia, serif;
 
   --tracking-label: 0.24em;
   --tracking-display: -0.045em;
@@ -207,14 +206,6 @@ button:disabled {
   letter-spacing: -0.03em;
   line-height: 1.12;
   font-size: clamp(1.5rem, 2.4vw, 2.125rem);
-}
-
-@utility wordmark {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  font-optical-sizing: auto;
 }
 
 @utility px-gutter {
