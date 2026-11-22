@@ -97,7 +97,7 @@ export default function HomePage() {
         cta="Explore suits"
         image={shot(`${C}/suits/deep-navy-three-piece-peak-lapel-suit-02`)}
         imageAlt="A man seated in a deep navy three-piece suit with a rust printed tie"
-        products={[card("charcoal-three-piece-bespoke-suit"), card("mid-grey-flannel-two-piece-suit"), card("classic-navy-worsted-blazer"), card("the-classic-crisp-dress-shirt-white")]}
+        products={[card("charcoal-three-piece-bespoke-suit"), card("charcoal-double-breasted-bespoke-suit"), card("classic-navy-worsted-blazer"), card("the-classic-crisp-dress-shirt-white")]}
       />
 
       <section className="py-20 md:py-32">

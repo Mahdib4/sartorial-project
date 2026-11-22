@@ -4,26 +4,35 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/db-migrate.mjs --if-configured && next build",
     "start": "next start",
     "lint": "eslint",
     "media": "node scripts/build-media.mjs",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "node scripts/db-migrate.mjs",
+    "db:check": "node scripts/db-migrate.mjs --check",
+    "media:upload": "node scripts/upload-media-r2.mjs"
   },
   "dependencies": {
     "@fontsource-variable/jost": "^5.3.0",
+    "@neon/config": "^1.14.6",
+    "@neon/env": "^2.1.9",
+    "@vercel/functions": "^3.11.3",
     "clsx": "^2.1.1",
     "framer-motion": "^14.14.0",
     "lucide-react": "^1.73.0",
     "motion": "^14.14.0",
     "next": "16.4.6",
+    "pg": "^8.23.1",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-useanimations": "^3.1.1"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.1175.0",
     "@tailwindcss/turbopack": "4.3.3",
     "@types/node": "^20",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",

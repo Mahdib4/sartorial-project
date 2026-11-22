@@ -38,7 +38,7 @@ export function AppointmentView() {
         kind="appointment"
         initialInterest={product ? product.collectionName : undefined}
         initialNotes={prefill?.interest && !product ? `I would like to ask about ${prefill.interest.toLowerCase()}.` : ""}
-        lines={product ? [{ name: product.name, size: "size to be confirmed", qty: 1, href: product.href }] : []}
+        lines={product ? [{ slug: product.slug, name: product.name, reference: product.reference, category: product.categoryName, size: "To be confirmed", qty: 1, href: product.href }] : []}
       />
     </div>
   );

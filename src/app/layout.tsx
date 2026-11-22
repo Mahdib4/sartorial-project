@@ -14,6 +14,7 @@ import { SITE } from "@/config/site";
 import { searchIndex } from "@/data/catalog";
 import { navGroups, navMenus } from "@/data/navigation";
 import { INTRO_SCRIPT } from "@/lib/intro-script";
+import { mediaUrl } from "@/lib/media";
 import { ShopProvider } from "@/store/shop";
 
 export const metadata: Metadata = {
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     title: `${SITE.name} — Bespoke tailoring, ${SITE.city}`,
     description: SITE.description,
-    images: [{ url: "/media/img/classic/suits/bespoke-tailored-suits-trio-01-1280.webp", width: 1280, height: 891 }],
+    images: [{ url: mediaUrl("img/classic/suits/bespoke-tailored-suits-trio-01-1280.webp"), width: 1280, height: 891 }],
   },
   twitter: { card: "summary_large_image" },
 };

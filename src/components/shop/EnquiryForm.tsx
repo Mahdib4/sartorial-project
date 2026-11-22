@@ -8,7 +8,7 @@ import { ShowMore } from "@/components/interior/show-more";
 import { Button, ButtonAnchor } from "@/components/ui/Button";
 import { SITE } from "@/config/site";
 import { cn } from "@/lib/cn";
-import { composeEnquiry, emailLink, EMAIL_PATTERN, whatsappLink, type EnquiryLine } from "@/lib/enquiry";
+import { composeEnquiry, emailLink, EMAIL_PATTERN, newEnquiryId, recordEnquiry, whatsappLink, type EnquiryLine } from "@/lib/enquiry";
 
 type EnquiryFormProps = {
   kind: "order" | "appointment";
@@ -16,7 +16,7 @@ type EnquiryFormProps = {
   /** Appointment only: preselects the interest toggle. */
   initialInterest?: string;
   initialNotes?: string;
-  /** Called once the visitor has sent or copied the message. */
+  /** Called once the visitor has sent the message. */
   onSent?: () => void;
   className?: string;
 };
@@ -25,9 +25,11 @@ const INTERESTS = ["Heritage", "Classic", "Both"];
 
 /**
  * The enquiry form behind both "send my selection" and "book a fitting".
- * There is no payment step and no server: the form composes one clear message
- * and hands it to the visitor's own WhatsApp or email, addressed to the house,
- * or lets them copy it. Which channels appear depends on src/config/site.ts.
+ * There is no payment step: the form composes one clear message, with a
+ * reference for the enquiry and a reference and link for every piece, and
+ * "Send message" opens the visitor's WhatsApp with it, addressed to the house
+ * number in src/config/site.ts. The same press logs the enquiry in the
+ * database (/api/enquiries) without waiting on it.
  */
 export function EnquiryForm({ kind, lines, initialInterest, initialNotes, onSent, className }: EnquiryFormProps) {
   const [name, setName] = useState("");
@@ -38,12 +40,14 @@ export function EnquiryForm({ kind, lines, initialInterest, initialNotes, onSent
   const [preferredTime, setPreferredTime] = useState("");
   const [notes, setNotes] = useState(initialNotes ?? "");
   const [attempted, setAttempted] = useState(false);
-  const [origin, setOrigin] = useState(SITE.url);
+  // The address and the enquiry's reference are only known in the browser.
+  const [session, setSession] = useState({ origin: SITE.url, id: "" });
+  const { origin, id } = session;
   const [sent, setSent] = useState<null | "whatsapp" | "email" | "copy">(null);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- the origin is only known in the browser
-    setOrigin(window.location.origin);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- see above
+    setSession({ origin: window.location.origin, id: newEnquiryId() });
   }, []);
 
   const nameMissing = name.trim().length < 2;
@@ -52,8 +56,8 @@ export function EnquiryForm({ kind, lines, initialInterest, initialNotes, onSent
   const valid = !nameMissing && !emailBad && !contactMissing;
 
   const message = useMemo(
-    () => composeEnquiry({ kind, name, phone, email, interest: kind === "appointment" ? interest || undefined : undefined, occasion, preferredTime, notes, lines, origin }),
-    [kind, name, phone, email, interest, occasion, preferredTime, notes, lines, origin],
+    () => composeEnquiry({ kind, id, name, phone, email, interest: kind === "appointment" ? interest || undefined : undefined, occasion, preferredTime, notes, lines, origin }),
+    [kind, id, name, phone, email, interest, occasion, preferredTime, notes, lines, origin],
   );
 
   const subject = kind === "order" ? `Order enquiry: ${name.trim() || "website"}` : `Fitting request: ${name.trim() || "website"}`;
@@ -63,10 +67,26 @@ export function EnquiryForm({ kind, lines, initialInterest, initialNotes, onSent
 
   const guard = (event: React.MouseEvent, channel: "whatsapp" | "email") => {
     setAttempted(true);
-    if (!valid) {
+    if (!valid || !id) {
       event.preventDefault();
       return;
     }
+    // The link opens WhatsApp (or the mail app) with the message; the record is logged alongside it.
+    recordEnquiry({
+      id,
+      kind,
+      channel,
+      name,
+      phone,
+      email,
+      interest: kind === "appointment" ? interest || undefined : undefined,
+      occasion,
+      preferredTime,
+      notes,
+      lines: lines.map(({ slug, size, qty }) => ({ slug, size, qty })),
+      message,
+      pageUrl: window.location.href,
+    });
     setSent(channel);
     onSent?.();
   };
@@ -123,8 +143,8 @@ export function EnquiryForm({ kind, lines, initialInterest, initialNotes, onSent
 
       <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
         {wa ? (
-          <ButtonAnchor href={wa} target="_blank" rel="noreferrer" onClick={(e) => guard(e, "whatsapp")} className="flex-1">
-            Send on WhatsApp
+          <ButtonAnchor href={wa} target="_blank" rel="noopener noreferrer" onClick={(e) => guard(e, "whatsapp")} className={cn("flex-1", !mail && "sm:flex-none sm:px-12")}>
+            Send message
           </ButtonAnchor>
         ) : null}
         {mail ? (
@@ -132,28 +152,33 @@ export function EnquiryForm({ kind, lines, initialInterest, initialNotes, onSent
             Send by email
           </ButtonAnchor>
         ) : null}
-        <Button onClick={copy} variant={direct ? "outline" : "solid"} arrow={false} className={cn("flex-1", !direct && "sm:flex-none sm:px-10")}>
-          {sent === "copy" ? "Copied" : "Copy message"}
-        </Button>
+        {!direct ? (
+          // Only when no WhatsApp number or email is configured at all.
+          <Button onClick={copy} arrow={false} className="flex-1 sm:flex-none sm:px-10">
+            {sent === "copy" ? "Copied" : "Copy message"}
+          </Button>
+        ) : null}
       </div>
 
       <p role="status" className="mt-4 min-h-6 text-[13px] leading-relaxed text-ink-3">
         {attempted && !valid
           ? "Please complete the highlighted fields."
           : sent === "whatsapp"
-            ? "WhatsApp has opened with your message. Press send there to reach us."
+            ? `WhatsApp has opened with your message${id ? ` (reference ${id})` : ""}. Press send there to reach us.`
             : sent === "email"
               ? "Your email app has opened with your message. Press send there to reach us."
               : sent === "copy"
                 ? "Your message is on the clipboard, ready to paste into a message or email to us."
-                : direct
-                  ? "Nothing is sent until you press send in WhatsApp or your email app."
-                  : "Copy your message and send it to us by message or email."}
+                : wa
+                  ? "Send message opens WhatsApp with your message to the Sartorial team. Press send there to reach us."
+                  : direct
+                    ? "Nothing is sent until you press send in your email app."
+                    : "Copy your message and send it to us by message or email."}
       </p>
 
       {!direct ? (
         <p className="mt-2 border-l-2 border-accent bg-accent-soft px-4 py-3 text-[12.5px] leading-relaxed text-ink-2">
-          Site setup: add the house WhatsApp number and email address in <code className="font-sans font-medium">src/config/site.ts</code> to show “Send on WhatsApp” and “Send by email” here.
+          Site setup: add the house WhatsApp number and email address in <code className="font-sans font-medium">src/config/site.ts</code> to show “Send message” (WhatsApp) and “Send by email” here.
         </p>
       ) : null}
     </form>

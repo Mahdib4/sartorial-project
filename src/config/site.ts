@@ -24,12 +24,19 @@ export const SITE: SiteConfig = {
   /** Used for <title>, Open Graph and the footer. */
   description:
     "Sartorial is a bespoke tailoring house in Dhaka: heritage sherwanis, achkans and bandhgalas, and classic suits, jackets, shirts and trousers, cut and finished by hand.",
-  /** TODO: the live domain, e.g. "https://www.sartorial.com.bd". Used for canonical URLs and the sitemap. */
-  url: "https://www.example.com",
+  /**
+   * The live address, used for canonical URLs, the sitemap and share images.
+   * Set NEXT_PUBLIC_SITE_URL when the site moves to its own domain (e.g. "https://www.sartorial.com.bd").
+   */
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://sartorial-bd.vercel.app").replace(/\/$/, ""),
 
   contact: {
-    /** TODO: international format, digits only, no "+" — e.g. "8801XXXXXXXXX". Enables "Send on WhatsApp". */
-    whatsapp: "",
+    /**
+     * Where "Send message" delivers orders and fitting requests: WhatsApp, international
+     * format, digits only. +880 1772121294 is the admin number supplied for testing;
+     * set NEXT_PUBLIC_WHATSAPP_NUMBER (or change it here) for the house's own number.
+     */
+    whatsapp: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "8801772121294").replace(/\D/g, ""),
     /** TODO: e.g. "+880 1XXX XXXXXX" */
     phone: "",
     /** TODO: the address enquiries should be emailed to. Enables "Send by email". */

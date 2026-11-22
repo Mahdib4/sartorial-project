@@ -58,7 +58,18 @@ export function BagView() {
             Send your selection
           </h2>
           <p className="mt-3 mb-7 max-w-md text-[14px] leading-relaxed text-ink-3">Leave your details and we will be in touch about the pieces in your bag.</p>
-          <EnquiryForm kind="order" lines={bag.map((line) => ({ name: line.product.name, size: line.size, qty: line.qty, href: line.product.href }))} />
+          <EnquiryForm
+            kind="order"
+            lines={bag.map((line) => ({
+              slug: line.slug,
+              name: line.product.name,
+              reference: line.product.reference,
+              category: line.product.categoryName,
+              size: line.size,
+              qty: line.qty,
+              href: line.product.href,
+            }))}
+          />
         </div>
       </section>
     </div>

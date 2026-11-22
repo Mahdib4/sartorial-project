@@ -46,6 +46,11 @@ export function productsInCollection(collection: CollectionKey): Product[] {
   return PRODUCTS.filter((p) => keys.has(p.category));
 }
 
+/** How the house identifies a piece in an enquiry: its own code where it has one, otherwise its slug. */
+export function productReference(product: Pick<Product, "slug" | "code">): string {
+  return product.code ?? product.slug;
+}
+
 export function productHref(product: Pick<Product, "slug">): string {
   return `/products/${product.slug}`;
 }
@@ -133,6 +138,8 @@ export type IndexEntry = {
   colour: string;
   categoryName: string;
   collectionName: string;
+  /** See productReference(). */
+  reference: string;
   price: number | null;
   keywords: string;
   image: ReturnType<typeof thumb>;
@@ -149,6 +156,7 @@ export function searchIndex(): IndexEntry[] {
       colour: p.colour,
       categoryName: category.name,
       collectionName: collection.name,
+      reference: productReference(p),
       price: p.price ?? null,
       keywords: [p.name, p.colour, p.colourFamily, p.fabric ?? "", category.name, collection.name, p.code ?? "", ...p.occasions]
         .join(" ")

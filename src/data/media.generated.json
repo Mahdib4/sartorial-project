@@ -79,6 +79,58 @@
    "bg": "#ea9f52",
    "name": "Olive Cotton-Twill Safari Jacket - 01"
   },
+  "classic/casual-jackets/olive-cotton-twill-safari-jacket-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAADQBQCdASoUAB4APu1qq08ppiOiMBgIATAdiWIAsR8TAs+zAC/KDqD66HpxEDVei8Ky2IyzYAcAAP6QTrzb6rTPl6qZgquAT2fG8AN/5/mpu+MeTz7AdEhn0TWpOHgfmNLXaW0OUTTLDF/SiU1XC5X3ywOcMe6c8bY3uqhr7HtfjrtMYdxn6AAA",
+   "bg": "#e7af75",
+   "name": "Olive Cotton-Twill Safari Jacket - 02"
+  },
+  "classic/casual-jackets/olive-cotton-twill-safari-jacket-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAABQBQCdASoUAB4APu1mq06ppaOiKA1RMB2JZgCdMoSCmBLrccSz7NA49iysD27cS+SkZaAA/ox7T5OGGPNCXj0iImtkJDLorIeQXrhAA9/J7cbO9IS5cix1XvaY2hQkdiMwOxCcm6wPCDXNfdVCxkK/AdF13Yu3AiOEl42pHecqCYHR1wer66tiHo8ZJt/7UsMAAA==",
+   "bg": "#d29143",
+   "name": "Olive Cotton-Twill Safari Jacket - 03"
+  },
+  "classic/casual-jackets/olive-cotton-twill-safari-jacket-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAAAwBQCdASoUAB4APu1qrVEppaQiqAqpMB2JZACdMuz1cPvALw9w66W+V5OzZX2AUxftQAD84AHooV5+dc8UbIHb8ZZzE8T5fLX0S0SXfvN199KWrE3xPZH/SCeHkK8Yv9A4Ji21CxZSoD+M8ZTH6pfal1cA01yqs40lPw+UbjeldymRnrPzsGtW38od9Fjr1bs30Ors/iAAAA==",
+   "bg": "#a9723f",
+   "name": "Olive Cotton-Twill Safari Jacket - 04"
+  },
+  "classic/casual-jackets/olive-cotton-twill-safari-jacket-05": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABQBQCdASoUAB4APu1oq08ppiOiMBgIATAdiWYAnTMhgTF1V8fcIE1rNj5aplxWdmuk8zAA/q7rntqBOpb0guL55d/xGqtNAOpvtq+ufxvuOLQea9vHaH/hHcoCTD0rE7ZLV0p3EWOxU89zslfCGat9N0EOfd1VuFYxqDTH53HGX3KIF0Eb1TbmmgRRYAAA",
+   "bg": "#e69949",
+   "name": "Olive Cotton-Twill Safari Jacket - 05"
+  },
   "classic/casual-jackets/terracotta-casual-overshirt-jacket-01": {
    "w": 1920,
    "h": 2880,
@@ -91,6 +143,58 @@
    "blur": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAADwBACdASoUAB4APuFUpE2opCOiN/qoARAcCWIAnS+gAcdoLW7OS6IEw3828s5l2wAA/u1IWKHZL2Qnf8+H79pEfAsKoULgPtrivCioNphMZRWo3EZjZLbQQFfIs8E+scy2WnV7EYAnHJyWpj1KMGMaOCVfCwavi3OO6l2POtjaoAAA",
    "bg": "#e6b383",
    "name": "Terracotta Casual Overshirt Jacket - 01"
+  },
+  "classic/casual-jackets/terracotta-casual-overshirt-jacket-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAAAwBQCdASoUAB4APu1orE+ppiQiMBgIATAdiUAVJHXgFWIoVFxN0tl8WQmtQMWnIqT4gAD+7WF3koLtomP1pSmLKwuiha2Gbi4d2HWAXoc2H0evnP6CA/wg6kQItvZ9IBOsIy7lacFoqYtWgNeE5I1oCrskDyhgRR6qC4BuIOK3Uz5W7n7m63dAAAA=",
+   "bg": "#e4b694",
+   "name": "Terracotta Casual Overshirt Jacket - 02"
+  },
+  "classic/casual-jackets/terracotta-casual-overshirt-jacket-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAAAQBQCdASoUAB4APu1irFAppSQisBgIATAdiUAWI3JwHUZlSUJnZr92iKDLvPPHSdXAAP7tWFGfIAbYLLlwaBDmbUr4OTJDAW7c1hMJWt0NPjFpzJTVX7i3PTZtCU5aXvfIQV7vwF69HC1UnQ5q/GaKjoFoIo3kXQPXx/R99hN8AA==",
+   "bg": "#efcdb0",
+   "name": "Terracotta Casual Overshirt Jacket - 03"
+  },
+  "classic/casual-jackets/terracotta-casual-overshirt-jacket-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAADQBACdASoUAB4APu1qrVEppaQiqAqpMB2JQBXJeBAT79RPNexlWnOUGGbfmLA4AAD+CAw+Xe6jK+0EBacY6nsRmT8B5ItM2uy1sX0rtvntzbgZqCrhf/qjz7JPMLugWzbXQkIf2YZt2440cERF87hbi7YhAK2UC8AAAA==",
+   "bg": "#b49881",
+   "name": "Terracotta Casual Overshirt Jacket - 04"
+  },
+  "classic/casual-jackets/terracotta-casual-overshirt-jacket-05": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAABQBQCdASoUAB4APt1WpU2opKOiN/qoARAbiUATpmhYVJfW/Ripp2Tkam6/VTsUGzk+QAAA/kGvjl6hZAPJyt8Rofja0oBAG2AAeA4BYVcGrnsl/aBOp3Qdnq2bgwk+bWhTUh5FNh5tZZQU5mP9VWMsjTf5UdMlAkAAAA==",
+   "bg": "#86533b",
+   "name": "Terracotta Casual Overshirt Jacket - 05"
   },
   "classic/shirts/bespoke-blue-chambray-and-poplin-shirts-stack-01": {
    "w": 1920,
@@ -995,6 +1099,45 @@
    "bg": "#ecb782",
    "name": "Tailored Single-Pleat Trouser Dark Brown - 01"
   },
+  "classic/trousers/tailored-single-pleat-trouser-dark-brown-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAABwBQCdASoUAB4APu1qrVCppaQiqAqpMB2JZgCxHt686BSIXj9iyn/jmRPYW6dCMEUe850wAPefrweFmWL8wNtOotS6t8gPiwvfxSdQNlZwjnxY6yOIlei+qsrs6tA6ubGYJH2kKVLlss6zjvIz4MkbmjTOxZt916jQ3uksSjw+TkGIEB1aF5g0xrdv7qjFV+ojG6w/Eq7qgAAA",
+   "bg": "#d69356",
+   "name": "Tailored Single-Pleat Trouser Dark Brown - 02"
+  },
+  "classic/trousers/tailored-single-pleat-trouser-dark-brown-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAADQBACdASoUAB4APuVep02pJSOiN/VYASAciWIAnQAQ8NvNhHdcsdw07v9jyXPOoAD+xeHtUgIev0Zu4UyiiQfjqCbvIJbN/52UAxbQCjbEuc9lPXtysQMh69+iUQC6bQhss5LDh9eh4TTG92/0Ii0gNgs0FP3KN6mmAAAA",
+   "bg": "#ae8060",
+   "name": "Tailored Single-Pleat Trouser Dark Brown - 03"
+  },
+  "classic/trousers/tailored-single-pleat-trouser-dark-brown-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAwBQCdASoUAB4APu1gqU2ppSQiMBgMATAdiWYAnTNMQRjjHDrRLg/uBZNp9e9q18c8AAD3sXR5iT/++y/+I9eFI4XBNQHkyxx/UesLjzJaoA/l9Yy4WEYoz8URIZ4vpF8XL7fOgT8iNhLFQeEygpHJxxs2CFUYFVVQMVkbeTVBu6dzTFRvaS+mnnbAAAAA",
+   "bg": "#ca9752",
+   "name": "Tailored Single-Pleat Trouser Dark Brown - 04"
+  },
   "classic/trousers/tailored-twill-trouser-dark-brown-01": {
    "w": 1920,
    "h": 1280,
@@ -1120,6 +1263,19 @@
    "blur": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAACwBQCdASoUAB4APu1mq0+ppSOiMBgIATAdiWoAsR7VPgAVCD2N1EsJOltaLZVNZJNp7Xgq1QAA/uffBkSyvnbXj4NRfzMKKm+0HtTIzu/rumn6fT2DIQhR2iKIoUbIviWxLWm9Axaekss+bixrihJuu3wp7nUJF9Vnbvb8yQLDU8RBw0IuCyXqEzAcBzFFula8zDynA2EAAA==",
    "bg": "#f8c487",
    "name": "Tailored Wool Drawstring Trouser Mid Grey - 03"
+  },
+  "classic/trousers/tailored-wool-drawstring-trouser-mid-grey-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABwBQCdASoUAB4APu1mq04ppaQiMAgBMB2JYgCdMsu7KCnDfR5Jcw66Rptx8Q/uBBv2LFvAAP7uBiPTSBToXEa0fwpQLViv/pTwIUpcEuCc9x6VmEZFkCdzHro/SvKTYrJYmzmKv6c2UEcVWgc/JONIyhAblio7s3fPCP4Te6zA7KWiW/WVpJrBWrWVEbAA",
+   "bg": "#cda77c",
+   "name": "Tailored Wool Drawstring Trouser Mid Grey - 04"
   },
   "classic/trousers/tailored-wool-flannel-trouser-charcoal-grey-01": {
    "w": 1920,
@@ -1984,6 +2140,188 @@
    "bg": "#201a15",
    "name": "Champagne Gold Embroidered Achkan - 04 Alt"
   },
+  "heritage/achkans/ivory-gold-lattice-brocade-achkan-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAACwAwCdASoUABkAPu1oq02ppiQsMAgBgB2JZQDA3CFR2eBXhVFlwAD+UcSoH/4mQzMFanJdtwgJWWP6/AUZrltLPJPh3YIJ8PhqWvu7JtlVPEIuw+gAAA==",
+   "bg": "#aa998c",
+   "name": "Ivory Gold Lattice Brocade Achkan - 01"
+  },
+  "heritage/achkans/ivory-gold-lattice-brocade-achkan-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAABQBACdASoUABkAPuVep02pJSOiMAwBIByJYwCdM1XDSw1uJakm4Hlhb/R4AP5SGEs4QX+s5uG8fQfqf1ZK2CShBI3f8iSmunwoXSPQ/2TSPNUTA6uXeZ2GVA53sbTugAA=",
+   "bg": "#a98564",
+   "name": "Ivory Gold Lattice Brocade Achkan - 02"
+  },
+  "heritage/achkans/ivory-gold-lattice-brocade-achkan-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABwBACdASoUAB4APu1sqk+ppiOiMBgIATAdiWUAuwABitnSAX4gq3OOkmxLAAD+VAlZPpiOnyRYzO3GEDU9HNoQnaMotS0iEGE3Yc1ZDOmi5lPK6AHcq6cNt7zYjteRDMhVBc2XF7T6pK+jMHKm/Xe94ya28alv3PRUAAAA",
+   "bg": "#a6978c",
+   "name": "Ivory Gold Lattice Brocade Achkan - 03"
+  },
+  "heritage/achkans/ivory-paisley-jacquard-achkan-01": {
+   "w": 1920,
+   "h": 2401,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADwAwCdASoUABkAPu1oq08ppiOiMBgIATAdiWcAuwAH+WHkePbgyZGcAPcCz6OzSkxCbTzv8CuU4ooR3OI6sB/k3vMOE0l150FF+UEbdV9t7ftSAAA=",
+   "bg": "#9c8879",
+   "name": "Ivory Paisley Jacquard Achkan - 01"
+  },
+  "heritage/achkans/ivory-paisley-jacquard-achkan-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAACQAwCdASoUAB4APuVepk2pJSOiMAwBIByJZQCdABMp3m2yhH6cANblxxI7H3+Nahxgmd98oflF6SA8P4VGsIQKlHrqp2pNXlAvigZRJKPC6IaQdOifiAAA",
+   "bg": "#8f7561",
+   "name": "Ivory Paisley Jacquard Achkan - 02"
+  },
+  "heritage/achkans/ivory-paisley-jacquard-achkan-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAQBQCdASoUAB4APulgo02pJaMiMAwBIB0JZQC/OBh0s3ZFb4hhThVHErMV0MTiP1UgAPxU+c+A130QtVB89rLCKb1cn5oibpzal4boBLccmgRX63QfX4qvpnq/yKy2Ol6zR3zAClW8/3mMAAA=",
+   "bg": "#a9917f",
+   "name": "Ivory Paisley Jacquard Achkan - 03"
+  },
+  "heritage/achkans/maroon-velvet-embroidered-collar-achkan-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwBACdASoUABkAPuVeo02pJSMiMAwBIByJYwCdMoAB9yIKCImKzf/QOSJQ26ErqgAA1lnJ+zm7Ymhr9Odczck8rW5eR4VjUE8W+S8MMQIveV/DxLeBdB5vgiXO1s8hpt/4IBh80AAAAA==",
+   "bg": "#b38f6e",
+   "name": "Maroon Velvet Embroidered-Collar Achkan - 01"
+  },
+  "heritage/achkans/maroon-velvet-embroidered-collar-achkan-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAAAwBQCdASoUAB4APu1iqU2ppaOiMAgBMB2JYwCuHBexpOnk7nRdu3EixLIf+XHtD7goAAD3Him0z0upGtVdSY/voC7nHwUyewgDW8YFEdy1fCMaIjYdVTDJicuYgjVY6g0tQKYrRXhyk5zeul8sF9OEjYesyh+pmlAAAA==",
+   "bg": "#9c8170",
+   "name": "Maroon Velvet Embroidered-Collar Achkan - 02"
+  },
+  "heritage/achkans/mauve-brocade-offset-placket-achkan-01": {
+   "w": 1920,
+   "h": 2399,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwBACdASoUABkAPu1mp02ppiOiMBgMATAdiWUAygAGsUt/VZ2PsW3E9AAA1FVnma2xNMP6aUwzCiEFlydbyoevDThyQUCvI9l9hQbTbsXClxvqYVDjYDuoAAA=",
+   "bg": "#957b69",
+   "name": "Mauve Brocade Offset-Placket Achkan - 01"
+  },
+  "heritage/achkans/mauve-brocade-offset-placket-achkan-02": {
+   "w": 1920,
+   "h": 2401,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAwCdASoUABkAPu1gqk2ppSQiMBgMATAdiWUAtsgq9DqQ4Y2W0wAA1sdALnjeq0E9Z3PCrAB1uvG6FXhjb8FnRbVzIUoTIGjdTtb+dNsgkVhDw/V9iQAA",
+   "bg": "#8c6f57",
+   "name": "Mauve Brocade Offset-Placket Achkan - 02"
+  },
+  "heritage/achkans/mauve-brocade-offset-placket-achkan-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAABQBACdASoUAB4APuFcqE2opSQiMAwBEBwJZQC7ABVbhVgPrUePzmTyadYAAPceJm/iC3pHCeTA8odenY7LK9jSHvG6DGK2nO4QZhe7hppEmdv9H7qobR4iDHma12Bv6YvMhf/Vm6+kAAAA",
+   "bg": "#947d6d",
+   "name": "Mauve Brocade Offset-Placket Achkan - 03"
+  },
+  "heritage/achkans/midnight-navy-tailored-achkan-01": {
+   "w": 1920,
+   "h": 2401,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAABwBACdASoUABkAPu1iqk+ppSOiMBgIATAdiUATplAAIM7uQMzQ+36OYew3gADKkg4EfUgJbJ0/lm1mchEh8TERhAjZBrG8Phes/5u3SJ/JemDBqqG0ZTLwI+F8OQEFNKx6f8Z3Fpw9oLtCuyTsIAAA",
+   "bg": "#8f7662",
+   "name": "Midnight Navy Tailored Achkan - 01"
+  },
+  "heritage/achkans/midnight-navy-tailored-achkan-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADQBACdASoUABkAPu1iqE2ppaOiMAgBMB2JYwCdMxgB9yGs+gU22PASji+zJ6o+AAD3HtC4/4ITi6Y/CwfCm2BF2sKFm2Z4uJdeIm513JdjxREOohk3kd9iNzLZM1CBUQQIuVOUfC2AAA==",
+   "bg": "#99775b",
+   "name": "Midnight Navy Tailored Achkan - 02"
+  },
+  "heritage/achkans/midnight-navy-tailored-achkan-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAABQBQCdASoUAB4APu1urVCppqQiqAqpMB2JQBOmYZ5jArSWCnWTVVjzksUQdrnxiIOlPwAA/FAw/w4RgNFmlDznrI2r3N7NzLdMbhPXhysYKkQmffKR/a2AytCr59caGm+FB8kmw5/N9+EkKHtakwkZa1a9eAp5QISNwz9oxsT7RhyjomV3p9y1wAA=",
+   "bg": "#a68770",
+   "name": "Midnight Navy Tailored Achkan - 03"
+  },
   "heritage/achkans/mocha-brown-silk-embroidered-collar-achkan-01": {
    "w": 1920,
    "h": 2880,
@@ -2152,6 +2490,19 @@
    "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAACQBACdASoUABkAPu1mq04ppaQiMAgBMB2JZwDOdCHJ8S1UACoHsaki4I7CKAAA/vQqcF+KgrLfT/7zxCAdDtbVKzf0E9WpQAa/rPpO0PH6AM7mQ9dAAA==",
    "bg": "#050304",
    "name": "Black Brass-Button Bandhgala Suit - 03"
+  },
+  "heritage/bandhgala-suits/black-brass-button-bandhgala-suit-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAACwBACdASoUAB4APt1cpE2opSOiN/qoARAbiWcAAFuZ5IJzGWtfZcAuWiCSPeaAAP70KnB4yEjcJL7GwC6X4J4XPLwC0mG2i2v9ztNY+GjoMVMg5rjHvVNEp+jx3kOvFAAAAA==",
+   "bg": "#0e0d0e",
+   "name": "Black Brass-Button Bandhgala Suit - 04"
   },
   "heritage/bandhgala-suits/midnight-navy-bandhgala-suit-01": {
    "w": 1920,
@@ -2477,6 +2828,19 @@
    "blur": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADwBACdASoUAB4APt1epE2opaOiN/qoARAbiWUAuwAh33Ok0I3KOtIv1EMFpbXtrYAA/uv0/8+ELWR3iIGZBqaIYz5DKqcOvYImH0+FrwJoeW0XTlj7c8RFl0bRmkXH2Uvgpo8vn+ls7vIrDNgAAA==",
    "bg": "#5e4d41",
    "name": "Sage Green Brocade Nehru Jacket - 03"
+  },
+  "heritage/jodhpuri-jackets/sage-green-brocade-nehru-jacket-04": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAABwBACdASoUABkAPuFeqk2opSQiMAwBEBwJZwDMWCHhbDG2NN4Lteb9lt0yAAD+9XkSehCAla+Jzil2zwANVtuMkvFrXl7mBAImyMh4CT0AAAAA",
+   "bg": "#1a1816",
+   "name": "Sage Green Brocade Nehru Jacket - 04"
   },
   "heritage/jodhpuri-jackets/taupe-silk-wool-nehru-jacket-01": {
    "w": 1920,

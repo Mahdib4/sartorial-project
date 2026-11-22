@@ -36,7 +36,20 @@ export type Film = {
   audio: boolean;
 };
 
-const imgPath = (id: string, width: number) => `/media/img/${id}-${width}.webp`;
+/**
+ * Where the web-ready media are served from. Empty: from this site (public/media/).
+ * Set NEXT_PUBLIC_MEDIA_URL to the Cloudflare R2 bucket's public address (its
+ * r2.dev URL or, better, a custom domain) once `npm run media:upload` has copied
+ * public/media there; every photo, film and poster then loads from the bucket.
+ */
+const MEDIA_BASE = (process.env.NEXT_PUBLIC_MEDIA_URL ?? "").replace(/\/+$/, "");
+
+/** The URL of a file under public/media, e.g. mediaUrl("img/a-480.webp"). */
+export function mediaUrl(path: string): string {
+  return `${MEDIA_BASE}/media/${path.replace(/^\/+/, "")}`;
+}
+
+const imgPath = (id: string, width: number) => mediaUrl(`img/${id}-${width}.webp`);
 
 export function hasImage(id: string): boolean {
   return id in IMAGES;
@@ -82,11 +95,11 @@ export function thumb(id: string): Pick<Shot, "id" | "src" | "srcSet" | "width" 
 export function film(id: string): Film {
   const m = VIDEOS[id];
   if (!m) throw new Error(`Unknown video id "${id}". Run "npm run media" or check the id.`);
-  const posterPath = (w: number) => `/media/video/${id}-poster-${w}.webp`;
+  const posterPath = (w: number) => mediaUrl(`video/${id}-poster-${w}.webp`);
   const widths = m.poster.widths;
   return {
     id,
-    src: `/media/video/${id}.mp4`,
+    src: mediaUrl(`video/${id}.mp4`),
     width: m.w,
     height: m.h,
     duration: m.duration,

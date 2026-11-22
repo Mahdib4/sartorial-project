@@ -112,8 +112,6 @@ export function Hero({ desktop, tablet, mobile }: HeroProps) {
               className="h-11 w-11 border border-white/40 text-white hover:opacity-100 hover:border-white"
             />
             <p className="text-[12px] leading-snug tracking-[0.04em]">
-              An art film by Sheikh Ali
-              <br />
               <Link href="/bespoke#film" className="link-under text-white">
                 Watch it in full
               </Link>

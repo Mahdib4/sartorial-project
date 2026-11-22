@@ -1,9 +1,24 @@
 import { SITE } from "@/config/site";
 
-export type EnquiryLine = { name: string; size: string; qty: number; href: string; reference?: string };
+export type EnquiryLine = {
+  /** The product's slug: its address and its key in the catalogue. */
+  slug: string;
+  name: string;
+  /** The house code where the product has one (e.g. "S0001720"), otherwise the slug. */
+  reference: string;
+  /** e.g. "Achkans" */
+  category: string;
+  size: string;
+  qty: number;
+  href: string;
+};
+
+export type EnquiryKind = "order" | "appointment";
 
 export type EnquiryDetails = {
-  kind: "order" | "appointment";
+  kind: EnquiryKind;
+  /** The enquiry's own reference, quoted in the message and stored with it. */
+  id: string;
   name: string;
   phone: string;
   email: string;
@@ -17,10 +32,30 @@ export type EnquiryDetails = {
   origin: string;
 };
 
-/** The plain-text message a visitor sends us, by whichever channel. */
+/**
+ * A short reference for one enquiry, e.g. "SRT-261122-7KQ3": the date it was
+ * made and four random characters. Made in the visitor's browser, so it can be
+ * in the WhatsApp message the moment they press send.
+ */
+export function newEnquiryId(now = new Date()): string {
+  const date = [now.getFullYear() % 100, now.getMonth() + 1, now.getDate()].map((n) => String(n).padStart(2, "0")).join("");
+  const alphabet = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ"; // no 0/O or 1/I to misread
+  const bytes = new Uint8Array(4);
+  crypto.getRandomValues(bytes);
+  return `SRT-${date}-${Array.from(bytes, (b) => alphabet[b % alphabet.length]).join("")}`;
+}
+
+export const ENQUIRY_ID_PATTERN = /^SRT-\d{6}-[23456789A-HJ-NP-Z]{4}$/;
+
+/**
+ * The plain-text message sent to the house on WhatsApp. WhatsApp shows *text*
+ * in bold. Every piece carries its reference and its link, so the house can
+ * tell exactly which garment is meant.
+ */
 export function composeEnquiry(d: EnquiryDetails): string {
   const out: string[] = [];
-  out.push(d.kind === "order" ? `Order enquiry from the ${SITE.name} website` : `Fitting request from the ${SITE.name} website`);
+  out.push(d.kind === "order" ? `*New order enquiry: ${SITE.name} website*` : `*Fitting request: ${SITE.name} website*`);
+  if (d.id) out.push(`Reference: ${d.id}`);
   out.push("");
   out.push(`Name: ${d.name.trim()}`);
   if (d.phone.trim()) out.push(`Phone: ${d.phone.trim()}`);
@@ -29,10 +64,13 @@ export function composeEnquiry(d: EnquiryDetails): string {
   if (d.occasion?.trim()) out.push(`Occasion: ${d.occasion.trim()}`);
   if (d.preferredTime?.trim()) out.push(`Preferred time: ${d.preferredTime.trim()}`);
   if (d.lines.length) {
+    const pieces = d.lines.reduce((n, l) => n + l.qty, 0);
     out.push("");
-    out.push(d.kind === "order" ? "Selection:" : "Pieces of interest:");
+    out.push(d.kind === "order" ? `*Selection (${pieces} piece${pieces === 1 ? "" : "s"})*` : "*Pieces of interest*");
     d.lines.forEach((line, i) => {
-      out.push(`${i + 1}. ${line.name} · ${line.size}${line.qty > 1 ? ` × ${line.qty}` : ""}`);
+      out.push(`${i + 1}. ${line.name} (${line.category})`);
+      out.push(`   Product ref: ${line.reference}`);
+      out.push(`   Size: ${line.size} · Qty: ${line.qty}`);
       out.push(`   ${d.origin}${line.href}`);
     });
   }
@@ -43,8 +81,14 @@ export function composeEnquiry(d: EnquiryDetails): string {
   return out.join("\n");
 }
 
-export function whatsappLink(message: string): string | null {
+/** The house WhatsApp number as digits, or null if none is configured. */
+export function whatsappNumber(): string | null {
   const number = SITE.contact.whatsapp.replace(/\D/g, "");
+  return number || null;
+}
+
+export function whatsappLink(message: string): string | null {
+  const number = whatsappNumber();
   return number ? `https://wa.me/${number}?text=${encodeURIComponent(message)}` : null;
 }
 
@@ -53,3 +97,38 @@ export function emailLink(message: string, subject: string): string | null {
 }
 
 export const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+/** What the browser posts to /api/enquiries alongside opening WhatsApp. */
+export type EnquiryRecord = {
+  id: string;
+  kind: EnquiryKind;
+  channel: "whatsapp" | "email";
+  name: string;
+  phone: string;
+  email: string;
+  interest?: string;
+  occasion?: string;
+  preferredTime?: string;
+  notes: string;
+  lines: Array<Pick<EnquiryLine, "slug" | "size" | "qty">>;
+  message: string;
+  pageUrl: string;
+};
+
+/**
+ * Log an enquiry with the house's database. Fire-and-forget: `keepalive` lets
+ * the request finish while the browser hands over to WhatsApp, and a missing
+ * or unreachable database never stands between a customer and the house.
+ */
+export function recordEnquiry(record: EnquiryRecord): void {
+  try {
+    void fetch("/api/enquiries", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(record),
+      keepalive: true,
+    }).catch(() => {});
+  } catch {
+    // Never block sending.
+  }
+}

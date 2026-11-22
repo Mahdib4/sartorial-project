@@ -462,7 +462,11 @@ export const PRODUCTS: Product[] = [
     "name": "Olive Cotton-Twill Safari Jacket",
     "category": "classic/casual-jackets",
     "images": [
-      "classic/casual-jackets/olive-cotton-twill-safari-jacket-01"
+      "classic/casual-jackets/olive-cotton-twill-safari-jacket-01",
+      "classic/casual-jackets/olive-cotton-twill-safari-jacket-02",
+      "classic/casual-jackets/olive-cotton-twill-safari-jacket-03",
+      "classic/casual-jackets/olive-cotton-twill-safari-jacket-04",
+      "classic/casual-jackets/olive-cotton-twill-safari-jacket-05"
     ],
     "colour": "Olive",
     "colourFamily": "Green",
@@ -484,7 +488,11 @@ export const PRODUCTS: Product[] = [
     "name": "Terracotta Casual Overshirt Jacket",
     "category": "classic/casual-jackets",
     "images": [
-      "classic/casual-jackets/terracotta-casual-overshirt-jacket-01"
+      "classic/casual-jackets/terracotta-casual-overshirt-jacket-01",
+      "classic/casual-jackets/terracotta-casual-overshirt-jacket-02",
+      "classic/casual-jackets/terracotta-casual-overshirt-jacket-03",
+      "classic/casual-jackets/terracotta-casual-overshirt-jacket-04",
+      "classic/casual-jackets/terracotta-casual-overshirt-jacket-05"
     ],
     "colour": "Terracotta",
     "colourFamily": "Brown",
@@ -941,7 +949,10 @@ export const PRODUCTS: Product[] = [
     "name": "Tailored Single-Pleat Trouser Dark Brown",
     "category": "classic/trousers",
     "images": [
-      "classic/trousers/tailored-single-pleat-trouser-dark-brown-01"
+      "classic/trousers/tailored-single-pleat-trouser-dark-brown-01",
+      "classic/trousers/tailored-single-pleat-trouser-dark-brown-02",
+      "classic/trousers/tailored-single-pleat-trouser-dark-brown-03",
+      "classic/trousers/tailored-single-pleat-trouser-dark-brown-04"
     ],
     "colour": "Dark brown",
     "colourFamily": "Brown",
@@ -965,7 +976,8 @@ export const PRODUCTS: Product[] = [
     "images": [
       "classic/trousers/tailored-wool-drawstring-trouser-mid-grey-01",
       "classic/trousers/tailored-wool-drawstring-trouser-mid-grey-02",
-      "classic/trousers/tailored-wool-drawstring-trouser-mid-grey-03"
+      "classic/trousers/tailored-wool-drawstring-trouser-mid-grey-03",
+      "classic/trousers/tailored-wool-drawstring-trouser-mid-grey-04"
     ],
     "colour": "Mid grey",
     "colourFamily": "Grey",
@@ -1129,6 +1141,129 @@ export const PRODUCTS: Product[] = [
     ]
   },
   {
+    "slug": "ivory-paisley-jacquard-achkan",
+    "name": "Ivory Paisley Jacquard Achkan",
+    "category": "heritage/achkans",
+    "images": [
+      "heritage/achkans/ivory-paisley-jacquard-achkan-01",
+      "heritage/achkans/ivory-paisley-jacquard-achkan-02",
+      "heritage/achkans/ivory-paisley-jacquard-achkan-03"
+    ],
+    "colour": "Ivory",
+    "colourFamily": "Ivory",
+    "fabric": "Jacquard",
+    "occasions": [
+      "Wedding",
+      "Festive"
+    ],
+    "summary": "An ivory achkan in a tone-on-tone paisley jacquard, with an embroidered collar and covered buttons.",
+    "description": "Paisley and fine floral sprays woven ivory on ivory, so the pattern only shows where the light falls on it. The band collar is embroidered in metallic thread, and a long run of fabric-covered buttons closes the front from collar to hem. Worn over ivory trousers.",
+    "details": [
+      "Knee-length achkan with band collar",
+      "Ivory paisley jacquard",
+      "Embroidered collar and fabric-covered buttons; chest pocket",
+      "Made to measure; cloth, lining and details are confirmed at your fitting"
+    ]
+  },
+  {
+    "slug": "ivory-gold-lattice-brocade-achkan",
+    "name": "Ivory Gold Lattice Brocade Achkan",
+    "category": "heritage/achkans",
+    "images": [
+      "heritage/achkans/ivory-gold-lattice-brocade-achkan-01",
+      "heritage/achkans/ivory-gold-lattice-brocade-achkan-02",
+      "heritage/achkans/ivory-gold-lattice-brocade-achkan-03"
+    ],
+    "colour": "Ivory and gold",
+    "colourFamily": "Ivory",
+    "fabric": "Brocade",
+    "occasions": [
+      "Wedding",
+      "Festive"
+    ],
+    "summary": "An ivory brocade achkan woven with a soft gold diamond lattice.",
+    "description": "A geometric brocade: concentric diamonds in soft gold across an ivory ground, matched down the front and around the sleeves. Self-covered buttons run from the band collar to the hem, with buttoned cuffs and a pocket at the chest.",
+    "details": [
+      "Knee-length achkan with band collar",
+      "Ivory and gold lattice brocade",
+      "Self-covered buttons; buttoned cuffs; chest pocket",
+      "Made to measure; cloth, lining and details are confirmed at your fitting"
+    ]
+  },
+  {
+    "slug": "mauve-brocade-offset-placket-achkan",
+    "name": "Mauve Brocade Offset-Placket Achkan",
+    "category": "heritage/achkans",
+    "images": [
+      "heritage/achkans/mauve-brocade-offset-placket-achkan-01",
+      "heritage/achkans/mauve-brocade-offset-placket-achkan-02",
+      "heritage/achkans/mauve-brocade-offset-placket-achkan-03"
+    ],
+    "colour": "Mauve",
+    "colourFamily": "Pink",
+    "fabric": "Brocade",
+    "occasions": [
+      "Wedding",
+      "Festive"
+    ],
+    "summary": "A mauve brocade achkan that fastens off-centre, with an embroidered collar.",
+    "description": "The fastening steps to one side and closes with a line of gilt buttons, so the front reads as one clean sweep of cloth. A dusky mauve brocade threaded with gold florals, a band collar edged in fine embroidery, buttoned cuffs and a dark silk pocket square.",
+    "details": [
+      "Knee-length achkan with an offset front fastening",
+      "Mauve and gold brocade",
+      "Embroidered band collar; gilt buttons at the front and cuffs",
+      "Made to measure; cloth, lining and details are confirmed at your fitting"
+    ]
+  },
+  {
+    "slug": "midnight-navy-tailored-achkan",
+    "name": "Midnight Navy Tailored Achkan",
+    "category": "heritage/achkans",
+    "images": [
+      "heritage/achkans/midnight-navy-tailored-achkan-01",
+      "heritage/achkans/midnight-navy-tailored-achkan-02",
+      "heritage/achkans/midnight-navy-tailored-achkan-03"
+    ],
+    "colour": "Midnight navy",
+    "colourFamily": "Navy",
+    "occasions": [
+      "Wedding",
+      "Festive"
+    ],
+    "summary": "A midnight navy achkan with metal buttons and a printed silk pocket square.",
+    "description": "The plainest achkan in the house, and the easiest to wear: smooth midnight navy cloth, a clean band collar and a single column of dark metal buttons. A berry printed pocket square is the only colour. Worn over ivory trousers for a reception, or with navy for the evening.",
+    "details": [
+      "Knee-length achkan with band collar",
+      "Midnight navy suiting",
+      "Metal buttons; chest pocket with pocket square",
+      "Made to measure; cloth, lining and details are confirmed at your fitting"
+    ]
+  },
+  {
+    "slug": "maroon-velvet-embroidered-collar-achkan",
+    "name": "Maroon Velvet Embroidered-Collar Achkan",
+    "category": "heritage/achkans",
+    "images": [
+      "heritage/achkans/maroon-velvet-embroidered-collar-achkan-01",
+      "heritage/achkans/maroon-velvet-embroidered-collar-achkan-02"
+    ],
+    "colour": "Maroon",
+    "colourFamily": "Red",
+    "fabric": "Velvet",
+    "occasions": [
+      "Wedding",
+      "Festive"
+    ],
+    "summary": "A maroon velvet achkan with a gold-embroidered collar.",
+    "description": "Deep maroon velvet, with the decoration kept to the collar: gold leaves embroidered on either side of the band. Gilt buttons, a pocket at the chest and a long, close cut. Worn over ivory trousers.",
+    "details": [
+      "Knee-length achkan with band collar",
+      "Velvet",
+      "Gold-embroidered collar; gilt buttons",
+      "Made to measure; cloth, lining and details are confirmed at your fitting"
+    ]
+  },
+  {
     "slug": "black-brass-button-bandhgala-suit",
     "name": "Black Brass-Button Bandhgala Suit",
     "category": "heritage/bandhgala-suits",
@@ -1136,7 +1271,8 @@ export const PRODUCTS: Product[] = [
       "heritage/bandhgala-suits/black-brass-button-bandhgala-suit-03",
       "heritage/bandhgala-suits/black-brass-button-bandhgala-suit-01",
       "heritage/bandhgala-suits/black-brass-button-bandhgala-suit-02",
-      "heritage/bandhgala-suits/black-and-midnight-navy-bandhgala-suits-duo-01"
+      "heritage/bandhgala-suits/black-and-midnight-navy-bandhgala-suits-duo-01",
+      "heritage/bandhgala-suits/black-brass-button-bandhgala-suit-04"
     ],
     "colour": "Black",
     "colourFamily": "Black",
@@ -1322,7 +1458,8 @@ export const PRODUCTS: Product[] = [
     "images": [
       "heritage/jodhpuri-jackets/sage-green-brocade-nehru-jacket-01",
       "heritage/jodhpuri-jackets/sage-green-brocade-nehru-jacket-02",
-      "heritage/jodhpuri-jackets/sage-green-brocade-nehru-jacket-03"
+      "heritage/jodhpuri-jackets/sage-green-brocade-nehru-jacket-03",
+      "heritage/jodhpuri-jackets/sage-green-brocade-nehru-jacket-04"
     ],
     "colour": "Sage green",
     "colourFamily": "Green",
