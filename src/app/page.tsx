@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { CategoryBanners } from "@/components/home/CategoryBanners";
 import { CategoryExplorer } from "@/components/home/CategoryExplorer";
 import { CollectionsAccordion } from "@/components/home/CollectionsAccordion";
@@ -12,6 +13,8 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { categoryHref, getCategory, getProduct, productHref, toCard } from "@/data/catalog";
 import { navGroups } from "@/data/navigation";
 import { film, shot } from "@/lib/media";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 const card = (slug: string) => {
   const product = getProduct(slug);

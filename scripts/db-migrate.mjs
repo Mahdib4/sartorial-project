@@ -4,7 +4,10 @@
 //   npm run db:check              connect, list applied migrations and row counts; changes nothing
 //   node scripts/db-migrate.mjs --if-configured
 //                                 as db:migrate, but a quiet no-op when no database is set
-//                                 (used by `npm run build`, so deploys keep the schema current)
+//                                 (used by `npm run build`, so deploys keep the schema current).
+//                                 On Vercel it only runs for Production deployments, so a preview
+//                                 of an unmerged branch never changes the live database
+//                                 (set MIGRATE_ON_PREVIEW=1 when previews have their own Neon branch).
 //
 // Uses DATABASE_URL_UNPOOLED (Neon's direct connection) when present, as Neon advises for
 // schema changes, otherwise DATABASE_URL. Reads .env.local / .env if they exist.
@@ -33,6 +36,12 @@ if (!url) {
   process.exit(1);
 }
 
+const vercelEnv = process.env.VERCEL_ENV;
+if (IF_CONFIGURED && vercelEnv && vercelEnv !== "production" && !process.env.MIGRATE_ON_PREVIEW) {
+  console.log(`db: ${vercelEnv} build, skipping migrations (they run on Production deployments)`);
+  process.exit(0);
+}
+
 const dir = path.join(root, "db", "migrations");
 const files = readdirSync(dir).filter((f) => f.endsWith(".sql")).sort();
 const client = new pg.Client({ connectionString: url, connectionTimeoutMillis: 15_000 });
@@ -40,8 +49,13 @@ const client = new pg.Client({ connectionString: url, connectionTimeoutMillis: 1
 try {
   await client.connect();
   const host = new URL(url).hostname;
-  await client.query(`CREATE TABLE IF NOT EXISTS schema_migrations (name text PRIMARY KEY, applied_at timestamptz NOT NULL DEFAULT now())`);
-  const applied = new Set((await client.query("SELECT name FROM schema_migrations")).rows.map((r) => r.name));
+  const tracked = Boolean((await client.query("SELECT to_regclass('schema_migrations') AS t")).rows[0].t);
+  if (!CHECK) {
+    // One migrator at a time (two deploys can build at once); released when the session ends.
+    await client.query("SELECT pg_advisory_lock(hashtext('sartorial:migrations'))");
+    await client.query(`CREATE TABLE IF NOT EXISTS schema_migrations (name text PRIMARY KEY, applied_at timestamptz NOT NULL DEFAULT now())`);
+  }
+  const applied = new Set(!CHECK || tracked ? (await client.query("SELECT name FROM schema_migrations")).rows.map((r) => r.name) : []);
 
   if (CHECK) {
     console.log(`db: connected to ${host}`);

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
+import { tooManyRequests } from "@/lib/rate-limit";
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -13,6 +14,7 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
  * tells the visitor the list is not open yet, so no address is silently lost.
  */
 export async function POST(request: Request) {
+  if (tooManyRequests(request, "newsletter", 5)) return NextResponse.json({ error: "rate_limited" }, { status: 429 });
   let email = "";
   try {
     const body = (await request.json()) as { email?: unknown };

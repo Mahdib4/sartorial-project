@@ -45,7 +45,11 @@ export function Newsletter() {
   return (
     <form
       noValidate
-      onSubmit={(e) => e.preventDefault()}
+      onSubmit={(e) => {
+        e.preventDefault();
+        // Enter in the field goes through the button, so its pending and result states apply.
+        e.currentTarget.querySelector<HTMLButtonElement>("button")?.click();
+      }}
       className="max-w-md"
       aria-describedby="newsletter-status"
     >

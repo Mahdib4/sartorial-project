@@ -7,8 +7,7 @@ import { SegmentedControl } from "@/components/interior/segmented-control";
 import { ShowMore } from "@/components/interior/show-more";
 import { Button, ButtonAnchor } from "@/components/ui/Button";
 import { SITE } from "@/config/site";
-import { cn } from "@/lib/cn";
-import { composeEnquiry, emailLink, EMAIL_PATTERN, newEnquiryId, recordEnquiry, whatsappLink, type EnquiryLine } from "@/lib/enquiry";
+import { composeEnquiry, emailLink, EMAIL_PATTERN, newEnquiryId, newEnquiryKey, recordEnquiry, whatsappLink, type EnquiryLine } from "@/lib/enquiry";
 
 type EnquiryFormProps = {
   kind: "order" | "appointment";
@@ -40,14 +39,15 @@ export function EnquiryForm({ kind, lines, initialInterest, initialNotes, onSent
   const [preferredTime, setPreferredTime] = useState("");
   const [notes, setNotes] = useState(initialNotes ?? "");
   const [attempted, setAttempted] = useState(false);
-  // The address and the enquiry's reference are only known in the browser.
-  const [session, setSession] = useState({ origin: SITE.url, id: "" });
-  const { origin, id } = session;
+  // The address, the enquiry's reference and its private key (which lets this form,
+  // and only this form, update its own record) are only known in the browser.
+  const [session, setSession] = useState({ origin: SITE.url, id: "", key: "" });
+  const { origin, id, key } = session;
   const [sent, setSent] = useState<null | "whatsapp" | "email" | "copy">(null);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- see above
-    setSession({ origin: window.location.origin, id: newEnquiryId() });
+    setSession({ origin: window.location.origin, id: newEnquiryId(), key: newEnquiryKey() });
   }, []);
 
   const nameMissing = name.trim().length < 2;
@@ -69,11 +69,19 @@ export function EnquiryForm({ kind, lines, initialInterest, initialNotes, onSent
     setAttempted(true);
     if (!valid || !id) {
       event.preventDefault();
+      // On a phone the fields may be off-screen: take the visitor to the first one to fix.
+      const first = nameMissing ? "name" : contactMissing ? "tel" : emailBad ? "email" : null;
+      const field = first ? (event.currentTarget.closest("form")?.elements.namedItem(first) as HTMLElement | null) : null;
+      if (field) {
+        field.focus({ preventScroll: true });
+        field.scrollIntoView({ block: "center", behavior: "smooth" });
+      }
       return;
     }
     // The link opens WhatsApp (or the mail app) with the message; the record is logged alongside it.
     recordEnquiry({
       id,
+      key,
       kind,
       channel,
       name,
@@ -128,6 +136,7 @@ export function EnquiryForm({ kind, lines, initialInterest, initialNotes, onSent
             rows={4}
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
+            maxLength={2000}
             className="block w-full resize-y border border-line bg-white px-4 py-3 text-[15px] leading-relaxed text-ink outline-none! transition-colors duration-200 placeholder:text-mute focus:border-ink"
             placeholder={kind === "order" ? "Occasion, dates, cloth preferences, alterations…" : "The occasion, the pieces you are considering, your timeline…"}
           />
@@ -143,18 +152,19 @@ export function EnquiryForm({ kind, lines, initialInterest, initialNotes, onSent
 
       <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
         {wa ? (
-          <ButtonAnchor href={wa} target="_blank" rel="noopener noreferrer" onClick={(e) => guard(e, "whatsapp")} className={cn("flex-1", !mail && "sm:flex-none sm:px-12")}>
+          // No address until the page is ready, so a tap can never skip the reference, the checks or the log.
+          <ButtonAnchor href={id ? wa : undefined} aria-disabled={!id || undefined} target="_blank" rel="noopener noreferrer" onClick={(e) => guard(e, "whatsapp")} className={mail ? "sm:flex-1" : "sm:flex-none sm:px-12"}>
             Send message
           </ButtonAnchor>
         ) : null}
         {mail ? (
-          <ButtonAnchor href={mail} onClick={(e) => guard(e, "email")} variant={wa ? "outline" : "solid"} className="flex-1">
+          <ButtonAnchor href={id ? mail : undefined} aria-disabled={!id || undefined} onClick={(e) => guard(e, "email")} variant={wa ? "outline" : "solid"} className="sm:flex-1">
             Send by email
           </ButtonAnchor>
         ) : null}
         {!direct ? (
           // Only when no WhatsApp number or email is configured at all.
-          <Button onClick={copy} arrow={false} className="flex-1 sm:flex-none sm:px-10">
+          <Button onClick={copy} arrow={false} className="sm:flex-none sm:px-10">
             {sent === "copy" ? "Copied" : "Copy message"}
           </Button>
         ) : null}

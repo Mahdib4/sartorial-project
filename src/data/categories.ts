@@ -145,9 +145,9 @@ export const CATEGORIES: Category[] = [
     slug: "achkans",
     collection: "heritage",
     name: "Achkans",
-    blurb: "Long, lean and buttoned to the collar, in silk and velvet.",
+    blurb: "Long, lean and buttoned to the collar, in silk, velvet and brocade.",
     intro:
-      "Leaner than a sherwani and cut closer through the chest, the achkan is the most tailored of the long coats. In silk and velvet, with the collar embroidered by hand.",
+      "Leaner than a sherwani and cut closer through the chest, the achkan is the most tailored of the long coats. In silk, velvet, brocade and jacquard, many with the collar embroidered by hand.",
     preview: [
       `${H}/achkans/black-velvet-embroidered-collar-achkan-02`,
       `${H}/achkans/powder-blue-silk-embroidered-collar-achkan-03`,

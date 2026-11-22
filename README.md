@@ -2,7 +2,7 @@
 
 The website for Sartorial, a bespoke tailoring house in Dhaka: Heritage (sherwanis, achkans, bandhgalas, Jodhpuri jackets) and Classic (suits, jackets, shirts, trousers), plus Accessories and Footwear.
 
-Built with Next.js (App Router), React, TypeScript and Tailwind CSS. Every page is prerendered; there is no database.
+Built with Next.js (App Router), React, TypeScript and Tailwind CSS. Every page is prerendered; order enquiries and newsletter sign-ups are logged in Neon Postgres when `DATABASE_URL` is set.
 
 ## Run it
 
@@ -101,7 +101,9 @@ npm run db:migrate
 npm run db:check
 ```
 
-For the live site, add the same `DATABASE_URL` and `DATABASE_URL_UNPOOLED` values on Vercel (Project → Settings → Environment Variables) and redeploy. To read the orders, open the Neon console → your project → **Tables** → `enquiries`, or query it:
+For the live site, add the same `DATABASE_URL` and `DATABASE_URL_UNPOOLED` values on Vercel (Project → Settings → Environment Variables), **scoped to Production only**, and redeploy; the build creates the tables. Preview deployments skip migrations; to give previews a database, use a separate Neon branch (Neon's Vercel integration can create one per preview) and set `MIGRATE_ON_PREVIEW=1` for Preview.
+
+To keep bots from flooding the order and newsletter endpoints, the site limits each visitor to a few requests a minute; for a limit across all of Vercel's servers, also add a rule in Vercel → Firewall → Rate limiting (path starts with `/api/`, method POST, 10 requests per minute per IP). To read the orders, open the Neon console → your project → **Tables** → `enquiries`, or query it:
 
 ```sql
 SELECT reference, created_at, customer_name, phone, items, notes FROM enquiries ORDER BY created_at DESC;

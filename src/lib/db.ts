@@ -22,6 +22,8 @@ export function db(): Pool | null {
     return pool;
   }
   pool = new Pool({ connectionString, max: 5, idleTimeoutMillis: 5_000, connectionTimeoutMillis: 8_000 });
+  // Neon closes idle connections when a compute suspends; without a listener that would crash the function.
+  pool.on("error", (error) => console.error("db: idle connection error", error.message));
   // On Vercel Fluid compute, release idle connections before the instance is suspended.
   attachDatabasePool(pool);
   return pool;

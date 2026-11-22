@@ -14,10 +14,13 @@
 //
 // Files keep their paths under a "media/" prefix, so with NEXT_PUBLIC_MEDIA_URL set
 // to the bucket's public address the site finds them at the same relative URLs.
-// Media file names never change content in place, so they are cached for a year.
+// A file is uploaded when it is new or its content differs (MD5 against the bucket's
+// ETag). Re-running `npm run media` can re-render a photo under the same name, so
+// files are cached for a day and then revalidated, not marked immutable.
 
+import { createHash } from "node:crypto";
 import { createReadStream, existsSync } from "node:fs";
-import { readdir, stat } from "node:fs/promises";
+import { readdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { ListObjectsV2Command, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 
@@ -60,7 +63,7 @@ const remote = new Map();
 let token;
 do {
   const page = await s3.send(new ListObjectsV2Command({ Bucket: R2_BUCKET, Prefix: "media/", ContinuationToken: token }));
-  for (const o of page.Contents ?? []) remote.set(o.Key, o.Size);
+  for (const o of page.Contents ?? []) remote.set(o.Key, { size: o.Size, etag: (o.ETag ?? "").replaceAll('"', "") });
   token = page.IsTruncated ? page.NextContinuationToken : undefined;
 } while (token);
 
@@ -70,7 +73,8 @@ let bytes = 0;
 for (const file of files) {
   const key = `media/${path.relative(local, file).split(path.sep).join("/")}`;
   const size = (await stat(file)).size;
-  if (!FORCE && remote.get(key) === size) continue;
+  const existing = remote.get(key);
+  if (!FORCE && existing && existing.size === size && existing.etag === createHash("md5").update(await readFile(file)).digest("hex")) continue;
   todo.push({ file, key, size });
   bytes += size;
 }
@@ -94,7 +98,7 @@ async function worker() {
           Body: createReadStream(t.file),
           ContentLength: t.size,
           ContentType: TYPES[path.extname(t.file).toLowerCase()],
-          CacheControl: "public, max-age=31536000, immutable",
+          CacheControl: "public, max-age=86400, stale-while-revalidate=604800",
         }),
       );
       if (++done % 50 === 0) console.log(`r2: ${done} uploaded`);

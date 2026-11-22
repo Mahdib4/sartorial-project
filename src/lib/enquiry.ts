@@ -48,6 +48,19 @@ export function newEnquiryId(now = new Date()): string {
 export const ENQUIRY_ID_PATTERN = /^SRT-\d{6}-[23456789A-HJ-NP-Z]{4}$/;
 
 /**
+ * A private key held by the form that made an enquiry: the server only lets a
+ * resend from that same form update the record, so a reference seen in a
+ * WhatsApp message cannot be used to overwrite someone else's enquiry.
+ */
+export function newEnquiryKey(): string {
+  const bytes = new Uint8Array(16);
+  crypto.getRandomValues(bytes);
+  return Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+export const ENQUIRY_KEY_PATTERN = /^[0-9a-f]{32}$/;
+
+/**
  * The plain-text message sent to the house on WhatsApp. WhatsApp shows *text*
  * in bold. Every piece carries its reference and its link, so the house can
  * tell exactly which garment is meant.
@@ -101,6 +114,8 @@ export const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 /** What the browser posts to /api/enquiries alongside opening WhatsApp. */
 export type EnquiryRecord = {
   id: string;
+  /** See newEnquiryKey(). */
+  key: string;
   kind: EnquiryKind;
   channel: "whatsapp" | "email";
   name: string;

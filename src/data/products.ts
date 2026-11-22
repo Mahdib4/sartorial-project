@@ -1157,7 +1157,7 @@ export const PRODUCTS: Product[] = [
       "Festive"
     ],
     "summary": "An ivory achkan in a tone-on-tone paisley jacquard, with an embroidered collar and covered buttons.",
-    "description": "Paisley and fine floral sprays woven ivory on ivory, so the pattern only shows where the light falls on it. The band collar is embroidered in metallic thread, and a long run of fabric-covered buttons closes the front from collar to hem. Worn over ivory trousers.",
+    "description": "Paisley and fine floral sprays woven ivory on ivory, so the pattern only shows where the light falls on it. The band collar is embroidered in metallic thread, and a long run of fabric-covered buttons closes the front from the collar to the hip. Worn over ivory trousers.",
     "details": [
       "Knee-length achkan with band collar",
       "Ivory paisley jacquard",
@@ -1182,7 +1182,7 @@ export const PRODUCTS: Product[] = [
       "Festive"
     ],
     "summary": "An ivory brocade achkan woven with a soft gold diamond lattice.",
-    "description": "A geometric brocade: concentric diamonds in soft gold across an ivory ground, matched down the front and around the sleeves. Self-covered buttons run from the band collar to the hem, with buttoned cuffs and a pocket at the chest.",
+    "description": "A geometric brocade: concentric diamonds in soft gold across an ivory ground, matched down the front and around the sleeves. Self-covered buttons run from the band collar to the hip, with buttoned cuffs and a pocket at the chest.",
     "details": [
       "Knee-length achkan with band collar",
       "Ivory and gold lattice brocade",
@@ -1230,12 +1230,12 @@ export const PRODUCTS: Product[] = [
       "Wedding",
       "Festive"
     ],
-    "summary": "A midnight navy achkan with metal buttons and a printed silk pocket square.",
-    "description": "The plainest achkan in the house, and the easiest to wear: smooth midnight navy cloth, a clean band collar and a single column of dark metal buttons. A berry printed pocket square is the only colour. Worn over ivory trousers for a reception, or with navy for the evening.",
+    "summary": "A midnight navy achkan with gold-rimmed enamel buttons and a printed pocket square.",
+    "description": "The plainest achkan in the house, and the easiest to wear: smooth midnight navy cloth, a clean band collar and a single column of gold-rimmed enamel buttons. A berry pocket square with a small blue print is the only other colour. Worn over ivory trousers for a reception, or with navy for the evening.",
     "details": [
       "Knee-length achkan with band collar",
       "Midnight navy suiting",
-      "Metal buttons; chest pocket with pocket square",
+      "Gold-rimmed enamel buttons; chest pocket with pocket square",
       "Made to measure; cloth, lining and details are confirmed at your fitting"
     ]
   },
