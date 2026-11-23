@@ -2,7 +2,7 @@
 
 The website for Sartorial, a bespoke tailoring house in Dhaka: Heritage (sherwanis, achkans, bandhgalas, Jodhpuri jackets) and Classic (suits, jackets, shirts, trousers), plus Accessories and Footwear.
 
-Built with Next.js (App Router), React, TypeScript and Tailwind CSS. Every page is prerendered; order enquiries and newsletter sign-ups are logged in Neon Postgres when `DATABASE_URL` is set.
+Built with Next.js (App Router), React, TypeScript and Tailwind CSS. The catalogue, banners, offers and settings live in Neon Postgres and are managed in the **admin panel** at `/admin`; photographs uploaded there are stored in Cloudflare R2. Pages are prerendered and refreshed the moment something changes in the admin. Without a database the site still runs, on the catalogue built into the code.
 
 ## Run it
 
@@ -30,19 +30,32 @@ Other scripts: `npm run lint`, `npm run typecheck`, `npm run media` (see [Photog
 
 ## Before going live
 
-These were not part of the supplied content. Each is one edit in one file, or one environment variable (set environment variables locally in `.env.local` and on Vercel under Project → Settings → Environment Variables; `.env.example` lists them all).
+Set these environment variables on Vercel (Project → Settings → Environment Variables, **Production**), then redeploy. Locally they go in `.env.local`. `.env.example` lists them all.
 
-| What | Where | Effect while empty |
+| Variable | What it is | Without it |
 | --- | --- | --- |
-| The house WhatsApp number | `NEXT_PUBLIC_WHATSAPP_NUMBER`, or `src/config/site.ts` → `contact.whatsapp` | Orders go to the test admin number, +880 1772121294 |
-| Neon database | `DATABASE_URL` and `DATABASE_URL_UNPOOLED` (see [The database](#the-database-neon)) | Orders still reach WhatsApp but are not logged; newsletter sign-ups are refused |
-| Phone, email, address, hours | `src/config/site.ts` → `contact` | Not shown. An email address adds "Send by email" beside "Send message" |
-| Live domain | `NEXT_PUBLIC_SITE_URL` | Canonical links, sitemap and share images use `https://sartorial-bd.vercel.app` |
-| Instagram / Facebook / YouTube | `src/config/site.ts` → `social` | Footer shows no social links |
-| Prices | `price` on any product in `src/data/products.ts` | The piece shows "Price on request" |
-| Size scales | `src/config/site.ts` → `SIZE_SCALES` | Standard menswear scales are used; confirm they match the house |
-| Newsletter forwarding (optional) | `NEWSLETTER_WEBHOOK_URL` | Sign-ups are kept in the database only |
-| Media on Cloudflare R2 (optional) | `NEXT_PUBLIC_MEDIA_URL` (see [Media on Cloudflare R2](#media-on-cloudflare-r2)) | Photos and films are served by the site itself |
+| `DATABASE_URL`, `DATABASE_URL_UNPOOLED` | Neon's pooled and direct connection strings (Neon console → your project → **Connect**) | The admin cannot be used; the site shows the built-in catalogue; orders still reach WhatsApp but are not logged |
+| `ADMIN_PASSWORD` | The password for `/admin` (choose a long one). It can later be changed inside the admin | Nobody can sign in to the admin |
+| `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET` | Cloudflare R2 API token for the `sartorial-media` bucket (Object Read & Write) | Photographs cannot be uploaded in the admin (choosing existing ones still works) |
+| `R2_PUBLIC_URL` (optional) | The bucket's public address. Defaults to `https://pub-815592e32d694078bff17fcd968c91d8.r2.dev` | – |
+| `ADMIN_SESSION_SECRET` (optional) | A long random string used to sign admin sessions | `DATABASE_URL` is used as the secret |
+| `NEXT_PUBLIC_SITE_URL` (optional) | The live address once the site has its own domain | Canonical links use `https://sartorial-bd.vercel.app` |
+| `NEXT_PUBLIC_MEDIA_URL` (optional) | Serve every photograph and film from R2 (see [Media on Cloudflare R2](#media-on-cloudflare-r2)) | They are served by Vercel, as now |
+
+Everything else (WhatsApp number, phone, email, address, opening hours, social links, prices, banners, offers, home page sections) is set in the admin. Confirm the size scales in `src/config/site.ts` → `SIZE_SCALES` match the house.
+
+## The admin panel
+
+Open `/admin` (e.g. `https://sartorial-bd.vercel.app/admin`) and sign in with `ADMIN_PASSWORD`. Changes appear on the website as soon as they are saved.
+
+- **Orders & enquiries**: every "Send message" from the bag or the fitting form, with the reference the customer's WhatsApp message carries, the pieces, sizes and contact details. Mark each as contacted, confirmed, completed or cancelled; reply on WhatsApp in one tap.
+- **Products**: add, edit, hide or delete pieces; upload photographs (the first is the card photograph) or choose from the site's photographs; set the category, colour, occasions, price, a sale price and a card label such as "New".
+- **Categories**: add, rename, reorder, hide or delete categories in Heritage, Classic, Accessories and Footwear; choose the photographs shown when a category is hovered.
+- **Banners & notices**: the home page banner (the space under the opening film) and the announcement-bar notices, each leading to a product, category, department, collection or any page, with optional start and end dates.
+- **Offers & discounts**: a percentage or taka off (or just a label) for everything, a department, chosen categories or chosen pieces, with dates. Pieces with a price show the reduced price; others show the label.
+- **Collections & launches**: curated groups of pieces with their own page (`/collections/…`), shown on the home page and in the Clothing menu. "Announce it" creates a home page banner for it.
+- **Home page**: switch each home page section on or off, and choose the pieces in "The wedding wardrobe" and "The suit, cut for one".
+- **Settings**: the WhatsApp number orders go to, phone, email, address, opening hours, social links, and the admin password.
 
 ## The opening animation
 
@@ -75,7 +88,7 @@ To take payments later, the bag (`src/store/shop.tsx`) and the bag page (`src/co
 
 ## The database (Neon)
 
-The site keeps two tables in Neon Postgres: `enquiries` (every order and fitting request sent through "Send message") and `newsletter_subscribers`. The schema is in `db/migrations/`; `npm run build` applies any new migration automatically when `DATABASE_URL` is set, and does nothing when it is not.
+The site keeps its catalogue (`categories`, `products`, uploaded photographs in `media`), `banners`, `offers`, curated `curated` collections, `settings`, plus `enquiries` (every order and fitting request sent through "Send message") and `newsletter_subscribers` in Neon Postgres. The schema is in `db/migrations/`; `npm run build` applies any new migration automatically when `DATABASE_URL` is set, and does nothing when it is not.
 
 The Neon project is already linked in this repository (`neon.ts`; organisation `org-royal-forest-26787471`, project `spring-night-17384256`, branch `production`). To connect it:
 
@@ -103,7 +116,7 @@ npm run db:check
 
 For the live site, add the same `DATABASE_URL` and `DATABASE_URL_UNPOOLED` values on Vercel (Project → Settings → Environment Variables), **scoped to Production only**, and redeploy; the build creates the tables. Preview deployments skip migrations; to give previews a database, use a separate Neon branch (Neon's Vercel integration can create one per preview) and set `MIGRATE_ON_PREVIEW=1` for Preview.
 
-To keep bots from flooding the order and newsletter endpoints, the site limits each visitor to a few requests a minute; for a limit across all of Vercel's servers, also add a rule in Vercel → Firewall → Rate limiting (path starts with `/api/`, method POST, 10 requests per minute per IP). To read the orders, open the Neon console → your project → **Tables** → `enquiries`, or query it:
+To keep bots from flooding the order and newsletter endpoints, the site limits each visitor to a few requests a minute; for a limit across all of Vercel's servers, also add a rule in Vercel → Firewall → Rate limiting (path starts with `/api/`, method POST, 10 requests per minute per IP). Orders are read and managed in the admin (**Orders & enquiries**). They can also be read in the Neon console → your project → **Tables** → `enquiries`, or queried:
 
 ```sql
 SELECT reference, created_at, customer_name, phone, items, notes FROM enquiries ORDER BY created_at DESC;
@@ -111,9 +124,9 @@ SELECT reference, created_at, customer_name, phone, items, notes FROM enquiries 
 
 ## Media on Cloudflare R2
 
-Photos and films are served from `public/media/` by default. To serve them from a Cloudflare R2 bucket instead:
+The bucket is `sartorial-media`, public at `https://pub-815592e32d694078bff17fcd968c91d8.r2.dev`. Photographs uploaded in the admin always go there (as WebP at 480, 800, 1280 and 1920 px, under `media/img/uploads/`). The site's built-in photos and films have been copied there too, but are served from `public/media/` (Vercel) by default, which is faster than an `r2.dev` address. To serve them from R2 instead:
 
-1. In Cloudflare → R2 → **Manage API tokens**, create a token with *Object Read & Write* on the bucket, and put its keys in `.env.local` as `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY` and `R2_BUCKET`.
+1. The R2 keys (`R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET`) must be in `.env.local` (they are also what the admin uses for uploads). To make a new token: Cloudflare → R2 → **Manage API tokens**, *Object Read & Write* on the bucket.
 2. Copy the media to the bucket (it only uploads new or changed files, so run it again after `npm run media`):
 
    ```bash
@@ -128,11 +141,13 @@ Cloudflare rate-limits `r2.dev` addresses and recommends them for testing only; 
 
 ```
 src/
-  config/site.ts            Brand, contact details, announcement bar, size scales
+  config/site.ts            Brand, default contact details and notice, size scales
   data/
-    categories.ts           The site structure: collections and their categories, with copy
-    products.ts             The catalogue: one entry per product
-    catalog.ts              Queries over the two files above
+    categories.ts           The built-in site structure: collections and categories, with copy
+    products.ts             The built-in catalogue: one entry per product
+    seed.ts                 Default settings and home page sections
+    store.ts                Loads the catalogue from the database (or the built-in one), cached
+    catalog.ts              Queries over it: products, prices and offers, banners, collections
     navigation.ts           Menus, derived from the catalogue
     media.generated.json    Written by `npm run media`. Do not edit by hand
   app/                      Routes
@@ -140,10 +155,14 @@ src/
     clothing/               /clothing, /clothing/heritage, /clothing/classic/suits …
     accessories/ footwear/  /accessories, /accessories/ties …
     products/[slug]/        Product pages
+    collections/[slug]/     Collections and launches made in the admin
+    admin/                  The admin panel (sign-in, then every section under (panel)/)
+    api/admin/upload/       Photo uploads from the admin, to Cloudflare R2
     bag/ wishlist/ search/ appointments/ bespoke/ client-services/
     api/enquiries/          Logs "Send message" enquiries in the database
     api/newsletter/         Newsletter sign-ups
   components/
+    admin/                  The admin panel's forms, pickers and layout
     brand/                  The logo as vector paths (traced from the logo file)
     home/                   Home page sections
     catalog/                Collection and category pages
@@ -155,6 +174,8 @@ src/
     bencho/                 Blocks adapted from bencho.dev
   lib/enquiry.ts            The WhatsApp order message and its references
   lib/db.ts                 The Neon (Postgres) connection
+  lib/r2.ts                 Cloudflare R2 (S3 API) client
+  lib/admin/                Admin sign-in, reads and the photo processing for uploads
   store/shop.tsx            Bag, wishlist, recently viewed, toasts
 scripts/
   build-media.mjs           Turns the client's photos and films into web media
@@ -162,35 +183,24 @@ scripts/
   trace-logo.py             Traces the logo file into the paths in components/brand/
   db-migrate.mjs            Applies db/migrations/ (npm run db:migrate, db:check)
   upload-media-r2.mjs       Copies public/media/ to Cloudflare R2 (npm run media:upload)
+  db-import-catalogue.mjs   Copies pieces added in code into the database (npm run db:import-catalogue)
 db/migrations/              The database schema, one numbered SQL file per change
 assets/brand/               The logo file the paths were traced from
 ```
 
 ## Editing the catalogue
 
-**Add a product.** Add an entry to `PRODUCTS` in `src/data/products.ts`:
+Use the admin panel (above). Everything there is stored in the database, and the website follows it.
 
-```ts
-{
-  slug: "ivory-linen-kurta",               // the URL: /products/ivory-linen-kurta
-  name: "Ivory Linen Kurta",
-  category: "heritage/kurtas",             // a key from categories.ts
-  images: ["heritage/kurtas/ivory-linen-kurta-01", "heritage/kurtas/ivory-linen-kurta-02"],
-  colour: "Ivory",
-  colourFamily: "Ivory",                   // drives the colour filter
-  occasions: ["Festive"],                  // drives the occasion filter
-  summary: "One line under the name.",
-  description: "The paragraph in the Description fold.",
-  details: ["Bullet", "Bullet"],
-  price: 8500,                             // optional
-}
+**Where the catalogue comes from.** The pieces, categories and their photographs that shipped with the site are also written in code: `src/data/products.ts` and `src/data/categories.ts`. The first time the site runs against an empty database, it copies all of them into the database by itself; from then on the database is the catalogue, and the code files are only used when no database is connected. If more pieces are later added in code (for example after a new photo shoot is processed with `npm run media`), copy the new ones across without touching anything edited in the admin:
+
+```bash
+npm run db:import-catalogue
 ```
 
-The first image is the card image; the second appears on hover. Image ids come from the media build (below).
+Add `-- --photos=slug-one,slug-two` to also replace the photographs of those existing pieces with the ones in the code.
 
-**Categories without products.** Kurtas, Heritage Trousers, Coats, and all of Accessories and Footwear had no product photography in the supplied content. Their pages show an *edit*: where the piece appears across the rest of the collection, each photograph linked to the garment it was taken with. As soon as a category has products in `products.ts`, its page becomes a normal product grid automatically.
-
-**Change the structure or copy.** Collections, categories, their introductions and their hover-preview photographs are all in `src/data/categories.ts`. Menus, the home page category explorer, the footer and the sitemap follow it.
+**Categories without products.** Some categories (Kurtas, Heritage Trousers, Coats, and all of Accessories and Footwear) had no product photography in the supplied content. Their pages show an *edit*: where the piece appears across the rest of the collection, each photograph linked to the garment it was taken with. As soon as a category has products, its page becomes a normal product grid automatically.
 
 ## Photographs and films
 
@@ -222,4 +232,4 @@ The Interior and Bencho components were copied in and re-skinned to the site's l
 
 ## Deploying
 
-Any host that runs Next.js works (Vercel, Netlify, or `npm run build && npm start` on a Node server). Set the environment variables from `.env.example` there: at least `DATABASE_URL` and `DATABASE_URL_UNPOOLED` for the database, and `NEXT_PUBLIC_WHATSAPP_NUMBER` once the house number replaces the test number. Variables starting `NEXT_PUBLIC_` are built into the pages, so redeploy after changing them. `public/media/` is about 200 MB; hosts with a per-file limit are fine, as the largest file is the 23 MB atelier film.
+Any host that runs Next.js works (Vercel, Netlify, or `npm run build && npm start` on a Node server). Set the environment variables listed under [Before going live](#before-going-live) there. Variables starting `NEXT_PUBLIC_` are built into the pages, so redeploy after changing them. `public/media/` is about 200 MB; hosts with a per-file limit are fine, as the largest file is the 23 MB atelier film.

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SearchView } from "@/components/pages/SearchView";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { allProducts, toCard } from "@/data/catalog";
+import { catalog } from "@/data/catalog";
 import { navGroups } from "@/data/navigation";
 
 export const metadata: Metadata = {
@@ -10,11 +10,12 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
-export default function SearchPage() {
+export default async function SearchPage() {
+  const cat = await catalog();
   return (
     <main className="pt-header">
       <PageHeader crumbs={[{ label: "Home", href: "/" }, { label: "Search" }]} title="Search" />
-      <SearchView cards={allProducts().map(toCard)} groups={navGroups()} />
+      <SearchView cards={cat.allProducts().map(cat.toCard)} groups={navGroups(cat)} />
     </main>
   );
 }

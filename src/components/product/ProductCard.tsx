@@ -6,7 +6,7 @@ import { Like } from "@/components/bencho/like/Like";
 import { Picture } from "@/components/ui/Picture";
 import type { CardData } from "@/data/catalog";
 import { cn } from "@/lib/cn";
-import { formatPrice } from "@/lib/format";
+import { PriceTag } from "@/components/product/PriceTag";
 import { useShop } from "@/store/shop";
 
 type ProductCardProps = {
@@ -74,6 +74,9 @@ export function ProductCard({ product, sizes = "(min-width: 1024px) 25vw, 50vw",
             </div>
           ) : null}
 
+          {product.badge ? (
+            <span className="absolute top-3 left-3 bg-accent px-2 py-1 text-[9.5px] leading-none tracking-[0.12em] text-white uppercase">{product.badge}</span>
+          ) : null}
           {product.clip ? (
             <span className="label-sm absolute bottom-3 left-3 flex items-center gap-1.5 bg-white/90 px-2 py-1 text-ink backdrop-blur-sm">
               <svg aria-hidden viewBox="0 0 8 8" className="h-1.5 w-1.5 fill-current">
@@ -87,7 +90,7 @@ export function ProductCard({ product, sizes = "(min-width: 1024px) 25vw, 50vw",
         <div className="px-2 pt-3.5 pb-1 text-center">
           {showCategory ? <p className="label-sm mb-1.5 text-mute">{product.categoryName}</p> : null}
           <h3 className="text-[13.5px] leading-snug text-ink">{product.name}</h3>
-          <p className="mt-1 text-[12px] tracking-[0.02em] text-ink-3">{formatPrice(product.price)}</p>
+          <PriceTag price={product.price} compareAt={product.compareAt} className="mt-1 justify-center text-[12px] tracking-[0.02em] text-ink-3" />
         </div>
       </Link>
 

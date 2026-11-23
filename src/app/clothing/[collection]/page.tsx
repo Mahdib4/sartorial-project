@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CollectionView } from "@/components/catalog/CollectionView";
-import { getCollection } from "@/data/catalog";
+import { catalog, COLLECTIONS } from "@/data/catalog";
 import { shot } from "@/lib/media";
 
 const CLOTHING = ["heritage", "classic"];
@@ -12,7 +12,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/clothing/[collection]">): Promise<Metadata> {
   const { collection: key } = await params;
-  const collection = CLOTHING.includes(key) ? getCollection(key) : undefined;
+  const collection = CLOTHING.includes(key) ? COLLECTIONS[key as keyof typeof COLLECTIONS] : undefined;
   if (!collection) return {};
   return {
     title: `${collection.name}: ${collection.tagline}`,
@@ -24,7 +24,8 @@ export async function generateMetadata({ params }: PageProps<"/clothing/[collect
 
 export default async function ClothingCollectionPage({ params }: PageProps<"/clothing/[collection]">) {
   const { collection: key } = await params;
-  const collection = CLOTHING.includes(key) ? getCollection(key) : undefined;
+  const cat = await catalog();
+  const collection = CLOTHING.includes(key) ? cat.getCollection(key) : undefined;
   if (!collection) notFound();
-  return <CollectionView collection={collection} />;
+  return <CollectionView cat={cat} collection={collection} />;
 }

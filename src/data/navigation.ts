@@ -1,4 +1,4 @@
-import { allCollections, categoriesOf, categoryHref, productsIn, productsInCollection } from "./catalog";
+import { categoryHref, curatedHref, type Catalog } from "./catalog";
 import type { CollectionKey } from "./types";
 import { shot, type Shot } from "@/lib/media";
 
@@ -38,28 +38,39 @@ export type NavMenu = {
   highlights: Array<{ label: string; href: string }>;
 };
 
-export function navGroups(): NavGroup[] {
-  return allCollections().map((collection) => ({
+export function navGroups(cat: Catalog): NavGroup[] {
+  return cat.allCollections().map((collection) => ({
     key: collection.key,
     name: collection.name,
     href: collection.href,
     tagline: collection.tagline,
     department: collection.department,
-    count: productsInCollection(collection.key).length,
+    count: cat.productsInCollection(collection.key).length,
     cover: shot(collection.cover),
-    categories: categoriesOf(collection.key).map((category) => ({
+    categories: cat.categoriesOf(collection.key).map((category) => ({
       key: category.key,
       name: category.name,
       href: categoryHref(category),
       blurb: category.blurb,
-      count: productsIn(category.key).length,
-      preview: category.preview.map(shot),
+      count: cat.productsIn(category.key).length,
+      preview: category.preview.filter(exists).map(shot),
     })),
   }));
 }
 
-export function navMenus(): NavMenu[] {
-  const groups = navGroups();
+function exists(id: string): boolean {
+  try {
+    shot(id);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function navMenus(cat: Catalog): NavMenu[] {
+  const groups = navGroups(cat);
+  // Curated collections and launches made in the admin sit at the top of the Clothing menu's list.
+  const curated = cat.curated().slice(0, 3).map((c) => ({ label: c.title, href: curatedHref(c) }));
   const pick = (...keys: CollectionKey[]) => groups.filter((g) => keys.includes(g.key));
   return [
     {
@@ -67,6 +78,7 @@ export function navMenus(): NavMenu[] {
       href: "/clothing",
       groups: pick("heritage", "classic"),
       highlights: [
+        ...curated,
         { label: "The wedding wardrobe", href: "/clothing/heritage?occasion=Wedding" },
         { label: "Black tie", href: "/clothing/classic?occasion=Black+tie" },
         { label: "Business tailoring", href: "/clothing/classic?occasion=Business" },

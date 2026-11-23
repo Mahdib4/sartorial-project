@@ -1,9 +1,10 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, useSyncExternalStore, type ReactNode } from "react";
+import { createContext, Suspense, useCallback, useContext, useEffect, useMemo, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import { SITE } from "@/config/site";
 import type { IndexEntry } from "@/data/catalog";
+import type { ContactSettings } from "@/data/types";
 
 /**
  * The shop's client state: the bag, the wishlist, recently viewed pieces,
@@ -81,6 +82,8 @@ type ShopContext = {
   markViewed: (slug: string) => void;
   lookup: (slug: string) => IndexEntry | undefined;
   index: IndexEntry[];
+  /** The house contact details, as set in the admin (WhatsApp number for orders). */
+  contact: ContactSettings;
   overlay: Overlay;
   open: (overlay: Exclude<Overlay, null>) => void;
   close: () => void;
@@ -91,21 +94,18 @@ type ShopContext = {
 
 const Ctx = createContext<ShopContext | null>(null);
 
-export function ShopProvider({ index, children }: { index: IndexEntry[]; children: ReactNode }) {
+export function ShopProvider({ index, contact, children }: { index: IndexEntry[]; contact: ContactSettings; children: ReactNode }) {
   const persisted = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const [ready, setReady] = useState(false);
   const [overlay, setOverlay] = useState<Overlay>(null);
   const [toasts, setToasts] = useState<Toast[]>([]);
 
   // Arriving on a new page closes whatever was open and clears its toasts
-  // (covers links, the back button and programmatic navigation alike).
-  const pathname = usePathname();
-  const [seenPath, setSeenPath] = useState(pathname);
-  if (seenPath !== pathname) {
-    setSeenPath(pathname);
+  // (covers links, the back button and programmatic navigation alike); see RouteWatcher.
+  const onNavigate = useCallback(() => {
     setOverlay(null);
     setToasts([]);
-  }
+  }, []);
 
   const bySlug = useMemo(() => new Map(index.map((p) => [p.slug, p])), [index]);
 
@@ -202,6 +202,7 @@ export function ShopProvider({ index, children }: { index: IndexEntry[]; childre
       markViewed,
       lookup: (slug) => bySlug.get(slug),
       index,
+      contact,
       overlay,
       open: (o) => {
         setOverlay(o);
@@ -213,9 +214,30 @@ export function ShopProvider({ index, children }: { index: IndexEntry[]; childre
       notify,
       dismiss,
     };
-  }, [persisted, bySlug, ready, add, setQty, remove, clear, toggleSaved, markViewed, index, overlay, toasts, notify, dismiss]);
+  }, [persisted, bySlug, ready, add, setQty, remove, clear, toggleSaved, markViewed, index, contact, overlay, toasts, notify, dismiss]);
 
-  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
+  return (
+    <Ctx.Provider value={value}>
+      {/* Reading the address needs its own boundary, so pages known only at request time can prerender. */}
+      <Suspense fallback={null}>
+        <RouteWatcher onChange={onNavigate} />
+      </Suspense>
+      {children}
+    </Ctx.Provider>
+  );
+}
+
+function RouteWatcher({ onChange }: { onChange: () => void }) {
+  const pathname = usePathname();
+  const first = useRef(true);
+  useEffect(() => {
+    if (first.current) {
+      first.current = false;
+      return;
+    }
+    onChange();
+  }, [pathname, onChange]);
+  return null;
 }
 
 export function useShop(): ShopContext {

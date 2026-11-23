@@ -4,10 +4,10 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useState } from "react";
 import { TiltCard } from "@/components/bencho/tilt/TiltCard";
 import { ButtonLink } from "@/components/ui/Button";
+import { PriceTag } from "@/components/product/PriceTag";
 import { Picture } from "@/components/ui/Picture";
 import type { CardData } from "@/data/catalog";
 import { cn } from "@/lib/cn";
-import { formatPrice } from "@/lib/format";
 import type { Shot } from "@/lib/media";
 
 export type LookSpot = {
@@ -106,7 +106,7 @@ export function ShopTheLook({ eyebrow, title, image, imageAlt, spots }: ShopTheL
             <p className="label-sm mt-6 text-mute">{spot.product.categoryName}</p>
             <h3 className="headline-sm mt-2">{spot.product.name}</h3>
             <p className="mt-3 text-[14px] leading-relaxed text-ink-2">{spot.summary}</p>
-            <p className="mt-3 text-[13px] text-ink-3">{formatPrice(spot.product.price)}</p>
+            <PriceTag price={spot.product.price} compareAt={spot.product.compareAt} className="mt-3 text-[13px] text-ink-3" />
             <ButtonLink href={spot.product.href} className="mt-6 w-full">
               View this piece
             </ButtonLink>

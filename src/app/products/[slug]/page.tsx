@@ -8,18 +8,19 @@ import { ProductRail } from "@/components/product/ProductRail";
 import { RecentlyViewed } from "@/components/product/RecentlyViewed";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { SITE } from "@/config/site";
-import { allProducts, categoryHref, COLLECTIONS, getCategory, getProduct, productHref, relatedTo, sizeScaleFor, toCard } from "@/data/catalog";
+import { catalog, categoryHref, COLLECTIONS, productHref } from "@/data/catalog";
 import type { Product } from "@/data/types";
-import { formatPrice } from "@/lib/format";
-import { film, shot } from "@/lib/media";
+import { PriceTag } from "@/components/product/PriceTag";
+import { film, hasFilm, shot } from "@/lib/media";
 
-export function generateStaticParams() {
-  return allProducts().map((product) => ({ slug: product.slug }));
+export async function generateStaticParams() {
+  const cat = await catalog();
+  return cat.allProducts().map((product) => ({ slug: product.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/products/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = (await catalog()).getProduct(slug);
   if (!product) return {};
   const image = shot(product.images[0]);
   return {
@@ -37,6 +38,15 @@ const CARE: Record<string, string[]> = {
   trousers: ["Follow the care note in the details above; wool dress trousers are dry clean only.", "Hang full length by the hem to let creases fall out between wears.", "Press along the existing crease using a pressing cloth."],
 };
 
+function hasImageId(id: string): boolean {
+  try {
+    shot(id);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function careFor(product: Product): string[] {
   const [collection, category] = product.category.split("/");
   if (collection === "heritage") return CARE.heritage;
@@ -47,14 +57,16 @@ function careFor(product: Product): string[] {
 
 export default async function ProductPage({ params }: PageProps<"/products/[slug]">) {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const cat = await catalog();
+  const product = cat.getProduct(slug);
   if (!product) notFound();
 
-  const category = getCategory(product.category)!;
+  const category = cat.getCategory(product.category)!;
   const collection = COLLECTIONS[category.collection];
-  const scale = sizeScaleFor(product);
-  const images = product.images.map(shot);
-  const films = (product.videos ?? []).map(film);
+  const scale = cat.sizeScaleFor(product);
+  const pricing = cat.pricing(product);
+  const images = product.images.filter(hasImageId).map(shot);
+  const films = (product.videos ?? []).filter(hasFilm).map(film);
 
   // Photographs first, with the first film placed straight after the lead image.
   const gallery: GalleryItem[] = images.map((image, i) => ({ kind: "image", shot: image, alt: i === 0 ? `${product.name}, ${product.colour.toLowerCase()}` : `${product.name}, view ${i + 1}` }));
@@ -63,7 +75,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
     gallery.splice(Math.min(gallery.length, 1 + i * 3), 0, item);
   });
 
-  const related = relatedTo(product, 8).map(toCard);
+  const related = cat.relatedTo(product, 8).map(cat.toCard);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -76,8 +88,8 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
     color: product.colour,
     ...(product.fabric ? { material: product.fabric } : {}),
     ...(product.code ? { sku: product.code } : {}),
-    ...(typeof product.price === "number"
-      ? { offers: { "@type": "Offer", price: product.price, priceCurrency: SITE.commerce.currency, availability: "https://schema.org/MadeToOrder", url: new URL(productHref(product), SITE.url).toString() } }
+    ...(typeof pricing.price === "number"
+      ? { offers: { "@type": "Offer", price: pricing.price, priceCurrency: SITE.commerce.currency, availability: "https://schema.org/MadeToOrder", url: new URL(productHref(product), SITE.url).toString() } }
       : {}),
   };
 
@@ -110,7 +122,11 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
               </Link>
             </p>
             <h1 className="headline mt-4 text-[clamp(1.9rem,3.1vw,3rem)]">{product.name}</h1>
-            <p className="mt-4 text-[15px] tracking-[0.02em] text-ink">{formatPrice(product.price)}</p>
+            <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-[15px] tracking-[0.02em] text-ink">
+              <PriceTag price={pricing.price} compareAt={pricing.compareAt} />
+              {pricing.badge ? <span className="bg-accent px-2 py-0.5 text-[11px] tracking-[0.08em] text-white uppercase">{pricing.badge}</span> : null}
+            </p>
+            {pricing.offer ? <p className="mt-2 text-[13px] text-accent">{pricing.offer.name}{pricing.offer.percent && pricing.price === null ? `: ${pricing.offer.percent}% off, confirmed with your price` : ""}</p> : null}
             <p className="mt-5 max-w-lg text-[15.5px] leading-relaxed text-ink-2">{product.summary}</p>
 
             <dl className="mt-6 grid grid-cols-[auto_1fr] gap-x-6 gap-y-1.5 text-[13px]">

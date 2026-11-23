@@ -2,6 +2,27 @@ import manifest from "@/data/media.generated.json";
 import type { MediaImage, MediaVideo } from "@/data/types";
 
 const IMAGES = manifest.images as Record<string, MediaImage>;
+
+/**
+ * Photographs uploaded through the admin. They are stored in Cloudflare R2 and
+ * recorded in the database; the catalogue loader registers them here so the same
+ * shot()/thumb() helpers work for them. Uploads never change once made, so the
+ * registry can be shared by every request.
+ */
+const UPLOADS = new Map<string, MediaImage>();
+/** The public address of the R2 bucket (not a secret). */
+export const R2_PUBLIC_URL = (process.env.R2_PUBLIC_URL || "https://pub-815592e32d694078bff17fcd968c91d8.r2.dev").replace(/\/+$/, "");
+
+export function registerUploads(records: Array<MediaImage & { id: string }>): void {
+  for (const r of records) if (!UPLOADS.has(r.id)) UPLOADS.set(r.id, r);
+}
+
+const isUpload = (id: string) => id.startsWith("uploads/");
+const record = (id: string): MediaImage | undefined => (isUpload(id) ? UPLOADS.get(id) : IMAGES[id]);
+/** The URL of one rendition of an uploaded photograph, in R2. */
+export function uploadUrl(id: string, width: number): string {
+  return `${R2_PUBLIC_URL}/media/img/${id}-${width}.webp`;
+}
 const VIDEOS = manifest.videos as Record<string, MediaVideo>;
 
 /** Everything a component needs to render one photo. Plain data, safe to pass to client components. */
@@ -49,14 +70,19 @@ export function mediaUrl(path: string): string {
   return `${MEDIA_BASE}/media/${path.replace(/^\/+/, "")}`;
 }
 
-const imgPath = (id: string, width: number) => mediaUrl(`img/${id}-${width}.webp`);
+const imgPath = (id: string, width: number) => (isUpload(id) ? uploadUrl(id, width) : mediaUrl(`img/${id}-${width}.webp`));
 
 export function hasImage(id: string): boolean {
-  return id in IMAGES;
+  return Boolean(record(id));
+}
+
+/** Every built-in photograph's id (for the admin's photo library). */
+export function builtInImageIds(): string[] {
+  return Object.keys(IMAGES);
 }
 
 export function shot(id: string): Shot {
-  const m = IMAGES[id];
+  const m = record(id);
   if (!m) throw new Error(`Unknown image id "${id}". Run "npm run media" or check the id.`);
   const largestUseful = m.widths.find((w) => w >= 1280) ?? m.widths[m.widths.length - 1];
   return {
@@ -75,7 +101,7 @@ export function shot(id: string): Shot {
 
 /** A lighter Shot for places that render many small thumbnails (search, bag, menus). */
 export function thumb(id: string): Pick<Shot, "id" | "src" | "srcSet" | "width" | "height" | "bg" | "flat" | "position" | "cut"> {
-  const m = IMAGES[id];
+  const m = record(id);
   if (!m) throw new Error(`Unknown image id "${id}".`);
   const widths = m.widths.filter((w) => w <= 800);
   const use = widths.length ? widths : [m.widths[0]];
@@ -90,6 +116,10 @@ export function thumb(id: string): Pick<Shot, "id" | "src" | "srcSet" | "width" 
     ...(m.focus ? { position: m.focus } : {}),
     ...(m.cut ? { cut: true } : {}),
   };
+}
+
+export function hasFilm(id: string): boolean {
+  return id in VIDEOS;
 }
 
 export function film(id: string): Film {

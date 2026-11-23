@@ -11,9 +11,11 @@
     "typecheck": "tsc --noEmit",
     "db:migrate": "node scripts/db-migrate.mjs",
     "db:check": "node scripts/db-migrate.mjs --check",
-    "media:upload": "node scripts/upload-media-r2.mjs"
+    "media:upload": "node scripts/upload-media-r2.mjs",
+    "db:import-catalogue": "node scripts/db-import-catalogue.mjs"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1175.0",
     "@fontsource-variable/jost": "^5.3.0",
     "@neon/config": "^1.14.6",
     "@neon/env": "^2.1.9",
@@ -26,10 +28,10 @@
     "pg": "^8.23.1",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "react-useanimations": "^3.1.1"
+    "react-useanimations": "^3.1.1",
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
-    "@aws-sdk/client-s3": "^3.1175.0",
     "@tailwindcss/turbopack": "4.3.3",
     "@types/node": "^20",
     "@types/pg": "^8.23.1",
@@ -37,7 +39,6 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
-    "sharp": "^0.35.5",
     "tailwindcss": "4.3.3",
     "typescript": "^5"
   }

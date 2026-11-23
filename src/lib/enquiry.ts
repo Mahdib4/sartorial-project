@@ -94,19 +94,22 @@ export function composeEnquiry(d: EnquiryDetails): string {
   return out.join("\n");
 }
 
-/** The house WhatsApp number as digits, or null if none is configured. */
-export function whatsappNumber(): string | null {
-  const number = SITE.contact.whatsapp.replace(/\D/g, "");
+type Contact = { whatsapp: string; email: string };
+
+/** The house WhatsApp number as digits (from the admin settings, else the site default), or null. */
+export function whatsappNumber(contact?: Contact): string | null {
+  const number = (contact?.whatsapp || SITE.contact.whatsapp).replace(/\D/g, "");
   return number || null;
 }
 
-export function whatsappLink(message: string): string | null {
-  const number = whatsappNumber();
+export function whatsappLink(message: string, contact?: Contact): string | null {
+  const number = whatsappNumber(contact);
   return number ? `https://wa.me/${number}?text=${encodeURIComponent(message)}` : null;
 }
 
-export function emailLink(message: string, subject: string): string | null {
-  return SITE.contact.email ? `mailto:${SITE.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}` : null;
+export function emailLink(message: string, subject: string, contact?: Contact): string | null {
+  const email = contact ? contact.email : SITE.contact.email;
+  return email ? `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}` : null;
 }
 
 export const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;

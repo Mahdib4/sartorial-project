@@ -8,6 +8,7 @@ import { ShowMore } from "@/components/interior/show-more";
 import { Button, ButtonAnchor } from "@/components/ui/Button";
 import { SITE } from "@/config/site";
 import { composeEnquiry, emailLink, EMAIL_PATTERN, newEnquiryId, newEnquiryKey, recordEnquiry, whatsappLink, type EnquiryLine } from "@/lib/enquiry";
+import { useShop } from "@/store/shop";
 
 type EnquiryFormProps = {
   kind: "order" | "appointment";
@@ -61,8 +62,9 @@ export function EnquiryForm({ kind, lines, initialInterest, initialNotes, onSent
   );
 
   const subject = kind === "order" ? `Order enquiry: ${name.trim() || "website"}` : `Fitting request: ${name.trim() || "website"}`;
-  const wa = whatsappLink(message);
-  const mail = emailLink(message, subject);
+  const { contact } = useShop();
+  const wa = whatsappLink(message, contact);
+  const mail = emailLink(message, subject, contact);
   const direct = Boolean(wa || mail);
 
   const guard = (event: React.MouseEvent, channel: "whatsapp" | "email") => {

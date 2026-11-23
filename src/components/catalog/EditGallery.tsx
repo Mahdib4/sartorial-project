@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Picture } from "@/components/ui/Picture";
 import { Reveal } from "@/components/ui/Reveal";
-import { productForImage, productHref } from "@/data/catalog";
+import { productHref, type Catalog } from "@/data/catalog";
 import type { EditShot } from "@/data/types";
 import { shot } from "@/lib/media";
 
@@ -10,12 +10,12 @@ import { shot } from "@/lib/media";
  * piece appears across the rest of the collection, each photograph linked to
  * the garment it was taken with.
  */
-export function EditGallery({ shots, name }: { shots: EditShot[]; name: string }) {
+export function EditGallery({ cat, shots, name }: { cat: Catalog; shots: EditShot[]; name: string }) {
   return (
     <ul className="columns-2 gap-1 px-1 lg:columns-3" aria-label={`${name}, as seen across the collection`}>
       {shots.map((entry, i) => {
         const image = shot(entry.image);
-        const product = productForImage(entry.image);
+        const product = cat.productForImage(entry.image);
         return (
           <Reveal as="li" key={entry.image} delay={(i % 3) * 0.06} className="mb-1 break-inside-avoid">
             <figure>

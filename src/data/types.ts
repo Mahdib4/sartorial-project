@@ -39,6 +39,14 @@ export type Product = {
   note?: string;
   /** Optional. Without a price the piece is shown as "Price on request". */
   price?: number;
+  /** A reduced price for this piece (set in the admin). */
+  salePrice?: number;
+  /** A short label on the card, e.g. "New" or "Limited". */
+  badge?: string;
+  /** Hidden pieces are kept but not shown anywhere on the site. */
+  visible?: boolean;
+  /** Featured pieces can be picked for the home page. */
+  featured?: boolean;
 };
 
 export type EditShot = {
@@ -67,6 +75,8 @@ export type Category = {
    * edit of where the piece appears across the collection.
    */
   edit?: EditShot[];
+  /** Hidden categories are kept but left out of menus and pages. */
+  visible?: boolean;
 };
 
 export type Collection = {
@@ -108,3 +118,79 @@ export type MediaVideo = {
   audio?: boolean;
   name?: string;
 };
+
+/** A media record for a photograph uploaded through the admin (stored in Cloudflare R2). */
+export type UploadedImage = MediaImage & { id: string };
+
+export type LinkType = "none" | "product" | "category" | "collection" | "curated" | "url";
+
+/** A promotional banner (home page slot) or a notice (announcement bar). */
+export type Banner = {
+  id: number;
+  placement: "home" | "bar";
+  title: string;
+  eyebrow: string;
+  body: string;
+  cta: string;
+  /** Media id. */
+  image: string | null;
+  linkType: LinkType;
+  linkTarget: string;
+  startsAt: string | null;
+  endsAt: string | null;
+  active: boolean;
+  position: number;
+};
+
+export type Offer = {
+  id: number;
+  name: string;
+  /** percent: value is a percentage; amount: value is taka off; note: no price change, just the badge. */
+  kind: "percent" | "amount" | "note";
+  value: number;
+  scope: "all" | "collection" | "category" | "products";
+  targets: string[];
+  badge: string;
+  startsAt: string | null;
+  endsAt: string | null;
+  active: boolean;
+};
+
+/** A curated collection or launch, with its own page at /collections/<slug>. */
+export type Curated = {
+  slug: string;
+  title: string;
+  eyebrow: string;
+  intro: string;
+  /** Media id. */
+  cover: string | null;
+  products: string[];
+  isLaunch: boolean;
+  visible: boolean;
+  position: number;
+};
+
+export type HomeSectionKey =
+  | "promo"
+  | "statement"
+  | "collections"
+  | "explorer"
+  | "heritageFeature"
+  | "heritageFilm"
+  | "classicBanners"
+  | "classicFeature"
+  | "motion"
+  | "shopTheLook"
+  | "launches"
+  | "craft";
+
+export type ContactSettings = { whatsapp: string; phone: string; email: string; address: string[]; hours: string };
+export type SocialSettings = { instagram: string; facebook: string; youtube: string };
+export type HomeSettings = {
+  sections: Record<HomeSectionKey, boolean>;
+  /** Product slugs for the "wedding wardrobe" (Heritage) and "suit, cut for one" (Classic) features. */
+  heritagePicks: string[];
+  classicPicks: string[];
+};
+
+export type SiteSettings = { contact: ContactSettings; social: SocialSettings; home: HomeSettings };

@@ -6,7 +6,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Picture } from "@/components/ui/Picture";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { categoriesOf, productsInCollection, toCard } from "@/data/catalog";
+import type { Catalog } from "@/data/catalog";
 import { navGroups } from "@/data/navigation";
 import type { Collection } from "@/data/types";
 import { film, shot } from "@/lib/media";
@@ -19,10 +19,10 @@ const HERO: Record<string, { position?: string; alt: string; filmLabel?: string 
 };
 
 /** A collection: its film or photograph, its categories, and (where it has them) every piece in one filterable grid. */
-export function CollectionView({ collection }: { collection: Collection }) {
-  const group = navGroups().find((g) => g.key === collection.key)!;
-  const products = productsInCollection(collection.key);
-  const categories = categoriesOf(collection.key);
+export function CollectionView({ cat, collection }: { cat: Catalog; collection: Collection }) {
+  const group = navGroups(cat).find((g) => g.key === collection.key)!;
+  const products = cat.productsInCollection(collection.key);
+  const categories = cat.categoriesOf(collection.key);
   const hero = HERO[collection.key];
   // Heritage opens on its collection film; the others open on a photograph.
   const heroFilm = collection.key === "heritage" && collection.film ? film(collection.film) : undefined;
@@ -48,7 +48,7 @@ export function CollectionView({ collection }: { collection: Collection }) {
       {products.length > 0 ? (
         <section className="border-t border-line-soft py-12 md:py-16" aria-labelledby="all-title">
           <SectionHeading eyebrow="The collection" title={<span id="all-title">Every piece in {collection.name}.</span>} className="mb-8 md:mb-10" />
-          <Listing products={products.map(toCard)} chips="category" categoryOrder={categories.map((c) => c.name)} label={collection.name} />
+          <Listing products={products.map(cat.toCard)} chips="category" categoryOrder={categories.map((c) => c.name)} label={collection.name} />
         </section>
       ) : (
         <div className="border-t border-line-soft">

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useHideOnScroll } from "@/components/interior/hide-on-scroll";
 import { Tooltip, TooltipGroup } from "@/components/interior/tooltip-group";
-import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
+import { AnnouncementBar, type Notice } from "@/components/layout/AnnouncementBar";
 import { MegaMenu } from "@/components/layout/MegaMenu";
 import { IconButton } from "@/components/ui/Icon";
 import { Wordmark } from "@/components/ui/Wordmark";
@@ -20,7 +20,8 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const OVERLAY_ROUTES = new Set(["/", "/clothing", "/clothing/heritage", "/clothing/classic", "/accessories", "/footwear", "/bespoke"]);
 
 export function isOverlayRoute(pathname: string): boolean {
-  return OVERLAY_ROUTES.has(pathname.replace(/\/$/, "") || "/");
+  const path = pathname.replace(/\/$/, "") || "/";
+  return OVERLAY_ROUTES.has(path) || /^\/collections\/[^/]+$/.test(path);
 }
 
 function Count({ value, label }: { value: number; label: string }) {
@@ -32,7 +33,7 @@ function Count({ value, label }: { value: number; label: string }) {
   );
 }
 
-export function SiteHeader({ menus }: { menus: NavMenu[] }) {
+export function SiteHeader({ menus, notices }: { menus: NavMenu[]; notices: Notice[] }) {
   const pathname = usePathname();
   const reduce = useReducedMotion();
   const { overlay, open, close, count, wishlist, ready } = useShop();
@@ -125,7 +126,7 @@ export function SiteHeader({ menus }: { menus: NavMenu[] }) {
           if (!e.currentTarget.contains(e.relatedTarget as Node | null)) closeNow();
         }}
       >
-        <AnnouncementBar overlay={transparent} />
+        <AnnouncementBar overlay={transparent} notices={notices} />
 
         <div className={cn("relative transition-[background-color,color,border-color] duration-500", transparent ? "on-dark border-b border-transparent bg-transparent text-white" : "border-b border-line-soft bg-white text-ink")}>
           <div className="grid h-[var(--header-h)] grid-cols-[1fr_auto_1fr] items-center px-gutter">

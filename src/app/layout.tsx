@@ -11,7 +11,8 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { Toaster } from "@/components/layout/Toaster";
 import { SITE } from "@/config/site";
-import { searchIndex } from "@/data/catalog";
+import { SiteOnly } from "@/components/layout/SiteOnly";
+import { catalog } from "@/data/catalog";
 import { navGroups, navMenus } from "@/data/navigation";
 import { INTRO_SCRIPT } from "@/lib/intro-script";
 import { mediaUrl } from "@/lib/media";
@@ -40,8 +41,10 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
-  const groups = navGroups();
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const cat = await catalog();
+  const groups = navGroups(cat);
+  const notices = cat.banners("bar").map((b) => ({ id: b.id, text: b.title, href: b.href, cta: b.href ? b.cta : "" }));
   return (
     // The opening animation's script marks <html> before the first paint (see lib/intro-script.ts).
     <html lang="en" suppressHydrationWarning>
@@ -49,23 +52,29 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: INTRO_SCRIPT }} />
       </head>
       <body className="flex min-h-dvh flex-col">
-        <Preloader />
+        <SiteOnly>
+          <Preloader />
+        </SiteOnly>
         <noscript>
           <style>{`[data-reveal],[data-text-reveal] span{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}.pl{display:none!important}`}</style>
         </noscript>
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[80] focus:bg-ink focus:px-4 focus:py-3 focus:text-[13px] focus:text-white">
           Skip to content
         </a>
-        <ShopProvider index={searchIndex()}>
-          <SiteHeader menus={navMenus()} />
+        <ShopProvider index={cat.searchIndex()} contact={cat.settings.contact}>
+          <SiteOnly>
+            <SiteHeader menus={navMenus(cat)} notices={notices} />
+          </SiteOnly>
           <div id="main" className="flex flex-1 flex-col">
             {children}
           </div>
-          <SiteFooter groups={groups} />
-          <MobileMenu groups={groups} />
-          <BagDrawer />
-          <SearchOverlay groups={groups} />
-          <Toaster />
+          <SiteOnly>
+            <SiteFooter groups={groups} contact={cat.settings.contact} social={cat.settings.social} />
+            <MobileMenu groups={groups} />
+            <BagDrawer />
+            <SearchOverlay groups={groups} />
+            <Toaster />
+          </SiteOnly>
         </ShopProvider>
       </body>
     </html>

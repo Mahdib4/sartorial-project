@@ -1,49 +1,25 @@
-import { CATEGORIES, COLLECTIONS, COLLECTION_ORDER } from "./categories";
-import { CATEGORY_EDITORIAL, CATEGORY_FILMS, PRODUCTS } from "./products";
-import type { Category, Collection, CollectionKey, Product } from "./types";
+import { cache } from "react";
 import { SIZE_SCALES, type SizeScale } from "@/config/site";
-import { film, shot, sourceOf, thumb, type Film, type Shot } from "@/lib/media";
+import { film, registerUploads, shot, sourceOf, thumb, type Film, type Shot } from "@/lib/media";
+import { COLLECTION_ORDER, COLLECTIONS as BASE_COLLECTIONS } from "./categories";
+import { CATEGORY_EDITORIAL, CATEGORY_FILMS } from "./products";
+import { loadCatalogData, type CatalogData } from "./store";
+import type { Banner, Category, Collection, CollectionKey, Curated, Offer, Product, SiteSettings } from "./types";
 
-const CATEGORY_BY_KEY = new Map(CATEGORIES.map((c) => [c.key, c]));
-const PRODUCT_BY_SLUG = new Map(PRODUCTS.map((p) => [p.slug, p]));
+/**
+ * The catalogue as the website sees it: queries over the data loaded by
+ * store.ts, with hidden products and categories left out. Every server page
+ * and layout starts with `const cat = await catalog()`.
+ */
+export const catalog = cache(async (): Promise<Catalog> => new Catalog(await loadCatalogData()));
 
-// ── Lookups ────────────────────────────────────────────────────
+// ── Plain helpers (no data needed) ─────────────────────────────
 
-export function getCollection(key: string): Collection | undefined {
-  return COLLECTIONS[key as CollectionKey];
-}
+/** The four departments; their category lists come from the live catalogue (Catalog#collections). */
+export const COLLECTIONS = BASE_COLLECTIONS;
 
-export function allCollections(): Collection[] {
-  return COLLECTION_ORDER.map((k) => COLLECTIONS[k]);
-}
-
-export function getCategory(key: string): Category | undefined {
-  return CATEGORY_BY_KEY.get(key);
-}
-
-export function categoriesOf(collection: CollectionKey): Category[] {
-  return COLLECTIONS[collection].categories.map((k) => CATEGORY_BY_KEY.get(k)!);
-}
-
-export function categoryHref(category: Category): string {
-  return `${COLLECTIONS[category.collection].href}/${category.slug}`;
-}
-
-export function getProduct(slug: string): Product | undefined {
-  return PRODUCT_BY_SLUG.get(slug);
-}
-
-export function allProducts(): Product[] {
-  return PRODUCTS;
-}
-
-export function productsIn(categoryKey: string): Product[] {
-  return PRODUCTS.filter((p) => p.category === categoryKey);
-}
-
-export function productsInCollection(collection: CollectionKey): Product[] {
-  const keys = new Set(COLLECTIONS[collection].categories);
-  return PRODUCTS.filter((p) => keys.has(p.category));
+export function categoryHref(category: Pick<Category, "collection" | "slug">): string {
+  return `${BASE_COLLECTIONS[category.collection].href}/${category.slug}`;
 }
 
 /** How the house identifies a piece in an enquiry: its own code where it has one, otherwise its slug. */
@@ -55,37 +31,22 @@ export function productHref(product: Pick<Product, "slug">): string {
   return `/products/${product.slug}`;
 }
 
-export function sizeScaleFor(product: Product): SizeScale {
-  return SIZE_SCALES[CATEGORY_BY_KEY.get(product.category)?.sizes ?? "one"];
-}
-
-export function editorialFor(categoryKey: string): string[] {
-  return CATEGORY_EDITORIAL[categoryKey] ?? [];
-}
-
-export function filmsFor(categoryKey: string): string[] {
-  return CATEGORY_FILMS[categoryKey] ?? [];
-}
-
-/** The product whose gallery contains this photo (following crops back to their source). */
-export function productForImage(imageId: string): Product | undefined {
-  const source = sourceOf(imageId) ?? imageId;
-  return PRODUCTS.find((p) => p.images.includes(source) || p.images.includes(imageId));
-}
-
-/** Pieces to show beneath a product: same category first, then the rest of its collection. */
-export function relatedTo(product: Product, limit = 8): Product[] {
-  const category = CATEGORY_BY_KEY.get(product.category)!;
-  const same = PRODUCTS.filter((p) => p.category === product.category && p.slug !== product.slug);
-  const sameFamily = same.filter((p) => p.colourFamily === product.colourFamily);
-  const rest = same.filter((p) => p.colourFamily !== product.colourFamily);
-  const wider = productsInCollection(category.collection).filter(
-    (p) => p.category !== product.category && p.occasions.some((o) => product.occasions.includes(o)),
-  );
-  return [...sameFamily, ...rest, ...wider].slice(0, limit);
+export function curatedHref(c: Pick<Curated, "slug">): string {
+  return `/collections/${c.slug}`;
 }
 
 // ── View models: plain data handed to client components ───────
+
+export type Pricing = {
+  /** What the piece costs now, or null for "price on request". */
+  price: number | null;
+  /** The price before a reduction, when there is one. */
+  compareAt: number | null;
+  /** The live offer that applies, if any. */
+  offer: { name: string; badge: string; percent: number | null } | null;
+  /** A short label for the card: the offer's badge, or the product's own. */
+  badge: string | null;
+};
 
 export type CardData = {
   slug: string;
@@ -98,6 +59,8 @@ export type CardData = {
   categoryName: string;
   collection: CollectionKey;
   price: number | null;
+  compareAt: number | null;
+  badge: string | null;
   image: Shot;
   hover: Shot | null;
   /** A short silent clip played on hover, where the piece has been filmed. */
@@ -106,29 +69,6 @@ export type CardData = {
   /** Position in the catalogue, used for the default ("Featured") order. */
   order: number;
 };
-
-export function toCard(product: Product): CardData {
-  const category = CATEGORY_BY_KEY.get(product.category)!;
-  const clipId = product.videos?.find((v) => film(v).portrait) ?? null;
-  const clip = clipId ? film(clipId) : null;
-  return {
-    slug: product.slug,
-    href: productHref(product),
-    name: product.name,
-    colour: product.colour,
-    colourFamily: product.colourFamily,
-    occasions: [...product.occasions],
-    categoryKey: category.key,
-    categoryName: category.name,
-    collection: category.collection,
-    price: product.price ?? null,
-    image: shot(product.images[0]),
-    hover: product.images[1] ? shot(product.images[1]) : null,
-    clip: clip ? { src: clip.src, portrait: clip.portrait } : null,
-    imageCount: product.images.length,
-    order: PRODUCTS.indexOf(product),
-  };
-}
 
 /** The slim record used by search, the bag and the wishlist. */
 export type IndexEntry = {
@@ -141,29 +81,232 @@ export type IndexEntry = {
   /** See productReference(). */
   reference: string;
   price: number | null;
+  compareAt: number | null;
   keywords: string;
   image: ReturnType<typeof thumb>;
 };
 
-export function searchIndex(): IndexEntry[] {
-  return PRODUCTS.map((p) => {
-    const category = CATEGORY_BY_KEY.get(p.category)!;
-    const collection = COLLECTIONS[category.collection];
+/** A banner or notice, resolved to a link. */
+export type LiveBanner = Banner & { href: string | null; shot: Shot | null };
+
+export class Catalog {
+  readonly source: CatalogData["source"];
+  readonly settings: SiteSettings;
+  private readonly cats: Category[];
+  private readonly prods: Product[];
+  private readonly catByKey: Map<string, Category>;
+  private readonly prodBySlug: Map<string, Product>;
+  private readonly offers: Offer[];
+  private readonly bannerList: Banner[];
+  private readonly curatedList: Curated[];
+  readonly collections: Record<CollectionKey, Collection>;
+
+  constructor(data: CatalogData) {
+    registerUploads(data.uploads);
+    this.source = data.source;
+    this.settings = data.settings;
+    // Only what visitors may see; pieces whose photographs are missing are left out rather than breaking a page.
+    this.cats = data.categories.filter((c) => c.visible !== false && BASE_COLLECTIONS[c.collection]);
+    this.catByKey = new Map(this.cats.map((c) => [c.key, c]));
+    this.prods = data.products.filter((p) => p.visible !== false && this.catByKey.has(p.category) && p.images.length > 0 && safe(() => shot(p.images[0])));
+    this.prodBySlug = new Map(this.prods.map((p) => [p.slug, p]));
+    this.offers = data.offers;
+    this.bannerList = data.banners;
+    this.curatedList = data.curated.filter((c) => c.visible);
+    this.collections = Object.fromEntries(
+      COLLECTION_ORDER.map((k) => [k, { ...BASE_COLLECTIONS[k], categories: this.cats.filter((c) => c.collection === k).map((c) => c.key) }]),
+    ) as Record<CollectionKey, Collection>;
+  }
+
+  // Lookups
+  getCollection(key: string): Collection | undefined {
+    return this.collections[key as CollectionKey];
+  }
+  allCollections(): Collection[] {
+    return COLLECTION_ORDER.map((k) => this.collections[k]);
+  }
+  getCategory(key: string): Category | undefined {
+    return this.catByKey.get(key);
+  }
+  allCategories(): Category[] {
+    return this.cats;
+  }
+  categoriesOf(collection: CollectionKey): Category[] {
+    return this.collections[collection].categories.map((k) => this.catByKey.get(k)!);
+  }
+  getProduct(slug: string): Product | undefined {
+    return this.prodBySlug.get(slug);
+  }
+  allProducts(): Product[] {
+    return this.prods;
+  }
+  productsIn(categoryKey: string): Product[] {
+    return this.prods.filter((p) => p.category === categoryKey);
+  }
+  productsInCollection(collection: CollectionKey): Product[] {
+    const keys = new Set(this.collections[collection].categories);
+    return this.prods.filter((p) => keys.has(p.category));
+  }
+  sizeScaleFor(product: Product): SizeScale {
+    return SIZE_SCALES[this.catByKey.get(product.category)?.sizes ?? "one"];
+  }
+  editorialFor(categoryKey: string): string[] {
+    return CATEGORY_EDITORIAL[categoryKey] ?? [];
+  }
+  filmsFor(categoryKey: string): string[] {
+    return CATEGORY_FILMS[categoryKey] ?? [];
+  }
+  /** The product whose gallery contains this photo (following crops back to their source). */
+  productForImage(imageId: string): Product | undefined {
+    const source = sourceOf(imageId) ?? imageId;
+    return this.prods.find((p) => p.images.includes(source) || p.images.includes(imageId));
+  }
+  /** Pieces to show beneath a product: same category first, then the rest of its collection. */
+  relatedTo(product: Product, limit = 8): Product[] {
+    const category = this.catByKey.get(product.category);
+    if (!category) return [];
+    const same = this.prods.filter((p) => p.category === product.category && p.slug !== product.slug);
+    const sameFamily = same.filter((p) => p.colourFamily === product.colourFamily);
+    const rest = same.filter((p) => p.colourFamily !== product.colourFamily);
+    const wider = this.productsInCollection(category.collection).filter(
+      (p) => p.category !== product.category && p.occasions.some((o) => product.occasions.includes(o)),
+    );
+    return [...sameFamily, ...rest, ...wider].slice(0, limit);
+  }
+
+  // Prices and offers
+  offerFor(product: Product): Offer[] {
+    const category = this.catByKey.get(product.category);
+    return this.offers.filter(
+      (o) =>
+        o.scope === "all" ||
+        (o.scope === "products" && o.targets.includes(product.slug)) ||
+        (o.scope === "category" && o.targets.includes(product.category)) ||
+        (o.scope === "collection" && category !== undefined && o.targets.includes(category.collection)),
+    );
+  }
+
+  pricing(product: Product): Pricing {
+    const base = typeof product.price === "number" ? product.price : null;
+    let price = base;
+    let chosen: Offer | null = null;
+    if (base !== null && typeof product.salePrice === "number" && product.salePrice < base) price = product.salePrice;
+    const applicable = this.offerFor(product);
+    for (const o of applicable) {
+      if (base === null || o.kind === "note") continue;
+      const reduced = o.kind === "percent" ? Math.round(base * (1 - Math.min(o.value, 95) / 100)) : Math.max(0, base - o.value);
+      if (price === null || reduced < price) {
+        price = reduced;
+        chosen = o;
+      }
+    }
+    const display = chosen ?? applicable[0] ?? null;
     return {
-      slug: p.slug,
-      href: productHref(p),
-      name: p.name,
-      colour: p.colour,
-      categoryName: category.name,
-      collectionName: collection.name,
-      reference: productReference(p),
-      price: p.price ?? null,
-      keywords: [p.name, p.colour, p.colourFamily, p.fabric ?? "", category.name, collection.name, p.code ?? "", ...p.occasions]
-        .join(" ")
-        .toLowerCase(),
-      image: thumb(p.images[0]),
+      price,
+      compareAt: base !== null && price !== null && price < base ? base : null,
+      offer: display ? { name: display.name, badge: display.badge || defaultBadge(display), percent: display.kind === "percent" ? display.value : null } : null,
+      badge: display ? display.badge || defaultBadge(display) : (product.badge ?? null),
     };
-  });
+  }
+
+  // View models
+  toCard = (product: Product): CardData => {
+    const category = this.catByKey.get(product.category)!;
+    const clipId = product.videos?.find((v) => safe(() => film(v).portrait)) ?? null;
+    const clip = clipId ? film(clipId) : null;
+    const pricing = this.pricing(product);
+    return {
+      slug: product.slug,
+      href: productHref(product),
+      name: product.name,
+      colour: product.colour,
+      colourFamily: product.colourFamily,
+      occasions: [...product.occasions],
+      categoryKey: category.key,
+      categoryName: category.name,
+      collection: category.collection,
+      price: pricing.price,
+      compareAt: pricing.compareAt,
+      badge: pricing.badge,
+      image: shot(product.images[0]),
+      hover: product.images[1] && safe(() => shot(product.images[1])) ? shot(product.images[1]) : null,
+      clip: clip ? { src: clip.src, portrait: clip.portrait } : null,
+      imageCount: product.images.length,
+      order: this.prods.indexOf(product),
+    };
+  };
+
+  searchIndex(): IndexEntry[] {
+    return this.prods.map((p) => {
+      const category = this.catByKey.get(p.category)!;
+      const collection = this.collections[category.collection];
+      const pricing = this.pricing(p);
+      return {
+        slug: p.slug,
+        href: productHref(p),
+        name: p.name,
+        colour: p.colour,
+        categoryName: category.name,
+        collectionName: collection.name,
+        reference: productReference(p),
+        price: pricing.price,
+        compareAt: pricing.compareAt,
+        keywords: [p.name, p.colour, p.colourFamily, p.fabric ?? "", category.name, collection.name, p.code ?? "", ...p.occasions].join(" ").toLowerCase(),
+        image: thumb(p.images[0]),
+      };
+    });
+  }
+
+  // Banners, notices and curated collections
+  banners(placement: Banner["placement"]): LiveBanner[] {
+    return this.bannerList
+      .filter((b) => b.placement === placement)
+      .map((b) => ({ ...b, href: this.linkFor(b.linkType, b.linkTarget), shot: b.image && safe(() => shot(b.image!)) ? shot(b.image) : null }));
+  }
+
+  /** Where a banner leads: a product, category, department, curated collection or any address. */
+  linkFor(type: Banner["linkType"], target: string): string | null {
+    switch (type) {
+      case "product": {
+        const p = this.prodBySlug.get(target);
+        return p ? productHref(p) : null;
+      }
+      case "category": {
+        const c = this.catByKey.get(target);
+        return c ? categoryHref(c) : null;
+      }
+      case "collection":
+        return this.collections[target as CollectionKey]?.href ?? null;
+      case "curated":
+        return this.curatedList.some((c) => c.slug === target) ? `/collections/${target}` : null;
+      case "url":
+        return /^(\/(?!\/)|https?:\/\/)/.test(target) ? target : null;
+      default:
+        return null;
+    }
+  }
+
+  curated(): Curated[] {
+    return this.curatedList;
+  }
+  getCurated(slug: string): Curated | undefined {
+    return this.curatedList.find((c) => c.slug === slug);
+  }
+  productsOf(c: Curated): Product[] {
+    return c.products.map((s) => this.prodBySlug.get(s)).filter((p): p is Product => Boolean(p));
+  }
 }
 
-export { CATEGORIES, COLLECTIONS, COLLECTION_ORDER, PRODUCTS };
+function defaultBadge(o: Offer): string {
+  if (o.kind === "percent") return `−${o.value}%`;
+  if (o.kind === "amount") return "Offer";
+  return o.name;
+}
+
+function safe<T>(fn: () => T): T | null {
+  try {
+    return fn();
+  } catch {
+    return null;
+  }
+}

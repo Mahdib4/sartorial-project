@@ -18,6 +18,12 @@ function conductor(storageKey: string, eventName: string) {
   const phase = () => root.getAttribute("data-intro");
   const setPhase = (next: string) => root.setAttribute("data-intro", next);
 
+  // The admin panel has no opening animation.
+  if (location.pathname.indexOf("/admin") === 0) {
+    setPhase("skip");
+    return;
+  }
+
   try {
     const replay = /[?&]intro(=|&|$)/.test(location.search);
     if (!replay && sessionStorage.getItem(storageKey)) {

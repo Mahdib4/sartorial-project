@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { WishlistView } from "@/components/pages/WishlistView";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { allProducts, toCard } from "@/data/catalog";
+import { catalog } from "@/data/catalog";
 
 export const metadata: Metadata = {
   title: "Wishlist",
@@ -9,11 +9,12 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
-export default function WishlistPage() {
+export default async function WishlistPage() {
+  const cat = await catalog();
   return (
     <main className="pt-header">
       <PageHeader crumbs={[{ label: "Home", href: "/" }, { label: "Wishlist" }]} title="Wishlist" />
-      <WishlistView cards={allProducts().map(toCard)} />
+      <WishlistView cards={cat.allProducts().map(cat.toCard)} />
     </main>
   );
 }

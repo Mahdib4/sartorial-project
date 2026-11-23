@@ -131,6 +131,110 @@
    "bg": "#e69949",
    "name": "Olive Cotton-Twill Safari Jacket - 05"
   },
+  "classic/casual-jackets/sand-linen-look-safari-jacket-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAADQBACdASoUAB4APu1ur1IppiQiqAgBMB2JZACdABBTO9Dv0tP4WXU22n1etBNO+AD+U+9TQQnZHCJLtUEGw917cxan2uKMv9CvBw6Nrj28z9y/NAct6RYBpSHotcv7cMEmF34aCGYtQZb6c+x1LI7CGFHHG5rPLYaUWP2KnIKiBL7NHaEGwpSJBtehFb7DAAA=",
+   "bg": "#c27837",
+   "name": "Sand Linen-Look Safari Jacket - 01"
+  },
+  "classic/casual-jackets/sand-linen-look-safari-jacket-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAACQBACdASoUAB4APu1urlIppiQiqAgBMB2JZACdAAFJw8u7dy81/l5aTbhiGAAA3ZkhxJr6ZYsXo9sUQsaOPAws1p8SPkzwOP84bm95QX8XbRat4ZzfTlZmRwEI0DfKUxsM69EOz8h3lTQxI7yxep0lote2amSMU4UNPOKIlAXttTldG9nh9EAA",
+   "bg": "#bb6f33",
+   "name": "Sand Linen-Look Safari Jacket - 02"
+  },
+  "classic/casual-jackets/sand-linen-look-safari-jacket-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAABwBQCdASoUAB4APu1sq1EppaOiqAqpMB2JZACsMyS6ABS0S0kRQkPNuyYjOH5ZwcmjOnYAAN1bF42ULRH4wR6c/EJiI68vXYPB8Wf6+Ye8i98XCuXyH8mgDoXWU6Y0hacuPSt5ROoAkTbLKAFolZMqvGkVVDsYNN7k/bVjpicFS6zG8PILDjdovRPsI7mAAAA=",
+   "bg": "#a56333",
+   "name": "Sand Linen-Look Safari Jacket - 03"
+  },
+  "classic/casual-jackets/sand-linen-look-safari-jacket-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAADQBACdASoUAB4APu1krFAppSQisBgIATAdiUAToAHk+AIyp3dPbxEpOopYfe/yAAD+1qwakzLQEM2zJr09cXNkRRqxLWjCvxv4dkNAFp29PWr3NxCSw9ImZHk7qrhG9Y4F77B4YuwY6tXMHbwXfFq6AahM5BvNYgAAAA==",
+   "bg": "#d4a179",
+   "name": "Sand Linen-Look Safari Jacket - 04"
+  },
+  "classic/casual-jackets/slate-grey-casual-overshirt-jacket-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAAAwBQCdASoUAB4APu1gqE2ppaOiMAgBMB2JYgDDY46ByeqYlwFqnlBhCDD/G+FnYxT6QAD+7V8fI1n2kCGqkF7fCxRr0X+hlWXtrP2Ra/DYiQcKLVzA3H9P/bW0Z8I4zQE6YvmUXA5B0Fwy0Oi4ZYCsm9ozC+Ooexg3ck3PXNgAAA==",
+   "bg": "#f5d7b9",
+   "name": "Slate Grey Casual Overshirt Jacket - 01"
+  },
+  "classic/casual-jackets/slate-grey-casual-overshirt-jacket-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAADwBACdASoUAB4APuFeqE2opSQiMAwBEBwJZACdMoR+4CkTnoQbwsDv3y+Wa4adgBAA/up7VLGcq3u7e8yxCUOBjJosf3D3RtrunOX/MKVWyetDX+nnzA2290NZJYsRxs+kUhfgfMTxl8TxrJ/9SA1KBexNMo64jF4ARAAA",
+   "bg": "#e8ad78",
+   "name": "Slate Grey Casual Overshirt Jacket - 02"
+  },
+  "classic/casual-jackets/slate-grey-casual-overshirt-jacket-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAAAQBQCdASoUAB4APu1orVCppaQiqAqpMB2JQBOgAZGfQd5Kdhc6bGs4y1qB+yehpIIAAP7tYAlxWtLemXUi/VJHLKV2KKY/DVgr3QRj/6h4lb8vMve5aKajJssGRarpZt3KBIz6QWTax2Z3aZXfE5xXQBX1oFX2yGHYdiqqrjbgazUXuIif5VSPzwwAAA==",
+   "bg": "#b69a88",
+   "name": "Slate Grey Casual Overshirt Jacket - 03"
+  },
+  "classic/casual-jackets/slate-grey-casual-overshirt-jacket-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAAAQBQCdASoUAB4APu1sq08ppqOiMBgIATAdiUATplqngQHqikk8UiL3/aiu+z/SPSYAAP7nQKaUvQPVG+1x4Iu0I+FcvELTzZw/R2qsi/gFZ2PfiaoxjiMEklPOe9gLE/tlmGIE1DX7YZW+CD04Cx2sYjRgkXrNFFAAAA==",
+   "bg": "#e4b28a",
+   "name": "Slate Grey Casual Overshirt Jacket - 04"
+  },
   "classic/casual-jackets/terracotta-casual-overshirt-jacket-01": {
    "w": 1920,
    "h": 2880,
@@ -290,6 +394,45 @@
    "blur": "data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAACQBQCdASoUABkAPu1kqE2ppaOiMAgBMB2JZgCdMoPNTjgEDfmx1bVA78AVFEKNp4EuqMl8kAD+4eyWfoRxripiMOZVOVrRDx17S6v3AtIt/KjiFENlg5CnhprJ9NVcOmmAImMorgLwvLc27rQ5Q9bmN3joP+iwOOOAk4UMBNGAkItsieWlYlyKKA16HdfBbVAQqPWeGsEm2f2OxrLyAAAA",
    "bg": "#b2825d",
    "name": "Bespoke Pinstripe & Poplin Shirts Stack - 01"
+  },
+  "classic/shirts/button-down-popover-shirt-pale-blue-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAABwBQCdASoUAB4APu1sr1CppiQiqAqpMB2JaACdMoABxZ24LGQYRcsz+7KjAefRJYzz2ybwAPef9moFsjbOpR4ry17UyJVqkGfiH8uOaXux7tAEO2rqYit7YDsQmg/sRUH2ktKBQn0WKLBu9LxVc+nGR0pErg+/rf6OEtjReQEkcSjKVKNFzxVNz+bkU1VFAhdk+HWoAAA=",
+   "bg": "#b97a4a",
+   "name": "Button-Down Popover Shirt Pale Blue - 01"
+  },
+  "classic/shirts/button-down-popover-shirt-pale-blue-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAAAQBgCdASoUAB4APu1ep06ppKMiMBgMATAdiWYAsR7VQWWgACUuO2l2nJqeg4rF6l4v/HOxOSfr1UAA96cZnxwueG2x/bcsuUqA/3Cvq+fvt2DY/ng/4SMINnDvNNf6CHqv0VYkUGt92VRdEET3nN/ktU1/S9O6LQiidY1dAKsyRHqVTg4Y2205Dp7RDjivZdCWJZf6aUhkAAAA",
+   "bg": "#ab6733",
+   "name": "Button-Down Popover Shirt Pale Blue - 02"
+  },
+  "classic/shirts/button-down-popover-shirt-pale-blue-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAwBACdASoUAB4APu1mqk2tJaQiMAgBoB2JQBUegvRdlXEUufp8sDdiTAAAyqWRHXJqgaC/rWQhF3rhqlh6hIo191veE3vC2annU7w1BEZ6xtyx1iDtGMwh/Z6CAAAA",
+   "bg": "#b28771",
+   "name": "Button-Down Popover Shirt Pale Blue - 03"
   },
   "classic/shirts/the-button-down-collar-shirt-burgundy-white-dress-stripe-01": {
    "w": 1920,
@@ -563,6 +706,149 @@
    "bg": "#c17238",
    "name": "Twin-Pocket Safari Shirt Pale Pink - 05"
   },
+  "classic/shirts/twin-pocket-safari-shirt-pale-pink-model-01": {
+   "w": 1920,
+   "h": 1280,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAABwAwCdASoUAA0APu1iqU2ppaQiMAgBMB2JaAC7AA9wfwhXUcAA16mQYEBQhJnS9pSiY/Eoh1jHMKb4/fmTHOujms33kc73QxwaJcadgppihL8gAAA=",
+   "bg": "#b7733a",
+   "name": "Twin Pocket Safari Shirt Pale Pink Model - 01"
+  },
+  "classic/shirts/twin-pocket-western-shirt-sky-blue-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAABwBgCdASoUAB4APuFep02opSOiMAwBEBwJbACdMoRwN7XxqGTQB4Wd+SZqwpOa9RageQE7tImMbP0FawAA/lnsN68wlx8K0SyXviC1GOi4PzHDyB+1puJ12WBHa9B/X14cY1nCdJLU9Ux3RFcCLGG+eFtvPtCXWjPGfLAzQ0rD8XyMW+G2Hj4aAwBXFHJ2Ic4T5sgdPcqHobHIYPKF1Nd+W1ED2AAA",
+   "bg": "#d18647",
+   "name": "Twin-Pocket Western Shirt Sky Blue - 01"
+  },
+  "classic/shirts/twin-pocket-western-shirt-sky-blue-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAADQBACdASoUAB4APu1qq08ppiOiMBgIATAdiWQAnTM0OWgKDxAqwGT4SAevf+pWAAD8Wmq8kkzWNFuadgxkAC4xFfd3J9BpEwq8QdMFQ8U/XZ8zxt+5v234TKk9IVacHlDeNATo5tS9HK6ju50ZT/lcwrGl3245I54O+Zstp5iKeEz7lzXpAzLczAA=",
+   "bg": "#dc9c63",
+   "name": "Twin-Pocket Western Shirt Sky Blue - 02"
+  },
+  "classic/shirts/twin-pocket-western-shirt-sky-blue-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAABwBQCdASoUAB4APu1gq1AppSOisBgIATAdiWoAuzLVPAgTnGWuQEZ+Pq+N5KgeaWgOQUygAPxU9B/83eIT+d4kGVFQUjj3no/9Boz4wNM2d5/imhIzB4aqNEmYBcWVVzwNYw/6ARzqLTRc2wfQwjJC2TAM2C3Y05y4ipKreJULEnw1wUZwAAAA",
+   "bg": "#dd9d62",
+   "name": "Twin-Pocket Western Shirt Sky Blue - 03"
+  },
+  "classic/shirts/twin-pocket-western-shirt-sky-blue-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAADQBQCdASoUAB4APu1mqk8ppaOiMBgIATAdiWwAnTKEe0WmAC6DvtakOjzwrbtXuTakE1x4J/yAAPxLy+yT2dkqbADc14JVsfdkPHQ6mg8uRPp5k45UOa1roNNd/Xzve65hsIiZ6rcouqO4/Mc9eaEIWAOnaig1ms91xVauhKGdqciRiQTq3EWrfEiUbc1br7vGM31zUAFkXs/z2lHFPMAA",
+   "bg": "#ce813e",
+   "name": "Twin-Pocket Western Shirt Sky Blue - 04"
+  },
+  "classic/shirts/twin-pocket-western-shirt-sky-blue-05": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAADQBgCdASoUAB4APu1krE6ppaQiKA1RMB2JbACdMoR5n7N+Kt0GwA9SgGXgdNNoTfLoR64iMairrbmQ4W+2XgAA/pTceguedQ/EeGkbKnpCgKK/X+IAtMWt5fnL+dDdPB3piC46lCHWqV8H+mJ1J69qkoQ80oyl7FqNDaMrNPJ8WOzYFP1RMJMjMC2fGTKeb8NiY4/Qig93HQ3CldfYoBfScLitUmX3TAAAAA==",
+   "bg": "#cb7f3e",
+   "name": "Twin-Pocket Western Shirt Sky Blue - 05"
+  },
+  "classic/sports-jackets/camel-double-breasted-sports-jacket-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAACQBQCdASoUAB4APu1ur1IppiQiqAgBMB2JZgCsMzQ+GQAAL0LIR5HbzmOcP7QuYUXH+whquAD93cLJplGS/0y8eOGVp9tpFzKof16jMj59ufwv6a9OzNziwzQ5x+3FIMrDBWw1jXj/MmZ1S+WBD6dqP1WA6CmE6l7s3BFohQILUNeVtTzrG4l10AAAAA==",
+   "bg": "#b87543",
+   "name": "Camel Double-Breasted Sports Jacket - 01"
+  },
+  "classic/sports-jackets/camel-double-breasted-sports-jacket-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAADwBACdASoUAB4APu1oqU+ppiOiMBgIATAdiWIAuzNVwS6gskG5WaWlSlg1gHBtQkAA/H/EEdz5ok4W6k1nv4rw7yoifxdP2wtAwYvLjFNRqryJKPxaNtjQTYUB8E3UkIA/Z8VuiP8dtn6o42UJMYcZ7fXTLOTLHKmEEnU4/DPgB8t0HZc3CjZ032IAAA==",
+   "bg": "#dd9f61",
+   "name": "Camel Double-Breasted Sports Jacket - 02"
+  },
+  "classic/sports-jackets/camel-double-breasted-sports-jacket-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAAAQBQCdASoUAB4APu1irFAppSQisBgIATAdiWQAsR9MQKmQdjIxGNVJzHG+zZjtNAAAAP5Zok9dVUJzaoTtaT7zk9Cz2Kr/M/Qqb+gPL9vIQzSiEMwVGzWlF1xdROn/fhbdfa4kYuUlu23fItpxwYefEiayBoS3vlwGriaioKwwAA==",
+   "bg": "#da9254",
+   "name": "Camel Double-Breasted Sports Jacket - 03"
+  },
+  "classic/sports-jackets/camel-double-breasted-sports-jacket-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAQBQCdASoUAB4APu1eqE6ppKOiMBgMATAdiUATpmAIMDYxV95jkAyQeDm3SaDFOpKQAMZ6qeRD0TulVOooyDZhGO8w8f68U6SKtyLWwamCy23vtmK3+o5KDgAEH0fdijZlRVna0RuBH03V/vGhMgaIX1AAAA==",
+   "bg": "#af7246",
+   "name": "Camel Double-Breasted Sports Jacket - 04"
+  },
+  "classic/sports-jackets/camel-double-breasted-sports-jacket-05": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAwBQCdASoUAB4APulkq02pJiQiMBgMASAdCWQAp02NtAAHT7gFlyNrLz+I8/0EDC/IAAD2DyNo27wfzqt0GWcL+YoBSz42cBw4gkaC2MpG+eH968JHFX5TJZHHXu5MQ2D+04AIXM8bH+7Z8OePX5JJAoAAAA==",
+   "bg": "#865435",
+   "name": "Camel Double-Breasted Sports Jacket - 05"
+  },
   "classic/sports-jackets/charcoal-textured-wool-sports-jacket-01": {
    "w": 1920,
    "h": 2400,
@@ -614,6 +900,97 @@
    "blur": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACQBACdASoUABkAPu1oqU+ppiOiKA1RMB2JYwCw7AXHTJiWr14sQaT4a3+TY6AA9yntp3pvTwO9mm2rEDTXzdUCANDoR3pi4SiSzkzzkBeqqBqi1wzs+ZvN5Fi8CmzNe5V1CscmOqtGFeaGmIiq0IJOC3I4BAsQAAA=",
    "bg": "#504d38",
    "name": "Light Grey Micro-Check Sports Jacket - 01"
+  },
+  "classic/sports-jackets/navy-glen-check-sports-jacket-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAABwBQCdASoUAB4APu1oqU+ppaOiKA1RMB2JbACdMoR4542BrDvikbf9z6cHFmOiYsMcwROgAPeng34sL3dpGucCJJl/uvhwL23vate16mwTX9eZXlbCvFCg6qecTUTGExeWFXGN+m/brmpKqXnUUr+yXI/5riYbFmJ2fXLGHvqageEUMpqfvYoZpW9NXEEKWgCsc4FZO2IAAA==",
+   "bg": "#a2663b",
+   "name": "Navy Glen Check Sports Jacket - 01"
+  },
+  "classic/sports-jackets/navy-glen-check-sports-jacket-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAABwBQCdASoUAB4APu1osFAppaSiqAqpMB2JZgCdMzQ+AA7rrCZoDh5zq5bViwvMwPxjVh+AAP5ZqcViqBehydvhuhAQ+0c3lKGwEDoPEoeppmjHzaJFbgyv5DMaLNQTPPmWlQxsR6dYdDSNaFs31LTqIokIXiJSKSs4J9nrBUON3HMIcJ6bLYkfWQpYkMCkaEiSd9wQIl1kt10QAAA=",
+   "bg": "#daa477",
+   "name": "Navy Glen Check Sports Jacket - 02"
+  },
+  "classic/sports-jackets/navy-glen-check-sports-jacket-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAACQBQCdASoUAB4APu1qqVAppiOiqA1RMB2JaACdMoR/+BLrW+8VwtKncLNC/obPD0TcOhctAAD3sDEbGEMtU4PUCtN/LMBdzEV1xq3gwU/LtOa5PQD1sYRrblx+slK9WUWX7UrQ4UxnWq3gPIkMPkGF38ZKvffFL6HMqtNcn0nDDy1O4iLZvXnkLPZp5BuTHqcEuoGfNXhwIAAA",
+   "bg": "#a26c44",
+   "name": "Navy Glen Check Sports Jacket - 03"
+  },
+  "classic/sports-jackets/sage-green-patch-pocket-sports-jacket-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAAAwBQCdASoUAB4APu1mq08ppaOiKA1RMB2JbACdMxMBSAvf6icJKfuRTSKAkyxmUQ3XgAD93lBKQMXQVUdUPcRXnZ8xkal7n9z29GGfiydutEeghc7niNi3Hl5Xr9ELJJRqtd0oSxUWcX40WWnx2C1dyVwjtJ4CQjRjCmHrw0IetzTATdXLCgmPgAA=",
+   "bg": "#cc8342",
+   "name": "Sage Green Patch-Pocket Sports Jacket - 01"
+  },
+  "classic/sports-jackets/sage-green-patch-pocket-sports-jacket-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAABQBQCdASoUAB4APu1iq1AppSOisBgIATAdiWQAnTKAAQIilQEAEvS7vhZM/DcnqRwX0oAA/FP5ngliusmV/RA98OfIYFfXybyiygj/xb+XY/p4S6NjQjCkRVfPBlCVEQ9E6Kyt9k684HB+OsVhlat3zw2AW7EH3nGGt3KTV5Fh5Ue/bm1MNkOJ7Vts3DGrNQv/BpcAAAA=",
+   "bg": "#d79c68",
+   "name": "Sage Green Patch-Pocket Sports Jacket - 02"
+  },
+  "classic/sports-jackets/sage-green-patch-pocket-sports-jacket-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABwBQCdASoUAB4APu1irVAppSQisBgIATAdiWYArDNoemdfwB+MjJZmC447HmrrTrkUirKAAP5ZonA7IrjspaIqQkD4p3GlBJc/6EVvrgD259tcWlP3Q+Nrqg5VkvwB7SmGyNc0ygX/F/N/a6in7mUlSH+9b6x40Ic91gk+4pVnjWj6Njg0gjRu1oEBfIAA",
+   "bg": "#d28946",
+   "name": "Sage Green Patch-Pocket Sports Jacket - 03"
+  },
+  "classic/sports-jackets/sage-green-patch-pocket-sports-jacket-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAAAQBQCdASoUAB4APu1sq1EppaOiqAqpMB2JZgCxHt6+ABLhfqm5HwN1yVdPXrYKzdigAPxdnXIK8N/FnA8gQ4RT1Vp2VXZOlGzCKQVV/Kdh1tGpCfL0gAIwOOAqEcX8mY9RwtXcXTWP4tXcJytMq1jbIg6vZEyHErm9UJ4UPHrot7sX6NYPAAAA",
+   "bg": "#9d794b",
+   "name": "Sage Green Patch-Pocket Sports Jacket - 04"
   },
   "classic/suits/bespoke-tailored-suits-trio-01": {
    "w": 1920,
@@ -982,6 +1359,244 @@
    "bg": "#131111",
    "name": "Midnight Navy Double-Breasted Tuxedo - 02"
   },
+  "classic/suits/rust-slub-weave-two-piece-suit-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABQBQCdASoUAB4APu1srVEppaQiqAqpMB2JQBai+LAdRn3tIvO7h52MID0FpspaaspDQbgA/uqPmeeRAQdDWwVsTHx9xI2qKkPl5FtsJTDNGDKxmmnqAiWSmNTvuFrQaMbjdOhKOWQ3KNvu0QwIHADomrNr8LdxrjEuxAxRXV36bPqxztqxvoqR4qyQAAAA",
+   "bg": "#fbd9bc",
+   "flat": true,
+   "name": "Rust Slub-Weave Two-Piece Suit - 01"
+  },
+  "classic/suits/rust-slub-weave-two-piece-suit-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAABwBQCdASoUAB4APu1oqk2ppiQiMAgBMB2JYgCdOUFVYBcbZ1R4A8NFHNHeaLEWSNCmIfrEAP7nKO+JOeaN4jBOdreIPj2TQTrnruTONcmkiwfBUpP/9U31AXmGy+DIBXzI4rcmd1JXVzD27peUj09jyEd4znXBlBg9gcQXJCmeqQFseHOybHkJDxTt1qXznQAAAA==",
+   "bg": "#e1ac80",
+   "name": "Rust Slub-Weave Two-Piece Suit - 02"
+  },
+  "classic/suits/rust-slub-weave-two-piece-suit-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAABwBQCdASoUAB4APu1oq04ppiQiMAgBMB2JZACdOUFUABacAOsggdVdYRLyuTO3Int0RlgAAP7nKjsrm79X/zOJdJkOGDVjaVTitj1R+6xU7NP8gsyaAl4K/ZrmuW17u4nt6k5KyrXvWfnZfFf+UbcDpQ2jbSgoiAF8noZEAiA9tkHVIBzII3SJJ7J4Mpf6CGAAAA==",
+   "bg": "#dfaa7d",
+   "name": "Rust Slub-Weave Two-Piece Suit - 03"
+  },
+  "classic/suits/rust-slub-weave-two-piece-suit-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAABwBQCdASoUAB4APu1iqU2ppaOiMAgBMB2JYgCdOUE88AiqPJZDHo5viLetcH5u+Dp2uo4AAP7e7Lm6ypJRAaaKxnAhmR5bKNJQ4yj2tAk2EON4rBSzzvZLO6OeUtzRfqsEoyRRwIfvtJ5CdUd7eGrrhPtggXv6qncuwXxnWfB9x+kuwK7cUslmgp6VTJ7J4onbI2SIeIYAAA==",
+   "bg": "#dda16d",
+   "name": "Rust Slub-Weave Two-Piece Suit - 04"
+  },
+  "classic/suits/rust-slub-weave-two-piece-suit-05": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAABwBQCdASoUAB4APu1urlIppiQiqAgBMB2JQBYjdeAZCP7WTKIsLqs6YPxPJju6Bg3/mCAAAP7nP2WxqlU4pSSFXy3OMsfvZXMkTUsQJlAfkABhMqvs/egNeHDePBnKHZDdx1/sY4hQU8pBEf8m1Zjhl8gqoVb2tjqpQDyKvazN/hEGHQk2VlT01ogAAA==",
+   "bg": "#cf9a7a",
+   "name": "Rust Slub-Weave Two-Piece Suit - 05"
+  },
+  "classic/suits/rust-slub-weave-two-piece-suit-06": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAACwBACdASoUAB4APu1kq06ppaQiKA1RMB2JQBYdgiHEKyM0mlnHCHsKTMCBBUkAAPq9TYw0mkEGnx6pkafh+R2EN2Gz6WE/No5lK7eGYSJM2li7yZ9po6iiPq7O8kaMimsCbdgczpcs6lSIGWM0gWtNzf+BejKm8hT1gAAA",
+   "bg": "#af7858",
+   "name": "Rust Slub-Weave Two-Piece Suit - 06"
+  },
+  "classic/suits/rust-slub-weave-two-piece-suit-07": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAADwBACdASoUAB4APu1wr1KppiQiqAgBMB2JZACdABEdriQCfoRNKhgcd5EqAu+WHgAA/ucpxtFguAcAgPNqtdgUxsfJbfPhtRUlomatueh0p8pmETBmrghkMgaS6vEzPZf1IQk5K20lBzy7zx04Xmt8Mo97QSPFtaNWxFd7NPfIAAAA",
+   "bg": "#f4dac3",
+   "flat": true,
+   "name": "Rust Slub-Weave Two-Piece Suit - 07"
+  },
+  "classic/suits/rust-slub-weave-two-piece-suit-08": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAACQBQCdASoUAB4APu1sq08ppiOiMBgIATAdiWYAnTLLxlAVDCto8M7k3cta6GL1waMbOabfwAD+7VdaAqz/MuBDSMai85IWQ6N+a4PwtuKw5czSNhsdef2k+eiP/sAQ1Q2RAtDdWIhwfdW33yBcEhMeZb+zBKn5Qhh2pFka58QjHaof1TYGKC8jD9C/GthUQAA=",
+   "bg": "#f7c692",
+   "name": "Rust Slub-Weave Two-Piece Suit - 08"
+  },
+  "classic/suits/rust-slub-weave-two-piece-suit-09": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAACwBQCdASoUAB4APuleo02pJSMiMAwBIB0JZgCdMsvIgCmdJMyr3BNMvGsLAoBRx86/a4m5GJAA/u/QORpUafQNGbrQ1YSrcl6lTjvIUnMUvZiCUd+peqwGv+Esxgx3vHRZluAq7wXeikFywixXXqxuWzwvP43yCF8nemwn45F4/zEXPfaG7OEGe5MAAA==",
+   "bg": "#d3af77",
+   "name": "Rust Slub-Weave Two-Piece Suit - 09"
+  },
+  "classic/suits/rust-slub-weave-two-piece-suit-10": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAACQBQCdASoUAB4APu1kqE2ppaOiMAgBMB2JZACdMxx+ACnH+es6tr3T1odLAweUJM/8AczdAAD+79IruwLqVww2omd7OSha88bIqgOnHtiz4wP5MiswQaqFIpvlCaAyYT0hZLukMPzrGkc0TsVC/WmLliilI576fT0reLrYIdiR5/4n/tS41FN+AdKijtXKBl4tvwHOgAA=",
+   "bg": "#fde0c0",
+   "flat": true,
+   "name": "Rust Slub-Weave Two-Piece Suit - 10"
+  },
+  "classic/suits/stone-pinstripe-double-breasted-suit-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAwBACdASoUAB4APu1kq1AppSOisBgIATAdiUAWnQIgtQSJzZpkmmb6T+gA/uqPnfXUDfNW4kBDzDNitCj0/yz0ia7BTxwmDLbVAjGNLf7g6/EQHImJWej5MXS0WCX8zZDBYwrOVteH1A4AAAA=",
+   "bg": "#f7d7bc",
+   "flat": true,
+   "name": "Stone Pinstripe Double-Breasted Suit - 01"
+  },
+  "classic/suits/stone-pinstripe-double-breasted-suit-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAAAQBQCdASoUAB4APu1kqU2ppaOiMAgBMB2JQBYj4cfcBSYyi/Uy4ta7p55OPlyUFqYcAP7nOAQ7gDIbwFxTnlsILXyfDZ/Cyq5XClriK5JPbdNxph9XXoJTfutYnhNOM77BE7R9dbTcVAAA",
+   "bg": "#d29f78",
+   "name": "Stone Pinstripe Double-Breasted Suit - 02"
+  },
+  "classic/suits/stone-pinstripe-double-breasted-suit-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAABwBACdASoUAB4APu1oqk+ppiOiKA1RMB2JQBdgAZHj87NInRKhqB45lRyNgAD+3uhjmElWze+td9Lx3PFgyodI043dGhjPcnWS3rTmyq2UDXh7J6nMMcqsBTyrDyZdBdRLz8tYATIUZb2umsCZu9o8+BLEtw9D1wAAAA==",
+   "bg": "#d8b196",
+   "name": "Stone Pinstripe Double-Breasted Suit - 03"
+  },
+  "classic/suits/stone-pinstripe-double-breasted-suit-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAAAQBQCdASoUAB4APu1irlAppSQisBgIATAdiUAPJQBFp4QHjq2Un0AdEYqZChkgFl4gAP6ytQMxikP5q07oMPFmy0PsYjtjf+7CJT/T80BvPt4an1ueqt/D5WWsszGeOWldmqgFgjXjQt+h5lg76RpZhOG2t3e18BzpmlDuQAA=",
+   "bg": "#f5c796",
+   "name": "Stone Pinstripe Double-Breasted Suit - 04"
+  },
+  "classic/suits/stone-pinstripe-double-breasted-suit-05": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAAAQBQCdASoUAB4APuVgp02pJaOiMAwBIByJQBOmcdhLV/dtanB+wYkScJbvZt9gv3MAAP7ql3EK3BR5HdmVCsGL0soivjnMTOjXi60PWu6FqFQihWuRYNAKLkJeB6Hu+ep1ElG5+HC/dni0e/boQX52FlMLj+ktiOcuNSTqWAAAAA==",
+   "bg": "#e4ae7d",
+   "name": "Stone Pinstripe Double-Breasted Suit - 05"
+  },
+  "classic/suits/stone-pinstripe-double-breasted-suit-06": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAABQBQCdASoUAB4APu1iqE2ppaOiMAgBMB2JYgCdMuN/UCnoJ7wqCIfziiiGomJmy9m34cAA/uqPcCbQ3ztOuE7qX1AVgFhTYa7rycfw3mb8H6UFglsDbLc3rgRJwH4k2/zpHfO6Ah+kUZ822wkoj9g8Iya+yAAA",
+   "bg": "#eab07a",
+   "name": "Stone Pinstripe Double-Breasted Suit - 06"
+  },
+  "classic/suits/stone-pinstripe-double-breasted-suit-07": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAAAQBQCdASoUAB4APu1orE+ppaQiMBgIATAdiWIAuwAPCagSzP7HcavgLm47YCMz7tzAAP7nxcg0IqjsnMQRrqY9PBAhywRDdcLbcYjnY61he4/9C038ab6Gi/lzrqhRJ8gOjsLmCTyFW8fuQ/b6AIAnwLKWAcKfBHJWBMT/XAAAAA==",
+   "bg": "#eeb883",
+   "name": "Stone Pinstripe Double-Breasted Suit - 07"
+  },
+  "classic/suits/stone-pinstripe-double-breasted-suit-08": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAACwBACdASoUAB4APu1ur1IppiQiqAgBMB2JQBYj4Tg1G/rBxwcjd2hXWXFwXRQAAPi/3P9ovoDCiW7m1joGdEEq6WaSN620rBzvrUIfruDCD2SP3f1CBbCeEZ4GEdu4SlvfKaQmLrFAjeNAyF6Zy6UZcLFsXY5qbvcAAA==",
+   "bg": "#eab588",
+   "name": "Stone Pinstripe Double-Breasted Suit - 08"
+  },
   "classic/suits/tobacco-brown-velvet-dinner-suit-01": {
    "w": 1920,
    "h": 2400,
@@ -1060,6 +1675,149 @@
    "bg": "#28292a",
    "name": "Velvet & Navy Double-Breasted Tuxedos Duo - 03"
   },
+  "classic/trousers/tailored-d-ring-trouser-black-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAAAwBQCdASoUAB4APuVgpk2pJaOiMAwBIByJZACdOUAAyaYI9xRB8wD6Gv0zN7DgP5CqAAD+VHsOimLe2LJWfnUcX5dA2+T+Fmrz+Yc7z5nZ5ZU4RZ0eLDUTobeKdNreTogedxrtERo+qBoABdbBOfroHyaMwlWmFCjgTk0IXqiqUxZ7/QBj4EbafkUfLHT18AA=",
+   "bg": "#c69a6c",
+   "name": "Tailored D-Ring Trouser Black - 01"
+  },
+  "classic/trousers/tailored-d-ring-trouser-black-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAABwBQCdASoUAB4APu1oq0+ppiOiMBgIATAdiWQAtRr7gXmn2ePuy/hNbJOtdmhl+iX+iwAAAP6Wqos0jezEvo83ZysNVfA5nJpK4j74C0GQ/dEoMOYZ9IOk0fZgOIwwWJw3gREZTMrH2pptuzukgZ3kyCgWtwjEo7SYUVJqQcJM+pZjWYr5DSHx8/tDwvOlyewJ6aAA",
+   "bg": "#d2a36d",
+   "name": "Tailored D-Ring Trouser Black - 02"
+  },
+  "classic/trousers/tailored-d-ring-trouser-black-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAACwBQCdASoUAB4APu1kpU4ppaMiMBgMATAdiWIAsQ0HQRXsh1XTSNtf1U/dE9tAbWbGd2zVxQAA/o09z1k7HtCDi1YkD+9kJFBvqXaIARJqco/ufQ1ewBtBcuxTEsf08kJ+Ji7oU6sNnAR0sCw8z/0anUw8mfLa+hSLKMKcGXDtu+8x8PdpHS69Tu2NxLhlYmnw8iIZmFfNq9Pvu53ua3cAAAA=",
+   "bg": "#ddad7a",
+   "name": "Tailored D-Ring Trouser Black - 03"
+  },
+  "classic/trousers/tailored-d-ring-trouser-black-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAAAQBQCdASoUAB4APu1kq04ppaQiKA1RMB2JYwC3uBDeE7Qxw3cJBu+g/o3Zr+yU2Zb4AP63HAD+F7m/ZiMyoaJiRtmNXdnIq2l9xJJMnPm5xzS4pDMS9ReSv6T+IsL8D5RlO8/dp+IQ+hRklrMr2ecAAAA=",
+   "bg": "#856f6c",
+   "name": "Tailored D-Ring Trouser Black - 04"
+  },
+  "classic/trousers/tailored-fine-check-trouser-light-grey-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAABQBQCdASoUAB4APu1qrlCppaQiqAqpMB2JYgCdMoR4wBSOPiigC4vsYZoDC3SWdvS8tYgA96YcC/U+dh/nHpxu18yW/ul2OS3zJTqLu8UP8nXbpFwFi3hnZK2xAN5Fk9UWg5kh1Lz6RTPmclurcBHIc0Sn63MgcgyeXg1SKYBkxDVpmsGHNXcLX0ajtryk0OCAAA==",
+   "bg": "#c58e65",
+   "name": "Tailored Fine-Check Trouser Light Grey - 01"
+  },
+  "classic/trousers/tailored-fine-check-trouser-light-grey-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAAAwBQCdASoUAB4APu1qsFAppaUiqAqpMB2JZACdM0xBcrw0JQzcGH9ST28L4q04/fzQwAD+mhtWwbghl9rrze6b/f2E1lFiHPcW/wkrzDkmxQZUoWPB3xjSH9eIq917GzDmBZ+q2TuNNMwaWnt411U7y3DDKfKP4hlYFTSHGWkRp1kwIjeE+zN+A8BKfdlcXIb2pwAA",
+   "bg": "#e09f62",
+   "name": "Tailored Fine-Check Trouser Light Grey - 02"
+  },
+  "classic/trousers/tailored-fine-check-trouser-light-grey-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAQBQCdASoUAB4APu1mpk4ppaMiMBgMATAdiWgAnTNMQX9omMh39Ny6XiUMOJMZqpwAAP7VshYa3BnbUxCYzMORHuXopEk1trqqhUeVtjzb3DfzXGfVAACAHWxnJjJisUxB6wqafQ+hoqIabHCL33PocW0sWh/Ynuo+OGYWgMaoET+AAAA=",
+   "bg": "#b88c53",
+   "name": "Tailored Fine-Check Trouser Light Grey - 03"
+  },
+  "classic/trousers/tailored-gurkha-trouser-khaki-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAACQBACdASoUAB4APu1mq0+ppSOiMBgIATAdiUATpygqRACJ8DlVAge4Z3J8V2AA906MtnkIBQ+KsyBSvvWOCQpXhWWWJthpuOvd+Z5uzPZmawfXqtcUIq2ufxyzNC0sCbou9q7xTIEq4V5mb9DpU5AYo7WrmT0IWnYfnhvrwm4RwQhAAAA=",
+   "bg": "#d2955e",
+   "name": "Tailored Gurkha Trouser Khaki - 01"
+  },
+  "classic/trousers/tailored-gurkha-trouser-khaki-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAACQBQCdASoUAB4APu1mpU4ppaMiMBgMATAdiWYAsR8cgpgRMpCVlHpZOxuXY1nOFBYE8jWOMAD+s0O+pJl/E1isKzuKor19PfP32jGdVZ2DOnIJH4WDNLpgE4853kVfrWGaxlErcOEliXJezJovcQ+OOYCAKUmpAAhERTGc8FAAAAAA",
+   "bg": "#d59b6f",
+   "name": "Tailored Gurkha Trouser Khaki - 02"
+  },
+  "classic/trousers/tailored-gurkha-trouser-khaki-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAACQBQCdASoUAB4APu1krFAppSQisBgIATAdiWIArC/FgL5WtlboG3ixXpQnyVLUbYbcZ1Q8EAD+Y1JWiyuG0Hrnp7mKM//VfNPpJl3izGw+z7CZYg4qxWduOTFSpDTHlykYda19J+bcIGYMZrxuFvMoPxKtAUjqi6mjrsnSRJUJ7U+bHKwSpAAA",
+   "bg": "#d29054",
+   "name": "Tailored Gurkha Trouser Khaki - 03"
+  },
+  "classic/trousers/tailored-gurkha-trouser-khaki-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAACwBACdASoUAB4APu1mq06ppaQiKA1RMB2JYgCo9Adt3thmQpBD7jbph71XAseAAN2emJqtMuugZRWonjMYCHvAlHG4s8ej8vjSWuHNd3TO8aOPg3vq06ylyik5EHTZbL8W+suiH5MmLWKbIVT4nvGsz12K2nQ3lPA93yDrStqILDZfj5jAAA==",
+   "bg": "#b1804a",
+   "name": "Tailored Gurkha Trouser Khaki - 04"
+  },
   "classic/trousers/tailored-side-tab-trousers-stack-01": {
    "w": 1920,
    "h": 2400,
@@ -1137,6 +1895,97 @@
    "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAwBQCdASoUAB4APu1gqU2ppSQiMBgMATAdiWYAnTNMQRjjHDrRLg/uBZNp9e9q18c8AAD3sXR5iT/++y/+I9eFI4XBNQHkyxx/UesLjzJaoA/l9Yy4WEYoz8URIZ4vpF8XL7fOgT8iNhLFQeEygpHJxxs2CFUYFVVQMVkbeTVBu6dzTFRvaS+mnnbAAAAA",
    "bg": "#ca9752",
    "name": "Tailored Single-Pleat Trouser Dark Brown - 04"
+  },
+  "classic/trousers/tailored-single-pleat-trouser-ivory-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAABQBQCdASoUAB4APu1qrlCppaQiqAqpMB2JaACxGzwAqA7ClkuQNxxRcSfj5D/9orVBjQgA/IBYZM/pGst4z5gRsILbbxJ+d4vf6+RrvLHyLyLP8REqfAAKR9dEzu2ghrKfZzt8qwjFeoSkgGt1CcdlaU7JTOn5efkFaez/+fbOfb+kxLskEX0E0NtANr0AwLMAuDJtkGYFAAAA",
+   "bg": "#d3996a",
+   "name": "Tailored Single-Pleat Trouser Ivory - 01"
+  },
+  "classic/trousers/tailored-single-pleat-trouser-ivory-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABQBQCdASoUAB4APu1oq02ppiQiMAgBMB2JZACdMoR8CCRw0/1X45fMNjnLR50F2htqtAAA901bfkzIn6yN3g20VXxM21EPrQWPutZaBhPkxQMUF03UW3uw1WzU5cqQVu/mCnuEXc0gBOksHZWOSTfG/8+5JPt2ZGK642hmMLhC79p9G1HkD53d9e33IqAA",
+   "bg": "#d49856",
+   "name": "Tailored Single-Pleat Trouser Ivory - 02"
+  },
+  "classic/trousers/tailored-single-pleat-trouser-ivory-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAABwBQCdASoUAB4APu1oq0+ppiOiKA1RMB2JaACdMoR/UBLJm69llQJ4KN0eoDbd2SUGpvMAAP6ULYRVjVDLDggY5IFnabrvjQMZHq0XLPYiKH/m50nh0DOm4HnPGRuojOXN8optAiacpNn2Ffq4dOjqe3KZvTMyXNDKDN2uIobM9eThECl3RNbJ1AAAAA==",
+   "bg": "#ceaa95",
+   "name": "Tailored Single-Pleat Trouser Ivory - 03"
+  },
+  "classic/trousers/tailored-single-pleat-trouser-ivory-04": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAABQBQCdASoUAB4APu1qqk8ppiOiMBgIATAdiWIArC+ieq24ACPMfcx89Z9Whfd5coY6j7AA27kRpp4w+FCrggFJDfNkB3iadhf+61vCBYaftMfSxR9ftUKMFKjCVDAjZ6hVqtfjQFbZkpzy0i2hzATklnu3ldG9i/K0uYSJnGJ00U/fb0CmXAhGo8r+BQAKbTx8FNvNSpuDi7AA",
+   "bg": "#c69859",
+   "name": "Tailored Single-Pleat Trouser Ivory - 04"
+  },
+  "classic/trousers/tailored-single-pleat-trouser-ivory-05": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACwBACdASoUAB4APu1qqU+ppiOiKA1RMB2JZACdOUFSYAT/eAUfRQ/3T392XE/wAPjESvl+kFS/KcqvL4uMUFrd0RuEeQ+noPVQgGRDrg2xBPEdgnxNL2Ct5Nku49EmS9LH3YZi4Ua/5zFLjHhyn5B0Nj69yLrFQAA=",
+   "bg": "#99613b",
+   "name": "Tailored Single-Pleat Trouser Ivory - 05"
+  },
+  "classic/trousers/tailored-twill-trouser-black-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAADQBACdASoUAB4APu1cq02ppKQiMBgMATAdiWgAnTlBPNAFWzDg8qjMs5wF3rVbgAD+V94rpyrI14xwmzWMBjLZ+j/svv4YeD2rL1NM4YJ1UXGjZRy76/TeVa6+/f2TS1V4nrpjuMJnx1z6CGIZs+G8/E1ZYmNj9mkFxqOdQ2ZvrZbwFjofn2PmT5M5ZvyWTz1ZC+NY4wAAAA==",
+   "bg": "#f5b870",
+   "name": "Tailored Twill Trouser Black - 01"
+  },
+  "classic/trousers/tailored-twill-trouser-black-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAADQBACdASoUAB4APtFYok2oJaMiN+gBABoJYgC1G0LC74f3OLxo4Doi0EQqQ+cAAAD4T1RWoxdt6tMRE120CtO+7ZmdIE4bZFpxkRz1bsqkyQhDpRZEx8SwAxv6Oa3qD0LMR6YU1kx450SK5O4LXXoSgSqe21l1RUdAAA==",
+   "bg": "#946f52",
+   "name": "Tailored Twill Trouser Black - 02"
   },
   "classic/trousers/tailored-twill-trouser-dark-brown-01": {
    "w": 1920,
@@ -2881,6 +3730,45 @@
    "bg": "#6d5f4b",
    "name": "Taupe Silk-Wool Nehru Jacket - 03"
   },
+  "heritage/sherwanis/antique-gold-buta-brocade-sherwani-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAABQBACdASoUAB4APu1mqk8ppaOiMBgIATAdiUAWo2oYUwBGvybUUCWfO/K8APxUDARHa5J4dRmwZn0UpkF7Uokw3vQcOVfXyX5A51ntuFNg8NkGByUS/uTiofwUJs1qLHOHCTlAyr4r4+I570oYvkAA",
+   "bg": "#a18d80",
+   "name": "Antique Gold Buta Brocade Sherwani - 01"
+  },
+  "heritage/sherwanis/antique-gold-buta-brocade-sherwani-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADQAwCdASoUAB4APuFWpk2opCOiN/qoARAcCWMAwdN8oDBwu7S5qQAA/FNjuHV8UaQsT/fwZMwqx+JIEX2R0r53XUSvwsIORpcbH3Rn0nJPI71usTffDh0hTrAAAA==",
+   "bg": "#997c65",
+   "name": "Antique Gold Buta Brocade Sherwani - 02"
+  },
+  "heritage/sherwanis/antique-gold-buta-brocade-sherwani-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAAAwBQCdASoUAB4APu1qrlCppaQiqAqpMB2JQBOmYcik3gAql9+f7f3CTjA7rpZR3OYwAAD9z1XwmvzRckS3JIp7FlOyEhBV+26l5KVLuuF3eGdnozEaZRl+2ybFkROhjXmvJu4UWSD+XktJH/k5Bh+RA4txGPwkAM4gSV15vrAAAA==",
+   "bg": "#a08d81",
+   "name": "Antique Gold Buta Brocade Sherwani - 03"
+  },
   "heritage/sherwanis/apricot-raw-silk-zardosi-sherwani-01": {
    "w": 1920,
    "h": 2880,
@@ -3011,6 +3899,227 @@
    "bg": "#725553",
    "name": "Blush Pink Raw Silk Zardosi Sherwani - 04"
   },
+  "heritage/sherwanis/blush-pink-raw-silk-zardosi-sherwani-model-01": {
+   "w": 1920,
+   "h": 3064,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABQBACdASoUACAAPu1iqU2ppaOiMAgBMB2JYwDG9CHgRCWB0pc0HCq1HsMAAP7jNcFOzzCDLQ8hqqiLiDp7kSLawcPw/OJEqx0xJgbG2PC3+37w4ZKyq24ZlJUZwAAA",
+   "bg": "#221915",
+   "name": "Blush Pink Raw Silk Zardosi Sherwani Model - 01"
+  },
+  "heritage/sherwanis/blush-pink-raw-silk-zardosi-sherwani-model-02": {
+   "w": 1920,
+   "h": 3284,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAACwBQCdASoUACIAPu1cpk6ppKMiMBqqqTAdiWUAzVBAACtIIlA7dT8rII3HPUw3HU0OCuD+qoAA/np6UqFuHUCi8cQJVv+drKg1ufDWG8+v4sFkmpJXQs5uAwKjZs43ALIiGbLTwDgAAA==",
+   "bg": "#13110f",
+   "name": "Blush Pink Raw Silk Zardosi Sherwani Model - 02"
+  },
+  "heritage/sherwanis/bottle-green-floral-jacquard-sherwani-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAwCdASoUABkAPuVipU2pJaOiMAwBIByJZQC7AAliEJXpNczyIAAAUW4ZJtnfqPSRiZnDq/7IpTY/LIoufz43+KVEbcTmKk0hi3HR+Ru/A0BZeMAAAA==",
+   "bg": "#8b7563",
+   "name": "Bottle Green Floral Jacquard Sherwani - 01"
+  },
+  "heritage/sherwanis/bottle-green-floral-jacquard-sherwani-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAwBACdASoUABkAPu1iqE2ppaOmMAgBMB2JYwCxHtpCSuhG8uLsUs43mdgA1sc2JvoNUI5vnZZageDtIQXIMRxINYGwxVoMrQHTdUfb+hkwvLCYPEZxXQAA",
+   "bg": "#a47d5a",
+   "name": "Bottle Green Floral Jacquard Sherwani - 02"
+  },
+  "heritage/sherwanis/bottle-green-floral-jacquard-sherwani-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAQBQCdASoUAB4APuViqE2pJiQiMAwBIByJYwC7ABe0j1Nl2NS7tQCc54tcSBO7iNoAAPb5uMDIXc+1eUfUjLzRKj8U8C3YiOlRY5HUoDFHL0rArwpkFTtLPlGywYKWmBC41IXOfq3y1B/uIRBqrUmnkmWBX8VsndnarWc/Z6De52KgAAA=",
+   "bg": "#927a69",
+   "name": "Bottle Green Floral Jacquard Sherwani - 03"
+  },
+  "heritage/sherwanis/butter-gold-jacquard-sherwani-with-embroidered-pocket-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwBACdASoUABkAPu1sq08ppqOiMBgIATAdiWMAs4AQqdN11QzhwcT/LQAA/lIkK7taHey68XhefwjFV579jtfZWJGJ7RnWO9bJiNovNJkCM57WxZz4lblvAAA=",
+   "bg": "#aa9586",
+   "name": "Butter Gold Jacquard Sherwani with Embroidered Pocket - 01"
+  },
+  "heritage/sherwanis/butter-gold-jacquard-sherwani-with-embroidered-pocket-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAwCdASoUAB4APuVgp02pJaOiMAwBIByJYwDCgBh0A4eSMBhzhJQAAP3PTxVauoB6qjHQk7CAEqKPa95FWcxkovLzNHMXGYyyu+MpFGIGeNZMZuWMLIAA",
+   "bg": "#a28268",
+   "name": "Butter Gold Jacquard Sherwani with Embroidered Pocket - 02"
+  },
+  "heritage/sherwanis/butter-gold-jacquard-sherwani-with-embroidered-pocket-03": {
+   "w": 1920,
+   "h": 2881,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADwBACdASoUAB4APu1qrlCppaQiqAqpMB2JQBdmcmgpAY4ZiUtuV7JFZfA2l6X/gLQA/c9Yfk05aJ7y8Eunuc58npUePEIH9+2PdzH/XQdgQLN4d8p9Js9PnVJu00XPkDMYSozsO1PovQGUZzh/+qG4ccOBzJPtUgA=",
+   "bg": "#ae9a8b",
+   "name": "Butter Gold Jacquard Sherwani with Embroidered Pocket - 03"
+  },
+  "heritage/sherwanis/champagne-lotus-brocade-sherwani-01": {
+   "w": 1920,
+   "h": 2401,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAABQBACdASoUABkAPu1mpk2ppaMiMBgMATAdiWcAzcAM4ujp86ZZ9oE2c5gAAPcmtIuC72n93GkLWij3stpYsfcQFqLNnfdMW55A4WLj4amm24KhG77mYAAA",
+   "bg": "#918276",
+   "name": "Champagne Lotus Brocade Sherwani - 01"
+  },
+  "heritage/sherwanis/champagne-lotus-brocade-sherwani-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADwAwCdASoUABkAPuFUpU2opCOiN/qoARAcCWUAsOwZzveBJj5oJTCYAPcmrVAVBFpy4pZddakpLF0Ajfy+jYrY3pdyybN0oq8PwNOaPK00RTpZLwZ0l2J4X+ftqzJCf56+CN9AAAA=",
+   "bg": "#927864",
+   "name": "Champagne Lotus Brocade Sherwani - 02"
+  },
+  "heritage/sherwanis/champagne-lotus-brocade-sherwani-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADwBACdASoUAB4APu1oq0+ppiOiMBgIATAdiWUAnTOOwNZ5M+BvJpuLIYpMFPsLvAAA/dFi5gim9RjYe61ZxxybqfVXrPayvjDPuOSs9PMHpw+4akSdLL1rl/QKzUTi617/RueQRXia74zUUWgxeGqKkZPK8AAA",
+   "bg": "#a49790",
+   "name": "Champagne Lotus Brocade Sherwani - 03"
+  },
+  "heritage/sherwanis/coral-pink-slub-weave-sherwani-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAwBACdASoUAB4APu1gqE4ppSOiMBgMATAdiUAYUADUwbiL9K8Q0E1AOgAAv/R69+vmgsE9fEL8dDNqLC2UBrR+X623aJZ5zTn+pRM4WKe24JwThhNoYb+hBnVIE864nlkX62IAAAA=",
+   "bg": "#795b45",
+   "name": "Coral Pink Slub-Weave Sherwani - 01"
+  },
+  "heritage/sherwanis/coral-pink-slub-weave-sherwani-02": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwAwCdASoUAB4APuVipE2pJbciMAwC4ByJQBWF/MAj4gXhVPRYF2gAAJvB8g998C1ql60ESiTtD0cuuV0bBnb4DQQicrC/TPnEmaRFa430XyRflWPRrnkTAAA=",
+   "bg": "#90725a",
+   "name": "Coral Pink Slub-Weave Sherwani - 02"
+  },
+  "heritage/sherwanis/coral-pink-slub-weave-sherwani-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAADwAwCdASoUAB4APuVgp02pJaOiN/VYASAciWYAABwc9pu9uotw8GQEAMIqFgFOhdKoiW2R95+/UkbXxQeVJxv3CUgIcjT0CfDdCWbXEBajartoYvPL/3CVkZrqsFWRwoIqNFcCAEWdXoeGZk4L7vq8DzRvDKnMWwfsaDYou6FYAAAA",
+   "bg": "#96847c",
+   "name": "Coral Pink Slub-Weave Sherwani - 03"
+  },
+  "heritage/sherwanis/crimson-red-embellished-sherwani-model-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAACQBACdASoUABkAPu1srVEppiQiqAqpMB2JQBOmargYSTAJ7GbISHcaHb1/+4AA7Tl69WpcYekKtXDbLmkaN+a1Th8iiW4KLTpOFAOq/a8GMzJHBY1/T0iG7alLsF+ogVouGsrxJhqlYU6Ch4N8wAAA",
+   "bg": "#8e7463",
+   "name": "Crimson Red Embellished Sherwani Model - 01"
+  },
+  "heritage/sherwanis/crimson-red-embellished-sherwani-model-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADQAwCdASoUABkAPu1qqk8ppiOiMBgIATAdiUAWnQCaj+5sv2j5UAAA+a/qz4hr7W0igkswnjxY78+tlg5ibq+WfS+WZFM/u34JXLHlwluPWVke85F6tj3NtjG4wlMd74/dBDRAAAA=",
+   "bg": "#8f6d4f",
+   "name": "Crimson Red Embellished Sherwani Model - 02"
+  },
+  "heritage/sherwanis/crimson-red-embellished-sherwani-model-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAAAwBQCdASoUAB4APu1mqE2ppaOiMBgMATAdiWQArhwL2P0gu8bQ16rtvBDqYdqfNqOwAADACQxEtCuLVH/yjlJk8Naf9rR0WiamUF3RtMqT65ASeCXIDYelvOOIG/WY3zXmBM4GXLUkmKkLpAbwfKTVYcNPbLCNrSE+wO14iSnNLNKNiN/fPxAAAAA=",
+   "bg": "#917869",
+   "name": "Crimson Red Embellished Sherwani Model - 03"
+  },
   "heritage/sherwanis/emerald-dupioni-silk-sherwani-with-zardosi-01": {
    "w": 1920,
    "h": 2879,
@@ -3101,6 +4210,201 @@
    "blur": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwBQCdASoUAB4APtlao02oJSMiN/qoAQAbCUAYG4MOFy7I60yR6SWXYS7v458w/lfeYAD+40ZYVv+YfQpVJ0bZlZm0G5mtZDixlG74LQ7hufE6PHNzwukVUAQHfwqaPX9uw5iz5NDw3gOo5+g5XnAPRxr6AAAA",
    "bg": "#2c221a",
    "name": "Emerald Dupioni Silk Sherwani with Zardosi - 07"
+  },
+  "heritage/sherwanis/honey-gold-diamond-buta-brocade-sherwani-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAwBACdASoUABkAPu1oq02ppiQsMAgBgB2JQBdmcdhpYwVB1YmrbRNwrAAA/lIZRQYzT3DY562V+rPm36+D0sG8CO21EXLJJKbWfqerP1f89vvD2geeMgAA",
+   "bg": "#ada099",
+   "name": "Honey Gold Diamond-Buta Brocade Sherwani - 01"
+  },
+  "heritage/sherwanis/honey-gold-diamond-buta-brocade-sherwani-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwBACdASoUABkAPulgpE2pJaMiMAwBIB0JYwCsACFTDH/umIgHahRgxBn/00jWBsAA/cx9JcvPw++CwFNt8CO3pKT4x/OQiR0P5i5+7t6Ing3BkFL5GawAAAA=",
+   "bg": "#927761",
+   "name": "Honey Gold Diamond-Buta Brocade Sherwani - 02"
+  },
+  "heritage/sherwanis/honey-gold-diamond-buta-brocade-sherwani-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAABQBACdASoUAB4APu1iqE4ppaOiMBgMATAdiUATpljoJeTmdwwvtx7kcKcAAP5UBfE3t5jSygYF+z4OtNqDmFlWoQbX6fQ7WPSTa25IevG75pTKlmmUSC8qmBIvvJ9cHymK6/Vbkuplk1chUTx4ZDdqr2fbAAAA",
+   "bg": "#ab9d94",
+   "name": "Honey Gold Diamond-Buta Brocade Sherwani - 03"
+  },
+  "heritage/sherwanis/ivory-and-sage-twig-jacquard-sherwani-01": {
+   "w": 1920,
+   "h": 2399,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAwCdASoUABkAPu1mq0+ppSOiMBgIATAdiWUAABM74lY/xsUmOgAAp59YNlgTeNyfC+YLnPcPqvPGfsZk/S9E34prnniAoLOma9H1rlzuUuyGAAA=",
+   "bg": "#957967",
+   "name": "Ivory and Sage Twig Jacquard Sherwani - 01"
+  },
+  "heritage/sherwanis/ivory-and-sage-twig-jacquard-sherwani-02": {
+   "w": 1920,
+   "h": 2399,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAwBACdASoUABkAPuFcpk2opSgiMAwBEBwJZQCdMt8BpUkByQCUzfrjYQAAp455kKBLvbDJkUQBKE2o7yhYW95aohxJ/oYrj7nl3B4tiamRnjWnHmx9nEARa4AAAA==",
+   "bg": "#8d7058",
+   "name": "Ivory and Sage Twig Jacquard Sherwani - 02"
+  },
+  "heritage/sherwanis/ivory-and-sage-twig-jacquard-sherwani-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAABQBQCdASoUAB4APuVgo02pJaMiMAwBIByJZQC06BI6dld29+UjpjTkXeS0ujdqcczfT4AA9vm5knX4GMX1zXokhdogKZTCWRF0ETl6BIdCo7c7MWeCEeABpKQujzN6Z+5LhVUtHplAlMBHIA+DMJU4kgxaW2zQAAA=",
+   "bg": "#9e8674",
+   "name": "Ivory and Sage Twig Jacquard Sherwani - 03"
+  },
+  "heritage/sherwanis/ivory-gold-blossom-brocade-sherwani-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAwCdASoUABkAPu1oqE2ppqOiMBgMATAdiWcAx+QE3MbTvBVrrC8gANbH+onPGubxeBkv4s9nIc5rYn3uCcG6AziR2QaYV2DFj5eV6wm4+9c7V9UAAA==",
+   "bg": "#88796e",
+   "name": "Ivory Gold Blossom Brocade Sherwani - 01"
+  },
+  "heritage/sherwanis/ivory-gold-blossom-brocade-sherwani-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAwBACdASoUABkAPu1kqU2ppaOiMAgBMB2JZQCnFBoLYA5PUCZTe4XMAcAAyqm5m6R97f8kd9tc3XgPWgCkY1+X1TDKsisGd06UsjtB7w+ilQ2Np8hAAA==",
+   "bg": "#856e5c",
+   "name": "Ivory Gold Blossom Brocade Sherwani - 02"
+  },
+  "heritage/sherwanis/ivory-gold-blossom-brocade-sherwani-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAABQBACdASoUAB4APulkpU2pJiOiMAwBIB0JZQDDNAN74wWWCw1q15aTBmAAAPceIq86DjWfgMYvCU25ugvUvak9aOKd2VFFB6HFwOF9LfFZ6DNLFlllbm2saL0cpxuwjyhxrJGWdbZi/cWfFPDL1nQAAAA=",
+   "bg": "#94837a",
+   "name": "Ivory Gold Blossom Brocade Sherwani - 03"
+  },
+  "heritage/sherwanis/leaf-green-slub-weave-sherwani-01": {
+   "w": 1920,
+   "h": 2401,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAABQBACdASoUABkAPu1ip02ppaOiMBgMATAdiWMAxvQFYrx5eXHA64pBhHsAAPxaZRM+D2u97DxstkPIAJIztaHtm1Q4w5Zl5r6AW1eH0Xi/KBczvpXl8ZlQ9yv9qKSu2AAAAA==",
+   "bg": "#ac937e",
+   "name": "Leaf Green Slub-Weave Sherwani - 01"
+  },
+  "heritage/sherwanis/leaf-green-slub-weave-sherwani-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAACwBACdASoUABkAPt1apE2osqOiN/qoAlAbiUATpmmIZrF56+P8D7nB+cx11KEAAPx/grWtNlvt3DkWQhurT6SxADyTBWIwFFp3/vq8A8jz+W7tS/fAeUUD8j8Moh9daK/gAA==",
+   "bg": "#aa8668",
+   "name": "Leaf Green Slub-Weave Sherwani - 02"
+  },
+  "heritage/sherwanis/leaf-green-slub-weave-sherwani-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABQBQCdASoUAB4APu1qsFAppiUiqAqpMB2JQBUk6YgonlOEBkGyOFE1jec5c4E7GYrj9YAA/c+PGVke62obiVidWE5W59RCNlpo8byPR0xZ17suTGLKJ6kSzbuqg0Lqw7vAlxV+Ck7MV+rEH6A5JTKNXcBdrVYGpEkEAAAA",
+   "bg": "#b39c8c",
+   "name": "Leaf Green Slub-Weave Sherwani - 03"
+  },
+  "heritage/sherwanis/lilac-pink-textured-jacquard-sherwani-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAABQBACdASoUABkAPu1mqk2ppaQiMAgBMB2JZQC7AA1R3sTdpVBYP6C7U+4AAEIPe/GwWxMRO0EL318c1mlcqmKtwzQHi0NJLnmUHrMB7jHjgAAA",
+   "bg": "#88756b",
+   "name": "Lilac Pink Textured Jacquard Sherwani - 01"
+  },
+  "heritage/sherwanis/lilac-pink-textured-jacquard-sherwani-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAACwAwCdASoUABkAPuleo02pJSMiMAwBIB0JYwCdABm5zkuGrHJbIADZwdcnRCufYth8SoTOzIIRv1KXatOS3mxegLCs9XR3dpt05W8AW9QzB6tUSHDRAYI4M4AAAA==",
+   "bg": "#91755c",
+   "name": "Lilac Pink Textured Jacquard Sherwani - 02"
+  },
+  "heritage/sherwanis/lilac-pink-textured-jacquard-sherwani-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAQBACdASoUAB4APuFcqU2opSQiMAwBEBwJYwC90BL+vKLo9OoNP/OnAADW9z5Nv89JzJwM33NfCKFhBV92Pb+S+BB1t0gmaGtsIL2UCpF3YH+lbfT7Ae6jOfOmBZu2lk7Y1Tj81YAAAA==",
+   "bg": "#948075",
+   "name": "Lilac Pink Textured Jacquard Sherwani - 03"
   },
   "heritage/sherwanis/midnight-black-embellished-sherwani-01": {
    "w": 1920,
@@ -3205,6 +4509,318 @@
    "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwBACdASoUAB4APu1wsFIppiSiqAgBMB2JZQAAH5H8HccaUWk9Kk6FMgAA/u6djcqd11ndtUkDAo+AXYeUErfdKU0lqUHtRTsyESa6IJAyukDPiGOCAT0xAAA=",
    "bg": "#0d0b0a",
    "name": "Midnight Black Embellished Sherwani - 08"
+  },
+  "heritage/sherwanis/midnight-navy-gold-zardosi-floral-sherwani-model-01": {
+   "w": 1920,
+   "h": 2399,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQBACdASoUABkAPu1srFCppiQiqAqpMB2JZQC/7AaqYUFmj6vzuzbUUTU89XZwAADUkvvXyQY70e1quwKWYlwS+nFYY0adu9IJlMcIF1F5xttq6VqXZYsTD4511SjtAAA=",
+   "bg": "#816e62",
+   "name": "Midnight Navy Gold Zardosi Floral Sherwani Model - 01"
+  },
+  "heritage/sherwanis/midnight-navy-gold-zardosi-floral-sherwani-model-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAwBACdASoUABkAPu1iqU2ppaQiMAgBMB2JYwCdMoAA26Yk+a4MrAa35gAA9wY6+emtzntoYYF+8Izf9TGsq7iE0HvEyZ2BFh9m1b7e1K7Z8PFgpZBHzwUlTiKegnypgAA=",
+   "bg": "#8e6f53",
+   "name": "Midnight Navy Gold Zardosi Floral Sherwani Model - 02"
+  },
+  "heritage/sherwanis/midnight-navy-gold-zardosi-floral-sherwani-model-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAADQBACdASoUAB4APu1urlCppqQiqAqpMB2JZQC7AAv9f1RcKQ7Y2hS/3OGikZsydAD+VEKch1x1gp/HLvpHVqsIrJR2C2CVicvPEPsQBpGipcWaaaUckWViC/1LCVewSazcngI+LYwjNS1TcXwHVBR+X02pbqJfQS3qkI0q/slygAAA",
+   "bg": "#9b806c",
+   "name": "Midnight Navy Gold Zardosi Floral Sherwani Model - 03"
+  },
+  "heritage/sherwanis/mint-and-gold-floral-brocade-sherwani-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACwBACdASoUAB4APu1sq08ppqOiMBgIATAdiWUAuwAOJmYpN5QejyusYn8kBBuAAP3PWqLDVLCl1p60M5rJC8ilpEIMJuw5ygihMeXPJ/Ic8TGqQZk6FKKvDcLr91FUy7Qc9OAAAAA=",
+   "bg": "#b29784",
+   "name": "Mint and Gold Floral Brocade Sherwani - 01"
+  },
+  "heritage/sherwanis/mint-and-gold-floral-brocade-sherwani-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAABQBACdASoUABkAPu1gp02ppaOiMAgBMB2JYwCdMoAEYpQYLg15N/FIWyDwAP7fDuNsSfdv/qzsPuo73bKB2tJIyg1LjFD5fvyllXY1KBn+bBBvpnQaaZ0jokq7Kr9Rintb3tChmbAAAA==",
+   "bg": "#a78363",
+   "name": "Mint and Gold Floral Brocade Sherwani - 02"
+  },
+  "heritage/sherwanis/mint-and-gold-floral-brocade-sherwani-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAQBACdASoUAB4APu1iqE2ppaOiMAgBMB2JZQC7AAn95Qh8Vo+wPukNgAC8PRwrlpZz9lN4tTME7JPWpDDQC8KgYwLnxMmkB7zI9lRWR1jsCl7RT6K4GqZghTz/ktwVEyrQ4CuIPAAAAA==",
+   "bg": "#8a7668",
+   "name": "Mint and Gold Floral Brocade Sherwani - 03"
+  },
+  "heritage/sherwanis/olive-gold-damask-jacquard-sherwani-01": {
+   "w": 1920,
+   "h": 2399,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAwCdASoUABkAPu1kqE2ppaOiMAgBMB2JZQAAWk5SqTENxcODngAA/cwjQ4EsnQFeS+O8Lz/1/cn6yD2yd6WcJQZP1KLt+h/Gp4D9oGrtt2x531lLEgAA",
+   "bg": "#ae9582",
+   "name": "Olive Gold Damask Jacquard Sherwani - 01"
+  },
+  "heritage/sherwanis/olive-gold-damask-jacquard-sherwani-02": {
+   "w": 1920,
+   "h": 2399,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAQBACdASoUABkAPuVgpU2pJaOiMAwBIByJYwCdAA/m2zgYkOJczLDCwAD3HwTx4vcqtDDUIqCWyNLv4TP67HVTxK/0RBT0u+g/Q3PTGZKbqup9LOWpYjrgAAA=",
+   "bg": "#a17f66",
+   "name": "Olive Gold Damask Jacquard Sherwani - 02"
+  },
+  "heritage/sherwanis/olive-gold-damask-jacquard-sherwani-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAACwBACdASoUAB4APuFWpU2opCOiN/qoARAcCWUAyNQYaMnjuVXeGiJ4CW8H3Z0AAP5UBfM7tDg1M0bobFS8q7uRbxMejTULUSUeFBrMYCUHtn5BTj0ZDwxedfLGc51j4vf6RLXzPznbEUrzwAA=",
+   "bg": "#b99f89",
+   "name": "Olive Gold Damask Jacquard Sherwani - 03"
+  },
+  "heritage/sherwanis/pale-gold-leaf-buta-brocade-sherwani-01": {
+   "w": 1920,
+   "h": 2401,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAACwAwCdASoUABkAPu1qq08ppiOtMBgIAaAdiWMAtOgICAAkMPclQADWW+oQ+7YbDLsXU5lLoI+pas7UUUf+TwFbZzyQjSu1FGXqRZL1wsuLIFuD2ESaAAAA",
+   "bg": "#968073",
+   "name": "Pale Gold Leaf-Buta Brocade Sherwani - 01"
+  },
+  "heritage/sherwanis/pale-gold-leaf-buta-brocade-sherwani-02": {
+   "w": 1920,
+   "h": 2401,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAACwAwCdASoUABkAPu1mqk2ppaQiMAgBMB2JYwCuHA2eXEHNZyM5gADZyCp5d7Vh0Gbxh5871UsLiY+gWMqeAM6ahV0eUmtTMJa8+X6QxujiUvvQAAA=",
+   "bg": "#8f7461",
+   "name": "Pale Gold Leaf-Buta Brocade Sherwani - 02"
+  },
+  "heritage/sherwanis/pale-gold-leaf-buta-brocade-sherwani-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAAAQBQCdASoUAB4APuFeqk2opSQiMAwBEBwJQBTigx1yu/iuuNcY4my2IaCdlfRFg8oAAP5T7BywI/uevTFETepiGjVu0dstFa8eQto8nzk+TGLAMOExuUkqrCumVXYf89YwyBX/9SajTy57H6T248ryAAA=",
+   "bg": "#b49987",
+   "name": "Pale Gold Leaf-Buta Brocade Sherwani - 03"
+  },
+  "heritage/sherwanis/peach-blossom-brocade-sherwani-01": {
+   "w": 1920,
+   "h": 2399,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQBACdASoUABkAPu1mqk2ppaQiMAgBMB2JZQC2yBqdFqT4m7OmK03JAAD517r8TvBh5WyEfgfM+LGNvE1Rsnel+5kR/Q6FeFFxK1CpALW06kV5b2DzJnIa5ONR0QAA",
+   "bg": "#6f5c50",
+   "name": "Peach Blossom Brocade Sherwani - 01"
+  },
+  "heritage/sherwanis/peach-blossom-brocade-sherwani-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAQBACdASoUABkAPu1iqE2ppaOiMAgBMB2JYwCw7Ai9ENvh7/pcZb5hgADoj/Bb3SOB1c8mSj3a9SAp5AgIa3/IW+tLAVC8lMWLXUPYGtzPypqsLpFazJS4NAAAAA==",
+   "bg": "#96765c",
+   "name": "Peach Blossom Brocade Sherwani - 02"
+  },
+  "heritage/sherwanis/peach-blossom-brocade-sherwani-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAACwBQCdASoUAB4APulmqE2pJiQiMBgMASAdCWMAtsgOnkvuHPS2XxsaOMOmLedEgpSmsR+XHMAA/nGu7mTPeWebOrkPoB8NQPKA1fainzHOQ/brECYSXSeFK+yUhtq46NrN4LemvtymaHejkGNaqxiGE4WX3SoKvY1UeAAA",
+   "bg": "#625043",
+   "name": "Peach Blossom Brocade Sherwani - 03"
+  },
+  "heritage/sherwanis/peach-pink-gold-vine-jacquard-sherwani-01": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAACwBACdASoUAB4APu1mpU2ppaMiMBgMATAdiWUAsOwICyCRT9UPXQhWRezXK1LQAPcGS3ra5apNipScK8BaOZ2FWGDqf465wSw+JtKOpyAQBg8HLtt1NjEoXz1YAA==",
+   "bg": "#908277",
+   "name": "Peach Pink Gold-Vine Jacquard Sherwani - 01"
+  },
+  "heritage/sherwanis/peach-pink-gold-vine-jacquard-sherwani-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAACQBACdASoUABkAPu1kqU2ppaQiMAgBMB2JYwC7ABKgPCRKc1ShNmaWJ2PLQAAA1sY3AK9XOG/7FX42o80bC2py7eS/SIwGH66q5wai9ExvokJ5e9oV0AAA",
+   "bg": "#866953",
+   "name": "Peach Pink Gold-Vine Jacquard Sherwani - 02"
+  },
+  "heritage/sherwanis/peach-pink-gold-vine-jacquard-sherwani-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAAAQBQCdASoUAB4APu1oqU2ppqQiMBgMATAdiUAX7PgQDPvXAvXvNquJjWxIbLP3o3YAAPxQ8B0Qxr0TOTekJj8XKMMM0jbHPiwwYq6phFFXPaR8FNgf1c5oIA12F+heRGqI70AO6krjwoobtlQfZTPOVgA=",
+   "bg": "#a29188",
+   "name": "Peach Pink Gold-Vine Jacquard Sherwani - 03"
+  },
+  "heritage/sherwanis/pistachio-gold-buta-brocade-sherwani-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADwAwCdASoUABkAPu1kq1AppSOisBgIATAdiWUAvVgR8rRRL3v4LCCAAPefCkwcQOBzKVxmUZ0DY51tiHSNssDwcb9RgKridu7SYfVgdUA6B7gSPoD+XXXF3reUgAAA",
+   "bg": "#a07f69",
+   "name": "Pistachio Gold-Buta Brocade Sherwani - 01"
+  },
+  "heritage/sherwanis/pistachio-gold-buta-brocade-sherwani-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwBACdASoUABkAPu1qqk8ppiOiMBgIATAdiWMAqPQQlXNgTkHwscPfAfqiCxTCPgAA/EurYaCo6aYD7iY7eBdhDA7k/vgiTkvTRkOdkYBW676QZ5ZyiPmxdmx2Qe91QAAAAA==",
+   "bg": "#9b7556",
+   "name": "Pistachio Gold-Buta Brocade Sherwani - 02"
+  },
+  "heritage/sherwanis/pistachio-gold-buta-brocade-sherwani-03": {
+   "w": 1920,
+   "h": 2991,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACwBQCdASoUAB8APu1opU2ppqMiMBgMATAdiWMAuwAQKZg3/58xCm2qBR48i/JpLDlL63whOAAA/FDwC7BUk3B6W8JPpeCl+7DCYJ0Ez+CEn/j1/ZDRXbDaaRlCVTmc2pjNCQPcfzWcQJh4i5I/GqflPvF6f7IAAAA=",
+   "bg": "#ab907b",
+   "name": "Pistachio Gold-Buta Brocade Sherwani - 03"
+  },
+  "heritage/sherwanis/sand-gold-paisley-brocade-sherwani-01": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQBACdASoUABkAPu1qqk8ppiOiMBgIATAdiWUAsOwQrbIC1w0EgrA4AAD+Ut6JYQHGsHV5MrHKdm0DSNdGejM8eFHM3BFuBQlXzaGxeigelDosv5+kMBl9wtxB3rAA",
+   "bg": "#978b83",
+   "name": "Sand Gold Paisley Brocade Sherwani - 01"
+  },
+  "heritage/sherwanis/sand-gold-paisley-brocade-sherwani-02": {
+   "w": 1920,
+   "h": 2400,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAABwBACdASoUABkAPt1WpE2opKOiN/qoARAbiWMArDLfAzQ415Kv5QFSMTc5AAD+i6zCH52O6M6/QhBEsHRR39Mpu+c/B/m7A1Enu/06Pgouoemz4zOvexLoAvb+DKuKlogAAA==",
+   "bg": "#a08772",
+   "name": "Sand Gold Paisley Brocade Sherwani - 02"
+  },
+  "heritage/sherwanis/sand-gold-paisley-brocade-sherwani-03": {
+   "w": 1920,
+   "h": 2880,
+   "widths": [
+    480,
+    800,
+    1280,
+    1920
+   ],
+   "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAABQBQCdASoUAB4APuVio02pJaMiMAwBIByJYwCdM0dGUCoEQJH+ZvEgJ5ZANSGOmwtaOLAA/ovPpzTNUvWO5cKrfMS5fd8IqjA8hhApyl98u2yGsi0cDd/HGuTfBvQNqYRXUaL+lFXZSAfNKCHLI7UmgAA=",
+   "bg": "#ada29d",
+   "name": "Sand Gold Paisley Brocade Sherwani - 03"
   },
   "heritage/stoles/ivory-gold-embroidered-border-heritage-stole-ensemble-01": {
    "w": 1920,

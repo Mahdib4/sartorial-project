@@ -4,6 +4,7 @@ import { Icon, type IconName } from "@/components/ui/Icon";
 import { Wordmark } from "@/components/ui/Wordmark";
 import { SITE } from "@/config/site";
 import type { NavGroup } from "@/data/navigation";
+import type { ContactSettings, SocialSettings } from "@/data/types";
 
 const HOUSE = [
   { label: "The bespoke process", href: "/bespoke" },
@@ -44,11 +45,10 @@ function Column({ title, href, links }: { title: string; href?: string; links: A
   );
 }
 
-export function SiteFooter({ groups }: { groups: NavGroup[] }) {
+export function SiteFooter({ groups, contact, social: socialLinks }: { groups: NavGroup[]; contact: ContactSettings; social: SocialSettings }) {
   const by = (key: string) => groups.find((g) => g.key === key)!;
   const links = (key: string) => by(key).categories.map((c) => ({ label: c.name, href: c.href }));
-  const social = SOCIAL.filter((s) => SITE.social[s.key]);
-  const { contact } = SITE;
+  const social = SOCIAL.filter((s) => socialLinks[s.key]);
   const hasContact = Boolean(contact.phone || contact.email || contact.address.length || contact.hours);
 
   return (
@@ -117,7 +117,7 @@ export function SiteFooter({ groups }: { groups: NavGroup[] }) {
           <ul className="flex items-center gap-1 text-ink">
             {social.map((s) => (
               <li key={s.key}>
-                <a href={SITE.social[s.key]} target="_blank" rel="noreferrer" aria-label={s.label} className="grid h-10 w-10 place-items-center transition-opacity hover:opacity-60">
+                <a href={socialLinks[s.key]} target="_blank" rel="noreferrer" aria-label={s.label} className="grid h-10 w-10 place-items-center transition-opacity hover:opacity-60">
                   <Icon name={s.icon} size={20} />
                 </a>
               </li>

@@ -7,7 +7,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { LoopVideo } from "@/components/ui/LoopVideo";
 import { Picture } from "@/components/ui/Picture";
 import { Reveal, RevealMask } from "@/components/ui/Reveal";
-import { categoryHref, COLLECTIONS, editorialFor, productsIn, toCard } from "@/data/catalog";
+import { categoryHref, COLLECTIONS, type Catalog } from "@/data/catalog";
 import { navGroups } from "@/data/navigation";
 import type { Category } from "@/data/types";
 import { cn } from "@/lib/cn";
@@ -15,14 +15,15 @@ import { pluralise } from "@/lib/format";
 import { film, shot } from "@/lib/media";
 
 /** One category: its introduction and film, then either its products or, where none are listed yet, its edit. */
-export function CategoryView({ category }: { category: Category }) {
+export function CategoryView({ cat, category }: { cat: Catalog; category: Category }) {
   const collection = COLLECTIONS[category.collection];
-  const products = productsIn(category.key);
-  const group = navGroups().find((g) => g.key === category.collection)!;
+  const products = cat.productsIn(category.key);
+  const group = navGroups(cat).find((g) => g.key === category.collection)!;
   const siblings = group.categories;
-  const editorial = editorialFor(category.key);
+  const editorial = cat.editorialFor(category.key);
   const clip = category.film ? film(category.film) : null;
-  const lead = shot(editorial[0] ?? category.preview[0]);
+  // A new category may have no photographs of its own yet: fall back to a piece in it, then the department.
+  const lead = shot(editorial[0] ?? category.preview[0] ?? products[0]?.images[0] ?? collection.cover);
   const isEdit = products.length === 0;
 
   return (
@@ -90,11 +91,11 @@ export function CategoryView({ category }: { category: Category }) {
               </div>
             </div>
           </div>
-          <EditGallery shots={category.edit ?? []} name={category.name} />
+          <EditGallery cat={cat} shots={category.edit ?? []} name={category.name} />
         </section>
       ) : (
         <section className="py-10 md:py-12" aria-label={`${category.name}: all pieces`}>
-          <Listing products={products.map(toCard)} chips="occasion" label={category.name} />
+          <Listing products={products.map(cat.toCard)} chips="occasion" label={category.name} />
         </section>
       )}
 
@@ -134,6 +135,6 @@ export function categoryMetadata(category: Category) {
     title: `${category.name} · ${collection.name}`,
     description: category.intro,
     alternates: { canonical: categoryHref(category) },
-    openGraph: { title: `${category.name} — Sartorial ${collection.name}`, description: category.blurb, images: [{ url: shot(category.preview[0]).src }] },
+    openGraph: { title: `${category.name} — Sartorial ${collection.name}`, description: category.blurb, images: [{ url: shot(category.preview[0] ?? collection.cover).src }] },
   };
 }

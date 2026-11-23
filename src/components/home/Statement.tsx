@@ -2,10 +2,17 @@ import { TextReveal } from "@/components/interior/text-reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 
-/** The house in one paragraph, set large and read in as it scrolls into view. */
-export function Statement() {
+import type { ReactNode } from "react";
+
+/**
+ * The house in one paragraph, set large and read in as it scrolls into view.
+ * The open space above it is the home page's promotional slot: a live banner
+ * from the admin appears there, and without one the space stays as it is.
+ */
+export function Statement({ promo }: { promo?: ReactNode }) {
   return (
-    <section className="px-gutter py-20 md:py-32" aria-labelledby="statement-title">
+    <section className={promo ? "px-gutter pt-8 pb-20 md:pt-12 md:pb-32" : "px-gutter py-20 md:py-32"} aria-labelledby="statement-title">
+      {promo ? <div className="mb-16 md:mb-24">{promo}</div> : null}
       <div className="grid gap-10 lg:grid-cols-12">
         <p className="label text-ink-3 lg:col-span-3 lg:pt-3">The house</p>
         <div className="lg:col-span-9">

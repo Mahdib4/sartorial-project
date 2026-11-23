@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getCategory, getProduct, productHref, productReference } from "@/data/catalog";
+import { catalog, productHref, productReference } from "@/data/catalog";
 import { db } from "@/lib/db";
 import { EMAIL_PATTERN, ENQUIRY_ID_PATTERN, ENQUIRY_KEY_PATTERN } from "@/lib/enquiry";
 import { tooManyRequests } from "@/lib/rate-limit";
@@ -52,19 +52,20 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "invalid_contact" }, { status: 422 });
   }
 
+  const cat = await catalog();
   const rawLines = Array.isArray(body.lines) ? body.lines.slice(0, 100) : [];
   const origin = new URL(request.url).origin;
   const items = [];
   for (const line of rawLines) {
     const l = (line ?? {}) as Record<string, unknown>;
-    const product = getProduct(str(l.slug, 160));
+    const product = cat.getProduct(str(l.slug, 160));
     if (!product) return NextResponse.json({ error: "unknown_product" }, { status: 422 });
     const qty = Number.isInteger(l.qty) ? Math.min(Math.max(l.qty as number, 1), 99) : 1;
     items.push({
       slug: product.slug,
       name: product.name,
       reference: productReference(product),
-      category: getCategory(product.category)?.name ?? product.category,
+      category: cat.getCategory(product.category)?.name ?? product.category,
       size: str(l.size, 60) || "Not given",
       qty,
       url: `${origin}${productHref(product)}`,

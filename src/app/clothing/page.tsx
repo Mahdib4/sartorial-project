@@ -4,6 +4,7 @@ import { CategoryExplorer } from "@/components/home/CategoryExplorer";
 import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { catalog } from "@/data/catalog";
 import { navGroups } from "@/data/navigation";
 import { pluralise } from "@/lib/format";
 import { shot } from "@/lib/media";
@@ -19,8 +20,11 @@ const BANNER: Record<string, string> = {
   classic: "classic/suits/light-grey-double-breasted-peak-lapel-suit-01",
 };
 
-export default function ClothingPage() {
-  const groups = navGroups().filter((g) => g.department === "Clothing");
+const WORDS = ["No", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty"];
+const countWord = (n: number) => WORDS[n] ?? String(n);
+
+export default async function ClothingPage() {
+  const groups = navGroups(await catalog()).filter((g) => g.department === "Clothing");
 
   return (
     <main>
@@ -50,7 +54,7 @@ export default function ClothingPage() {
       </section>
 
       <section className="py-20 md:py-28" aria-labelledby="clothing-explorer">
-        <SectionHeading eyebrow="Clothing" title={<span id="clothing-explorer">Fourteen categories, two wardrobes.</span>} className="mb-10 md:mb-14" />
+        <SectionHeading eyebrow="Clothing" title={<span id="clothing-explorer">{`${countWord(groups.reduce((n, g) => n + g.categories.length, 0))} categories, two wardrobes.`}</span>} className="mb-10 md:mb-14" />
         <CategoryExplorer groups={groups} />
       </section>
 

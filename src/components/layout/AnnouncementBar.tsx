@@ -4,20 +4,22 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { CollapsibleBanner } from "@/components/interior/collapsible-banner";
-import { SITE } from "@/config/site";
 import { cn } from "@/lib/cn";
 
 const KEY = "sartorial:announcement-dismissed";
 const HEIGHT = 36;
 
+export type Notice = { id: number; text: string; href: string | null; cta: string };
+
 /**
- * The slim notice above the navigation. It rotates through the messages in
- * site config, can be dismissed for the session, and publishes its height as
- * --banner-h so the page beneath can make room for it.
+ * The slim notice above the navigation. It rotates through the notices set in
+ * the admin (Banners & notices → Announcement bar), can be dismissed for the
+ * session, and publishes its height as --banner-h so the page beneath can make
+ * room for it. With no live notices it is not shown at all.
  */
-export function AnnouncementBar({ overlay }: { overlay: boolean }) {
+export function AnnouncementBar({ overlay, notices }: { overlay: boolean; notices: Notice[] }) {
   const reduce = useReducedMotion();
-  const messages = SITE.announcement;
+  const messages = notices;
   const [index, setIndex] = useState(0);
   const [dismissed, setDismissed] = useState(false);
 
@@ -33,8 +35,8 @@ export function AnnouncementBar({ overlay }: { overlay: boolean }) {
   }, []);
 
   useEffect(() => {
-    document.documentElement.style.setProperty("--banner-h", dismissed ? "0px" : `${HEIGHT}px`);
-  }, [dismissed]);
+    document.documentElement.style.setProperty("--banner-h", dismissed || messages.length === 0 ? "0px" : `${HEIGHT}px`);
+  }, [dismissed, messages.length]);
 
   useEffect(() => {
     if (dismissed || reduce || messages.length < 2) return;
@@ -42,7 +44,8 @@ export function AnnouncementBar({ overlay }: { overlay: boolean }) {
     return () => window.clearInterval(id);
   }, [dismissed, reduce, messages.length]);
 
-  const message = messages[index];
+  const message = messages[index % Math.max(messages.length, 1)];
+  if (!message) return null;
 
   return (
     <CollapsibleBanner
@@ -73,11 +76,24 @@ export function AnnouncementBar({ overlay }: { overlay: boolean }) {
             exit={reduce ? undefined : { opacity: 0, y: -8 }}
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="hidden sm:inline">{message.text}</span>
-            <span aria-hidden className="hidden h-2.5 w-px bg-current opacity-40 sm:inline-block" />
-            <Link href={message.href} className="link-under">
-              {message.cta}
-            </Link>
+            {/* On phones only the call to action shows, when there is one; otherwise the message itself. */}
+            <span className={message.cta && message.href ? "hidden sm:inline" : "truncate"}>
+              {message.href && !message.cta ? (
+                <Link href={message.href} className="link-under">
+                  {message.text}
+                </Link>
+              ) : (
+                message.text
+              )}
+            </span>
+            {message.cta && message.href ? (
+              <>
+                <span aria-hidden className="hidden h-2.5 w-px bg-current opacity-40 sm:inline-block" />
+                <Link href={message.href} className="link-under">
+                  {message.cta}
+                </Link>
+              </>
+            ) : null}
           </motion.span>
         </AnimatePresence>
       }
