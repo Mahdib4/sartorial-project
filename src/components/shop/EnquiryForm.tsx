@@ -124,7 +124,7 @@ export function EnquiryForm({ kind, lines, initialInterest, initialNotes, onSent
           <>
             <div className="mb-4 sm:col-span-2">
               <p className="label mb-3 text-ink-3">I am interested in</p>
-              <SegmentedControl label="Collection of interest" value={interest} onValueChange={setInterest} options={INTERESTS.map((value) => ({ value, label: value }))} />
+              <SegmentedControl label="Collection of interest" className="max-sm:block max-sm:w-full" classNames={{ segment: "max-sm:h-11" }} value={interest} onValueChange={setInterest} options={INTERESTS.map((value) => ({ value, label: value }))} />
             </div>
             <FloatingLabelInput label="Occasion and date, if any" name="occasion" value={occasion} onChange={(v) => setOccasion(v)} />
             <FloatingLabelInput label="Preferred day and time" name="preferred-time" value={preferredTime} onChange={(v) => setPreferredTime(v)} />

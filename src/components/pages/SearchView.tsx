@@ -66,10 +66,10 @@ export function SearchView({ cards, groups }: { cards: CardData[]; groups: NavGr
             placeholder="Sherwani, navy suit, white shirt…"
             autoComplete="off"
             enterKeyHint="search"
-            className="headline-sm min-w-0 flex-1 bg-transparent text-ink outline-none! placeholder:text-mute/70 md:text-[clamp(1.75rem,3vw,2.75rem)] [&::-webkit-search-cancel-button]:hidden"
+            className="headline-sm min-w-0 flex-1 bg-transparent text-ink outline-none! placeholder:text-mute/70 max-md:-my-2 max-md:py-2 md:text-[clamp(1.75rem,3vw,2.75rem)] [&::-webkit-search-cancel-button]:hidden"
           />
           {query ? (
-            <button type="button" onClick={() => update("")} className="label shrink-0 pb-1.5 text-ink-3 hover:text-ink">
+            <button type="button" onClick={() => update("")} className="label -my-3 shrink-0 py-3 pb-[1.125rem] pl-3 text-ink-3 hover:text-ink">
               Clear
             </button>
           ) : null}
@@ -95,7 +95,7 @@ export function SearchView({ cards, groups }: { cards: CardData[]; groups: NavGr
 
       {results.length > 0 ? (
         <>
-          <ul className="mt-8 grid grid-cols-2 gap-x-1 gap-y-9 px-1 lg:grid-cols-4">
+          <ul className="mt-8 grid grid-cols-2 gap-x-1 gap-y-8 px-1 md:gap-y-9 lg:grid-cols-4">
             {results.slice(0, limit).map((card) => (
               <li key={card.slug}>
                 <ProductCard product={card} showCategory />

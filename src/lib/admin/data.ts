@@ -2,16 +2,26 @@ import { connection } from "next/server";
 import { rowToBanner, rowToCategory, rowToCurated, rowToOffer, rowToProduct } from "@/data/store";
 import { withDefaults } from "@/data/seed";
 import type { Banner, Category, Curated, Offer, Product, SiteSettings } from "@/data/types";
+import { requireAdmin } from "@/lib/admin/auth";
 import { db } from "@/lib/db";
 import { builtInImageIds, hasImage, registerUploads, thumb, uploadUrl } from "@/lib/media";
 
 /**
  * Reads for the admin panel: always fresh from the database (never cached),
  * hidden items included. Every function needs a connected database.
+ *
+ * Every read checks the admin session itself. The (panel) layout's check is not
+ * enough on its own: Next renders a page alongside (and, on client navigation,
+ * without) its layout, so a page's data must never depend on the layout gating it.
  */
 
-async function pool() {
+async function guard() {
   await connection(); // request-time data: never prerendered
+  await requireAdmin();
+}
+
+async function pool() {
+  await guard();
   const p = db();
   if (!p) throw new Error("NO_DATABASE");
   return p;
@@ -150,6 +160,7 @@ export async function mediaLibrary(): Promise<LibraryImage[]> {
 
 /** Thumbnails for a list of media ids (skipping any that no longer exist). */
 export async function thumbsFor(ids: string[]): Promise<LibraryImage[]> {
+  await guard();
   const uploads = ids.filter((id) => id.startsWith("uploads/"));
   if (uploads.length) {
     const { rows } = await (await pool()).query("SELECT id, w, h, widths, blur, bg FROM media WHERE id = ANY($1)", [uploads]);

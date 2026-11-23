@@ -24,6 +24,8 @@ export function ProductGallery({ items, name }: { items: GalleryItem[]; name: st
   const images = items.flatMap((item) => (item.kind === "image" ? [item] : []));
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [shown, setShown] = useState(0);
+  // The frame on show in the small-screen carousel.
+  const [slide, setSlide] = useState(0);
   const origin = useRef<HTMLElement | null>(null);
   const tiles = useRef<Array<HTMLButtonElement | null>>([]);
 
@@ -104,9 +106,9 @@ export function ProductGallery({ items, name }: { items: GalleryItem[]; name: st
         })}
       </ul>
 
-      {/* Small screens: carousel */}
+      {/* Small screens: a full-width carousel to swipe through, with dots and a count beneath. */}
       <div className="lg:hidden">
-        <SnapCarousel label={`${name}: photographs`} gap={4} classNames={{ controls: "px-gutter mt-3", slide: "opacity-100!" }}>
+        <SnapCarousel label={`${name}: photographs`} gap={4} index={slide} onIndexChange={setSlide} classNames={{ controls: "hidden!", slide: "opacity-100!" }}>
           {items.map((item, i) =>
             item.kind === "film" ? (
               <LoopVideo key={item.film.id} film={item.film} label={item.label} className="aspect-[4/5] w-full" position="50% 30%" />
@@ -115,6 +117,27 @@ export function ProductGallery({ items, name }: { items: GalleryItem[]; name: st
             ),
           )}
         </SnapCarousel>
+        {items.length > 1 ? (
+          <div className="flex items-center justify-between gap-4 pr-gutter pl-[calc(var(--gutter)-0.5rem)]">
+            <div className="flex min-w-0 flex-wrap items-center">
+              {items.map((item, i) => (
+                <button
+                  key={item.kind === "film" ? item.film.id : item.shot.id}
+                  type="button"
+                  onClick={() => setSlide(i)}
+                  aria-label={`Show ${item.kind === "film" ? "film" : "photograph"} ${i + 1} of ${items.length}`}
+                  aria-current={i === slide ? "true" : undefined}
+                  className="grid h-10 min-w-6 place-items-center px-2"
+                >
+                  <span aria-hidden className={cn("block h-[3px] transition-[width,background-color] duration-500 ease-out-expo", i === slide ? "w-5 bg-ink" : "w-[7px] bg-ink/20")} />
+                </button>
+              ))}
+            </div>
+            <p className="label-sm shrink-0 text-ink-3 tabular-nums" aria-hidden>
+              {String(slide + 1).padStart(2, "0")}&thinsp;/&thinsp;{String(items.length).padStart(2, "0")}
+            </p>
+          </div>
+        ) : null}
       </div>
 
       {current ? (

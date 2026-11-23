@@ -50,7 +50,19 @@ export function OfferForm({ offer, departments, categories, products }: { offer:
               <Field label={kind === "amount" ? "Taka off" : "Percentage off"} htmlFor="value" hint={kind === "amount" ? "Taken off the regular price of each piece. It must be less than the price of every piece it applies to." : "A whole number from 1 to 90."}>
                 <div className="flex max-w-60 items-center">
                   {kind === "amount" ? <span className="border border-r-0 border-line bg-paper px-3 py-2.5 text-[13px] text-ink-3">৳</span> : null}
-                  <Input id="value" name="value" inputMode="numeric" value={value} onChange={(e) => setValue(e.target.value)} placeholder={kind === "amount" ? "2000" : "15"} />
+                  <Input
+                    id="value"
+                    name="value"
+                    type="number"
+                    inputMode="numeric"
+                    min={1}
+                    max={kind === "percent" ? 90 : undefined}
+                    step={1}
+                    required={kind !== "note"}
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
+                    placeholder={kind === "amount" ? "2000" : "15"}
+                  />
                   {kind === "percent" ? <span className="border border-l-0 border-line bg-paper px-3 py-2.5 text-[13px] text-ink-3">%</span> : null}
                 </div>
               </Field>

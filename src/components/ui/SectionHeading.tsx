@@ -20,8 +20,8 @@ export function SectionHeading({ eyebrow, title, link, as: Tag = "h2", className
         <Tag className="headline max-w-[18ch]">{title}</Tag>
       </div>
       {link ? (
-        <Link href={link.href} className="link-under self-start text-[14px] md:self-auto md:pb-2">
-          {link.label}
+        <Link href={link.href} className="-my-3 self-start py-3 text-[14px] md:my-0 md:self-auto md:py-0">
+          <span className="link-under inline-block">{link.label}</span>
         </Link>
       ) : null}
     </div>

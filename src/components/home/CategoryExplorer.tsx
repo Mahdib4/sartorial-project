@@ -24,8 +24,8 @@ const countLabel = (category: NavCategory) => (category.count > 0 ? pluralise(ca
 /**
  * Shop by category. Pointing at (or focusing) a category name brings that
  * category's photographs onto the stage beside the list; clicking it opens the
- * category page. On touch screens, where there is no hover, each category
- * carries its photographs with it as a swipeable strip.
+ * category page. On touch screens, where there is no hover, the categories
+ * become a row of photographs to swipe through.
  */
 export function CategoryExplorer({ groups }: { groups: NavGroup[] }) {
   const [groupKey, setGroupKey] = useState(groups[0].key);
@@ -58,8 +58,32 @@ function Panel({ group, active, onActivate }: { group: NavGroup; active: NavCate
 
   return (
     <div className="grid grid-cols-1 gap-x-10 px-gutter lg:grid-cols-12">
-      {/* The list */}
-      <ul className="min-w-0 lg:col-span-5 lg:self-center">
+      {/* Touch screens: the categories as a row of photographs to swipe through, the next one peeking in. */}
+      <ul aria-label={`${group.name} categories`} className="no-scrollbar -mx-[var(--gutter)] flex snap-x snap-mandatory scroll-px-[var(--gutter)] gap-1 overflow-x-auto px-[var(--gutter)] lg:hidden">
+        {group.categories.map((category, i) => (
+          <li key={category.key} className="w-[44vw] max-w-64 shrink-0 snap-start sm:w-[30vw] md:w-[23vw]">
+            <Link href={category.href} className="group/cat block outline-offset-[-2px]">
+              <div className="relative overflow-hidden bg-paper">
+                {category.preview[0] ? (
+                  <div className="transition-transform duration-[1400ms] ease-out-expo group-active/cat:scale-[1.03]">
+                    <Picture shot={category.preview[0]} alt="" sizes="(min-width: 768px) 23vw, (min-width: 640px) 30vw, 44vw" ratio="4 / 5" />
+                  </div>
+                ) : (
+                  <div className="aspect-[4/5]" />
+                )}
+              </div>
+              <p className="mt-3 flex items-baseline gap-2 px-0.5">
+                <span className="label-sm shrink-0 text-mute tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                <span className="truncate text-[17px] leading-tight font-light tracking-[-0.02em] text-ink">{category.name}</span>
+              </p>
+              <p className="label-sm mt-1.5 px-0.5 text-mute">{countLabel(category)}</p>
+            </Link>
+          </li>
+        ))}
+      </ul>
+
+      {/* Pointer devices: the list, which brings each category onto the stage beside it */}
+      <ul className="hidden min-w-0 lg:col-span-5 lg:block lg:self-center">
         {group.categories.map((category, i) => {
           const isActive = category.key === active.key;
           return (
@@ -91,15 +115,6 @@ function Panel({ group, active, onActivate }: { group: NavGroup; active: NavCate
                   <path d="M1 8h13M9.5 3.5 14 8l-4.5 4.5" />
                 </svg>
               </Link>
-
-              {/* Touch screens: the category's photographs travel with it. */}
-              <div className="no-scrollbar -mx-[var(--gutter)] flex snap-x gap-1 overflow-x-auto px-[var(--gutter)] pb-5 lg:hidden">
-                {category.preview.map((shot) => (
-                  <Link key={shot.id} href={category.href} tabIndex={-1} aria-hidden className="w-[38vw] max-w-52 shrink-0 snap-start">
-                    <Picture shot={shot} alt="" sizes="38vw" ratio="4 / 5" />
-                  </Link>
-                ))}
-              </div>
             </li>
           );
         })}
@@ -154,7 +169,7 @@ function Panel({ group, active, onActivate }: { group: NavGroup; active: NavCate
         </div>
       </div>
 
-      <div className="mt-8 lg:hidden">
+      <div className="mt-7 lg:hidden">
         <ButtonLink href={group.href} variant="outline" className="w-full">
           All {group.name}
         </ButtonLink>

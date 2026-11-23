@@ -1,12 +1,17 @@
 "use client";
 
-import { useActionState, type ReactNode } from "react";
+import { startTransition, useActionState, type ReactNode } from "react";
 import { useFormStatus } from "react-dom";
 import type { FormState } from "@/lib/admin/form";
 import { cn } from "@/lib/cn";
 import { buttonStyles, Notice } from "./ui";
 
-/** A form posting to a server action, showing its error (if any) above the buttons. */
+/**
+ * A form posting to a server action, showing its error (if any) above the buttons.
+ * What was typed is kept when the action returns an error: React would otherwise
+ * reset every field after the action, so the submit is dispatched by hand (React
+ * still tracks it, so `useFormStatus` shows "Saving…").
+ */
 export function ActionForm({
   action,
   children,
@@ -22,7 +27,15 @@ export function ActionForm({
 }) {
   const [state, formAction] = useActionState(action, null);
   return (
-    <form action={formAction} className={cn("space-y-6", className)}>
+    <form
+      action={formAction}
+      onSubmit={(e) => {
+        e.preventDefault();
+        const data = new FormData(e.currentTarget, (e.nativeEvent as SubmitEvent).submitter);
+        startTransition(() => formAction(data));
+      }}
+      className={cn("space-y-6", className)}
+    >
       {children}
       <div className="sticky bottom-0 z-10 -mx-4 flex flex-col gap-3 border-t border-line bg-paper/95 px-4 py-4 backdrop-blur sm:-mx-0 sm:flex-row sm:items-center sm:justify-between sm:px-0">
         <div className="min-w-0 flex-1">{state?.error ? <Notice tone="warning">{state.error}</Notice> : state?.saved ? <Notice tone="success">{state.saved}</Notice> : null}</div>

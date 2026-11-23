@@ -17,7 +17,7 @@ export function WishlistView({ cards }: { cards: CardData[] }) {
     return (
       <div className="px-gutter pb-24">
         <p className="max-w-md text-[16px] leading-relaxed text-ink-2">Nothing saved yet. Press the heart on any piece to keep it here while you decide.</p>
-        <div className="mt-8 flex flex-col gap-3 xs:flex-row">
+        <div className="mt-8 grid gap-3 sm:flex sm:flex-row">
           <ButtonLink href="/clothing/heritage">Explore Heritage</ButtonLink>
           <ButtonLink href="/clothing/classic" variant="outline">
             Explore Classic
@@ -32,7 +32,7 @@ export function WishlistView({ cards }: { cards: CardData[] }) {
       <p className="label mb-6 px-gutter text-ink-3" aria-live="polite">
         {pluralise(saved.length, "piece")} saved
       </p>
-      <ul className="grid grid-cols-2 gap-x-1 gap-y-9 px-1 lg:grid-cols-4">
+      <ul className="grid grid-cols-2 gap-x-1 gap-y-8 px-1 md:gap-y-9 lg:grid-cols-4">
         {saved.map((card) => (
           <li key={card.slug}>
             <ProductCard product={card} showCategory />

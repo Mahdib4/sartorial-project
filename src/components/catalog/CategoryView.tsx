@@ -29,7 +29,7 @@ export function CategoryView({ cat, category }: { cat: Catalog; category: Catego
   return (
     <main className="pt-header">
       {/* Introduction */}
-      <section className="grid gap-x-10 gap-y-8 px-gutter pt-8 pb-12 md:pt-10 lg:grid-cols-12 lg:pb-16">
+      <section className="grid gap-x-10 gap-y-6 px-gutter pt-6 pb-8 md:gap-y-8 md:pt-10 md:pb-12 lg:grid-cols-12 lg:pb-16">
         <div className="flex flex-col lg:col-span-5">
           <Breadcrumbs
             items={[
@@ -39,19 +39,19 @@ export function CategoryView({ cat, category }: { cat: Catalog; category: Catego
               { label: category.name },
             ]}
           />
-          <Reveal className="mt-10 lg:mt-auto lg:pt-16">
+          <Reveal className="mt-7 md:mt-10 lg:mt-auto lg:pt-16">
             <p className="label text-ink-3">
               {collection.name}&ensp;·&ensp;{isEdit ? "The edit" : pluralise(products.length, "piece")}
             </p>
-            <h1 className="display-md mt-5">{category.name}</h1>
-            <p className="mt-6 max-w-md text-[16px] leading-relaxed text-ink-2">{category.intro}</p>
+            <h1 className="display-md mt-4 md:mt-5">{category.name}</h1>
+            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-ink-2 md:mt-6 md:text-[16px]">{category.intro}</p>
           </Reveal>
         </div>
         <RevealMask className="lg:col-span-7">
           {clip ? (
-            <LoopVideo film={clip} label={`${category.name}, filmed in the Sartorial atelier`} priority className={cn("w-full", clip.portrait ? "aspect-[4/5] md:aspect-[16/11]" : "aspect-[16/10]")} position={clip.portrait ? "50% 28%" : "50% 50%"} />
+            <LoopVideo film={clip} label={`${category.name}, filmed in the Sartorial atelier`} priority className={cn("w-full", clip.portrait ? "aspect-[5/4] md:aspect-[16/11]" : "aspect-[16/10]")} position={clip.portrait ? "50% 28%" : "50% 50%"} />
           ) : (
-            <Picture shot={lead} alt="" sizes="(min-width: 1024px) 58vw, 100vw" ratio="16 / 10" priority className="aspect-[4/5]! md:aspect-[16/10]!" />
+            <Picture shot={lead} alt="" sizes="(min-width: 1024px) 58vw, 100vw" ratio="16 / 10" priority className="aspect-[5/4]! md:aspect-[16/10]!" />
           )}
         </RevealMask>
       </section>
@@ -86,7 +86,7 @@ export function CategoryView({ cat, category }: { cat: Catalog; category: Catego
               <p className="max-w-sm text-[14.5px] leading-relaxed text-ink-2">
                 {category.name} are arranged in person rather than listed online. Tell us what you have in mind and we will show you what is available at your fitting.
               </p>
-              <div className="mt-6 flex flex-col gap-3 xs:flex-row">
+              <div className="mt-6 grid gap-3 sm:flex sm:flex-row">
                 <ButtonLink href={`/appointments?interest=${encodeURIComponent(category.name)}`}>Ask about {category.name.toLowerCase()}</ButtonLink>
               </div>
             </div>
@@ -94,7 +94,7 @@ export function CategoryView({ cat, category }: { cat: Catalog; category: Catego
           <EditGallery cat={cat} shots={category.edit ?? []} name={category.name} />
         </section>
       ) : (
-        <section className="py-10 md:py-12" aria-label={`${category.name}: all pieces`}>
+        <section className="pt-4 pb-10 md:py-12" aria-label={`${category.name}: all pieces`}>
           <Listing products={products.map(cat.toCard)} chips="occasion" label={category.name} />
         </section>
       )}
@@ -119,8 +119,8 @@ export function CategoryView({ cat, category }: { cat: Catalog; category: Catego
           <h2 id="more-title" className="headline-sm">
             More from {collection.name}
           </h2>
-          <Link href={collection.href} className="link-under text-[13.5px]">
-            View all
+          <Link href={collection.href} className="-my-3 py-3 text-[13.5px]">
+            <span className="link-under inline-block">View all</span>
           </Link>
         </div>
         <CategoryTiles categories={siblings.filter((s) => s.key !== category.key)} label={`More ${collection.name} categories`} />

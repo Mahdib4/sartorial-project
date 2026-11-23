@@ -19,7 +19,7 @@ export function BagView() {
     return (
       <div className="px-gutter pb-24">
         <p className="max-w-md text-[16px] leading-relaxed text-ink-2">Your bag is empty. Add the pieces you are considering and send them to us as one enquiry.</p>
-        <div className="mt-8 flex flex-col gap-3 xs:flex-row">
+        <div className="mt-8 grid gap-3 sm:flex sm:flex-row">
           <ButtonLink href="/clothing/heritage">Explore Heritage</ButtonLink>
           <ButtonLink href="/clothing/classic" variant="outline">
             Explore Classic
@@ -34,8 +34,8 @@ export function BagView() {
       <section className="lg:col-span-7" aria-label="Pieces in your bag">
         <div className="mb-4 flex items-baseline justify-between">
           <h2 className="label text-ink-3">{pluralise(count, "piece")}</h2>
-          <button type="button" onClick={clear} className="link-under text-[12.5px] text-ink-3 hover:text-ink">
-            Empty the bag
+          <button type="button" onClick={clear} className="-my-3 py-3 pl-3 text-[12.5px] text-ink-3 hover:text-ink">
+            <span className="link-under inline-block">Empty the bag</span>
           </button>
         </div>
         <BagLines roomy />

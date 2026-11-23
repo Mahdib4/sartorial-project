@@ -88,7 +88,7 @@ export function CollectionView({ cat, collection }: { cat: Catalog; collection: 
           <p className="label text-ink-3">By appointment</p>
           <h2 className="headline mx-auto mt-5 max-w-[20ch]">Everything here can be made for you.</h2>
           <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-ink-2">Choose the cloth, the cut and the details at a fitting in Dhaka.</p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 xs:flex-row">
+          <div className="mt-8 grid gap-3 sm:flex sm:flex-row sm:items-center sm:justify-center">
             <ButtonLink href="/appointments">Book a fitting</ButtonLink>
             <ButtonLink href="/bespoke" variant="outline">
               How it works

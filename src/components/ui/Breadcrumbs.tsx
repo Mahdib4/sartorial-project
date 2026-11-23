@@ -13,7 +13,7 @@ export function Breadcrumbs({ items, className }: { items: Crumb[]; className?: 
           return (
             <li key={`${item.label}-${i}`} className="flex items-center gap-2.5">
               {item.href && !last ? (
-                <Link href={item.href} className="transition-colors hover:text-ink">
+                <Link href={item.href} className="-my-3 py-3 transition-colors hover:text-ink">
                   {item.label}
                 </Link>
               ) : (

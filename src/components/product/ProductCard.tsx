@@ -75,10 +75,10 @@ export function ProductCard({ product, sizes = "(min-width: 1024px) 25vw, 50vw",
           ) : null}
 
           {product.badge ? (
-            <span className="absolute top-3 left-3 bg-accent px-2 py-1 text-[9.5px] leading-none tracking-[0.12em] text-white uppercase">{product.badge}</span>
+            <span className="absolute top-2.5 left-2.5 bg-accent px-2 py-1 text-[9.5px] leading-none tracking-[0.12em] text-white uppercase md:top-3 md:left-3">{product.badge}</span>
           ) : null}
           {product.clip ? (
-            <span className="label-sm absolute bottom-3 left-3 flex items-center gap-1.5 bg-white/90 px-2 py-1 text-ink backdrop-blur-sm">
+            <span className="label-sm absolute bottom-2.5 left-2.5 flex items-center gap-1.5 bg-white/90 px-2 py-1 text-ink backdrop-blur-sm md:bottom-3 md:left-3">
               <svg aria-hidden viewBox="0 0 8 8" className="h-1.5 w-1.5 fill-current">
                 <path d="M1 0.5v7l6-3.5z" />
               </svg>
@@ -87,15 +87,17 @@ export function ProductCard({ product, sizes = "(min-width: 1024px) 25vw, 50vw",
           ) : null}
         </div>
 
-        <div className="px-2 pt-3.5 pb-1 text-center">
+        <div className="px-2 pt-3 pb-1 text-center md:pt-3.5">
           {showCategory ? <p className="label-sm mb-1.5 text-mute">{product.categoryName}</p> : null}
-          <h3 className="text-[13.5px] leading-snug text-ink">{product.name}</h3>
+          <h3 className="text-[13px] leading-snug text-balance text-ink md:text-[13.5px] md:text-wrap">{product.name}</h3>
           <PriceTag price={product.price} compareAt={product.compareAt} className="mt-1 justify-center text-[12px] tracking-[0.02em] text-ink-3" />
         </div>
       </Link>
 
-      <div className="absolute top-1.5 right-1.5 text-ink">
-        <Like active={saved} onChange={() => toggleSaved(product.slug)} label={saved ? `Remove ${product.name} from wishlist` : `Save ${product.name} to wishlist`} size={17} color="Ink" variant="bare" burst={40} />
+      <div className="absolute top-1 right-1 text-ink md:top-1.5 md:right-1.5">
+        {/* Phones: a pale square behind the heart, so it reads on the darkest photograph. */}
+        <span aria-hidden className="pointer-events-none absolute inset-[7px] bg-white/75 backdrop-blur-[2px] md:hidden" />
+        <Like className="relative" active={saved} onChange={() => toggleSaved(product.slug)} label={saved ? `Remove ${product.name} from wishlist` : `Save ${product.name} to wishlist`} size={17} color="Ink" variant="bare" burst={40} />
       </div>
     </article>
   );

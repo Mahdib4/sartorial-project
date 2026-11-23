@@ -79,7 +79,7 @@ export function ShopTheLook({ eyebrow, title, image, imageAlt, spots }: ShopTheL
                 type="button"
                 onClick={() => setActive(i)}
                 aria-pressed={i === active}
-                className={cn("label relative pb-3 transition-colors duration-300", i === active ? "text-ink" : "text-mute hover:text-ink-3")}
+                className={cn("label relative flex h-11 items-center transition-colors duration-300 md:inline-block md:h-auto md:pb-3", i === active ? "text-ink" : "text-mute hover:text-ink-3")}
               >
                 Look {String(i + 1).padStart(2, "0")}
                 {i === active ? <motion.span layoutId="look-underline" className="absolute inset-x-0 -bottom-px h-px bg-ink" transition={{ duration: 0.5, ease: EASE }} /> : null}
@@ -91,22 +91,32 @@ export function ShopTheLook({ eyebrow, title, image, imageAlt, spots }: ShopTheL
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={spot.product.slug}
-            className="flex flex-1 flex-col pt-6"
+            className="flex flex-1 flex-col pt-5 md:pt-6"
             initial={reduce ? false : { opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduce ? undefined : { opacity: 0, y: -8 }}
             transition={{ duration: 0.5, ease: EASE }}
           >
-            <TiltCard
-              className="mx-auto w-full max-w-[320px] lg:max-w-none"
-              aspect="4 / 5"
-              tilt={5}
-              image={{ src: spot.product.image.src, srcSet: spot.product.image.srcSet, sizes: "(min-width: 1024px) 30vw, 320px", alt: spot.product.name }}
-            />
-            <p className="label-sm mt-6 text-mute">{spot.product.categoryName}</p>
-            <h3 className="headline-sm mt-2">{spot.product.name}</h3>
-            <p className="mt-3 text-[14px] leading-relaxed text-ink-2">{spot.summary}</p>
-            <PriceTag price={spot.product.price} compareAt={spot.product.compareAt} className="mt-3 text-[13px] text-ink-3" />
+            <div className="grid grid-cols-[minmax(0,40%)_minmax(0,1fr)] items-start gap-4 md:block">
+              {/* Phones: the piece beside its words, so the card stays short. */}
+              <div className="md:hidden">
+                <Picture shot={spot.product.image} alt={spot.product.name} sizes="40vw" ratio="4 / 5" fit="product" />
+              </div>
+              <div className="max-md:hidden">
+                <TiltCard
+                  className="mx-auto w-full max-w-[320px] lg:max-w-none"
+                  aspect="4 / 5"
+                  tilt={5}
+                  image={{ src: spot.product.image.src, srcSet: spot.product.image.srcSet, sizes: "(min-width: 1024px) 30vw, 320px", alt: spot.product.name }}
+                />
+              </div>
+              <div className="min-w-0">
+                <p className="label-sm text-mute md:mt-6">{spot.product.categoryName}</p>
+                <h3 className="headline-sm mt-2 max-md:text-[19px] max-md:leading-snug">{spot.product.name}</h3>
+                <p className="mt-2 text-[13.5px] leading-relaxed text-ink-2 md:mt-3 md:text-[14px]">{spot.summary}</p>
+                <PriceTag price={spot.product.price} compareAt={spot.product.compareAt} className="mt-2 text-[13px] text-ink-3 md:mt-3 md:flex" />
+              </div>
+            </div>
             <ButtonLink href={spot.product.href} className="mt-6 w-full">
               View this piece
             </ButtonLink>

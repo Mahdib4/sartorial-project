@@ -89,8 +89,8 @@ export function AnnouncementBar({ overlay, notices }: { overlay: boolean; notice
             {message.cta && message.href ? (
               <>
                 <span aria-hidden className="hidden h-2.5 w-px bg-current opacity-40 sm:inline-block" />
-                <Link href={message.href} className="link-under">
-                  {message.cta}
+                <Link href={message.href} className="inline-flex h-9 items-center">
+                  <span className="link-under">{message.cta}</span>
                 </Link>
               </>
             ) : null}

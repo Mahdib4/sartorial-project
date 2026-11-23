@@ -20,8 +20,8 @@ export function SizeGuide({ scale }: { scale: SizeScale }) {
 
   return (
     <>
-      <button type="button" onClick={() => setOpen(true)} className="link-under text-[12.5px] text-ink-3 transition-colors hover:text-ink" aria-haspopup="dialog">
-        Size guide
+      <button type="button" onClick={() => setOpen(true)} className="-my-3 py-3 pl-3 text-[12.5px] text-ink-3 transition-colors hover:text-ink" aria-haspopup="dialog">
+        <span className="link-under inline-block">Size guide</span>
       </button>
       <Modal open={open} onClose={() => setOpen(false)} title="Size guide" description={scale.hint || undefined} maxWidth={620} closeLabel="Close size guide">
         <div className="overflow-x-auto">

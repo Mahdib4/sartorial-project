@@ -46,8 +46,8 @@ export function BagLines({ onNavigate, roomy = false }: { onNavigate?: () => voi
                 </div>
                 <div className="mt-auto flex items-center justify-between pt-4">
                   <Counter value={line.qty} onChange={(next) => setQty(line.slug, line.size, next)} min={1} max={SITE.commerce.maxQuantity} size="sm" label={`Quantity of ${line.product.name}`} />
-                  <button type="button" onClick={() => remove(line.slug, line.size)} className="link-under text-[12.5px] text-ink-3 transition-colors hover:text-ink" aria-label={`Remove ${line.product.name}, ${line.size}`}>
-                    Remove
+                  <button type="button" onClick={() => remove(line.slug, line.size)} className="-my-3 py-3 pl-3 text-[12.5px] text-ink-3 transition-colors hover:text-ink" aria-label={`Remove ${line.product.name}, ${line.size}`}>
+                    <span className="link-under inline-block">Remove</span>
                   </button>
                 </div>
               </div>

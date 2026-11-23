@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ImageAccordion } from "@/components/bencho/image-accordion/ImageAccordion";
 import { CategoryExplorer } from "@/components/home/CategoryExplorer";
+import { CollectionTiles } from "@/components/home/CollectionTiles";
 import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -33,6 +34,21 @@ export default async function ClothingPage() {
         <h1 className="sr-only">Clothing</h1>
         {/* Keeps the transparent header legible over light photographs. */}
         <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 z-10 h-44 bg-gradient-to-b from-ink/70 to-transparent" />
+        {/* Phones: the two wardrobes side by side, two tall panels beneath the header. */}
+        <div className="md:hidden">
+          <CollectionTiles
+            frameClassName="h-[80svh] min-h-[460px]"
+            items={groups.map((group) => ({
+              key: group.key,
+              name: group.name,
+              tagline: group.tagline,
+              meta: pluralise(group.count, "piece"),
+              href: group.href,
+              cover: shot(BANNER[group.key]),
+            }))}
+          />
+        </div>
+        <div className="max-md:hidden">
         <ImageAccordion
           className="h-auto md:h-[100svh] md:min-h-[600px]"
           open={64}
@@ -51,6 +67,7 @@ export default async function ClothingPage() {
             };
           })}
         />
+        </div>
       </section>
 
       <section className="py-20 md:py-28" aria-labelledby="clothing-explorer">
@@ -62,7 +79,7 @@ export default async function ClothingPage() {
         <Reveal>
           <p className="label text-ink-3">By appointment</p>
           <h2 className="headline mx-auto mt-5 max-w-[20ch]">Not sure where to begin? Begin with a fitting.</h2>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 xs:flex-row">
+          <div className="mt-8 grid gap-3 sm:flex sm:flex-row sm:items-center sm:justify-center">
             <ButtonLink href="/appointments">Book a fitting</ButtonLink>
             <ButtonLink href="/bespoke" variant="outline">
               How it works

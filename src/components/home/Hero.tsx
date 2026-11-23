@@ -55,9 +55,9 @@ export function Hero({ desktop, tablet, mobile }: HeroProps) {
       />
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgba(18,17,14,0.55)_0%,rgba(18,17,14,0)_26%,rgba(18,17,14,0)_48%,rgba(18,17,14,0.72)_100%)]" />
 
-      <div className="px-gutter pb-9 md:pb-12">
+      <div className="px-gutter pb-6 md:pb-12">
         <motion.p
-          className="label mb-5 text-white/80 md:mb-7"
+          className="label mb-4 text-white/80 md:mb-7"
           data-reveal
           variants={LABEL}
           initial={initial}
@@ -85,19 +85,20 @@ export function Hero({ desktop, tablet, mobile }: HeroProps) {
         </h1>
 
         <motion.div
-          className="mt-8 flex flex-col gap-8 md:mt-10 md:flex-row md:items-end md:justify-between"
+          className="mt-7 flex flex-col gap-6 md:mt-10 md:flex-row md:items-end md:justify-between md:gap-8"
           data-reveal
           variants={ACTIONS}
           initial={initial}
           animate={animate}
           transition={{ duration: 1.1, delay: 0.75, ease: EASE }}
         >
-          <div className="flex flex-col gap-3 xs:flex-row">
-            <ButtonLink href="/clothing/heritage" variant="light">
-              Explore Heritage
+          {/* Phones: the two wardrobes side by side, an equal pair beneath the line. */}
+          <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
+            <ButtonLink href="/clothing/heritage" variant="light" className="max-sm:min-w-0 max-sm:px-3">
+              <span className="max-sm:sr-only">Explore </span>Heritage
             </ButtonLink>
-            <ButtonLink href="/clothing/classic" variant="outline-light">
-              Explore Classic
+            <ButtonLink href="/clothing/classic" variant="outline-light" className="max-sm:min-w-0 max-sm:px-3">
+              <span className="max-sm:sr-only">Explore </span>Classic
             </ButtonLink>
           </div>
 
@@ -112,8 +113,8 @@ export function Hero({ desktop, tablet, mobile }: HeroProps) {
               className="h-11 w-11 border border-white/40 text-white hover:opacity-100 hover:border-white"
             />
             <p className="text-[12px] leading-snug tracking-[0.04em]">
-              <Link href="/bespoke#film" className="link-under text-white">
-                Watch it in full
+              <Link href="/bespoke#film" className="-my-3 inline-block py-3 text-white">
+                <span className="link-under inline-block">Watch it in full</span>
               </Link>
             </p>
           </div>

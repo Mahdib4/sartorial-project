@@ -53,7 +53,7 @@ export default function ClientServicesPage() {
         ))}
       </nav>
 
-      <section id="ordering" className="scroll-mt-32 grid gap-x-10 gap-y-8 px-gutter py-16 md:py-24 lg:grid-cols-12" aria-labelledby="ordering-title">
+      <section id="ordering" className="scroll-mt-32 grid grid-cols-1 gap-x-10 gap-y-8 px-gutter py-16 md:py-24 lg:grid-cols-12" aria-labelledby="ordering-title">
         <h2 id="ordering-title" className="headline lg:col-span-4">
           How ordering works
         </h2>
@@ -68,7 +68,7 @@ export default function ClientServicesPage() {
         </ol>
       </section>
 
-      <section id="size-guide" className="scroll-mt-32 grid gap-x-10 gap-y-8 border-t border-line-soft px-gutter py-16 md:py-24 lg:grid-cols-12" aria-labelledby="size-title">
+      <section id="size-guide" className="scroll-mt-32 grid grid-cols-1 gap-x-10 gap-y-8 border-t border-line-soft px-gutter py-16 md:py-24 lg:grid-cols-12" aria-labelledby="size-title">
         <h2 id="size-title" className="headline lg:col-span-4">
           Size guide
         </h2>
@@ -95,7 +95,7 @@ export default function ClientServicesPage() {
         </div>
       </section>
 
-      <section id="questions" className="scroll-mt-32 grid gap-x-10 gap-y-8 px-gutter py-16 md:py-24 lg:grid-cols-12" aria-labelledby="questions-title">
+      <section id="questions" className="scroll-mt-32 grid grid-cols-1 gap-x-10 gap-y-8 px-gutter py-16 md:py-24 lg:grid-cols-12" aria-labelledby="questions-title">
         <div className="lg:col-span-4">
           <h2 id="questions-title" className="headline">
             Questions
@@ -108,7 +108,7 @@ export default function ClientServicesPage() {
             .
           </p>
           {hasContact ? (
-            <address className="mt-6 text-[14.5px] leading-relaxed not-italic">
+            <address className="mt-6 text-[14.5px] leading-relaxed [overflow-wrap:anywhere] not-italic">
               {contact.phone ? (
                 <a href={`tel:${contact.phone.replace(/[^+\d]/g, "")}`} className="block hover:opacity-70">
                   {contact.phone}
@@ -129,7 +129,7 @@ export default function ClientServicesPage() {
 
       <section className="border-t border-line-soft px-gutter py-16 text-center md:py-24">
         <h2 className="headline mx-auto max-w-[18ch]">Ready when you are.</h2>
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 xs:flex-row">
+        <div className="mt-8 grid gap-3 sm:flex sm:flex-row sm:items-center sm:justify-center">
           <ButtonLink href="/appointments">Book a fitting</ButtonLink>
           <ButtonLink href="/bag" variant="outline">
             Open your bag

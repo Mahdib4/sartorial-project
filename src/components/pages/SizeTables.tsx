@@ -18,7 +18,7 @@ export function SizeTables() {
       label="Size scales"
       items={TABS.map((t) => ({ value: t.value, label: t.label }))}
       defaultValue="tailoring"
-      classNames={{ panel: "pt-8" }}
+      classNames={{ list: "no-scrollbar overflow-x-auto", panel: "pt-8" }}
       renderPanel={(value) => {
         const tab = TABS.find((t) => t.value === value) ?? TABS[0];
         return (

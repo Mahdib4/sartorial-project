@@ -40,7 +40,7 @@ export function Craft({ film, still }: { film: FilmSource; still: Shot }) {
               </Reveal>
             ))}
           </ol>
-          <Reveal delay={0.2} className="mt-10 flex flex-col gap-3 xs:flex-row">
+          <Reveal delay={0.2} className="mt-10 grid gap-3 sm:flex sm:flex-row">
             <ButtonLink href="/bespoke" variant="light">
               The bespoke process
             </ButtonLink>

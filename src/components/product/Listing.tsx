@@ -9,6 +9,8 @@ import { FilterGrid, type FilterDefinition } from "@/components/interior/filter-
 import { SegmentedControl } from "@/components/interior/segmented-control";
 import { ProductCard } from "@/components/product/ProductCard";
 import { Button } from "@/components/ui/Button";
+import { Sheet } from "@/components/ui/Sheet";
+import { PHONE, useMediaQuery } from "@/components/ui/use-media-query";
 import type { CardData } from "@/data/catalog";
 import { cn } from "@/lib/cn";
 import { pluralise } from "@/lib/format";
@@ -72,6 +74,7 @@ export function Listing({ products, chips, categoryOrder, label }: ListingProps)
   const [query, setQuery] = useState("");
   const [density, setDensity] = useState<"compact" | "roomy">("compact");
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const phone = useMediaQuery(PHONE);
   const hydrated = useRef(false);
 
   const hasPrices = products.some((p) => p.price !== null);
@@ -163,7 +166,7 @@ export function Listing({ products, chips, categoryOrder, label }: ListingProps)
 
   const checkRow = (value: string, checked: boolean, onChange: () => void, total: number, swatch?: string) => (
     <li key={value}>
-      <label className="group/check flex cursor-pointer items-center gap-3 py-2.5 text-[14px] text-ink">
+      <label className="group/check flex min-h-11 cursor-pointer items-center gap-3 py-2.5 text-[14px] text-ink">
         <input type="checkbox" checked={checked} onChange={onChange} className="peer sr-only" />
         <span aria-hidden className="grid h-4 w-4 shrink-0 place-items-center border border-ink-3 transition-colors duration-200 peer-checked:border-ink peer-checked:bg-ink peer-focus-visible:outline peer-focus-visible:outline-[1.5px] peer-focus-visible:outline-offset-2 peer-focus-visible:outline-ink">
           <svg viewBox="0 0 12 12" className={cn("h-2.5 w-2.5 text-white transition-opacity", checked ? "opacity-100" : "opacity-0")} fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -177,11 +180,51 @@ export function Listing({ products, chips, categoryOrder, label }: ListingProps)
     </li>
   );
 
+  const filterFooter = (
+    <div className="flex items-center gap-4">
+      <Button className="min-w-0 flex-1" arrow={false} onClick={() => setFiltersOpen(false)}>
+        Show {pluralise(shown, "piece")}
+      </Button>
+      <button type="button" onClick={clearAll} className="link-under shrink-0 text-[13px] text-ink-3 disabled:opacity-40" disabled={secondaryCount === 0 && !query && chip === "all"}>
+        Clear all
+      </button>
+    </div>
+  );
+
+  const filterPanel = (
+    <Accordion
+      type="multiple"
+      defaultOpen={["colour", "occasion"]}
+      maxPanelHeight={720}
+      headingLevel={3}
+      classNames={{ trigger: "px-[var(--gutter)] md:px-6", content: "px-[var(--gutter)] md:px-6" }}
+      items={[
+        {
+          id: "colour",
+          title: "Colour",
+          meta: colours.length ? String(colours.length) : undefined,
+          content: <ul className="pb-3">{colourValues.map((c) => checkRow(c, colours.includes(c), () => setColours((l) => toggle(l, c)), count((p) => p.colourFamily === c), SWATCH[c]))}</ul>,
+        },
+        ...(showOccasionFacet
+          ? [
+              {
+                id: "occasion",
+                title: "Occasion",
+                meta: occasions.length ? String(occasions.length) : undefined,
+                content: <ul className="pb-3">{occasionValues.map((o) => checkRow(o, occasions.includes(o), () => setOccasions((l) => toggle(l, o)), count((p) => p.occasions.includes(o))))}</ul>,
+              },
+            ]
+          : []),
+      ]}
+    />
+  );
+
   return (
     <div>
-      {/* Toolbar */}
-      <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 px-gutter">
-        <p className="label text-ink-3" aria-live="polite">
+      {/* Toolbar. On phones and tablets it rides beneath the header as you scroll the grid: filter and sort, always in reach. */}
+      <div className="top-header z-20 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 px-gutter max-lg:sticky max-lg:border-b max-lg:border-line-soft max-lg:bg-white/95 max-lg:py-2 max-lg:backdrop-blur-sm">
+        {/* On phones the chips beneath carry the counts, so the total is spoken rather than shown there. */}
+        <p className={cn("label text-ink-3", chipValues.length > 1 && "max-md:sr-only")} aria-live="polite">
           {pluralise(shown, "piece")}
         </p>
         <div className="flex w-full items-center gap-2 sm:w-auto">
@@ -192,6 +235,8 @@ export function Listing({ products, chips, categoryOrder, label }: ListingProps)
           <Dropdown
             label="Sort"
             align="end"
+            className="max-md:order-2 max-md:flex-1"
+            classNames={{ trigger: "max-md:w-full max-md:justify-between" }}
             value={sort}
             onChange={(v) => setSort(v as Sort)}
             items={[
@@ -206,9 +251,11 @@ export function Listing({ products, chips, categoryOrder, label }: ListingProps)
                 : []),
             ]}
           />
-          <button type="button" onClick={() => setFiltersOpen(true)} aria-haspopup="dialog" className="label flex h-11 items-center gap-3 border border-line bg-white px-4 text-ink transition-colors duration-200 hover:border-ink">
-            Filter
-            {secondaryCount > 0 ? <span className="grid h-4 min-w-4 place-items-center bg-ink px-1 text-[10px] leading-none tracking-normal text-white tabular-nums">{secondaryCount}</span> : null}
+          <button type="button" onClick={() => setFiltersOpen(true)} aria-haspopup="dialog" className="label flex h-11 items-center gap-3 border border-line bg-white px-4 text-ink transition-colors duration-200 hover:border-ink max-md:order-1 max-md:flex-1 max-md:justify-between">
+            <span className="flex items-center gap-3">
+              Filter
+              {secondaryCount > 0 ? <span className="grid h-4 min-w-4 place-items-center bg-ink px-1 text-[10px] leading-none tracking-normal text-white tabular-nums">{secondaryCount}</span> : null}
+            </span>
             <svg aria-hidden viewBox="0 0 16 16" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="1.2">
               <path d="M1 4.5h14M1 11.5h14" />
               <circle cx="5" cy="4.5" r="1.8" fill="white" />
@@ -218,7 +265,8 @@ export function Listing({ products, chips, categoryOrder, label }: ListingProps)
           <SegmentedControl
             label="Grid density"
             size="sm"
-            className="ml-auto sm:ml-0"
+            className="ml-auto max-md:order-3 sm:ml-0"
+            classNames={{ segment: "max-md:h-[42px] max-md:min-w-11" }}
             value={density}
             onValueChange={(v) => setDensity(v as "compact" | "roomy")}
             options={[
@@ -234,7 +282,7 @@ export function Listing({ products, chips, categoryOrder, label }: ListingProps)
         <ul className="mt-4 flex flex-wrap items-center gap-2 px-gutter" aria-label="Active filters">
           {[...colours.map((c) => ({ key: `c-${c}`, text: c, remove: () => setColours((l) => l.filter((v) => v !== c)) })), ...occasions.map((o) => ({ key: `o-${o}`, text: o, remove: () => setOccasions((l) => l.filter((v) => v !== o)) })), ...(query ? [{ key: "q", text: `“${query}”`, remove: () => setQuery("") }] : [])].map((f) => (
             <li key={f.key}>
-              <button type="button" onClick={f.remove} className="flex h-8 items-center gap-2 bg-paper px-3 text-[12.5px] text-ink transition-colors hover:bg-bone" aria-label={`Remove filter ${f.text}`}>
+              <button type="button" onClick={f.remove} className="flex h-10 items-center gap-2 bg-paper px-3 text-[12.5px] text-ink transition-colors hover:bg-bone md:h-8" aria-label={`Remove filter ${f.text}`}>
                 {f.text}
                 <svg aria-hidden viewBox="0 0 10 10" className="h-2 w-2" stroke="currentColor" strokeWidth="1.2">
                   <path d="M1 1l8 8M9 1 1 9" />
@@ -243,8 +291,8 @@ export function Listing({ products, chips, categoryOrder, label }: ListingProps)
             </li>
           ))}
           <li>
-            <button type="button" onClick={clearAll} className="link-under ml-2 text-[12.5px] text-ink-3">
-              Clear all
+            <button type="button" onClick={clearAll} className="ml-2 text-[12.5px] text-ink-3 max-md:py-3">
+              <span className="link-under inline-block">Clear all</span>
             </button>
           </li>
         </ul>
@@ -261,8 +309,13 @@ export function Listing({ products, chips, categoryOrder, label }: ListingProps)
           label={`Filter ${label} by ${chips}`}
           emptyLabel="No pieces match this selection."
           showFilters={chipValues.length > 1}
-          classNames={{ filters: "px-gutter mb-8 border-b border-line-soft", empty: "py-28" }}
-          className={cn("gap-x-1 gap-y-9 px-1", density === "compact" ? "grid-cols-2 lg:grid-cols-4" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3")}
+          classNames={{
+            // One line on phones, scrolled sideways, rather than wrapping into a stack of labels.
+            filters: "px-gutter mb-8 border-b border-line-soft no-scrollbar max-md:mb-6 max-md:flex-nowrap max-md:gap-x-6 max-md:overflow-x-auto",
+            chip: "shrink-0 whitespace-nowrap",
+            empty: "py-28",
+          }}
+          className={cn("gap-x-1 gap-y-8 px-1 md:gap-y-9", density === "compact" ? "grid-cols-2 lg:grid-cols-4" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3")}
           renderItem={(product) => (
             <ProductCard
               product={product}
@@ -273,51 +326,16 @@ export function Listing({ products, chips, categoryOrder, label }: ListingProps)
         />
       </div>
 
-      {/* Filter drawer */}
-      <Drawer
-        open={filtersOpen}
-        onOpenChange={setFiltersOpen}
-        title="Filter"
-        closeLabel="Close filters"
-        width={420}
-        classNames={{ body: "px-0 py-0" }}
-        footer={
-          <div className="flex items-center gap-4">
-            <Button className="flex-1" arrow={false} onClick={() => setFiltersOpen(false)}>
-              Show {pluralise(shown, "piece")}
-            </Button>
-            <button type="button" onClick={clearAll} className="link-under text-[13px] text-ink-3 disabled:opacity-40" disabled={secondaryCount === 0 && !query && chip === "all"}>
-              Clear all
-            </button>
-          </div>
-        }
-      >
-        <Accordion
-          type="multiple"
-          defaultOpen={["colour", "occasion"]}
-          maxPanelHeight={720}
-          headingLevel={3}
-          classNames={{ trigger: "px-6", content: "px-6" }}
-          items={[
-            {
-              id: "colour",
-              title: "Colour",
-              meta: colours.length ? String(colours.length) : undefined,
-              content: <ul className="pb-3">{colourValues.map((c) => checkRow(c, colours.includes(c), () => setColours((l) => toggle(l, c)), count((p) => p.colourFamily === c), SWATCH[c]))}</ul>,
-            },
-            ...(showOccasionFacet
-              ? [
-                  {
-                    id: "occasion",
-                    title: "Occasion",
-                    meta: occasions.length ? String(occasions.length) : undefined,
-                    content: <ul className="pb-3">{occasionValues.map((o) => checkRow(o, occasions.includes(o), () => setOccasions((l) => toggle(l, o)), count((p) => p.occasions.includes(o))))}</ul>,
-                  },
-                ]
-              : []),
-          ]}
-        />
-      </Drawer>
+      {/* Filters: a sheet from the bottom edge on phones, a drawer from the side on larger screens. */}
+      {phone ? (
+        <Sheet open={filtersOpen} onOpenChange={setFiltersOpen} title="Filter" closeLabel="Close filters" footer={filterFooter}>
+          {filterPanel}
+        </Sheet>
+      ) : (
+        <Drawer open={filtersOpen} onOpenChange={setFiltersOpen} title="Filter" closeLabel="Close filters" width={420} classNames={{ body: "px-0 py-0" }} footer={filterFooter}>
+          {filterPanel}
+        </Drawer>
+      )}
     </div>
   );
 }

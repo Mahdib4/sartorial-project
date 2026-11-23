@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Accordion } from "@/components/interior/accordion";
 import { Newsletter } from "@/components/layout/Newsletter";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { Wordmark } from "@/components/ui/Wordmark";
@@ -45,20 +46,62 @@ function Column({ title, href, links }: { title: string; href?: string; links: A
   );
 }
 
+/** Phones: the same columns, folded, so the footer is a short list of headings rather than a long wall of links. */
+function FoldedColumns({ columns }: { columns: Array<{ title: string; href?: string; links: Array<{ label: string; href: string }> }> }) {
+  return (
+    <Accordion
+      type="single"
+      collapsible
+      headingLevel={2}
+      maxPanelHeight={640}
+      classNames={{ trigger: "min-h-14 py-4", title: "label text-[11.5px]! text-ink", content: "pb-4 pr-0" }}
+      items={columns.map((column) => ({
+        id: column.title,
+        title: column.title,
+        content: (
+          <ul>
+            {column.href ? (
+              <li>
+                <Link href={column.href} className="flex min-h-11 items-center text-[14.5px] text-ink">
+                  View all {column.title}
+                </Link>
+              </li>
+            ) : null}
+            {column.links.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="flex min-h-11 items-center text-[14.5px] text-ink-3 transition-colors duration-300 hover:text-ink">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ),
+      }))}
+    />
+  );
+}
+
 export function SiteFooter({ groups, contact, social: socialLinks }: { groups: NavGroup[]; contact: ContactSettings; social: SocialSettings }) {
   const by = (key: string) => groups.find((g) => g.key === key)!;
   const links = (key: string) => by(key).categories.map((c) => ({ label: c.name, href: c.href }));
   const social = SOCIAL.filter((s) => socialLinks[s.key]);
   const hasContact = Boolean(contact.phone || contact.email || contact.address.length || contact.hours);
+  const columns = [
+    { title: "Heritage", href: by("heritage").href, links: links("heritage") },
+    { title: "Classic", href: by("classic").href, links: links("classic") },
+    { title: "Accessories", href: by("accessories").href, links: links("accessories") },
+    { title: "Footwear", href: by("footwear").href, links: links("footwear") },
+    { title: "The house", links: HOUSE },
+  ];
 
   return (
-    <footer className="mt-auto bg-paper text-ink">
+    <footer data-site-footer className="mt-auto bg-paper text-ink">
       {/* Promises */}
-      <div className="grid gap-y-8 border-b border-line px-gutter py-12 md:grid-cols-3 md:gap-x-10 md:py-16">
+      <div className="grid gap-y-7 border-b border-line px-gutter py-10 md:grid-cols-3 md:gap-x-10 md:py-16">
         {PROMISES.map((p) => (
           <div key={p.title} className="text-center">
             <h2 className="label">{p.title}</h2>
-            <p className="mx-auto mt-3 max-w-[30ch] text-[13.5px] leading-relaxed text-ink-3">{p.text}</p>
+            <p className="mx-auto mt-2.5 max-w-[30ch] text-[13.5px] leading-relaxed text-ink-3 md:mt-3">{p.text}</p>
           </div>
         ))}
       </div>
@@ -68,8 +111,11 @@ export function SiteFooter({ groups, contact, social: socialLinks }: { groups: N
         <Wordmark fill="width" decorative className="text-line select-none" />
       </div>
 
-      <div className="grid gap-x-10 gap-y-12 px-gutter py-12 md:py-16 lg:grid-cols-12">
-        <nav aria-label="Footer" className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4 lg:col-span-7">
+      <div className="grid gap-x-10 gap-y-10 px-gutter pt-8 pb-12 md:gap-y-12 md:py-16 lg:grid-cols-12">
+        <nav aria-label="Footer" className="md:hidden">
+          <FoldedColumns columns={columns} />
+        </nav>
+        <nav aria-label="Footer" className="grid grid-cols-2 gap-x-8 gap-y-10 max-md:hidden sm:grid-cols-4 lg:col-span-7">
           <Column title="Heritage" href={by("heritage").href} links={links("heritage")} />
           <Column title="Classic" href={by("classic").href} links={links("classic")} />
           <div className="space-y-10">
@@ -109,29 +155,29 @@ export function SiteFooter({ groups, contact, social: socialLinks }: { groups: N
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 border-t border-line px-gutter py-6 text-[12px] text-ink-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 border-t border-line px-gutter py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] text-[12px] text-ink-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
         <p>
           © {SITE.name}, {SITE.city}. All rights reserved.
         </p>
         {social.length ? (
-          <ul className="flex items-center gap-1 text-ink">
+          <ul className="-ml-3 flex items-center gap-1 text-ink sm:ml-0">
             {social.map((s) => (
               <li key={s.key}>
-                <a href={socialLinks[s.key]} target="_blank" rel="noreferrer" aria-label={s.label} className="grid h-10 w-10 place-items-center transition-opacity hover:opacity-60">
+                <a href={socialLinks[s.key]} target="_blank" rel="noreferrer" aria-label={s.label} className="grid h-11 w-11 place-items-center transition-opacity hover:opacity-60">
                   <Icon name={s.icon} size={20} />
                 </a>
               </li>
             ))}
           </ul>
         ) : null}
-        <p className="sm:text-right">
-          <Link href="/client-services" className="hover:text-ink">
+        <p className="flex items-center sm:text-right">
+          <Link href="/client-services" className="inline-flex min-h-11 items-center hover:text-ink sm:min-h-0">
             Client services
           </Link>
           <span aria-hidden className="mx-3">
             ·
           </span>
-          <Link href="/appointments" className="hover:text-ink">
+          <Link href="/appointments" className="inline-flex min-h-11 items-center hover:text-ink sm:min-h-0">
             Appointments
           </Link>
         </p>

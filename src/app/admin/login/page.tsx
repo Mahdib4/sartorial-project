@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { LoginForm } from "./LoginForm";
 
@@ -25,9 +26,9 @@ export default function LoginPage() {
           <LoginForm />
         </div>
         <p className="mt-6 text-center text-[13px]">
-          <a href="/" className="text-ink-3 hover:text-ink">
+          <Link href="/" className="text-ink-3 hover:text-ink">
             ← Back to the website
-          </a>
+          </Link>
         </p>
       </div>
     </main>

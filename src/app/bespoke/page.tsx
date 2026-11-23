@@ -102,7 +102,7 @@ export default function BespokePage() {
         </div>
         <ol>
           {STEPS.map((step, i) => (
-            <li key={step.id} id={step.id} className="grid gap-x-10 gap-y-6 border-t border-line-soft px-gutter py-10 md:py-14 lg:grid-cols-12 lg:items-center">
+            <li key={step.id} id={step.id} className="grid gap-x-10 gap-y-5 border-t border-line-soft px-gutter py-9 md:gap-y-6 md:py-14 lg:grid-cols-12 lg:items-center">
               <Reveal className={cn("lg:col-span-5", i % 2 ? "lg:order-2 lg:col-start-8" : "")}>
                 <p className="label-sm text-mute tabular-nums">
                   {String(i + 1).padStart(2, "0")} / {String(STEPS.length).padStart(2, "0")}
@@ -112,9 +112,9 @@ export default function BespokePage() {
               </Reveal>
               <RevealMask className={cn("lg:col-span-6", i % 2 ? "lg:order-1" : "lg:col-start-7")}>
                 {step.video ? (
-                  <LoopVideo film={film(step.video)} label={step.alt} className="aspect-[4/5] w-full sm:aspect-[16/11]" />
+                  <LoopVideo film={film(step.video)} label={step.alt} className="aspect-[5/4] w-full sm:aspect-[16/11]" />
                 ) : (
-                  <Picture shot={shot(step.image!)} alt={step.alt} sizes="(min-width: 1024px) 50vw, 100vw" ratio="16 / 11" className="aspect-[4/5]! sm:aspect-[16/11]!" />
+                  <Picture shot={shot(step.image!)} alt={step.alt} sizes="(min-width: 1024px) 50vw, 100vw" ratio="16 / 11" className="aspect-[5/4]! sm:aspect-[16/11]!" />
                 )}
               </RevealMask>
             </li>
@@ -133,7 +133,7 @@ export default function BespokePage() {
             <p className="mt-6 max-w-md text-[15.5px] leading-relaxed text-white/80">
               Zardosi is embroidery in metal thread: fine wire, beads and pearls laid onto silk and stitched down by hand. On a sherwani it gathers at the collar and cuff and then scatters, or covers the coat from shoulder to hem.
             </p>
-            <div className="mt-8 flex flex-col gap-3 xs:flex-row">
+            <div className="mt-8 grid gap-3 sm:flex sm:flex-row">
               <ButtonLink href="/clothing/heritage/sherwanis" variant="light">
                 Sherwanis
               </ButtonLink>
@@ -185,7 +185,7 @@ export default function BespokePage() {
         <Reveal>
           <p className="label text-ink-3">By appointment</p>
           <h2 className="headline mx-auto mt-5 max-w-[16ch]">The first fitting is a conversation.</h2>
-          <div className="mt-9 flex flex-col items-center justify-center gap-3 xs:flex-row">
+          <div className="mt-9 grid gap-3 sm:flex sm:flex-row sm:items-center sm:justify-center">
             <ButtonLink href="/appointments">Book a fitting</ButtonLink>
             <ButtonLink href="/clothing" variant="outline">
               See the collections

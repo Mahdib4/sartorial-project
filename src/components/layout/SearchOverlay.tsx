@@ -84,9 +84,9 @@ export function SearchOverlay({ groups }: { groups: NavGroup[] }) {
                     placeholder="Sherwani, navy suit, white shirt…"
                     autoComplete="off"
                     enterKeyHint="search"
-                    className="headline-sm min-w-0 flex-1 bg-transparent text-ink outline-none! placeholder:text-mute/70 md:text-[clamp(1.75rem,3vw,2.75rem)] [&::-webkit-search-cancel-button]:hidden"
+                    className="headline-sm min-w-0 flex-1 bg-transparent text-ink outline-none! placeholder:text-mute/70 max-md:-my-2 max-md:py-2 md:text-[clamp(1.75rem,3vw,2.75rem)] [&::-webkit-search-cancel-button]:hidden"
                   />
-                  <button type="submit" className="label shrink-0 pb-1.5 text-ink transition-opacity hover:opacity-60 disabled:opacity-30" disabled={!trimmed}>
+                  <button type="submit" className="label -my-3 shrink-0 py-3 pb-[1.125rem] pl-3 text-ink transition-opacity hover:opacity-60 disabled:opacity-30" disabled={!trimmed}>
                     Search
                   </button>
                 </div>
@@ -99,7 +99,7 @@ export function SearchOverlay({ groups }: { groups: NavGroup[] }) {
                     <ul className="mt-4 flex flex-wrap gap-2">
                       {SUGGESTIONS.map((s) => (
                         <li key={s}>
-                          <button type="button" onClick={() => setQuery(s)} className="border border-line px-4 py-2 text-[13px] text-ink-2 transition-colors duration-300 hover:border-ink hover:text-ink">
+                          <button type="button" onClick={() => setQuery(s)} className="border border-line px-4 py-2 text-[13px] text-ink-2 transition-colors duration-300 hover:border-ink hover:text-ink max-md:py-3">
                             {s}
                           </button>
                         </li>

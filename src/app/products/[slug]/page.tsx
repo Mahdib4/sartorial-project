@@ -104,9 +104,10 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
         </div>
 
         {/* Details */}
-        <div className="px-gutter pt-7 pb-14 lg:col-span-5 lg:pt-8 lg:pr-[max(var(--gutter),3vw)] lg:pl-0">
+        <div className="px-gutter pt-5 pb-14 md:pt-7 lg:col-span-5 lg:pt-8 lg:pr-[max(var(--gutter),3vw)] lg:pl-0">
           <div className="lg:sticky lg:top-[calc(var(--header-h)+var(--banner-h)+1.5rem)]">
             <Breadcrumbs
+              className="max-md:hidden"
               items={[
                 { label: "Home", href: "/" },
                 { label: collection.name, href: collection.href },
@@ -115,19 +116,19 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
               ]}
             />
 
-            <p className="label mt-8 text-ink-3">
+            <p className="label text-ink-3 md:mt-8">
               {collection.name}&ensp;·&ensp;
-              <Link href={categoryHref(category)} className="link-under">
-                {category.name}
+              <Link href={categoryHref(category)} className="-my-3 inline-block py-3">
+                <span className="link-under">{category.name}</span>
               </Link>
             </p>
-            <h1 className="headline mt-4 text-[clamp(1.9rem,3.1vw,3rem)]">{product.name}</h1>
-            <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-[15px] tracking-[0.02em] text-ink">
+            <h1 className="headline mt-3 text-[clamp(1.75rem,3.1vw,3rem)] max-md:text-balance md:mt-4">{product.name}</h1>
+            <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-[15px] tracking-[0.02em] text-ink md:mt-4">
               <PriceTag price={pricing.price} compareAt={pricing.compareAt} />
               {pricing.badge ? <span className="bg-accent px-2 py-0.5 text-[11px] tracking-[0.08em] text-white uppercase">{pricing.badge}</span> : null}
             </p>
             {pricing.offer ? <p className="mt-2 text-[13px] text-accent">{pricing.offer.name}{pricing.offer.percent && pricing.price === null ? `: ${pricing.offer.percent}% off, confirmed with your price` : ""}</p> : null}
-            <p className="mt-5 max-w-lg text-[15.5px] leading-relaxed text-ink-2">{product.summary}</p>
+            <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-ink-2 md:mt-5 md:text-[15.5px]">{product.summary}</p>
 
             <dl className="mt-6 grid grid-cols-[auto_1fr] gap-x-6 gap-y-1.5 text-[13px]">
               <dt className="text-ink-3">Colour</dt>
@@ -146,8 +147,8 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
               ) : null}
             </dl>
 
-            <div className="mt-8">
-              <BuyBox slug={product.slug} name={product.name} scale={scale} />
+            <div className="mt-7 md:mt-8">
+              <BuyBox slug={product.slug} name={product.name} scale={scale} price={pricing.price} compareAt={pricing.compareAt} />
             </div>
 
             <div className="mt-10 border-t border-line">

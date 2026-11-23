@@ -115,6 +115,8 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  /* A faint ink wash under a tapped link or button, instead of the browser's blue-grey flash. */
+  -webkit-tap-highlight-color: rgba(28, 27, 23, 0.07);
 }
 
 body {

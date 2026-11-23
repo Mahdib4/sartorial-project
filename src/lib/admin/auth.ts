@@ -1,6 +1,7 @@
 import { createHash, createHmac, randomBytes, scryptSync, timingSafeEqual } from "node:crypto";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { cache } from "react";
 import { db } from "@/lib/db";
 
 /**
@@ -97,8 +98,11 @@ export async function verifySession(value: string | undefined): Promise<boolean>
   return expected.length === given.length && timingSafeEqual(expected, given);
 }
 
+/** Checked once per request for each cookie value (a page reads several lists, each guarded). */
+const verifyOnce = cache(verifySession);
+
 export async function isAdmin(): Promise<boolean> {
-  return verifySession((await cookies()).get(SESSION_COOKIE)?.value);
+  return verifyOnce((await cookies()).get(SESSION_COOKIE)?.value);
 }
 
 /** For admin pages and actions: continue only when signed in. */
