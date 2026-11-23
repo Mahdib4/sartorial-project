@@ -151,16 +151,20 @@ src/
     navigation.ts           Menus, derived from the catalogue
     media.generated.json    Written by `npm run media`. Do not edit by hand
   app/                      Routes
-    page.tsx                Home
-    clothing/               /clothing, /clothing/heritage, /clothing/classic/suits …
-    accessories/ footwear/  /accessories, /accessories/ties …
-    products/[slug]/        Product pages
-    collections/[slug]/     Collections and launches made in the admin
-    admin/                  The admin panel (sign-in, then every section under (panel)/)
-    api/admin/upload/       Photo uploads from the admin, to Cloudflare R2
-    bag/ wishlist/ search/ appointments/ bespoke/ client-services/
+    layout.tsx              The page shell (fonts, styles); the opening animation's script
+    (site)/                 The storefront (the folder name is not part of the address)
+      layout.tsx            Header, footer, menus, bag and search around every page
+      page.tsx              Home
+      clothing/             /clothing, /clothing/heritage, /clothing/classic/suits …
+      accessories/ footwear/  /accessories, /accessories/ties …
+      products/[slug]/      Product pages
+      collections/[slug]/   Collections and launches made in the admin
+      bag/ wishlist/ search/ appointments/ bespoke/ client-services/
+    admin/                  The admin panel: login/, then every section under (panel)/
     api/enquiries/          Logs "Send message" enquiries in the database
     api/newsletter/         Newsletter sign-ups
+    api/admin/              Photo uploads (to Cloudflare R2) and other admin requests
+    not-found.tsx           The 404 page
   components/
     admin/                  The admin panel's forms, pickers and layout
     brand/                  The logo as vector paths (traced from the logo file)
