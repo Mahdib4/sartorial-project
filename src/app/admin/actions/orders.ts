@@ -1,6 +1,5 @@
 "use server";
 
-import { refresh } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireAdmin } from "@/lib/admin/auth";
 import { ENQUIRY_STATUSES } from "@/lib/admin/data";
@@ -11,8 +10,11 @@ const STATUSES: readonly string[] = ENQUIRY_STATUSES.map((s) => s.value);
 
 /**
  * Change where an enquiry stands (new → contacted → confirmed → completed, or
- * cancelled). Enquiries are private to the house, so the website is not touched;
- * the admin is refreshed so the counts and tabs follow.
+ * cancelled). Enquiries are private to the house, so the website is not touched.
+ *
+ * The page is not refreshed from here: on a list showing one status, the card
+ * must stay where it is (with Undo) until the list is next opened. The status
+ * box refreshes the full list itself, and tells the menu's new-orders count.
  */
 export async function setEnquiryStatus(_prev: FormState, form: FormData): Promise<FormState> {
   await requireAdmin();
@@ -30,7 +32,6 @@ export async function setEnquiryStatus(_prev: FormState, form: FormData): Promis
   } catch (error) {
     return { error: dbMessage(error) };
   }
-  refresh();
   return { saved: "Saved" };
 }
 

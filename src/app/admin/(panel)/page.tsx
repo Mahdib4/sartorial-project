@@ -28,7 +28,7 @@ export default async function OverviewPage() {
 
   const glance = [
     { href: "/admin/products", value: count("products_live"), label: "Pieces on the website" },
-    { href: "/admin/products", value: count("products_hidden"), label: "Hidden pieces" },
+    { href: "/admin/products", value: count("products_hidden"), label: "Pieces not on the website" },
     { href: "/admin/categories", value: count("categories"), label: "Categories" },
     { href: "/admin/banners", value: count("banners_live"), label: "Banners showing now" },
     { href: "/admin/offers", value: count("offers_live"), label: "Offers running now" },

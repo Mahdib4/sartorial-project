@@ -16,7 +16,7 @@ export function CollectionForm({ collection, cover, library, products }: { colle
   return (
     <ActionForm action={saveCurated} submitLabel={c ? "Save changes" : "Add collection"}>
       {c ? <input type="hidden" name="original" value={c.slug} /> : null}
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <div className="space-y-6 lg:col-span-2">
           <Card title="About the collection">
             <Field label="Title" htmlFor="title" hint="The name visitors see, e.g. “The Eid edit” or “Winter wedding”.">

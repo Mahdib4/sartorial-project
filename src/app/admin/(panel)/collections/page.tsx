@@ -49,48 +49,55 @@ export default async function CollectionsPage({ searchParams }: PageProps<"/admi
             const thumb = (c.cover && covers.get(c.cover)) || live[0]?.thumb || pieces[0]?.thumb || null;
             const href = `/admin/collections/${c.slug}`;
             return (
-              <li key={c.slug} className="flex items-center gap-3 p-3 md:gap-4">
-                <Link href={href} className="relative block h-16 w-[52px] shrink-0 bg-paper">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  {thumb ? <img src={thumb} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" /> : null}
-                </Link>
-                <div className="min-w-0 flex-1">
-                  <Link href={href} className="block truncate text-[14.5px] hover:underline">
-                    {c.title}
+              <li key={c.slug} className="flex flex-col gap-2 p-3 sm:flex-row sm:items-center sm:gap-3 md:gap-4">
+                <div className="flex min-w-0 flex-1 items-center gap-3 md:gap-4">
+                  <Link href={href} className="relative block h-16 w-[52px] shrink-0 bg-paper" tabIndex={-1} aria-hidden>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    {thumb ? <img src={thumb} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" /> : null}
                   </Link>
-                  <p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[12.5px] text-ink-3">
-                    {c.eyebrow ? (
-                      <>
-                        <span>{c.eyebrow}</span>
-                        <span>·</span>
-                      </>
-                    ) : null}
-                    <span>
-                      {pieces.length ? pluralise(pieces.length, "piece") : "No pieces yet"}
-                      {pieces.length > live.length ? ` (${pieces.length - live.length} hidden)` : ""}
-                    </span>
-                    {c.isLaunch ? <Pill tone="accent">New launch</Pill> : null}
-                    {!c.visible ? <Pill tone="off">Hidden</Pill> : null}
-                  </p>
-                  <p className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-[12.5px]">
-                    {c.visible ? (
-                      <a href={`/collections/${c.slug}`} target="_blank" rel="noreferrer" className="text-ink-2 underline hover:text-ink">
-                        View on the website ↗
-                      </a>
-                    ) : null}
-                    <Link href={announceHref(c)} className="text-ink-2 underline hover:text-ink" title="Make a home page banner that leads to this collection">
-                      Announce it
+                  <div className="min-w-0 flex-1">
+                    <Link href={href} className="block truncate text-[14.5px] hover:underline">
+                      {c.title}
                     </Link>
-                  </p>
+                    <p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[12.5px] text-ink-3">
+                      {c.eyebrow ? (
+                        <>
+                          <span>{c.eyebrow}</span>
+                          <span>·</span>
+                        </>
+                      ) : null}
+                      <span>
+                        {pieces.length ? pluralise(pieces.length, "piece") : "No pieces yet"}
+                        {pieces.length > live.length ? ` (${pieces.length - live.length} hidden)` : ""}
+                      </span>
+                      {c.isLaunch ? <Pill tone="accent">New launch</Pill> : null}
+                      {!c.visible ? <Pill tone="off">Hidden</Pill> : null}
+                    </p>
+                    <p className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-[12.5px]">
+                      {c.visible ? (
+                        <a href={`/collections/${c.slug}`} target="_blank" rel="noreferrer" className="text-ink-2 underline hover:text-ink">
+                          View on the website ↗
+                        </a>
+                      ) : null}
+                      <Link href={announceHref(c)} className="text-ink-2 underline hover:text-ink" title="Make a home page banner that leads to this collection" aria-label={`Announce “${c.title}” with a home page banner`}>
+                        Announce it
+                      </Link>
+                    </p>
+                  </div>
                 </div>
-                <form action={setCuratedVisible}>
-                  <input type="hidden" name="slug" value={c.slug} />
-                  <input type="hidden" name="visible" value={c.visible ? "false" : "true"} />
-                  <button className="h-9 min-w-16 border border-line px-2 text-[12.5px] text-ink-2 hover:border-ink">{c.visible ? "Hide" : "Show"}</button>
-                </form>
-                <Link href={href} className="hidden h-9 items-center border border-line px-3 text-[12.5px] hover:border-ink sm:inline-flex">
-                  Edit
-                </Link>
+                {/* Edit first and on phones too: it is the main thing to do with a collection. */}
+                <div className="flex items-center justify-end gap-2">
+                  <Link href={href} className="inline-flex h-9 items-center border border-line px-3 text-[12.5px] hover:border-ink" aria-label={`Edit “${c.title}”`}>
+                    Edit
+                  </Link>
+                  <form action={setCuratedVisible}>
+                    <input type="hidden" name="slug" value={c.slug} />
+                    <input type="hidden" name="visible" value={c.visible ? "false" : "true"} />
+                    <button className="h-9 min-w-16 border border-line px-2 text-[12.5px] text-ink-2 hover:border-ink" aria-label={`${c.visible ? "Hide" : "Show"} “${c.title}” ${c.visible ? "from" : "on"} the website`} title={c.visible ? "Take it off the website without deleting it" : "Put it back on the website"}>
+                      {c.visible ? "Hide" : "Show"}
+                    </button>
+                  </form>
+                </div>
               </li>
             );
           })}

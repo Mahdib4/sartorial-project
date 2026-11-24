@@ -29,7 +29,11 @@ export default async function OffersPage({ searchParams }: PageProps<"/admin/off
       />
       {sp.saved ? (
         <div className="mb-5">
-          <Notice tone="success">Saved. The website shows the change straight away (scheduled offers start and stop within five minutes of their time).</Notice>
+          {sp.ended ? (
+            <Notice tone="warning">Saved, but its end date has already passed, so the offer is not running on the website. To run it, open it below and choose a later end date, or clear it.</Notice>
+          ) : (
+            <Notice tone="success">Saved. The website shows the change straight away (scheduled offers start and stop within five minutes of their time).</Notice>
+          )}
         </div>
       ) : null}
       {sp.deleted ? (
@@ -46,10 +50,10 @@ export default async function OffersPage({ searchParams }: PageProps<"/admin/off
             const s = status(o, now);
             const applies = appliesTo(o, categoryNames, productNames);
             return (
-              <li key={o.id} className="flex items-center gap-3 p-3 md:gap-4">
+              <li key={o.id} className="flex flex-col gap-2 p-3 sm:flex-row sm:items-center sm:gap-3 md:gap-4">
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                    <Link href={`/admin/offers/${o.id}`} className="truncate text-[14.5px] hover:underline">
+                    <Link href={`/admin/offers/${o.id}`} className="min-w-0 truncate text-[14.5px] hover:underline">
                       {o.name}
                     </Link>
                     <Pill tone={s.tone}>{s.label}</Pill>
@@ -67,16 +71,23 @@ export default async function OffersPage({ searchParams }: PageProps<"/admin/off
                   </p>
                   <p className="mt-1 text-[12.5px] text-ink-3">{dates(o)}</p>
                 </div>
-                <form action={setOfferActive}>
-                  <input type="hidden" name="id" value={o.id} />
-                  <input type="hidden" name="active" value={o.active ? "false" : "true"} />
-                  <button className="h-9 min-w-[4.5rem] border border-line px-2 text-[12.5px] text-ink-2 hover:border-ink" title={o.active ? "Pause the offer without deleting it" : "Start the offer again"}>
-                    {o.active ? "Switch off" : "Switch on"}
-                  </button>
-                </form>
-                <Link href={`/admin/offers/${o.id}`} className="hidden h-9 items-center border border-line px-3 text-[12.5px] hover:border-ink md:inline-flex">
-                  Edit
-                </Link>
+                {/* Edit is shown on phones too: it is the way to change or delete an offer. */}
+                <div className="flex items-center justify-end gap-2">
+                  <form action={setOfferActive}>
+                    <input type="hidden" name="id" value={o.id} />
+                    <input type="hidden" name="active" value={o.active ? "false" : "true"} />
+                    <button
+                      className="h-9 min-w-[4.5rem] border border-line px-2 text-[12.5px] text-ink-2 hover:border-ink"
+                      title={o.active ? "Pause the offer without deleting it" : "Start the offer again"}
+                      aria-label={`${o.active ? "Switch off" : "Switch on"} “${o.name}”`}
+                    >
+                      {o.active ? "Switch off" : "Switch on"}
+                    </button>
+                  </form>
+                  <Link href={`/admin/offers/${o.id}`} className="inline-flex h-9 items-center border border-line px-3 text-[12.5px] hover:border-ink" aria-label={`Edit “${o.name}”`}>
+                    Edit
+                  </Link>
+                </div>
               </li>
             );
           })}
@@ -93,11 +104,11 @@ function discount(o: Offer): string {
   return "Label only";
 }
 
-/** The label cards show when the offer has none of its own (as the website does). */
+/** The label cards show when the offer has none of its own: the same words as the website (data/catalog.ts). */
 function defaultBadge(o: Offer): string {
-  if (o.kind === "percent") return `−${o.value}%`;
-  if (o.kind === "amount") return "Offer";
-  return o.name;
+  if (o.kind === "percent") return `${o.value}% off`;
+  if (o.kind === "amount") return `${formatPrice(o.value)} off`;
+  return "Offer";
 }
 
 /** "Everything", "All Heritage", "All Sherwanis and Achkans", "3 pieces". */

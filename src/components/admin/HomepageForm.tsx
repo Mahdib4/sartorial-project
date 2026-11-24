@@ -20,7 +20,7 @@ export function HomepageForm({ home, sections, products }: { home: HomeSettings;
   return (
     <ActionForm action={saveHome} submitLabel="Save the home page">
       <Card title="Sections, from top to bottom" intro="Turn a section off to take it off the home page. Nothing in it is deleted: turn it back on at any time.">
-        <div className="grid gap-3 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
           {sections.map((s) => (
             <Toggle key={s.key} name={`section-${s.key}`} label={s.label} hint={s.hint} defaultChecked={home.sections[s.key] !== false} />
           ))}
@@ -44,7 +44,7 @@ export function HomepageForm({ home, sections, products }: { home: HomeSettings;
         </p>
       </Card>
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <Card title="The wedding wardrobe" intro="The four Heritage pieces shown beside the wedding photograph. Hidden pieces are skipped; with none left, the section is not shown.">
           <ProductPicker name="heritagePicks" options={products} initial={home.heritagePicks} max={4} />
         </Card>

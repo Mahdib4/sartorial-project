@@ -75,7 +75,10 @@ export function ProductCard({ product, sizes = "(min-width: 1024px) 25vw, 50vw",
           ) : null}
 
           {product.badge ? (
-            <span className="absolute top-2.5 left-2.5 bg-accent px-2 py-1 text-[9.5px] leading-none tracking-[0.12em] text-white uppercase md:top-3 md:left-3">{product.badge}</span>
+            // One line, kept clear of the wishlist heart in the corner: a long label is cut short with "…".
+            <span title={product.badge} className="absolute top-2.5 left-2.5 max-w-[calc(100%-4rem)] truncate bg-accent px-2 py-1 text-[9.5px] leading-none tracking-[0.12em] text-white uppercase md:top-3 md:left-3 md:max-w-[calc(100%-4.5rem)]">
+              {product.badge}
+            </span>
           ) : null}
           {product.clip ? (
             <span className="label-sm absolute bottom-2.5 left-2.5 flex items-center gap-1.5 bg-white/90 px-2 py-1 text-ink backdrop-blur-sm md:bottom-3 md:left-3">

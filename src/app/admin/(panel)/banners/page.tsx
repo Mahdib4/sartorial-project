@@ -32,7 +32,11 @@ export default async function BannersPage({ searchParams }: PageProps<"/admin/ba
       />
       {typeof sp.saved === "string" ? (
         <div className="mb-5">
-          <Notice tone="success">Saved. The website shows the change straight away (scheduled ones start and stop within five minutes of their time).</Notice>
+          {sp.ended ? (
+            <Notice tone="warning">Saved, but its “show until” time has already passed, so it will not show on the website. To show it, open it below and choose a later time, or clear that date.</Notice>
+          ) : (
+            <Notice tone="success">Saved. The website shows the change straight away (scheduled ones start and stop within five minutes of their time).</Notice>
+          )}
         </div>
       ) : null}
       {sp.deleted ? (
@@ -175,11 +179,15 @@ function Group({
                   <form action={setBannerActive}>
                     <input type="hidden" name="id" value={b.id} />
                     <input type="hidden" name="active" value={b.active ? "false" : "true"} />
-                    <button className="h-9 min-w-[4.5rem] border border-line px-2 text-[12.5px] text-ink-2 hover:border-ink" title={b.active ? "Take it down without deleting it" : "Put it back up"}>
+                    <button
+                      className="h-9 min-w-[4.5rem] border border-line px-2 text-[12.5px] text-ink-2 hover:border-ink"
+                      title={b.active ? "Take it down without deleting it" : "Put it back up"}
+                      aria-label={`${b.active ? "Switch off" : "Switch on"} “${b.title}”`}
+                    >
                       {b.active ? "Switch off" : "Switch on"}
                     </button>
                   </form>
-                  <Link href={`/admin/banners/${b.id}`} className="inline-flex h-9 items-center border border-line px-3 text-[12.5px] hover:border-ink">
+                  <Link href={`/admin/banners/${b.id}`} className="inline-flex h-9 items-center border border-line px-3 text-[12.5px] hover:border-ink" aria-label={`Edit “${b.title}”`}>
                     Edit
                   </Link>
                 </div>

@@ -14,9 +14,12 @@ import { Pool } from "pg";
  *
  * Timeouts keep a slow or unreachable database from holding a page or a form
  * for long: getting a connection gives up after 5 seconds, and a query with no
- * answer after 8 seconds fails. The query limit is kept by this client rather
- * than set in Postgres (`statement_timeout`), which Neon's pooled connections
- * do not reliably support. Every query the site makes takes milliseconds.
+ * answer after 8 seconds fails (the connection is then closed, not reused).
+ * The query limit is kept by this client (`query_timeout`) rather than sent to
+ * Postgres as `statement_timeout`, a start-up setting that Neon's pooled
+ * connections may refuse. Every query the site makes takes milliseconds; the
+ * enquiry and newsletter endpoints catch a timed-out query like any other
+ * database error.
  */
 let pool: Pool | null | undefined;
 

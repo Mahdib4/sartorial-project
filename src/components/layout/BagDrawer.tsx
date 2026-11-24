@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Drawer } from "@/components/interior/drawer";
 import { BagLines } from "@/components/shop/BagLines";
 import { ButtonLink } from "@/components/ui/Button";
+import { onRequestNote } from "@/lib/enquiry";
 import { formatPrice, pluralise } from "@/lib/format";
 import { useShop } from "@/store/shop";
 
@@ -16,7 +17,7 @@ const START = [
 
 /** The bag, as a panel from the right edge. Opens whenever a piece is added. */
 export function BagDrawer() {
-  const { overlay, open, close, bag, count, subtotal } = useShop();
+  const { overlay, open, close, bag, count, pricedSubtotal, onRequest } = useShop();
 
   return (
     <Drawer
@@ -29,8 +30,11 @@ export function BagDrawer() {
         bag.length > 0 ? (
           <div>
             <div className="flex items-baseline justify-between text-[14px]">
-              <span className="label text-ink-3">{subtotal === null ? pluralise(count, "piece") : "Subtotal"}</span>
-              <span>{subtotal === null ? "Price on request" : formatPrice(subtotal)}</span>
+              <span className="label text-ink-3">{pricedSubtotal === null ? pluralise(count, "piece") : "Subtotal"}</span>
+              <span className="text-right">
+                {pricedSubtotal === null ? "Price on request" : formatPrice(pricedSubtotal)}
+                {pricedSubtotal !== null && onRequest > 0 ? <span className="mt-1 block text-[12.5px] text-ink-3">{onRequestNote(onRequest)}</span> : null}
+              </span>
             </div>
             <p className="mt-2 text-[12.5px] leading-relaxed text-ink-3">Pieces are made to order. Send us your selection and we will come back to you to arrange a fitting.</p>
             <ButtonLink href="/bag" onClick={close} className="mt-5 w-full">

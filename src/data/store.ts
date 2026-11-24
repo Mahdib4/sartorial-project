@@ -61,6 +61,9 @@ let lastGood: CatalogData | null = null;
 export async function loadCatalogData(): Promise<CatalogData> {
   "use cache";
   cacheTag(CATALOG_TAG);
+  // Taken before the read: Next times the cache entry from when it starts, and the
+  // schedule below must line up with that.
+  const now = new Date();
 
   const pool = db();
   let failed = false;
@@ -69,22 +72,25 @@ export async function loadCatalogData(): Promise<CatalogData> {
     if (fresh) lastGood = fresh;
     else failed = true;
   }
-  const now = new Date();
   const { data, nextChange } = liveAt(lastGood ?? staticCatalog(), now);
   // Exactly one cacheLife call per run, decided once the read has succeeded or failed.
   cacheLife(failed ? RETRY_LIFE : lifeUntil(nextChange, now));
   return data;
 }
 
-/** Read the catalogue, trying once more after a short pause. Null when both tries fail. */
+/** A first try that fails slower than this (a timeout) is not repeated: the visitor has waited long enough. */
+const RETRY_WITHIN_MS = 6_000;
+
+/** Read the catalogue, trying once more after a short pause if the first try failed quickly. Null when it cannot be read. */
 async function readFromDatabase(pool: Pool): Promise<CatalogData | null> {
+  const started = Date.now();
   for (let attempt = 1; ; attempt++) {
     try {
       await ensureSeeded(pool);
       return await readCatalog(pool);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
-      if (attempt >= 2) {
+      if (attempt >= 2 || Date.now() - started > RETRY_WITHIN_MS) {
         console.error(`catalog: database unavailable (${message}); showing ${lastGood ? "the last catalogue read" : "the built-in catalogue"} and trying again shortly`);
         return null;
       }
@@ -115,11 +121,14 @@ function liveAt(data: CatalogData, now: Date): { data: CatalogData; nextChange: 
  * The cache life for a catalogue whose next scheduled change is at `nextChange`.
  * The entry expires at that time when it can (the next visit then waits for
  * fresh content); within the last five minutes, when Next will not let it
- * expire any sooner, it is marked for refreshing at that time instead.
+ * expire any sooner (an expire under 5 minutes, or a stale under 30 seconds,
+ * would take the catalogue out of the prerendered pages), it is marked for
+ * refreshing at that time instead. Visitors' browsers re-check within a minute.
  */
 function lifeUntil(nextChange: number | null, now: Date): { stale: number; revalidate: number; expire: number } {
   if (nextChange === null) return NORMAL_LIFE;
-  const seconds = Math.max(1, Math.ceil((nextChange - now.getTime()) / 1000));
+  // One second over, so the refresh always lands just after the change, never just before it.
+  const seconds = Math.max(1, Math.ceil((nextChange - now.getTime()) / 1000)) + 1;
   if (seconds >= NORMAL_LIFE.expire) return NORMAL_LIFE;
   if (seconds > NORMAL_LIFE.revalidate) return { stale: 60, revalidate: NORMAL_LIFE.revalidate, expire: seconds };
   return { stale: 30, revalidate: seconds, expire: 300 };

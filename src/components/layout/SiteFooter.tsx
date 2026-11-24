@@ -82,17 +82,18 @@ function FoldedColumns({ columns }: { columns: Array<{ title: string; href?: str
 }
 
 export function SiteFooter({ groups, contact, social: socialLinks }: { groups: NavGroup[]; contact: ContactSettings; social: SocialSettings }) {
-  const by = (key: string) => groups.find((g) => g.key === key)!;
-  const links = (key: string) => by(key).categories.map((c) => ({ label: c.name, href: c.href }));
+  // A department with no visible categories (all hidden in the admin) is left out.
+  const dept = (key: string, title: string) => {
+    const g = groups.find((x) => x.key === key);
+    return g && g.categories.length ? { title, href: g.href, links: g.categories.map((c) => ({ label: c.name, href: c.href })) } : null;
+  };
+  const heritage = dept("heritage", "Heritage");
+  const classic = dept("classic", "Classic");
+  const accessories = dept("accessories", "Accessories");
+  const footwear = dept("footwear", "Footwear");
   const social = SOCIAL.filter((s) => socialLinks[s.key]);
   const hasContact = Boolean(contact.phone || contact.email || contact.address.length || contact.hours);
-  const columns = [
-    { title: "Heritage", href: by("heritage").href, links: links("heritage") },
-    { title: "Classic", href: by("classic").href, links: links("classic") },
-    { title: "Accessories", href: by("accessories").href, links: links("accessories") },
-    { title: "Footwear", href: by("footwear").href, links: links("footwear") },
-    { title: "The house", links: HOUSE },
-  ];
+  const columns = [heritage, classic, accessories, footwear, { title: "The house", links: HOUSE }].filter((c) => c !== null);
 
   return (
     <footer data-site-footer className="mt-auto bg-paper text-ink">
@@ -116,12 +117,14 @@ export function SiteFooter({ groups, contact, social: socialLinks }: { groups: N
           <FoldedColumns columns={columns} />
         </nav>
         <nav aria-label="Footer" className="grid grid-cols-2 gap-x-8 gap-y-10 max-md:hidden sm:grid-cols-4 lg:col-span-7">
-          <Column title="Heritage" href={by("heritage").href} links={links("heritage")} />
-          <Column title="Classic" href={by("classic").href} links={links("classic")} />
-          <div className="space-y-10">
-            <Column title="Accessories" href={by("accessories").href} links={links("accessories")} />
-            <Column title="Footwear" href={by("footwear").href} links={links("footwear")} />
-          </div>
+          {heritage ? <Column {...heritage} /> : null}
+          {classic ? <Column {...classic} /> : null}
+          {accessories || footwear ? (
+            <div className="space-y-10">
+              {accessories ? <Column {...accessories} /> : null}
+              {footwear ? <Column {...footwear} /> : null}
+            </div>
+          ) : null}
           <Column title="The house" links={HOUSE} />
         </nav>
 

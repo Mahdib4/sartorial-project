@@ -74,6 +74,18 @@ export function Listing({ products, chips, categoryOrder, label }: ListingProps)
   const [query, setQuery] = useState("");
   const [density, setDensity] = useState<"compact" | "roomy">("compact");
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const filterButton = useRef<HTMLButtonElement>(null);
+  // Turning a phone sideways swaps the bottom sheet for the side drawer while the filters are open. Focus can be
+  // left behind with the sheet, so on closing, hand it back to the Filter button (as a normal close does).
+  const showFilters = (next: boolean) => {
+    setFiltersOpen(next);
+    if (!next)
+      // After the panel has had its chance to put focus back: if focus is still in the closing panel, or nowhere, it goes to the button.
+      window.setTimeout(() => {
+        const active = document.activeElement;
+        if (!active || active === document.body || active.closest('[inert], [role="dialog"]')) filterButton.current?.focus({ preventScroll: true });
+      }, 50);
+  };
   const phone = useMediaQuery(PHONE);
   const hydrated = useRef(false);
 
@@ -132,12 +144,12 @@ export function Listing({ products, chips, categoryOrder, label }: ListingProps)
       }
       return true;
     });
+    // "Featured" is the order the page gave: featured pieces first in a category, the admin's order in a collection.
     const sorted = [...filtered];
     if (sort === "az") sorted.sort((a, b) => a.name.localeCompare(b.name));
     else if (sort === "za") sorted.sort((a, b) => b.name.localeCompare(a.name));
     else if (sort === "price-asc") sorted.sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity));
     else if (sort === "price-desc") sorted.sort((a, b) => (b.price ?? -1) - (a.price ?? -1));
-    else sorted.sort((a, b) => a.order - b.order);
     return sorted;
   }, [products, colours, occasions, query, sort]);
 
@@ -182,7 +194,7 @@ export function Listing({ products, chips, categoryOrder, label }: ListingProps)
 
   const filterFooter = (
     <div className="flex items-center gap-4">
-      <Button className="min-w-0 flex-1" arrow={false} onClick={() => setFiltersOpen(false)}>
+      <Button className="min-w-0 flex-1" arrow={false} onClick={() => showFilters(false)}>
         Show {pluralise(shown, "piece")}
       </Button>
       <button type="button" onClick={clearAll} className="link-under shrink-0 text-[13px] text-ink-3 disabled:opacity-40" disabled={secondaryCount === 0 && !query && chip === "all"}>
@@ -251,7 +263,7 @@ export function Listing({ products, chips, categoryOrder, label }: ListingProps)
                 : []),
             ]}
           />
-          <button type="button" onClick={() => setFiltersOpen(true)} aria-haspopup="dialog" className="label flex h-11 items-center gap-3 border border-line bg-white px-4 text-ink transition-colors duration-200 hover:border-ink max-md:order-1 max-md:flex-1 max-md:justify-between">
+          <button ref={filterButton} type="button" onClick={() => showFilters(true)} aria-haspopup="dialog" className="label flex h-11 items-center gap-3 border border-line bg-white px-4 text-ink transition-colors duration-200 hover:border-ink max-md:order-1 max-md:flex-1 max-md:justify-between">
             <span className="flex items-center gap-3">
               Filter
               {secondaryCount > 0 ? <span className="grid h-4 min-w-4 place-items-center bg-ink px-1 text-[10px] leading-none tracking-normal text-white tabular-nums">{secondaryCount}</span> : null}
@@ -328,11 +340,11 @@ export function Listing({ products, chips, categoryOrder, label }: ListingProps)
 
       {/* Filters: a sheet from the bottom edge on phones, a drawer from the side on larger screens. */}
       {phone ? (
-        <Sheet open={filtersOpen} onOpenChange={setFiltersOpen} title="Filter" closeLabel="Close filters" footer={filterFooter}>
+        <Sheet open={filtersOpen} onOpenChange={showFilters} title="Filter" closeLabel="Close filters" footer={filterFooter}>
           {filterPanel}
         </Sheet>
       ) : (
-        <Drawer open={filtersOpen} onOpenChange={setFiltersOpen} title="Filter" closeLabel="Close filters" width={420} classNames={{ body: "px-0 py-0" }} footer={filterFooter}>
+        <Drawer open={filtersOpen} onOpenChange={showFilters} title="Filter" closeLabel="Close filters" width={420} classNames={{ body: "px-0 py-0" }} footer={filterFooter}>
           {filterPanel}
         </Drawer>
       )}

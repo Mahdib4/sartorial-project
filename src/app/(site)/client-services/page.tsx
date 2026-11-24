@@ -4,7 +4,7 @@ import { Accordion } from "@/components/interior/accordion";
 import { SizeTables } from "@/components/pages/SizeTables";
 import { ButtonLink } from "@/components/ui/Button";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { SITE } from "@/config/site";
+import { catalog } from "@/data/catalog";
 
 export const metadata: Metadata = {
   title: "Client services",
@@ -31,9 +31,10 @@ const QUESTIONS = [
   { id: "price", title: "Why do some pieces show “Price on request”?", content: "The price of a made-to-order garment depends on the cloth and the work involved. We confirm it when we reply to your enquiry." },
 ];
 
-export default function ClientServicesPage() {
-  const { contact } = SITE;
-  const hasContact = Boolean(contact.phone || contact.email || contact.whatsapp);
+export default async function ClientServicesPage() {
+  // Phone and email as set in the admin (Settings).
+  const { contact } = (await catalog()).settings;
+  const hasContact = Boolean(contact.phone || contact.email);
   return (
     <main className="pt-header">
       <PageHeader crumbs={[{ label: "Home", href: "/" }, { label: "Client services" }]} eyebrow="At your service" title="Client services">

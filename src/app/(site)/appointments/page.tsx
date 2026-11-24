@@ -3,6 +3,7 @@ import { AppointmentView } from "@/components/pages/AppointmentView";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Picture } from "@/components/ui/Picture";
 import { SITE } from "@/config/site";
+import { catalog } from "@/data/catalog";
 import { shot } from "@/lib/media";
 
 export const metadata: Metadata = {
@@ -17,8 +18,9 @@ const EXPECT = [
   { title: "Measurements", text: "Taken once, by hand, and used to draw your pattern." },
 ];
 
-export default function AppointmentsPage() {
-  const { contact } = SITE;
+export default async function AppointmentsPage() {
+  // The atelier's address, hours and phone, as set in the admin (Settings).
+  const { contact } = (await catalog()).settings;
   return (
     <main className="pt-header">
       {/* Phones: the request follows the introduction directly; what to expect comes after it. Wide screens: two columns, as before. */}

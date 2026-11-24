@@ -45,7 +45,7 @@ export type Product = {
   badge?: string;
   /** Hidden pieces are kept but not shown anywhere on the site. */
   visible?: boolean;
-  /** Featured pieces can be picked for the home page. */
+  /** Featured pieces come first in their category and department listings. */
   featured?: boolean;
 };
 

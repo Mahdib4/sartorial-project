@@ -13,7 +13,7 @@ import { SplitFeature } from "@/components/home/SplitFeature";
 import { Statement } from "@/components/home/Statement";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { catalog, categoryHref, productHref, type Catalog } from "@/data/catalog";
-import { navGroups } from "@/data/navigation";
+import { navGroups, shownGroups } from "@/data/navigation";
 import { film, shot } from "@/lib/media";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
@@ -34,7 +34,8 @@ const motion = (cat: Catalog, videoId: string, slug: string): MotionItem[] => {
 
 export default async function HomePage() {
   const cat = await catalog();
-  const groups = navGroups(cat);
+  // A department whose categories have all been hidden in the admin is simply left out of the home page.
+  const groups = shownGroups(navGroups(cat));
   const { sections, heritagePicks, classicPicks } = cat.settings.home;
   const show = (key: keyof typeof sections) => sections[key] !== false;
   const promos = show("promo") ? cat.banners("home") : [];
@@ -53,6 +54,23 @@ export default async function HomePage() {
     return c ? [{ key: b.key, title: b.title, line: b.line, href: b.href ?? categoryHref(c), image: shot(b.image), position: b.position }] : [];
   });
   const evening = cards(cat, ["tobacco-brown-velvet-dinner-suit", "midnight-navy-double-breasted-tuxedo"]);
+  const motionItems = [
+    ...motion(cat, `${H}/achkans/black-velvet-embroidered-collar-achkan-showcase-01`, "black-velvet-embroidered-collar-achkan"),
+    ...motion(cat, `${H}/jodhpuri-jackets/ivory-floral-jacquard-jodhpuri-jacket-showcase-01`, "ivory-floral-jacquard-jodhpuri-jacket"),
+    ...motion(cat, `${H}/achkans/powder-blue-silk-embroidered-collar-achkan-showcase-01`, "powder-blue-silk-embroidered-collar-achkan"),
+    ...motion(cat, `${H}/stoles/ivory-gold-embroidered-border-heritage-stole-showcase-01`, "ivory-gold-embroidered-border-heritage-stole"),
+    ...motion(cat, `${H}/achkans/mocha-brown-silk-embroidered-collar-achkan-showcase-02`, "mocha-brown-silk-embroidered-collar-achkan"),
+    ...motion(cat, `${H}/jodhpuri-jackets/ivory-embossed-open-front-jodhpuri-jacket-showcase-01`, "ivory-embossed-open-front-jodhpuri-jacket"),
+    ...motion(cat, `${H}/achkans/ochre-gold-brocade-achkan-detail-02`, "ochre-gold-brocade-achkan"),
+  ];
+  const heritageLinks = [
+    { label: "Sherwanis", key: `${H}/sherwanis` },
+    { label: "Achkans", key: `${H}/achkans` },
+    { label: "Jodhpuri jackets", key: `${H}/jodhpuri-jackets` },
+  ].flatMap(({ label, key }) => {
+    const c = category(key);
+    return c ? [{ label, href: categoryHref(c) }] : [];
+  });
 
   return (
     <main>
@@ -62,14 +80,14 @@ export default async function HomePage() {
       {show("statement") ? (
         <Statement promo={promos.length ? <PromoSlot banners={promos} /> : null} />
       ) : promos.length ? (
-        <div className="px-gutter pt-10 md:pt-14">
+        <div className="px-gutter py-10 md:py-14">
           <PromoSlot banners={promos} />
         </div>
       ) : null}
 
-      {show("collections") ? <CollectionsAccordion groups={groups} /> : null}
+      {show("collections") && groups.length ? <CollectionsAccordion groups={groups} /> : null}
 
-      {show("explorer") ? (
+      {show("explorer") && groups.length ? (
         /* Shop by category: hover a name to see the category, click to open it */
         <section className="py-20 md:py-32" aria-labelledby="explorer-title">
           <SectionHeading eyebrow="Shop by category" title={<span id="explorer-title">{`${categoryCount} ways into the wardrobe.`}</span>} className="mb-10 md:mb-14" />
@@ -98,11 +116,7 @@ export default async function HomePage() {
             label="Zardosi-embroidered sherwanis on the stand in the Sartorial atelier"
             eyebrow="The Heritage collection"
             title="Zardosi, worked by hand."
-            links={[
-              { label: "Sherwanis", href: "/clothing/heritage/sherwanis" },
-              { label: "Achkans", href: "/clothing/heritage/achkans" },
-              { label: "Jodhpuri jackets", href: "/clothing/heritage/jodhpuri-jackets" },
-            ]}
+            links={heritageLinks}
           />
         </div>
       ) : null}
@@ -128,19 +142,9 @@ export default async function HomePage() {
         />
       ) : null}
 
-      {show("motion") ? (
+      {show("motion") && motionItems.length ? (
         <section className="py-20 md:py-32">
-          <MotionRail
-            items={[
-              ...motion(cat, `${H}/achkans/black-velvet-embroidered-collar-achkan-showcase-01`, "black-velvet-embroidered-collar-achkan"),
-              ...motion(cat, `${H}/jodhpuri-jackets/ivory-floral-jacquard-jodhpuri-jacket-showcase-01`, "ivory-floral-jacquard-jodhpuri-jacket"),
-              ...motion(cat, `${H}/achkans/powder-blue-silk-embroidered-collar-achkan-showcase-01`, "powder-blue-silk-embroidered-collar-achkan"),
-              ...motion(cat, `${H}/stoles/ivory-gold-embroidered-border-heritage-stole-showcase-01`, "ivory-gold-embroidered-border-heritage-stole"),
-              ...motion(cat, `${H}/achkans/mocha-brown-silk-embroidered-collar-achkan-showcase-02`, "mocha-brown-silk-embroidered-collar-achkan"),
-              ...motion(cat, `${H}/jodhpuri-jackets/ivory-embossed-open-front-jodhpuri-jacket-showcase-01`, "ivory-embossed-open-front-jodhpuri-jacket"),
-              ...motion(cat, `${H}/achkans/ochre-gold-brocade-achkan-detail-02`, "ochre-gold-brocade-achkan"),
-            ]}
-          />
+          <MotionRail items={motionItems} />
         </section>
       ) : null}
 

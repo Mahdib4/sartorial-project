@@ -4,9 +4,10 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { PriceTag } from "@/components/product/PriceTag";
 import { Picture } from "@/components/ui/Picture";
 import type { NavGroup } from "@/data/navigation";
-import { formatPrice, pluralise } from "@/lib/format";
+import { pluralise } from "@/lib/format";
 import { searchProducts } from "@/lib/search";
 import { useShop } from "@/store/shop";
 
@@ -146,7 +147,7 @@ export function SearchOverlay({ groups }: { groups: NavGroup[] }) {
                             <Link href={p.href} onClick={close} className="group/hit block">
                               <Picture shot={p.image} alt="" sizes="(min-width: 1280px) 14vw, (min-width: 768px) 24vw, 48vw" ratio="4 / 5" fit="product" />
                               <p className="mt-2.5 text-[13px] leading-snug">{p.name}</p>
-                              <p className="mt-0.5 text-[12px] text-ink-3">{formatPrice(p.price)}</p>
+                              <p className="mt-0.5 text-[12px] text-ink-3"><PriceTag price={p.price} compareAt={p.compareAt} /></p>
                             </Link>
                           </li>
                         ))}

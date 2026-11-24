@@ -2,24 +2,31 @@
 
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { checkPassword, createSession, endSession } from "@/lib/admin/auth";
+import { adminReturnPath, checkPassword, createSession, endSession } from "@/lib/admin/auth";
 import { text, type FormState } from "@/lib/admin/form";
+import { passwordAttempt } from "@/lib/rate-limit";
 
-const attempts = new Map<string, { count: number; resetAt: number }>();
+/** What to tell someone signing in when the password could not be checked at all. */
+function unavailable(error: unknown): string {
+  if (error instanceof Error && error.message === "NO_DATABASE") return "The database is not connected, so the admin cannot be used yet.";
+  console.error("admin: sign-in could not be checked", error);
+  return "The admin cannot reach its database just now, so your password could not be checked. Wait a moment and try again.";
+}
 
 export async function signIn(_prev: FormState, form: FormData): Promise<FormState> {
-  // A few tries a minute per address, against password guessing.
-  const h = await headers();
-  const ip = h.get("x-forwarded-for")?.split(",")[0]?.trim() || h.get("x-real-ip") || "unknown";
-  const now = Date.now();
-  const a = attempts.get(ip);
-  if (a && a.resetAt > now && a.count >= 8) return { error: "Too many attempts. Wait a minute and try again." };
-  attempts.set(ip, a && a.resetAt > now ? { count: a.count + 1, resetAt: a.resetAt } : { count: 1, resetAt: now + 60_000 });
+  // A few wrong passwords a minute, against password guessing.
+  const attempt = passwordAttempt(await headers());
+  if (!attempt) return { error: "Too many attempts. Wait a minute and try again." };
 
-  if (!(await checkPassword(text(form, "password", 200)))) return { error: "That password is not right." };
-  await createSession();
-  const next = text(form, "next", 200);
-  redirect(next.startsWith("/admin") ? next : "/admin");
+  try {
+    if (!(await checkPassword(text(form, "password", 200)))) return { error: "That password is not right." };
+    attempt.undo(); // a right password does not count against the limit
+    await createSession();
+  } catch (error) {
+    attempt.undo();
+    return { error: unavailable(error) };
+  }
+  redirect(adminReturnPath(text(form, "next", 1000)) ?? "/admin");
 }
 
 export async function signOut(): Promise<void> {

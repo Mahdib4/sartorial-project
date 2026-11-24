@@ -5,7 +5,7 @@ import { Accordion } from "@/components/interior/accordion";
 import { Drawer } from "@/components/interior/drawer";
 import { ButtonLink } from "@/components/ui/Button";
 import { Picture } from "@/components/ui/Picture";
-import type { NavGroup } from "@/data/navigation";
+import type { NavGroup, NavHighlight } from "@/data/navigation";
 import { pluralise } from "@/lib/format";
 import { useShop } from "@/store/shop";
 
@@ -24,11 +24,15 @@ function Chevron() {
 }
 
 /**
- * The navigation on touch screens: a side drawer that opens on search, then
- * one fold per collection (each with its photograph, its categories and their
- * counts), the house pages, and the fitting, wishlist and bag at the foot.
+ * The navigation on touch screens: a side drawer that opens on search, then the
+ * curated collections and launches made in the admin (the "Highlights" of the
+ * desktop menu), one fold per collection (each with its photograph, its
+ * categories and their counts), the house pages, and the fitting, wishlist and
+ * bag at the foot.
  */
-export function MobileMenu({ groups }: { groups: NavGroup[] }) {
+export function MobileMenu({ groups: all, highlights = [] }: { groups: NavGroup[]; highlights?: NavHighlight[] }) {
+  // A department whose categories are all hidden has nothing to open, so it is left out.
+  const groups = all.filter((g) => g.categories.length > 0);
   const { overlay, open, close, count, wishlist, ready } = useShop();
   const saved = ready ? wishlist.length : 0;
   const pieces = ready ? count : 0;
@@ -74,10 +78,28 @@ export function MobileMenu({ groups }: { groups: NavGroup[] }) {
       </div>
 
       <nav aria-label="Main">
+        {highlights.length ? (
+          <div className="px-[var(--gutter)] pt-3 pb-4 md:px-6">
+            <p className="label-sm pb-1 text-mute">Highlights</p>
+            <ul className="border-b border-line-soft pb-2">
+              {highlights.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} onClick={close} className="flex min-h-12 items-center justify-between gap-4 py-1.5">
+                    <span className="min-w-0">
+                      <span className="label-sm block text-accent">{item.eyebrow}</span>
+                      <span className="mt-0.5 block truncate text-[17px] leading-snug font-light tracking-[-0.01em] text-ink">{item.label}</span>
+                    </span>
+                    <Chevron />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
         <Accordion
           type="single"
           collapsible
-          defaultOpen={[groups[0].key]}
+          defaultOpen={groups.length ? [groups[0].key] : []}
           maxPanelHeight={720}
           headingLevel={3}
           className="border-t-0"

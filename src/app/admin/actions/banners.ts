@@ -11,6 +11,23 @@ import { db } from "@/lib/db";
 const PLACEMENTS = ["home", "bar"];
 const LINK_TYPES = ["none", "product", "category", "collection", "curated", "url"];
 
+/**
+ * A web address a banner may lead to: a page on this website ("/bespoke"), or
+ * another website over https. Spaces, backslashes and a second slash after the
+ * first are refused: browsers read "//x" and "/\x" as another website.
+ * The storefront checks the same again when it shows the banner.
+ */
+function validAddress(target: string): boolean {
+  if (/[\\\s\u0000-\u001f\u007f]/.test(target)) return false;
+  if (target.startsWith("/")) return !target.startsWith("//");
+  if (!/^https:\/\/[^/]/i.test(target)) return false;
+  try {
+    return new URL(target).protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
 /** Create or update a home page banner or an announcement bar notice. */
 export async function saveBanner(_prev: FormState, form: FormData): Promise<FormState> {
   await requireAdmin();
@@ -30,8 +47,8 @@ export async function saveBanner(_prev: FormState, form: FormData): Promise<Form
   if (!PLACEMENTS.includes(placement)) return { error: "Choose where it appears: the home page or the announcement bar." };
   if (title.length < 2) return { error: home ? "Write the banner's heading." : "Write the message for the announcement bar." };
   if (linkType !== "none" && !linkTarget) return { error: "Choose where it leads, or pick “Nowhere”." };
-  if (linkType === "url" && !/^(\/(?!\/)\S*|https:\/\/[^\s/]+\S*)$/.test(linkTarget)) {
-    return { error: "A web address must start with “/” for a page on this website (for example /bespoke), or with “https://” for another website." };
+  if (linkType === "url" && !validAddress(linkTarget)) {
+    return { error: "A web address must start with “/” for a page on this website (for example /bespoke), or with “https://” for another website, and have no spaces or “\\” in it." };
   }
   if (text(form, "startsAt", 40) && !startsAt) return { error: "The “show from” date is not a valid date." };
   if (text(form, "endsAt", 40) && !endsAt) return { error: "The “show until” date is not a valid date." };
@@ -77,7 +94,9 @@ export async function saveBanner(_prev: FormState, form: FormData): Promise<Form
     return { error: dbMessage(error) };
   }
   updateTag(CATALOG_TAG);
-  redirect(`/admin/banners?saved=${placement}`);
+  // Saved with a "show until" already past: the list says it will not show.
+  const ended = endsAt !== null && Date.parse(endsAt) <= Date.now();
+  redirect(`/admin/banners?saved=${placement}${ended ? "&ended=1" : ""}`);
 }
 
 async function destinationExists(type: string, target: string): Promise<boolean> {

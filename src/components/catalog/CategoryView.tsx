@@ -8,23 +8,32 @@ import { LoopVideo } from "@/components/ui/LoopVideo";
 import { Picture } from "@/components/ui/Picture";
 import { Reveal, RevealMask } from "@/components/ui/Reveal";
 import { categoryHref, COLLECTIONS, type Catalog } from "@/data/catalog";
-import { navGroups } from "@/data/navigation";
+import { hasPhoto, navGroups } from "@/data/navigation";
 import type { Category } from "@/data/types";
 import { cn } from "@/lib/cn";
 import { pluralise } from "@/lib/format";
 import { film, shot } from "@/lib/media";
 
-/** One category: its introduction and film, then either its products or, where none are listed yet, its edit. */
+/**
+ * One category: its introduction and film, then its products. Where none are
+ * listed yet it shows its edit (where the piece appears across the collection)
+ * or, for a category with no photographs of that kind either (a new one made in
+ * the admin), a short note that new pieces are on their way, with a fitting.
+ */
 export function CategoryView({ cat, category }: { cat: Catalog; category: Category }) {
   const collection = COLLECTIONS[category.collection];
   const products = cat.productsIn(category.key);
   const group = navGroups(cat).find((g) => g.key === category.collection)!;
   const siblings = group.categories;
+  const self = siblings.find((s) => s.key === category.key);
+  const others = siblings.filter((s) => s.key !== category.key);
   const editorial = cat.editorialFor(category.key);
   const clip = category.film ? film(category.film) : null;
   // A new category may have no photographs of its own yet: fall back to a piece in it, then the department.
   const lead = shot(editorial[0] ?? category.preview[0] ?? products[0]?.images[0] ?? collection.cover);
   const isEdit = products.length === 0;
+  const editShots = (category.edit ?? []).filter((e) => hasPhoto(e.image));
+  const interest = `/appointments?interest=${encodeURIComponent(category.name)}`;
 
   return (
     <main className="pt-header">
@@ -41,7 +50,7 @@ export function CategoryView({ cat, category }: { cat: Catalog; category: Catego
           />
           <Reveal className="mt-7 md:mt-10 lg:mt-auto lg:pt-16">
             <p className="label text-ink-3">
-              {collection.name}&ensp;·&ensp;{isEdit ? "The edit" : pluralise(products.length, "piece")}
+              {collection.name}&ensp;·&ensp;{self?.summary ?? pluralise(products.length, "piece")}
             </p>
             <h1 className="display-md mt-4 md:mt-5">{category.name}</h1>
             <p className="mt-4 max-w-md text-[15px] leading-relaxed text-ink-2 md:mt-6 md:text-[16px]">{category.intro}</p>
@@ -75,8 +84,12 @@ export function CategoryView({ cat, category }: { cat: Catalog; category: Catego
         })}
       </nav>
 
-      {/* Products, or the edit */}
-      {isEdit ? (
+      {/* Products; or, with none listed yet, the edit; or, with nothing to show at all, a note and a fitting */}
+      {!isEdit ? (
+        <section className="pt-4 pb-10 md:py-12" aria-label={`${category.name}: all pieces`}>
+          <Listing products={products.map(cat.toCard)} chips="occasion" label={category.name} />
+        </section>
+      ) : editShots.length > 0 ? (
         <section className="py-12 md:py-16" aria-labelledby="edit-title">
           <div className="mb-10 grid gap-6 px-gutter lg:grid-cols-12 lg:items-end">
             <h2 id="edit-title" className="headline lg:col-span-7">
@@ -84,18 +97,34 @@ export function CategoryView({ cat, category }: { cat: Catalog; category: Catego
             </h2>
             <div className="lg:col-span-5 lg:justify-self-end">
               <p className="max-w-sm text-[14.5px] leading-relaxed text-ink-2">
-                {category.name} are arranged in person rather than listed online. Tell us what you have in mind and we will show you what is available at your fitting.
+                These pieces are chosen in person rather than listed online. Tell us what you have in mind and we will show you what is available at your fitting.
               </p>
               <div className="mt-6 grid gap-3 sm:flex sm:flex-row">
-                <ButtonLink href={`/appointments?interest=${encodeURIComponent(category.name)}`}>Ask about {category.name.toLowerCase()}</ButtonLink>
+                <ButtonLink href={interest}>Ask about {category.name}</ButtonLink>
               </div>
             </div>
           </div>
-          <EditGallery cat={cat} shots={category.edit ?? []} name={category.name} />
+          <EditGallery cat={cat} shots={editShots} name={category.name} />
         </section>
       ) : (
-        <section className="pt-4 pb-10 md:py-12" aria-label={`${category.name}: all pieces`}>
-          <Listing products={products.map(cat.toCard)} chips="occasion" label={category.name} />
+        <section className="px-gutter py-14 md:py-24" aria-labelledby="soon-title">
+          <div className="grid gap-x-10 gap-y-5 lg:grid-cols-12">
+            <p className="label text-ink-3 lg:col-span-4 lg:pt-3">Made to order</p>
+            <div className="lg:col-span-8">
+              <h2 id="soon-title" className="headline max-w-[20ch] text-balance">
+                New pieces are being photographed.
+              </h2>
+              <p className="mt-5 max-w-md text-[15px] leading-relaxed text-ink-2 md:mt-6">
+                Everything we make is cut for one person, so there is always more in the atelier than is shown here. Book a fitting and we will show you the cloths and the cuts in person.
+              </p>
+              <div className="mt-8 grid gap-3 sm:flex sm:flex-row sm:items-start">
+                <ButtonLink href={interest}>Book a fitting</ButtonLink>
+                <ButtonLink href={collection.href} variant="outline">
+                  View all {collection.name}
+                </ButtonLink>
+              </div>
+            </div>
+          </div>
         </section>
       )}
 
@@ -113,18 +142,20 @@ export function CategoryView({ cat, category }: { cat: Catalog; category: Catego
         </section>
       ) : null}
 
-      {/* Onward */}
-      <section className="border-t border-line-soft py-14 md:py-20" aria-labelledby="more-title">
-        <div className="mb-8 flex items-end justify-between px-gutter">
-          <h2 id="more-title" className="headline-sm">
-            More from {collection.name}
-          </h2>
-          <Link href={collection.href} className="-my-3 py-3 text-[13.5px]">
-            <span className="link-under inline-block">View all</span>
-          </Link>
-        </div>
-        <CategoryTiles categories={siblings.filter((s) => s.key !== category.key)} label={`More ${collection.name} categories`} />
-      </section>
+      {/* Onward, when the department has other categories to show */}
+      {others.length > 0 ? (
+        <section className="border-t border-line-soft py-14 md:py-20" aria-labelledby="more-title">
+          <div className="mb-8 flex items-end justify-between px-gutter">
+            <h2 id="more-title" className="headline-sm">
+              More from {collection.name}
+            </h2>
+            <Link href={collection.href} className="-my-3 py-3 text-[13.5px]">
+              <span className="link-under inline-block">View all</span>
+            </Link>
+          </div>
+          <CategoryTiles categories={others} label={`More ${collection.name} categories`} />
+        </section>
+      ) : null}
     </main>
   );
 }

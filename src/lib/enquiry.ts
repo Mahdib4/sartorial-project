@@ -121,8 +121,9 @@ export function composeEnquiry(d: EnquiryDetails): string {
       out.push(`${i + 1}. ${line.name} (${line.category})`);
       out.push(`   Product ref: ${line.reference}`);
       out.push(`   Size: ${line.size} · Qty: ${line.qty}`);
+      // "Price: BDT 42,500 (was BDT 50,000, Eid offer)", or just "Price on request".
       const price = describePrice(line);
-      if (price) out.push(`   Price: ${price}`);
+      if (price) out.push(line.price === null ? `   ${price}` : `   Price: ${price}`);
       out.push(`   ${d.origin}${line.href}`);
     });
   }

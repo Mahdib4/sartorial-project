@@ -29,11 +29,11 @@ export async function saveCurated(_prev: FormState, form: FormData): Promise<For
     return {
       error: typed
         ? "Type the web address in English letters or numbers, for example “eid-edit”."
-        : `A web address can't be made from the title “${title}”, because it has no English letters. Type one in English letters in the “Web address” field, for example “eid-edit”.`,
+        : `A web address can’t be made from the title “${title}”, because it has no English letters. Type one in English letters in the “Web address” field, for example “eid-edit”.`,
     };
   }
   if (!original && RESERVED_SLUGS.has(slug)) {
-    return { error: `“${slug}” can't be used as a web address on its own. Type a longer one in the “Web address” field, for example “new-arrivals”.` };
+    return { error: `“${slug}” can’t be used as a web address on its own. Type a longer one in the “Web address” field, for example “new-arrivals”.` };
   }
   if (Math.abs(position) > 100_000) return { error: "The position should be a small number, such as 1, 2 or 3." };
 

@@ -45,7 +45,7 @@ export async function saveCategory(_prev: FormState, form: FormData): Promise<Fo
         return {
           error: typed
             ? "Type the web address in English letters or numbers, for example “sherwanis”."
-            : `A web address can't be made from the name “${name}”, because it has no English letters. Type one in English letters in the “Web address” field, for example “sherwanis”.`,
+            : `A web address can’t be made from the name “${name}”, because it has no English letters. Type one in English letters in the “Web address” field, for example “sherwanis”.`,
         };
       }
       key = `${collection}/${slug}`;

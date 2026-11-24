@@ -1,10 +1,12 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import { adminReturnPath } from "@/lib/admin/auth";
 import { LoginForm } from "./LoginForm";
 
 export const metadata: Metadata = { title: "Admin sign in", robots: { index: false, follow: false } };
 
-export default function LoginPage() {
+export default function LoginPage({ searchParams }: PageProps<"/admin/login">) {
   const dbConnected = Boolean(process.env.DATABASE_URL);
   const passwordSet = Boolean(process.env.ADMIN_PASSWORD);
   return (
@@ -23,7 +25,11 @@ export default function LoginPage() {
               If you have not set a password in Settings yet, set ADMIN_PASSWORD in the server&apos;s environment first.
             </p>
           ) : null}
-          <LoginForm />
+          <LoginForm>
+            <Suspense fallback={null}>
+              <ReturnTo searchParams={searchParams} />
+            </Suspense>
+          </LoginForm>
         </div>
         <p className="mt-6 text-center text-[13px]">
           <Link href="/" className="text-ink-3 hover:text-ink">
@@ -33,4 +39,11 @@ export default function LoginPage() {
       </div>
     </main>
   );
+}
+
+/** The admin page someone was opening (?next=…), so signing in takes them back to it. */
+async function ReturnTo({ searchParams }: Pick<PageProps<"/admin/login">, "searchParams">) {
+  const { next } = await searchParams;
+  const path = adminReturnPath(next);
+  return path ? <input type="hidden" name="next" value={path} /> : null;
 }

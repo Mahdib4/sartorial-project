@@ -39,6 +39,7 @@ export function BuyBox({ slug, name, scale, price = null, compareAt = null }: Bu
   const touchLayout = useMediaQuery("(max-width: 63.99rem)");
   const pickerRef = useRef<HTMLDivElement>(null);
   const actionRef = useRef<HTMLDivElement>(null);
+  const barRef = useRef<HTMLDivElement>(null);
   const [past, setPast] = useState(false);
   const [footerInView, setFooterInView] = useState(false);
   const [barState, setBarState] = useState<"idle" | "adding" | "added">("idle");
@@ -83,6 +84,24 @@ export function BuyBox({ slug, name, scale, price = null, compareAt = null }: Bu
 
   const barShown = touchLayout && past && !footerInView && overlay === null;
 
+  // While the bar is up, publish its height as --buy-bar-h so the toasts ("Added to your bag") sit above it, not on it.
+  useEffect(() => {
+    const root = document.documentElement;
+    const bar = barRef.current;
+    if (!barShown || !bar) {
+      root.style.removeProperty("--buy-bar-h");
+      return;
+    }
+    const publish = () => root.style.setProperty("--buy-bar-h", `${bar.offsetHeight}px`);
+    publish();
+    const observer = new ResizeObserver(publish);
+    observer.observe(bar);
+    return () => {
+      observer.disconnect();
+      root.style.removeProperty("--buy-bar-h");
+    };
+  }, [barShown]);
+
   const addFromBar = async () => {
     if (barState !== "idle") return;
     if (!size) {
@@ -90,7 +109,11 @@ export function BuyBox({ slug, name, scale, price = null, compareAt = null }: Bu
       const picker = pickerRef.current;
       if (picker) {
         picker.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
-        picker.querySelector<HTMLElement>("button")?.focus({ preventScroll: true });
+        // The sizes themselves (where Tab would land in them), not the "Size guide" link above them.
+        const target =
+          picker.querySelector<HTMLElement>('[role="radiogroup"] [role="radio"][tabindex="0"]') ??
+          picker.querySelector<HTMLElement>('[role="radiogroup"] [role="radio"]:not(:disabled)');
+        target?.focus({ preventScroll: true });
       }
       return;
     }
@@ -177,6 +200,7 @@ export function BuyBox({ slug, name, scale, price = null, compareAt = null }: Bu
         {barShown ? (
           <motion.div
             key="buy-bar"
+            ref={barRef}
             className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white/95 px-gutter pt-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))] backdrop-blur-md lg:hidden"
             initial={reduce ? { opacity: 0 } : { y: "100%" }}
             animate={reduce ? { opacity: 1 } : { y: 0 }}

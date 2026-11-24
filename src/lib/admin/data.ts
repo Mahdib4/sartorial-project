@@ -134,10 +134,20 @@ export async function listEnquiries(status?: string, limit = 200): Promise<Enqui
   }));
 }
 
+/**
+ * The overview's numbers. A piece counts as on the website by the storefront's
+ * own rules: shown, in a category that is shown, and with a photograph. Every
+ * other piece (hidden itself, or in a hidden category, or without a photograph)
+ * counts as not on the website.
+ */
 export async function dashboardCounts() {
-  const { rows } = await (await pool()).query(`SELECT
-    (SELECT count(*)::int FROM products WHERE visible) AS products_live,
-    (SELECT count(*)::int FROM products WHERE NOT visible) AS products_hidden,
+  const { rows } = await (await pool()).query(`WITH live AS (
+      SELECT p.slug FROM products p JOIN categories c ON c.key = p.category
+      WHERE p.visible AND c.visible AND jsonb_typeof(p.images) = 'array' AND jsonb_array_length(p.images) > 0
+    )
+    SELECT
+    (SELECT count(*)::int FROM live) AS products_live,
+    (SELECT count(*)::int FROM products) - (SELECT count(*)::int FROM live) AS products_hidden,
     (SELECT count(*)::int FROM categories) AS categories,
     (SELECT count(*)::int FROM banners WHERE active AND (starts_at IS NULL OR starts_at <= now()) AND (ends_at IS NULL OR ends_at > now())) AS banners_live,
     (SELECT count(*)::int FROM offers WHERE active AND (starts_at IS NULL OR starts_at <= now()) AND (ends_at IS NULL OR ends_at > now())) AS offers_live,

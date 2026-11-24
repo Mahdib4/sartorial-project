@@ -25,22 +25,30 @@ const PLACEMENTS = [
 /** The starting values for a new banner (the new-banner page fills them in from the address, e.g. for “Announce it”). */
 export type BannerDraft = Omit<Banner, "id" | "position">;
 
+/** About how many letters of a notice fit on one line of the bar on a phone (it is in capitals, widely spaced). */
+const BAR_PHONE_LETTERS = 35;
+
 const EMPTY: BannerDraft = { placement: "home", title: "", eyebrow: "", body: "", cta: "", image: null, linkType: "none", linkTarget: "", startsAt: null, endsAt: null, active: true };
 
 export function BannerForm({ banner, draft, links, image, library }: { banner: Banner | null; draft?: BannerDraft; links: LinkOptions; image: LibraryImage[]; library: LibraryImage[] }) {
   const b = banner ?? draft ?? EMPTY;
   const [placement, setPlacement] = useState<Banner["placement"]>(b.placement);
+  const [title, setTitle] = useState(b.title);
+  const [endsAt, setEndsAt] = useState(localInput(b.endsAt));
   const home = placement === "home";
+  // "Show until" in the past: it would never show. Compared in Dhaka time, as the field is (to the minute the form opened).
+  const [openedAt] = useState(() => localInput(new Date().toISOString()));
+  const ended = Boolean(endsAt) && endsAt <= openedAt;
 
   return (
     <ActionForm action={saveBanner} submitLabel={banner ? "Save changes" : home ? "Add banner" : "Add notice"}>
       {banner ? <input type="hidden" name="id" value={banner.id} /> : null}
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <div className="space-y-6 lg:col-span-2">
           <Card title="Where it appears">
             <fieldset>
               <legend className="sr-only">Where it appears</legend>
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {PLACEMENTS.map((p) => (
                   <label key={p.value} className="flex cursor-pointer items-start gap-3 border border-line bg-white p-4 transition-colors has-[:checked]:border-ink">
                     <input type="radio" name="placement" value={p.value} checked={placement === p.value} onChange={() => setPlacement(p.value)} className="mt-1 accent-ink" />
@@ -64,9 +72,24 @@ export function BannerForm({ banner, draft, links, image, library }: { banner: B
             <Field
               label={home ? "Heading" : "Message"}
               htmlFor="title"
-              hint={home ? "The large words on the banner, e.g. “The Eid edit has arrived”." : "One short line, e.g. “Free alterations on every Eid order”. Keep it under about 60 letters so it fits on one line."}
+              hint={
+                home ? (
+                  "The large words on the banner, e.g. “The Eid edit has arrived”."
+                ) : (
+                  <>
+                    One short line, e.g. “Free alterations this Eid”. A phone fits about {BAR_PHONE_LETTERS} letters on the line; a longer message is cut short there, ending in “…”.{" "}
+                    <span className={title.trim().length > BAR_PHONE_LETTERS ? "text-accent" : undefined} aria-live="polite">
+                      {title.trim().length > BAR_PHONE_LETTERS
+                        ? `This one has ${title.trim().length} letters, so phones will cut it short.`
+                        : title.trim()
+                          ? `${title.trim().length} letters: it fits.`
+                          : null}
+                    </span>
+                  </>
+                )
+              }
             >
-              <Input id="title" name="title" defaultValue={b.title} required maxLength={home ? 160 : 140} />
+              <Input id="title" name="title" value={title} onChange={(e) => setTitle(e.target.value)} required maxLength={home ? 160 : 140} />
             </Field>
             <div hidden={!home}>
               <Field label="More text (optional)" htmlFor="body" hint="A sentence or two under the heading.">
@@ -79,7 +102,7 @@ export function BannerForm({ banner, draft, links, image, library }: { banner: B
               hint={
                 home
                   ? "e.g. Shop now. Shown only when the banner leads somewhere; left empty it reads “Discover”."
-                  : "e.g. Shop now. Shown after the message when the notice leads somewhere. On phones only this text shows, so keep it short. Left empty, the message itself is the link."
+                  : "e.g. Shop now. Shown after the message on tablets and computers, when the notice leads somewhere. Phones show only the message, with a small arrow, and the whole bar is the link."
               }
             >
               <Input id="cta" name="cta" defaultValue={b.cta} maxLength={40} placeholder="Shop now" />
@@ -105,8 +128,12 @@ export function BannerForm({ banner, draft, links, image, library }: { banner: B
             <Field label="Show from (optional)" htmlFor="startsAt">
               <Input id="startsAt" name="startsAt" type="datetime-local" defaultValue={localInput(b.startsAt)} />
             </Field>
-            <Field label="Show until (optional)" htmlFor="endsAt" hint="It comes down by itself at this time.">
-              <Input id="endsAt" name="endsAt" type="datetime-local" defaultValue={localInput(b.endsAt)} />
+            <Field
+              label="Show until (optional)"
+              htmlFor="endsAt"
+              hint={ended ? <span className="text-accent">This time has already passed, so it will not show on the website. Choose a later time, or clear it.</span> : "It comes down by itself at this time."}
+            >
+              <Input id="endsAt" name="endsAt" type="datetime-local" value={endsAt} onChange={(e) => setEndsAt(e.target.value)} aria-invalid={ended || undefined} />
             </Field>
             <Toggle name="active" label="Switched on" hint="Turn off to take it down without deleting it." defaultChecked={b.active} />
           </Card>

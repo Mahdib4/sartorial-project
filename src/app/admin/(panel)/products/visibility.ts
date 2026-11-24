@@ -1,4 +1,5 @@
-import type { Category, Product } from "@/data/types";
+import type { Category, Offer, Product } from "@/data/types";
+import { formatPrice } from "@/lib/format";
 
 /**
  * Why a product is not on the website, in the admin's words, or null when
@@ -39,4 +40,39 @@ export function whyOffWebsite(
     };
   }
   return null;
+}
+
+/**
+ * Live "amount off" offers that cover a piece but are not applied to it,
+ * because they would take its price to nothing (the website never shows a
+ * piece at ৳0 or less). The admin is told, so the offer is not assumed to apply.
+ */
+export function offersLeftOut(
+  product: Pick<Product, "slug" | "category" | "price">,
+  category: Pick<Category, "collection"> | undefined,
+  offers: Offer[],
+  now = Date.now(),
+): Offer[] {
+  const price = product.price;
+  if (typeof price !== "number" || price <= 0) return [];
+  return offers.filter(
+    (o) =>
+      o.kind === "amount" &&
+      o.value >= price &&
+      o.active &&
+      (!o.startsAt || Date.parse(o.startsAt) <= now) &&
+      (!o.endsAt || Date.parse(o.endsAt) > now) &&
+      (o.scope === "all" ||
+        (o.scope === "products" && o.targets.includes(product.slug)) ||
+        (o.scope === "category" && o.targets.includes(product.category)) ||
+        (o.scope === "collection" && category !== undefined && o.targets.includes(category.collection))),
+  );
+}
+
+/** What to do about an offer left out (follows leftOutMessage). */
+export const LEFT_OUT_ADVICE = "Lower the offer's amount, or raise the price, if it should apply.";
+
+/** "The offer “Eid offer” (৳4,000 off) is not applied to this piece: it would take its price (৳3,500) to nothing." */
+export function leftOutMessage(offer: Pick<Offer, "name" | "value">, price: number): string {
+  return `The offer “${offer.name}” (${formatPrice(offer.value)} off) is not applied to this piece: it would take its price (${formatPrice(price)}) to nothing.`;
 }

@@ -7,8 +7,9 @@ import { cn } from "@/lib/cn";
  * field does in everyday words; hints say what visitors will see.
  */
 
+/** 16px text on phones, so iPhones do not zoom in when a field is tapped; a little smaller from tablets up. */
 export const inputClass =
-  "block w-full border border-line bg-white px-3 py-2.5 text-[14.5px] text-ink outline-none transition-colors placeholder:text-mute focus:border-ink disabled:bg-paper disabled:text-ink-3";
+  "block w-full min-w-0 border border-line bg-white px-3 py-2.5 text-[16px] text-ink outline-none transition-colors placeholder:text-mute focus:border-ink disabled:bg-paper disabled:text-ink-3 sm:text-[14.5px]";
 
 export function PageHead({ title, intro, action }: { title: string; intro?: ReactNode; action?: ReactNode }) {
   return (
@@ -24,7 +25,8 @@ export function PageHead({ title, intro, action }: { title: string; intro?: Reac
 
 export function Card({ title, intro, children, className }: { title?: string; intro?: ReactNode; children: ReactNode; className?: string }) {
   return (
-    <section className={cn("border border-line bg-white p-5 md:p-6", className)}>
+    // min-w-0: inside a form's grid, a long name in the card must not push the page wider than the screen.
+    <section className={cn("min-w-0 border border-line bg-white p-5 md:p-6", className)}>
       {title ? <h2 className="text-[16px] font-medium tracking-[-0.01em]">{title}</h2> : null}
       {intro ? <p className="mt-1 text-[13px] leading-relaxed text-ink-3">{intro}</p> : null}
       <div className={cn(title || intro ? "mt-5" : "", "space-y-5")}>{children}</div>

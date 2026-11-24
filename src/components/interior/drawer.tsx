@@ -325,8 +325,20 @@ export function Drawer({
   const titleId = useId();
   const hintId = useId();
 
+  const [host, setHost] = useState<HTMLElement | null>(null);
+  useEffect(() => {
+    setHost(container === "viewport" ? document.body : null);
+  }, [container]);
+
+  // The portal only exists from the second render. A drawer that mounts already
+  // open (the filter drawer when a phone is turned sideways with the filters
+  // showing) would otherwise run the hook's focus, inert and scroll-lock
+  // effects before its panel exists, and never again. Until the panel is in
+  // the page the hook treats it as closed; then it opens as usual.
+  const mounted = container !== "viewport" || host !== null;
+
   const drawer = useDrawer({
-    open,
+    open: open && mounted,
     onOpenChange,
     side,
     width,
@@ -334,11 +346,6 @@ export function Drawer({
   });
 
   const edge = side === "right" ? "right-0 border-l" : "left-0 border-r";
-
-  const [host, setHost] = useState<HTMLElement | null>(null);
-  useEffect(() => {
-    setHost(container === "viewport" ? document.body : null);
-  }, [container]);
 
   const tree = (
     <div

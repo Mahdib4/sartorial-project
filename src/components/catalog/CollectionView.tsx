@@ -40,10 +40,27 @@ export function CollectionView({ cat, collection }: { cat: Catalog; collection: 
         filmLabel={hero.filmLabel}
       />
 
-      <section className="py-14 md:py-20" aria-labelledby="categories-title">
-        <SectionHeading eyebrow={collection.name} title={<span id="categories-title">Shop by category.</span>} className="mb-8 md:mb-12" />
-        <CategoryTiles categories={group.categories} label={`${collection.name} categories`} />
-      </section>
+      {group.categories.length ? (
+        <section className="py-14 md:py-20" aria-labelledby="categories-title">
+          <SectionHeading eyebrow={collection.name} title={<span id="categories-title">Shop by category.</span>} className="mb-8 md:mb-12" />
+          <CategoryTiles categories={group.categories} label={`${collection.name} categories`} />
+        </section>
+      ) : (
+        // Every category in this department is hidden for now (in the admin).
+        <section className="px-gutter py-14 md:py-24" aria-labelledby="soon-title">
+          <div className="grid gap-x-10 gap-y-5 lg:grid-cols-12">
+            <p className="label text-ink-3 lg:col-span-4 lg:pt-3">Made to order</p>
+            <div className="lg:col-span-8">
+              <h2 id="soon-title" className="headline max-w-[20ch] text-balance">
+                New pieces are being photographed.
+              </h2>
+              <p className="mt-5 max-w-md text-[15px] leading-relaxed text-ink-2 md:mt-6">
+                Everything we make is cut for one person, so there is always more in the atelier than is shown here. Book a fitting and we will show you the cloths and the cuts in person.
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
 
       {products.length > 0 ? (
         <section className="border-t border-line-soft py-12 md:py-16" aria-labelledby="all-title">

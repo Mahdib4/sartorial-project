@@ -35,7 +35,7 @@ Set these environment variables on Vercel (Project → Settings → Environment 
 | Variable | What it is | Without it |
 | --- | --- | --- |
 | `DATABASE_URL`, `DATABASE_URL_UNPOOLED` | Neon's pooled and direct connection strings (Neon console → your project → **Connect**) | The admin cannot be used; the site shows the built-in catalogue; orders still reach WhatsApp but are not logged |
-| `ADMIN_PASSWORD` | The password for `/admin` (choose a long one). It can later be changed inside the admin | Nobody can sign in to the admin |
+| `ADMIN_PASSWORD` | The password for `/admin` (choose a long one), until a new one is set in Admin → Settings; from then on only the new password works and this variable can be removed | Nobody can sign in to the admin |
 | `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET` | Cloudflare R2 API token for the `sartorial-media` bucket (Object Read & Write) | Photographs cannot be uploaded in the admin (choosing existing ones still works) |
 | `R2_PUBLIC_URL` (optional) | The bucket's public address. Defaults to `https://pub-815592e32d694078bff17fcd968c91d8.r2.dev` | – |
 | `ADMIN_SESSION_SECRET` (optional) | A long random string used to sign admin sessions | `DATABASE_URL` is used as the secret |
@@ -46,7 +46,7 @@ Everything else (WhatsApp number, phone, email, address, opening hours, social l
 
 ## The admin panel
 
-Open `/admin` (e.g. `https://sartorial-bd.vercel.app/admin`) and sign in with `ADMIN_PASSWORD`. Changes appear on the website as soon as they are saved.
+Open `/admin` (e.g. `https://sartorial-bd.vercel.app/admin`) and sign in with `ADMIN_PASSWORD`. Changes appear on the website as soon as they are saved. A sign-in lasts 14 days on that browser; **Sign out** ends it, and changing the password signs every browser out. Sign-in allows a few wrong passwords a minute, then asks you to wait.
 
 - **Orders & enquiries**: every "Send message" from the bag or the fitting form, with the reference the customer's WhatsApp message carries, the pieces, sizes and contact details. Mark each as contacted, confirmed, completed or cancelled; reply on WhatsApp in one tap.
 - **Products**: add, edit, hide or delete pieces; upload photographs (the first is the card photograph) or choose from the site's photographs; set the category, colour, occasions, price, a sale price and a card label such as "New".
@@ -202,7 +202,7 @@ Use the admin panel (above). Everything there is stored in the database, and the
 npm run db:import-catalogue
 ```
 
-Add `-- --photos=slug-one,slug-two` to also replace the photographs of those existing pieces with the ones in the code.
+Add `-- --photos=slug-one,slug-two` to also replace the photographs of those existing pieces with the ones in the code. Pieces and categories deleted in the admin stay deleted: the import leaves them out and lists them (add `-- --include-removed` to bring them back on purpose). New pieces appear on the website within about five minutes.
 
 **Categories without products.** Some categories (Kurtas, Heritage Trousers, Coats, and all of Accessories and Footwear) had no product photography in the supplied content. Their pages show an *edit*: where the piece appears across the rest of the collection, each photograph linked to the garment it was taken with. As soon as a category has products, its page becomes a normal product grid automatically.
 

@@ -12,7 +12,7 @@
     "db:migrate": "node scripts/db-migrate.mjs",
     "db:check": "node scripts/db-migrate.mjs --check",
     "media:upload": "node scripts/upload-media-r2.mjs",
-    "db:import-catalogue": "node scripts/db-import-catalogue.mjs"
+    "db:import-catalogue": "node --no-warnings scripts/db-import-catalogue.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1175.0",

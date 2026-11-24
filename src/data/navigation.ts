@@ -1,5 +1,6 @@
 import { categoryHref, curatedHref, type Catalog } from "./catalog";
 import type { CollectionKey } from "./types";
+import { pluralise } from "@/lib/format";
 import { shot, type Shot } from "@/lib/media";
 
 /**
@@ -13,8 +14,10 @@ export type NavCategory = {
   name: string;
   href: string;
   blurb: string;
-  /** Number of products; 0 for categories shown as an edit. */
+  /** Number of products; 0 for categories shown as an edit or still to be photographed. */
   count: number;
+  /** The short line under the name: "12 pieces", "The edit" or, with nothing to show yet, "By appointment". */
+  summary: string;
   /** Photos shown when the category is hovered. */
   preview: Shot[];
 };
@@ -38,6 +41,9 @@ export type NavMenu = {
   highlights: Array<{ label: string; href: string }>;
 };
 
+/** A curated collection or launch, as a link in the menus. */
+export type NavHighlight = { label: string; href: string; eyebrow: string };
+
 export function navGroups(cat: Catalog): NavGroup[] {
   return cat.allCollections().map((collection) => ({
     key: collection.key,
@@ -47,18 +53,29 @@ export function navGroups(cat: Catalog): NavGroup[] {
     department: collection.department,
     count: cat.productsInCollection(collection.key).length,
     cover: shot(collection.cover),
-    categories: cat.categoriesOf(collection.key).map((category) => ({
-      key: category.key,
-      name: category.name,
-      href: categoryHref(category),
-      blurb: category.blurb,
-      count: cat.productsIn(category.key).length,
-      preview: category.preview.filter(exists).map(shot),
-    })),
+    categories: cat.categoriesOf(collection.key).map((category) => {
+      const count = cat.productsIn(category.key).length;
+      const edit = (category.edit ?? []).some((e) => hasPhoto(e.image));
+      return {
+        key: category.key,
+        name: category.name,
+        href: categoryHref(category),
+        blurb: category.blurb,
+        count,
+        summary: count > 0 ? pluralise(count, "piece") : edit ? "The edit" : "By appointment",
+        preview: category.preview.filter(hasPhoto).map(shot),
+      };
+    }),
   }));
 }
 
-function exists(id: string): boolean {
+/** Only the departments with at least one category to show: an empty one is left out of menus and the home page. */
+export function shownGroups(groups: NavGroup[]): NavGroup[] {
+  return groups.filter((g) => g.categories.length > 0);
+}
+
+/** Whether a photograph is in the media library (a missing one is left out rather than breaking a page). */
+export function hasPhoto(id: string): boolean {
   try {
     shot(id);
     return true;
@@ -67,12 +84,20 @@ function exists(id: string): boolean {
   }
 }
 
+/** The first three curated collections and launches made in the admin, in the order set there. */
+export function navHighlights(cat: Catalog): NavHighlight[] {
+  return cat
+    .curated()
+    .slice(0, 3)
+    .map((c) => ({ label: c.title, href: curatedHref(c), eyebrow: c.eyebrow || (c.isLaunch ? "New launch" : "Collection") }));
+}
+
 export function navMenus(cat: Catalog): NavMenu[] {
-  const groups = navGroups(cat);
+  const groups = shownGroups(navGroups(cat));
   // Curated collections and launches made in the admin sit at the top of the Clothing menu's list.
-  const curated = cat.curated().slice(0, 3).map((c) => ({ label: c.title, href: curatedHref(c) }));
+  const curated = navHighlights(cat).map(({ label, href }) => ({ label, href }));
   const pick = (...keys: CollectionKey[]) => groups.filter((g) => keys.includes(g.key));
-  return [
+  const menus: NavMenu[] = [
     {
       label: "Clothing",
       href: "/clothing",
@@ -99,4 +124,6 @@ export function navMenus(cat: Catalog): NavMenu[] {
       highlights: [],
     },
   ];
+  // A menu with no categories to show (the admin has hidden them all) is left out of the header.
+  return menus.filter((m) => m.groups.length > 0);
 }

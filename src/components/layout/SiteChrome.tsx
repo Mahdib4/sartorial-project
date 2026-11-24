@@ -6,7 +6,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { Toaster } from "@/components/layout/Toaster";
 import { catalog } from "@/data/catalog";
-import { navGroups, navMenus } from "@/data/navigation";
+import { navGroups, navHighlights, navMenus } from "@/data/navigation";
 import { ShopProvider } from "@/store/shop";
 import type { ReactNode } from "react";
 
@@ -34,7 +34,7 @@ export async function SiteChrome({ children }: { children: ReactNode }) {
           {children}
         </div>
         <SiteFooter groups={groups} contact={cat.settings.contact} social={cat.settings.social} />
-        <MobileMenu groups={groups} />
+        <MobileMenu groups={groups} highlights={navHighlights(cat)} />
         <BagDrawer />
         <SearchOverlay groups={groups} />
         <Toaster />

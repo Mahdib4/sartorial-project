@@ -1,16 +1,18 @@
 "use server";
 
 import { updateTag } from "next/cache";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { HOME_SECTIONS } from "@/data/seed";
 import { CATALOG_TAG } from "@/data/store";
 import type { ContactSettings, HomeSettings, SocialSettings } from "@/data/types";
-import { checkPassword, createSession, hashPassword, requireAdmin } from "@/lib/admin/auth";
+import { checkPassword, createSession, replacePassword, requireAdmin } from "@/lib/admin/auth";
 import { bool, dbMessage, lines, list, text, type FormState } from "@/lib/admin/form";
 import { db } from "@/lib/db";
 import { EMAIL_PATTERN } from "@/lib/enquiry";
+import { passwordAttempt } from "@/lib/rate-limit";
 
-/** Write one settings entry (contact, social, home or admin). */
+/** Write one settings entry (contact, social or home; the admin password is saved by replacePassword). */
 async function store(key: string, value: unknown): Promise<void> {
   const pool = db();
   if (!pool) throw new Error("NO_DATABASE");
@@ -126,16 +128,31 @@ export async function changePassword(_prev: FormState, form: FormData): Promise<
   const confirm = text(form, "confirm", 200);
 
   if (!current) return { error: "Enter your current password." };
-  if (!(await checkPassword(current))) return { error: "The current password is not right." };
+  // The same limit as signing in, so the current password cannot be guessed here instead.
+  const attempt = passwordAttempt(await headers());
+  if (!attempt) return { error: "Too many attempts. Wait a minute and try again." };
+  try {
+    if (!(await checkPassword(current))) return { error: "The current password is not right." };
+  } catch (error) {
+    attempt.undo();
+    console.error("admin: current password could not be checked", error);
+    return { error: "Your current password could not be checked just now. Wait a moment and try again." };
+  }
+  attempt.undo(); // the right password does not count against the limit
   if (next.length < 10) return { error: "The new password needs at least 10 characters. A short sentence is easy to remember and hard to guess." };
   if (next !== confirm) return { error: "The two new passwords do not match. Type the same password in both boxes." };
   if (next === current) return { error: "The new password is the same as the current one." };
 
   try {
-    await store("admin", hashPassword(next));
-    await createSession();
+    await replacePassword(next);
   } catch (error) {
     return { error: dbMessage(error) };
+  }
+  try {
+    await createSession();
+  } catch (error) {
+    console.error("admin: signed out after the password change", error);
+    return { error: "Your password was changed, but this browser could not be signed in again. Reload the page and sign in with the new password." };
   }
   redirect("/admin/settings?saved=password");
 }

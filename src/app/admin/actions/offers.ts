@@ -60,8 +60,9 @@ export async function saveOffer(_prev: FormState, form: FormData): Promise<FormS
       // Never let an amount off take a piece down to nothing.
       const cheapest = await cheapestPiece(scope, targets);
       if (cheapest && cheapest.price <= value) {
+        const instead = scope === "products" ? "or leave that piece out" : "or apply the offer to fewer pieces (for example “Chosen pieces”)";
         return {
-          error: `${formatPrice(value)} off is as much as the price of “${cheapest.name}” (${formatPrice(cheapest.price)}). Choose a smaller amount, or leave that piece out.`,
+          error: `${formatPrice(value)} off is as much as the price of “${cheapest.name}” (${formatPrice(cheapest.price)}). Choose a smaller amount, ${instead}.`,
         };
       }
     }
@@ -83,7 +84,8 @@ export async function saveOffer(_prev: FormState, form: FormData): Promise<FormS
     return { error: dbMessage(error) };
   }
   updateTag(CATALOG_TAG);
-  redirect("/admin/offers?saved=1");
+  // An offer saved with an end date already past is kept but never shows: say so on the list.
+  redirect(`/admin/offers?saved=1${endsAt && Date.parse(endsAt) <= Date.now() ? "&ended=1" : ""}`);
 }
 
 /** The lowest-priced piece an offer would reach (pieces without a price are left alone). */

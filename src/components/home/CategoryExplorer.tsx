@@ -8,7 +8,6 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Picture } from "@/components/ui/Picture";
 import type { NavCategory, NavGroup } from "@/data/navigation";
 import { cn } from "@/lib/cn";
-import { pluralise } from "@/lib/format";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -19,24 +18,27 @@ const FRAMES = [
   { className: "bottom-0 right-0 h-[42%] w-[40%]", sizes: "(min-width: 1024px) 23vw, 40vw" },
 ];
 
-const countLabel = (category: NavCategory) => (category.count > 0 ? pluralise(category.count, "piece") : "The edit");
-
 /**
  * Shop by category. Pointing at (or focusing) a category name brings that
  * category's photographs onto the stage beside the list; clicking it opens the
  * category page. On touch screens, where there is no hover, the categories
  * become a row of photographs to swipe through.
  */
-export function CategoryExplorer({ groups }: { groups: NavGroup[] }) {
-  const [groupKey, setGroupKey] = useState(groups[0].key);
+export function CategoryExplorer({ groups: all }: { groups: NavGroup[] }) {
+  // A department whose categories are all hidden has nothing to show here, so it gets no tab.
+  const groups = all.filter((g) => g.categories.length > 0);
+  const [groupKey, setGroupKey] = useState<string | null>(null);
   const [activeByGroup, setActiveByGroup] = useState<Record<string, string>>({});
+
+  if (groups.length === 0) return null;
+  const current = groups.find((g) => g.key === groupKey) ?? groups[0];
 
   return (
     <Tabs
       label="Collections"
       items={groups.map((g) => ({ value: g.key, label: g.name }))}
-      value={groupKey}
-      onValueChange={(v) => setGroupKey(v as NavGroup["key"])}
+      value={current.key}
+      onValueChange={setGroupKey}
       classNames={{ list: "no-scrollbar overflow-x-auto px-gutter", panel: "pt-8 lg:pt-12" }}
       renderPanel={(value) => {
         const group = groups.find((g) => g.key === value) ?? groups[0];
@@ -76,7 +78,7 @@ function Panel({ group, active, onActivate }: { group: NavGroup; active: NavCate
                 <span className="label-sm shrink-0 text-mute tabular-nums">{String(i + 1).padStart(2, "0")}</span>
                 <span className="truncate text-[17px] leading-tight font-light tracking-[-0.02em] text-ink">{category.name}</span>
               </p>
-              <p className="label-sm mt-1.5 px-0.5 text-mute">{countLabel(category)}</p>
+              <p className="label-sm mt-1.5 px-0.5 text-mute">{category.summary}</p>
             </Link>
           </li>
         ))}
@@ -103,7 +105,7 @@ function Panel({ group, active, onActivate }: { group: NavGroup; active: NavCate
                 >
                   {category.name}
                 </span>
-                <span className={cn("label-sm ml-auto shrink-0 transition-colors duration-500", isActive ? "text-ink-3" : "text-mute lg:text-mute/60")}>{countLabel(category)}</span>
+                <span className={cn("label-sm ml-auto shrink-0 transition-colors duration-500", isActive ? "text-ink-3" : "text-mute lg:text-mute/60")}>{category.summary}</span>
                 <svg
                   aria-hidden
                   viewBox="0 0 16 16"
@@ -129,6 +131,7 @@ function Panel({ group, active, onActivate }: { group: NavGroup; active: NavCate
               <div key={category.key} aria-hidden={!isActive} className="absolute inset-0" style={{ zIndex: isActive ? 2 : 1 }}>
                 {FRAMES.map((frame, n) => {
                   const shot = category.preview[n] ?? category.preview[category.preview.length - 1];
+                  if (!shot) return <div key={n} className={cn("absolute bg-paper", frame.className)} />;
                   return (
                     <motion.div
                       key={n}

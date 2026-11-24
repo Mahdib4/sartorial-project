@@ -104,8 +104,28 @@ export function describeLink(options: PickerOptions, type: LinkType, target: str
       return { text: `Collection: ${strip(o.label)}`, problem: hidden ? "That collection is hidden, so the banner shows without a link." : null };
     }
     case "url":
-      return /^(\/(?!\/)|https?:\/\/)/.test(target) ? { text: target, problem: null } : { text: target || "A web address", problem: "That address is not valid, so the banner shows without a link." };
+      return shownAddress(target) ? { text: target, problem: null } : { text: target || "A web address", problem: "That address is not valid, so the banner shows without a link." };
     default:
-      return { text: "Leads nowhere (just the words)", problem: null };
+      // Reads "Leads to: nowhere (just the words)".
+      return { text: "nowhere (just the words)", problem: null };
+  }
+}
+
+/**
+ * Whether the website will link to this address (the same rule as the
+ * storefront's): a page on this website starting with one "/", or a full
+ * http(s) address. Spaces and backslashes are refused, and so is "//": browsers
+ * read "//x" and "/\\x" as another website.
+ */
+function shownAddress(target: string): boolean {
+  const t = target.trim();
+  if (!t || /[\\\s\u0000-\u001f\u007f]/.test(t)) return false;
+  if (t.startsWith("/")) return !t.startsWith("//");
+  if (!/^https?:\/\/[^/]/i.test(t)) return false;
+  try {
+    const url = new URL(t);
+    return url.protocol === "https:" || url.protocol === "http:";
+  } catch {
+    return false;
   }
 }

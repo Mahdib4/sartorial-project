@@ -30,7 +30,7 @@ export function ContactSettingsForm({ contact }: { contact: ContactSettings }) {
         <Field label="WhatsApp number for orders" htmlFor="whatsapp" hint="Customers' Send message opens WhatsApp to this number. International format, e.g. +880 1772 121294">
           <Input {...bind("whatsapp")} type="tel" inputMode="tel" autoComplete="off" required placeholder="+880 1772 121294" className="max-w-sm" />
         </Field>
-        <div className="grid gap-5 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <Field label="Phone (optional)" htmlFor="phone" hint="For customers who prefer to call.">
             <Input {...bind("phone")} type="tel" inputMode="tel" maxLength={40} placeholder="+880 1XXX XXXXXX" />
           </Field>
@@ -76,15 +76,16 @@ export function PasswordForm() {
   return (
     <ActionForm action={changePassword} submitLabel="Change password">
       <Card title="Admin password" intro="The password for signing in to this admin. After changing it you stay signed in here; any other phone or computer that was signed in will need the new password.">
-        <Field label="Current password" htmlFor="current">
-          <Input id="current" name="current" type="password" autoComplete="current-password" required className="max-w-sm" />
+        {/* The ids differ from the posted names and from the page's section anchors ("password"), so every label finds its own field. */}
+        <Field label="Current password" htmlFor="current-password">
+          <Input id="current-password" name="current" type="password" autoComplete="current-password" required className="max-w-sm" />
         </Field>
-        <div className="grid gap-5 sm:grid-cols-2">
-          <Field label="New password" htmlFor="password" hint="At least 10 characters. A short sentence is easy to remember and hard to guess.">
-            <Input id="password" name="password" type="password" autoComplete="new-password" required minLength={10} />
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <Field label="New password" htmlFor="new-password" hint="At least 10 characters. A short sentence is easy to remember and hard to guess.">
+            <Input id="new-password" name="password" type="password" autoComplete="new-password" required minLength={10} />
           </Field>
-          <Field label="New password again" htmlFor="confirm" hint="To make sure it was typed correctly.">
-            <Input id="confirm" name="confirm" type="password" autoComplete="new-password" required minLength={10} />
+          <Field label="New password again" htmlFor="confirm-password" hint="To make sure it was typed correctly.">
+            <Input id="confirm-password" name="confirm" type="password" autoComplete="new-password" required minLength={10} />
           </Field>
         </div>
       </Card>

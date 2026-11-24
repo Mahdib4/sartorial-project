@@ -2,10 +2,10 @@ import Link from "next/link";
 import { moveProduct, setProductVisible } from "@/app/admin/actions/products";
 import { ButtonLink, Empty, inputClass, Notice, PageHead, Pill, Select } from "@/components/admin/ui";
 import { COLLECTIONS } from "@/data/categories";
-import { listCategories, listProducts, thumbsFor } from "@/lib/admin/data";
+import { listCategories, listOffers, listProducts, thumbsFor } from "@/lib/admin/data";
 import { cn } from "@/lib/cn";
 import { formatPrice } from "@/lib/format";
-import { whyOffWebsite } from "./visibility";
+import { LEFT_OUT_ADVICE, leftOutMessage, offersLeftOut, whyOffWebsite } from "./visibility";
 
 export default async function ProductsPage({ searchParams }: PageProps<"/admin/products">) {
   const sp = await searchParams;
@@ -31,6 +31,8 @@ export default async function ProductsPage({ searchParams }: PageProps<"/admin/p
 
   const saved = typeof sp.saved === "string" ? products.find((p) => p.slug === sp.saved) : undefined;
   const savedOff = saved ? offSite(saved) : null;
+  // A live "amount off" offer that would take the saved piece's price to nothing is not applied to it: say so.
+  const leftOut = saved ? offersLeftOut(saved, catByKey.get(saved.category), await listOffers()) : [];
   const chosen = category ? catByKey.get(category) : undefined;
   const addHref = `/admin/products/new${category ? `?category=${encodeURIComponent(category)}` : ""}`;
 
@@ -56,6 +58,13 @@ export default async function ProductsPage({ searchParams }: PageProps<"/admin/p
               </>
             )}
           </Notice>
+          {saved && typeof saved.price === "number" && leftOut.length ? (
+            <div className="mt-2">
+              <Notice tone="warning">
+                {leftOut.map((o) => leftOutMessage(o, saved.price!)).join(" ")} {LEFT_OUT_ADVICE}
+              </Notice>
+            </div>
+          ) : null}
         </div>
       ) : typeof sp.saved === "string" ? (
         <div className="mb-5">
@@ -74,8 +83,7 @@ export default async function ProductsPage({ searchParams }: PageProps<"/admin/p
           <option value="">All categories</option>
           {categories.map((c) => (
             <option key={c.key} value={c.key}>
-              {c.name} ({COLLECTIONS[c.collection]?.name ?? c.collection}
-              {c.visible === false ? ", hidden" : ""})
+              {`${c.name} (${COLLECTIONS[c.collection]?.name ?? c.collection}${c.visible === false ? ", hidden" : ""})`}
             </option>
           ))}
         </Select>
@@ -113,7 +121,7 @@ export default async function ProductsPage({ searchParams }: PageProps<"/admin/p
                   {thumbs.get(p.images[0]) ? <img src={thumbs.get(p.images[0])} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" /> : null}
                 </Link>
                 <div className="min-w-0 flex-1">
-                  <Link href={`/admin/products/${p.slug}`} className="block truncate text-[14.5px] hover:underline">
+                  <Link href={`/admin/products/${p.slug}`} className="line-clamp-2 text-[14.5px] break-words hover:underline sm:line-clamp-1">
                     {p.name}
                   </Link>
                   <p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[12.5px] text-ink-3">

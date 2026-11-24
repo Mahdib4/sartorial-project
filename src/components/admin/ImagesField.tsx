@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 import type { LibraryImage } from "@/lib/admin/data";
 import { cn } from "@/lib/cn";
 import { buttonStyles, inputClass } from "./ui";
@@ -31,6 +31,7 @@ export function ImagesField({
   const [error, setError] = useState<string | null>(null);
   const [picking, setPicking] = useState(false);
   const fileInput = useRef<HTMLInputElement>(null);
+  const opener = useRef<HTMLButtonElement>(null);
   const full = items.length >= max;
 
   const move = (i: number, d: number) =>
@@ -65,7 +66,7 @@ export function ImagesField({
   }
 
   return (
-    <div>
+    <div data-images-field>
       <input type="hidden" name={name} value={JSON.stringify(items.map((i) => i.id))} />
       {items.length ? (
         <ol className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
@@ -77,15 +78,19 @@ export function ImagesField({
                 {i === 0 && max > 1 ? <span className="absolute top-2 left-2 bg-ink px-2 py-1 text-[10.5px] tracking-[0.06em] text-white">MAIN</span> : null}
               </div>
               <div className="flex items-center justify-between gap-1 p-1.5">
-                <div className="flex">
-                  <button type="button" onClick={() => move(i, -1)} disabled={i === 0} className="grid h-8 w-8 place-items-center text-ink-2 hover:text-ink disabled:opacity-25" aria-label="Move earlier">
-                    ←
-                  </button>
-                  <button type="button" onClick={() => move(i, 1)} disabled={i === items.length - 1} className="grid h-8 w-8 place-items-center text-ink-2 hover:text-ink disabled:opacity-25" aria-label="Move later">
-                    →
-                  </button>
-                </div>
-                <button type="button" onClick={() => setItems((list) => list.filter((x) => x.id !== item.id))} className="h-8 px-2 text-[12.5px] text-accent hover:underline">
+                {max > 1 ? (
+                  <div className="flex">
+                    <button type="button" onClick={() => move(i, -1)} disabled={i === 0} className="grid h-8 w-8 place-items-center text-ink-2 hover:text-ink disabled:opacity-25" aria-label={`Move photograph ${i + 1} earlier`} title="Move earlier">
+                      ←
+                    </button>
+                    <button type="button" onClick={() => move(i, 1)} disabled={i === items.length - 1} className="grid h-8 w-8 place-items-center text-ink-2 hover:text-ink disabled:opacity-25" aria-label={`Move photograph ${i + 1} later`} title="Move later">
+                      →
+                    </button>
+                  </div>
+                ) : (
+                  <span />
+                )}
+                <button type="button" onClick={() => setItems((list) => list.filter((x) => x.id !== item.id))} className="h-8 px-2 text-[12.5px] text-accent hover:underline" aria-label={max > 1 ? `Remove photograph ${i + 1}` : "Remove the photograph"}>
                   Remove
                 </button>
               </div>
@@ -99,13 +104,17 @@ export function ImagesField({
       <div className="mt-3 flex flex-wrap items-center gap-2">
         {uploads ? (
           <>
-            <input ref={fileInput} type="file" accept="image/*" multiple={max > 1} className="sr-only" id={`${name}-upload`} onChange={(e) => upload(e.target.files)} disabled={full || busy > 0} />
-            <label htmlFor={`${name}-upload`} className={cn(buttonStyles.secondary, "cursor-pointer", (full || busy > 0) && "pointer-events-none opacity-50")}>
+            {/* The file box is hidden and its label is the button, so the label shows the keyboard focus. */}
+            <input ref={fileInput} type="file" accept="image/*" multiple={max > 1} className="peer sr-only" id={`${name}-upload`} onChange={(e) => upload(e.target.files)} disabled={full || busy > 0} />
+            <label
+              htmlFor={`${name}-upload`}
+              className={cn(buttonStyles.secondary, "cursor-pointer peer-focus-visible:border-ink peer-focus-visible:outline-[1.5px] peer-focus-visible:outline-offset-3 peer-focus-visible:outline-ink peer-focus-visible:outline-solid", (full || busy > 0) && "pointer-events-none opacity-50")}
+            >
               {busy > 0 ? `Uploading ${busy}…` : max > 1 ? "Upload photographs" : "Upload a photograph"}
             </label>
           </>
         ) : null}
-        <button type="button" className={buttonStyles.secondary} onClick={() => setPicking(true)} disabled={full}>
+        <button type="button" ref={opener} className={buttonStyles.secondary} onClick={() => setPicking(true)} disabled={full} aria-haspopup="dialog">
           Choose from the site&apos;s photographs
         </button>
         {max > 1 ? <span className="text-[12.5px] text-ink-3">The first photograph is the main one. Use the arrows to reorder.</span> : null}
@@ -116,6 +125,7 @@ export function ImagesField({
         <Library
           library={library}
           chosen={new Set(items.map((i) => i.id))}
+          opener={opener}
           onClose={() => setPicking(false)}
           onPick={(img) => {
             setItems((list) => (list.length >= max || list.some((x) => x.id === img.id) ? list : [...list, img]));
@@ -127,48 +137,108 @@ export function ImagesField({
   );
 }
 
-function Library({ library, chosen, onPick, onClose }: { library: LibraryImage[]; chosen: Set<string>; onPick: (img: LibraryImage) => void; onClose: () => void }) {
+/**
+ * The photo library, as a modal dialog (the browser's own <dialog>): Escape or
+ * Done closes it, a tap outside closes it, the keyboard stays inside it while
+ * open, and focus goes back to the "Choose from…" button afterwards.
+ * Enter in its search box never sends the form behind it.
+ */
+function Library({
+  library,
+  chosen,
+  opener,
+  onPick,
+  onClose,
+}: {
+  library: LibraryImage[];
+  chosen: Set<string>;
+  opener: RefObject<HTMLButtonElement | null>;
+  onPick: (img: LibraryImage) => void;
+  onClose: () => void;
+}) {
   const [q, setQ] = useState("");
   const [limit, setLimit] = useState(60);
+  const dialog = useRef<HTMLDialogElement>(null);
   const shown = useMemo(() => {
     const terms = q.toLowerCase().split(/\s+/).filter(Boolean);
     return library.filter((img) => terms.every((t) => (img.label + " " + img.id).toLowerCase().includes(t)));
   }, [library, q]);
 
+  useEffect(() => {
+    const d = dialog.current;
+    const back = opener.current;
+    if (d && !d.open) d.showModal();
+    return () => {
+      if (d?.open) d.close();
+      // The opener is disabled when the last free place was just filled: then focus the new photograph's Remove button.
+      if (back && !back.disabled) back.focus();
+      else back?.closest("[data-images-field]")?.querySelector<HTMLElement>("ol > li:last-child button[aria-label^='Remove']")?.focus();
+    };
+  }, [opener]);
+
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-ink/40 sm:items-center sm:p-6" role="dialog" aria-modal="true" aria-label="Choose a photograph" onClick={onClose}>
-      <div className="flex max-h-[88dvh] w-full max-w-5xl flex-col bg-white" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center gap-3 border-b border-line p-4">
-          <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search: sherwani, navy, achkan, shirt…" className={inputClass} />
-          <button type="button" onClick={onClose} className={buttonStyles.secondary}>
-            Done
-          </button>
-        </div>
-        <div className="overflow-y-auto p-4">
-          <p className="mb-3 text-[12.5px] text-ink-3">{shown.length} photographs. Tap one to add it.</p>
-          <ul className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6">
-            {shown.slice(0, limit).map((img) => (
-              <li key={img.id}>
-                <button type="button" onClick={() => onPick(img)} disabled={chosen.has(img.id)} className="group block w-full text-left disabled:opacity-35" title={img.label}>
-                  <span className="relative block aspect-[4/5] bg-paper">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={img.src} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-opacity group-hover:opacity-80" />
-                  </span>
-                  <span className="mt-1 block truncate text-[11px] text-ink-3">{img.label}</span>
-                </button>
-              </li>
-            ))}
-          </ul>
-          {shown.length > limit ? (
-            <div className="mt-4 text-center">
-              <button type="button" className={buttonStyles.secondary} onClick={() => setLimit((l) => l + 120)}>
-                Show more
-              </button>
-            </div>
-          ) : null}
-        </div>
+    <dialog
+      ref={dialog}
+      aria-label="Choose a photograph"
+      // Escape: the browser closes the dialog; the form behind keeps what was chosen.
+      // (A close event can also arrive late from an earlier close() while the dialog is open again: ignore that one.)
+      onClose={() => {
+        if (!dialog.current?.open) onClose();
+      }}
+      // A tap on the dimmed area outside the panel closes it.
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+      className="mx-auto mt-auto mb-0 max-h-[88dvh] w-full max-w-5xl border-0 bg-white p-0 text-ink backdrop:bg-[rgba(28,27,23,0.4)] open:flex open:flex-col sm:mb-auto"
+    >
+      <div className="flex items-center gap-3 border-b border-line p-4">
+        <input
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          onKeyDown={(e) => {
+            // Enter only searches (the results already follow the typing); it must not send the form behind.
+            if (e.key === "Enter") e.preventDefault();
+          }}
+          enterKeyHint="search"
+          type="search"
+          autoComplete="off"
+          placeholder="Search: sherwani, navy, achkan, shirt…"
+          aria-label="Search the photographs"
+          className={inputClass}
+        />
+        <button type="button" onClick={onClose} className={buttonStyles.secondary}>
+          Done
+        </button>
       </div>
-    </div>
+      <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-4">
+        <p className="mb-3 text-[12.5px] text-ink-3" aria-live="polite">
+          {shown.length === 0 ? `No photographs match “${q.trim()}”.` : `${shown.length} ${shown.length === 1 ? "photograph" : "photographs"}. Tap one to add it.`}
+        </p>
+        <ul className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6">
+          {shown.slice(0, limit).map((img) => (
+            <li key={img.id} className="min-w-0">
+              <button type="button" onClick={() => onPick(img)} disabled={chosen.has(img.id)} className="group block w-full text-left disabled:opacity-35" title={img.label}>
+                <span className="relative block aspect-[4/5] bg-paper">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={img.src} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-opacity group-hover:opacity-80" />
+                </span>
+                <span className="mt-1 block truncate text-[11px] text-ink-3">
+                  {img.label}
+                  {chosen.has(img.id) ? <span className="sr-only"> (already chosen)</span> : null}
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+        {shown.length > limit ? (
+          <div className="mt-4 text-center">
+            <button type="button" className={buttonStyles.secondary} onClick={() => setLimit((l) => l + 120)}>
+              Show more
+            </button>
+          </div>
+        ) : null}
+      </div>
+    </dialog>
   );
 }
 

@@ -13,7 +13,22 @@ const OCCASIONS = ["Wedding", "Festive", "Black tie", "Business", "Casual"];
 /** `visible: false` marks a hidden category: its pieces are not on the website. */
 export type CategoryOption = { key: string; name: string; collection: string; visible?: boolean };
 
-export function ProductForm({ product, categories, images, library, defaultCategory }: { product: Product | null; categories: CategoryOption[]; images: LibraryImage[]; library: LibraryImage[]; defaultCategory?: string }) {
+export function ProductForm({
+  product,
+  categories,
+  images,
+  library,
+  defaultCategory,
+  offWebsite = false,
+}: {
+  product: Product | null;
+  categories: CategoryOption[];
+  images: LibraryImage[];
+  library: LibraryImage[];
+  defaultCategory?: string;
+  /** The piece is not on the website (hidden, or its category is): its address is shown without a link. */
+  offWebsite?: boolean;
+}) {
   const p = product;
   const groups = ["heritage", "classic", "accessories", "footwear"].map((g) => [g, categories.filter((c) => c.collection === g)] as const);
   return (
@@ -38,7 +53,14 @@ export function ProductForm({ product, categories, images, library, defaultCateg
               </Field>
             ) : (
               <p className="text-[13px] text-ink-3">
-                Web address: <a href={`/products/${p.slug}`} target="_blank" rel="noreferrer" className="underline">/products/{p.slug}</a>
+                Web address:{" "}
+                {offWebsite ? (
+                  <>/products/{p.slug} (not on the website at the moment)</>
+                ) : (
+                  <a href={`/products/${p.slug}`} target="_blank" rel="noreferrer" className="underline">
+                    /products/{p.slug}
+                  </a>
+                )}
               </p>
             )}
             <Field label="One-line summary" htmlFor="summary" hint="Shown under the name.">
@@ -78,7 +100,7 @@ export function ProductForm({ product, categories, images, library, defaultCateg
               <legend className="mb-2 text-[13px] font-medium">Occasions</legend>
               <div className="flex flex-wrap gap-2">
                 {OCCASIONS.map((o) => (
-                  <label key={o} className="flex cursor-pointer items-center gap-2 border border-line bg-white px-3 py-2 text-[13.5px] has-[:checked]:border-ink has-[:checked]:bg-ink has-[:checked]:text-white">
+                  <label key={o} className="flex cursor-pointer items-center gap-2 border border-line bg-white px-3 py-2 text-[13.5px] has-[:checked]:border-ink has-[:checked]:bg-ink has-[:checked]:text-white has-[:focus-visible]:outline-[1.5px] has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-ink has-[:focus-visible]:outline-solid">
                     <input type="checkbox" name="occasions" value={o} defaultChecked={p?.occasions.includes(o)} className="sr-only" />
                     {o}
                   </label>
@@ -119,7 +141,7 @@ export function ProductForm({ product, categories, images, library, defaultCateg
             <Field label="Sale price (৳, optional)" htmlFor="salePrice" hint="Lower than the price; shown with the price struck through. Leave it empty for no sale. If a live offer gives a lower price, visitors get that instead.">
               <Input id="salePrice" name="salePrice" inputMode="numeric" autoComplete="off" defaultValue={p?.salePrice ?? ""} />
             </Field>
-            <Field label="Label on the card (optional)" htmlFor="badge" hint="A word or two, e.g. “New” or “Limited”. A live offer's label takes its place.">
+            <Field label="Label on the card (optional)" htmlFor="badge" hint="A word or two, e.g. “New” or “Limited”. When a live offer sets the price, the offer's label is shown instead.">
               <Input id="badge" name="badge" defaultValue={p?.badge} maxLength={30} />
             </Field>
           </Card>

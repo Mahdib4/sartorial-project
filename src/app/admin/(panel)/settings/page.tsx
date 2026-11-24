@@ -42,13 +42,14 @@ export default async function SettingsPage({ searchParams }: PageProps<"/admin/s
       </section>
 
       <div className="space-y-10">
-        <div id="contact">
+        {/* Section anchors: kept distinct from every field's id (the password field is "new-password"). */}
+        <div id="contact-section">
           <ContactSettingsForm contact={contact} />
         </div>
-        <div id="social">
+        <div id="social-section">
           <SocialSettingsForm social={social} />
         </div>
-        <div id="password">
+        <div id="password-section">
           <PasswordForm />
         </div>
       </div>
