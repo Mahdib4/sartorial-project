@@ -38,17 +38,39 @@ export async function saveCategory(_prev: FormState, form: FormData): Promise<Fo
       if (!rowCount) return { error: "This category no longer exists." };
     } else {
       const collection = text(form, "collection", 20);
-      const slug = slugify(text(form, "slug", 120) || name);
+      const typed = text(form, "slug", 120);
+      const slug = slugify(typed || name);
       if (!DEPARTMENTS[collection]) return { error: "Choose a department." };
-      if (!slug) return { error: "The web address is empty. Use letters or numbers." };
+      if (!slug) {
+        return {
+          error: typed
+            ? "Type the web address in English letters or numbers, for example “sherwanis”."
+            : `A web address can't be made from the name “${name}”, because it has no English letters. Type one in English letters in the “Web address” field, for example “sherwanis”.`,
+        };
+      }
       key = `${collection}/${slug}`;
+      const taken = (other?: string) => ({
+        error: `${DEPARTMENTS[collection]} already has a category at this web address${other ? ` (“${other}”)` : ""}. Choose a different web address.`,
+      });
       const { rows } = await pool.query("SELECT name FROM categories WHERE key = $1", [key]);
-      if (rows[0]) return { error: `${DEPARTMENTS[collection]} already has a category at this web address (“${rows[0].name}”). Choose a different web address.` };
-      await pool.query(
-        `INSERT INTO categories (key, slug, collection, name, blurb, intro, preview, sizes, visible, position)
-         VALUES ($1,$2,$3,$4,$5,$6,$7::jsonb,$8,$9, (SELECT coalesce(max(position), 0) + 1 FROM categories WHERE collection = $3))`,
-        [key, slug, collection, name, blurb, intro, JSON.stringify(preview), sizes, visible],
-      );
+      if (rows[0]) return taken(rows[0].name);
+      try {
+        // One statement, so the category is added and taken off the list of deleted ones
+        // (which `npm run db:import-catalogue` skips) together.
+        await pool.query(
+          `WITH added AS (
+             INSERT INTO categories (key, slug, collection, name, blurb, intro, preview, sizes, visible, position)
+             VALUES ($1,$2,$3,$4,$5,$6,$7::jsonb,$8,$9, (SELECT coalesce(max(position), 0) + 1 FROM categories WHERE collection = $3))
+             RETURNING key
+           )
+           DELETE FROM removed_items WHERE kind = 'category' AND key IN (SELECT key FROM added)`,
+          [key, slug, collection, name, blurb, intro, JSON.stringify(preview), sizes, visible],
+        );
+      } catch (error) {
+        // Someone added the same category a moment ago.
+        if ((error as { code?: string })?.code === "23505") return taken();
+        throw error;
+      }
     }
   } catch (error) {
     return { error: dbMessage(error) };
@@ -57,7 +79,10 @@ export async function saveCategory(_prev: FormState, form: FormData): Promise<Fo
   redirect(`/admin/categories?saved=${encodeURIComponent(key)}`);
 }
 
-/** Delete an empty category. One that still has products is refused, so no product is left without a home. */
+/**
+ * Delete an empty category. One that still has products is refused, so no product is left without a home.
+ * It is noted in removed_items, so `npm run db:import-catalogue` does not bring a built-in category back.
+ */
 export async function deleteCategory(form: FormData): Promise<void> {
   await requireAdmin();
   const pool = db();
@@ -67,7 +92,15 @@ export async function deleteCategory(form: FormData): Promise<void> {
   try {
     const { rows } = await pool.query("SELECT count(*)::int AS n FROM products WHERE category = $1", [key]);
     inUse = rows[0].n > 0;
-    if (!inUse) await pool.query("DELETE FROM categories WHERE key = $1", [key]);
+    if (!inUse) {
+      // One statement, so the category is deleted and noted as deleted together.
+      await pool.query(
+        `WITH gone AS (DELETE FROM categories WHERE key = $1 RETURNING key)
+         INSERT INTO removed_items (kind, key) SELECT 'category', key FROM gone
+         ON CONFLICT (kind, key) DO UPDATE SET removed_at = now()`,
+        [key],
+      );
+    }
   } catch (error) {
     // A product was added to it in the meantime (the database refuses the delete): show the explanation instead.
     if ((error as { code?: string })?.code !== "23503") throw error;

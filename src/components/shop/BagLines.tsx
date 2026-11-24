@@ -3,10 +3,10 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { Counter } from "@/components/bencho/rolling-counter/Counter";
+import { PriceTag } from "@/components/product/PriceTag";
 import { Picture } from "@/components/ui/Picture";
 import { SITE } from "@/config/site";
 import { cn } from "@/lib/cn";
-import { formatPrice } from "@/lib/format";
 import { useShop } from "@/store/shop";
 
 /** The lines of the bag: used in the drawer and on the bag page. */
@@ -42,7 +42,13 @@ export function BagLines({ onNavigate, roomy = false }: { onNavigate?: () => voi
                       {line.product.colour} · {line.size}
                     </p>
                   </div>
-                  <p className="shrink-0 text-[13px] whitespace-nowrap text-ink-2">{formatPrice(line.product.price === null ? null : line.product.price * line.qty)}</p>
+                  {/* As on the cards: the reduced price, with the original struck through. */}
+                  <PriceTag
+                    price={line.product.price === null ? null : line.product.price * line.qty}
+                    compareAt={line.product.compareAt ? line.product.compareAt * line.qty : null}
+                    stacked
+                    className="shrink-0 text-[13px] whitespace-nowrap text-ink-2"
+                  />
                 </div>
                 <div className="mt-auto flex items-center justify-between pt-4">
                   <Counter value={line.qty} onChange={(next) => setQty(line.slug, line.size, next)} min={1} max={SITE.commerce.maxQuantity} size="sm" label={`Quantity of ${line.product.name}`} />

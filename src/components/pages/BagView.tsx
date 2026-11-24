@@ -4,12 +4,13 @@ import Link from "next/link";
 import { BagLines } from "@/components/shop/BagLines";
 import { EnquiryForm } from "@/components/shop/EnquiryForm";
 import { ButtonLink } from "@/components/ui/Button";
+import { onRequestNote } from "@/lib/enquiry";
 import { formatPrice, pluralise } from "@/lib/format";
 import { useShop } from "@/store/shop";
 
 /** The bag as a page: the lines on one side, the enquiry on the other. */
 export function BagView() {
-  const { bag, count, subtotal, ready, clear } = useShop();
+  const { bag, count, pricedSubtotal, onRequest, ready, clear } = useShop();
 
   if (!ready) {
     return <div className="min-h-[50vh]" aria-busy="true" />;
@@ -39,9 +40,13 @@ export function BagView() {
           </button>
         </div>
         <BagLines roomy />
-        <dl className="mt-6 flex items-baseline justify-between text-[15px]">
-          <dt className="label text-ink-3">{subtotal === null ? "Total" : "Subtotal"}</dt>
-          <dd>{subtotal === null ? "Price on request" : formatPrice(subtotal)}</dd>
+        <dl className="mt-6 flex items-baseline justify-between gap-4 text-[15px]">
+          <dt className="label text-ink-3">{pricedSubtotal === null ? "Total" : "Subtotal"}</dt>
+          <dd className="text-right">
+            {pricedSubtotal === null ? "Price on request" : formatPrice(pricedSubtotal)}
+            {/* Some pieces have no price yet: show what the others come to, and say so. */}
+            {pricedSubtotal !== null && onRequest > 0 ? <span className="mt-1 block text-[13px] text-ink-3">{onRequestNote(onRequest)}</span> : null}
+          </dd>
         </dl>
         <p className="mt-3 max-w-md text-[13px] leading-relaxed text-ink-3">
           Pieces are made to order, so nothing is charged here. Send us your selection and we will reply to confirm cloth, price and a time for your fitting. Prefer to begin in person?{" "}
@@ -68,6 +73,9 @@ export function BagView() {
               size: line.size,
               qty: line.qty,
               href: line.product.href,
+              price: line.product.price,
+              compareAt: line.product.compareAt,
+              offer: line.product.offer,
             }))}
           />
         </div>

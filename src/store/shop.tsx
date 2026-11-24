@@ -70,7 +70,11 @@ type ShopContext = {
   ready: boolean;
   bag: Array<BagLine & { product: IndexEntry }>;
   count: number;
+  /** The bag's total when every piece has a price; null when any piece is priced on request. */
   subtotal: number | null;
+  /** The sum of the pieces that have a price (null when none has), and how many pieces are priced on request. */
+  pricedSubtotal: number | null;
+  onRequest: number;
   add: (slug: string, size: string, qty?: number) => void;
   setQty: (slug: string, size: string, qty: number) => void;
   remove: (slug: string, size: string) => void;
@@ -185,12 +189,16 @@ export function ShopProvider({ index, contact, children }: { index: IndexEntry[]
       const product = bySlug.get(l.slug);
       return product ? [{ ...l, product }] : [];
     });
-    const allPriced = bag.length > 0 && bag.every((l) => typeof l.product.price === "number");
+    const priced = bag.filter((l) => typeof l.product.price === "number");
+    const pricedSubtotal = priced.length ? priced.reduce((n, l) => n + (l.product.price ?? 0) * l.qty, 0) : null;
+    const onRequest = bag.reduce((n, l) => n + (typeof l.product.price === "number" ? 0 : l.qty), 0);
     return {
       ready,
       bag,
       count: bag.reduce((n, l) => n + l.qty, 0),
-      subtotal: allPriced ? bag.reduce((n, l) => n + (l.product.price ?? 0) * l.qty, 0) : null,
+      subtotal: bag.length > 0 && onRequest === 0 ? pricedSubtotal : null,
+      pricedSubtotal,
+      onRequest,
       add,
       setQty,
       remove,

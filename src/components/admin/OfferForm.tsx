@@ -3,9 +3,14 @@
 import { useState } from "react";
 import { saveOffer } from "@/app/admin/actions/offers";
 import type { Offer } from "@/data/types";
+import { asciiDigits, money } from "@/lib/admin/form";
+import { formatPrice } from "@/lib/format";
 import { ActionForm } from "./ActionForm";
 import { MultiPicker, ProductPicker, type Option, type ProductOption } from "./Pickers";
 import { Card, Field, Input, localInput, Notice, Toggle } from "./ui";
+
+/** The longest label that fits beside the wishlist heart on a phone's product card (checked again when saving). */
+const BADGE_MAX = 18;
 
 const KINDS = [
   { value: "percent", label: "A percentage off", hint: "e.g. 15% off the price." },
@@ -26,9 +31,12 @@ export function OfferForm({ offer, departments, categories, products }: { offer:
   const [scope, setScope] = useState<Offer["scope"]>(o?.scope ?? "category");
   const [value, setValue] = useState(o && o.kind !== "note" ? String(o.value) : "");
   const [name, setName] = useState(o?.name ?? "");
+  const [badge, setBadge] = useState(o?.badge ?? "");
   const initial = (s: Offer["scope"]) => (o?.scope === s ? o.targets : []);
-  const percent = Number.parseInt(value.replace(/\D/g, ""), 10);
-  const defaultBadge = kind === "percent" ? `−${percent > 0 ? percent : 15}%` : kind === "amount" ? "Offer" : name || "the offer's name";
+  // What cards show when the label is left empty (the same words the website uses).
+  const percent = Number.parseInt(asciiDigits(value).replace(/\D/g, ""), 10);
+  const amount = money(value).value;
+  const defaultBadge = kind === "percent" ? `${percent > 0 ? percent : 15}% off` : kind === "amount" ? `${formatPrice(amount && amount > 0 ? amount : 2000)} off` : null;
 
   return (
     <ActionForm action={saveOffer} submitLabel={o ? "Save changes" : "Add offer"}>
@@ -53,11 +61,12 @@ export function OfferForm({ offer, departments, categories, products }: { offer:
                   <Input
                     id="value"
                     name="value"
-                    type="number"
+                    // An amount is typed like a price ("2,000" or "৳2,000"), so it is a text field; the server reads it.
+                    type={kind === "percent" ? "number" : "text"}
                     inputMode="numeric"
-                    min={1}
+                    min={kind === "percent" ? 1 : undefined}
                     max={kind === "percent" ? 90 : undefined}
-                    step={1}
+                    step={kind === "percent" ? 1 : undefined}
                     required={kind !== "note"}
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
@@ -67,8 +76,25 @@ export function OfferForm({ offer, departments, categories, products }: { offer:
                 </div>
               </Field>
             </div>
-            <Field label="Label on cards (optional)" htmlFor="badge" hint={`A word or two on product cards, e.g. “Eid −15%”. Left empty, cards show “${defaultBadge}”.`}>
-              <Input id="badge" name="badge" defaultValue={o?.badge} maxLength={30} placeholder={defaultBadge} />
+            <Field
+              label={kind === "note" ? "Label on cards" : "Label on cards (optional)"}
+              htmlFor="badge"
+              hint={
+                kind === "note"
+                  ? `The words product cards carry, e.g. “Free alterations”. Up to ${BADGE_MAX} letters, so it fits on a phone.`
+                  : `A word or two on product cards, e.g. “Eid 15% off”, up to ${BADGE_MAX} letters. Left empty, cards show “${defaultBadge}”.`
+              }
+            >
+              <Input
+                id="badge"
+                name="badge"
+                value={badge}
+                onChange={(e) => setBadge(e.target.value)}
+                maxLength={BADGE_MAX}
+                required={kind === "note"}
+                placeholder={defaultBadge ?? "e.g. Free alterations"}
+              />
+              {badge.length > BADGE_MAX ? <p className="mt-1.5 text-[12.5px] text-accent">This label has {badge.length} letters. Shorten it to {BADGE_MAX} or fewer.</p> : null}
             </Field>
           </Card>
 

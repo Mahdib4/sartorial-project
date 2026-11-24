@@ -1,7 +1,7 @@
 import { cacheLife, cacheTag } from "next/cache";
 import type { Pool, PoolClient } from "pg";
 import { db } from "@/lib/db";
-import { CATEGORIES } from "./categories";
+import { CATEGORIES, COLLECTION_ORDER } from "./categories";
 import { PRODUCTS } from "./products";
 import { DEFAULT_NOTICES, DEFAULT_SETTINGS, withDefaults } from "./seed";
 import type { Banner, Category, ColourFamily, Curated, Offer, Product, SiteSettings, SizeScaleKey, UploadedImage } from "./types";
@@ -11,15 +11,24 @@ import type { Banner, Category, ColourFamily, Curated, Offer, Product, SiteSetti
  *
  * With DATABASE_URL set, everything the admin manages is read from Neon: the
  * catalogue, uploaded photographs, banners and notices, offers, curated
- * collections and settings. The first time the site meets an empty database it
- * copies in the catalogue that ships with the code. Without a database (or if
- * it cannot be reached) the site falls back to that built-in catalogue, so it
- * never goes down with the database.
+ * collections and settings. The very first time the site meets an empty
+ * database it copies in the catalogue that ships with the code, and notes in
+ * settings ("catalogue_seeded") that it has done so: it never copies it again,
+ * so a category or piece the house deletes stays deleted. Without a database
+ * the site shows that built-in catalogue.
  *
  * The whole lot is one cached read, tagged "catalog". Every admin change calls
  * updateTag("catalog"), so pages are rebuilt with the new content on their next
- * visit; otherwise they refresh every few minutes (which is also when scheduled
- * banners and offers start and stop).
+ * visit. Otherwise pages refresh every five minutes and are never served more
+ * than an hour old. When a banner or offer is due to start or end sooner than
+ * that, the cache is cut short to its time, so the change shows on the first
+ * visit after it (on a quiet page, at most one visitor in the five minutes after
+ * it may still see the old version while the page is rebuilt).
+ *
+ * If the database cannot be reached, the read is tried once more; if that fails
+ * too, the site keeps showing the last catalogue it read (the built-in one only
+ * when it has none, e.g. straight after a restart) and tries the database again
+ * within half a minute. A failure is never kept for long.
  */
 
 export const CATALOG_TAG = "catalog";
@@ -37,20 +46,83 @@ export type CatalogData = {
   settings: SiteSettings;
 };
 
+/** Normal life of the cached catalogue: refreshed every five minutes, never served more than an hour old. */
+const NORMAL_LIFE = { stale: 300, revalidate: 300, expire: 3600 };
+/** After a failed read: try the database again soon. (Next needs stale >= 30 s and expire >= 5 min to keep pages prerendered.) */
+const RETRY_LIFE = { stale: 30, revalidate: 30, expire: 300 };
+
+/**
+ * The last catalogue read from the database in this server process, with every
+ * switched-on banner and offer (not only the live ones), so it can be served
+ * again if the database is briefly unreachable.
+ */
+let lastGood: CatalogData | null = null;
+
 export async function loadCatalogData(): Promise<CatalogData> {
   "use cache";
   cacheTag(CATALOG_TAG);
-  cacheLife({ stale: 300, revalidate: 300, expire: 7 * 86400 });
 
   const pool = db();
-  if (!pool) return staticCatalog();
-  try {
-    await ensureSeeded(pool);
-    return await readCatalog(pool);
-  } catch (error) {
-    console.error("catalog: database unavailable, using the built-in catalogue:", error instanceof Error ? error.message : error);
-    return staticCatalog();
+  let failed = false;
+  if (pool) {
+    const fresh = await readFromDatabase(pool);
+    if (fresh) lastGood = fresh;
+    else failed = true;
   }
+  const now = new Date();
+  const { data, nextChange } = liveAt(lastGood ?? staticCatalog(), now);
+  // Exactly one cacheLife call per run, decided once the read has succeeded or failed.
+  cacheLife(failed ? RETRY_LIFE : lifeUntil(nextChange, now));
+  return data;
+}
+
+/** Read the catalogue, trying once more after a short pause. Null when both tries fail. */
+async function readFromDatabase(pool: Pool): Promise<CatalogData | null> {
+  for (let attempt = 1; ; attempt++) {
+    try {
+      await ensureSeeded(pool);
+      return await readCatalog(pool);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      if (attempt >= 2) {
+        console.error(`catalog: database unavailable (${message}); showing ${lastGood ? "the last catalogue read" : "the built-in catalogue"} and trying again shortly`);
+        return null;
+      }
+      console.warn(`catalog: database read failed (${message}); trying once more`);
+      await new Promise((resolve) => setTimeout(resolve, 400));
+    }
+  }
+}
+
+/** Keep only the banners and offers live at `now`, and find when the next one starts or ends. */
+function liveAt(data: CatalogData, now: Date): { data: CatalogData; nextChange: number | null } {
+  const t = now.getTime();
+  let nextChange: number | null = null;
+  for (const item of [...data.banners, ...data.offers]) {
+    if (!item.active) continue;
+    for (const at of [item.startsAt, item.endsAt]) {
+      const when = at ? Date.parse(at) : Number.NaN;
+      if (when > t && (nextChange === null || when < nextChange)) nextChange = when;
+    }
+  }
+  return {
+    data: { ...data, banners: data.banners.filter((b) => isLive(b, now)), offers: data.offers.filter((o) => isLive(o, now)) },
+    nextChange,
+  };
+}
+
+/**
+ * The cache life for a catalogue whose next scheduled change is at `nextChange`.
+ * The entry expires at that time when it can (the next visit then waits for
+ * fresh content); within the last five minutes, when Next will not let it
+ * expire any sooner, it is marked for refreshing at that time instead.
+ */
+function lifeUntil(nextChange: number | null, now: Date): { stale: number; revalidate: number; expire: number } {
+  if (nextChange === null) return NORMAL_LIFE;
+  const seconds = Math.max(1, Math.ceil((nextChange - now.getTime()) / 1000));
+  if (seconds >= NORMAL_LIFE.expire) return NORMAL_LIFE;
+  if (seconds > NORMAL_LIFE.revalidate) return { stale: 60, revalidate: NORMAL_LIFE.revalidate, expire: seconds };
+  return { stale: 30, revalidate: seconds, expire: 300 };
 }
 
 // ── Built-in catalogue ─────────────────────────────────────────
@@ -169,55 +241,93 @@ export function isLive(item: { active: boolean; startsAt: string | null; endsAt:
   return true;
 }
 
+/**
+ * Everything the website shows, in the order the admin sets: products by
+ * department (Heritage, Classic, Accessories, Footwear), then by their
+ * category's place in it, then by their own place in the category. Positions
+ * are numbered within each category, so they are never compared across
+ * categories. Banners and offers come back whether or not they are live yet
+ * (only those switched on); liveAt() picks the live ones.
+ */
 async function readCatalog(pool: Pool): Promise<CatalogData> {
+  const departments = COLLECTION_ORDER as string[];
   const [categories, products, uploads, banners, offers, curated, settings] = await Promise.all([
-    pool.query("SELECT key, slug, collection, name, blurb, intro, preview, film, sizes, edit, visible FROM categories ORDER BY position, name"),
     pool.query(
-      "SELECT slug, name, category, images, videos, colour, colour_family, fabric, code, occasions, summary, description, details, note, price, sale_price, badge, featured, visible FROM products ORDER BY position, created_at",
+      "SELECT key, slug, collection, name, blurb, intro, preview, film, sizes, edit, visible FROM categories ORDER BY array_position($1::text[], collection), position, name",
+      [departments],
+    ),
+    pool.query(
+      `SELECT p.slug, p.name, p.category, p.images, p.videos, p.colour, p.colour_family, p.fabric, p.code, p.occasions, p.summary, p.description,
+              p.details, p.note, p.price, p.sale_price, p.badge, p.featured, p.visible
+       FROM products p JOIN categories c ON c.key = p.category
+       ORDER BY array_position($1::text[], c.collection), c.position, c.name, p.position, p.created_at, p.slug`,
+      [departments],
     ),
     pool.query("SELECT id, w, h, widths, blur, bg FROM media"),
-    pool.query("SELECT * FROM banners ORDER BY position, id"),
-    pool.query("SELECT * FROM offers ORDER BY id"),
+    pool.query("SELECT * FROM banners WHERE active ORDER BY position, id"),
+    pool.query("SELECT * FROM offers WHERE active ORDER BY id"),
     pool.query("SELECT * FROM curated WHERE visible ORDER BY position, created_at DESC"),
-    pool.query("SELECT key, value FROM settings"),
+    // Only the settings the website uses (not the admin password, nor the note that the catalogue was copied in).
+    pool.query("SELECT key, value FROM settings WHERE key = ANY($1::text[])", [Object.keys(DEFAULT_SETTINGS)]),
   ]);
-  const now = new Date();
   return {
     source: "database",
     categories: categories.rows.map(rowToCategory),
     products: products.rows.map(rowToProduct),
     uploads: uploads.rows.map((r) => ({ id: r.id, w: r.w, h: r.h, widths: r.widths, blur: r.blur, bg: r.bg })),
-    banners: banners.rows.map(rowToBanner).filter((b) => isLive(b, now)),
-    offers: offers.rows.map(rowToOffer).filter((o) => isLive(o, now)),
+    banners: banners.rows.map(rowToBanner),
+    offers: offers.rows.map(rowToOffer),
     curated: curated.rows.map(rowToCurated),
     settings: withDefaults(Object.fromEntries(settings.rows.map((r) => [r.key, r.value]))),
   };
 }
 
-// ── First run: copy the built-in catalogue into the database ───
+// ── First run: copy the built-in catalogue into the database, once ──
+
+/** The settings row that records the built-in catalogue has been copied in (or was not needed). */
+export const SEEDED_SETTING = "catalogue_seeded";
 
 let seeded = false;
 
+/**
+ * Copy the built-in catalogue into a new, empty database, once ever. The
+ * "catalogue_seeded" setting records it, so a house that later deletes every
+ * category never sees the built-in ones come back. A database that already has
+ * categories but no record (filled before the record existed, or by
+ * `npm run db:import-catalogue`) is only given the record.
+ */
 async function ensureSeeded(pool: Pool): Promise<void> {
   if (seeded) return;
-  const { rows } = await pool.query("SELECT EXISTS (SELECT 1 FROM categories) AS has");
-  if (rows[0].has) {
+  const { rows } = await pool.query("SELECT EXISTS (SELECT 1 FROM settings WHERE key = $1) AS done", [SEEDED_SETTING]);
+  if (rows[0].done) {
     seeded = true;
     return;
   }
   const client = await pool.connect();
+  let failure: Error | undefined;
   try {
     await client.query("BEGIN");
     await client.query("SELECT pg_advisory_xact_lock(hashtext('sartorial:seed'))");
-    const again = await client.query("SELECT EXISTS (SELECT 1 FROM categories) AS has");
-    if (!again.rows[0].has) await seed(client);
+    const again = await client.query("SELECT EXISTS (SELECT 1 FROM settings WHERE key = $1) AS done, EXISTS (SELECT 1 FROM categories) AS has_categories", [
+      SEEDED_SETTING,
+    ]);
+    if (!again.rows[0].done) {
+      const copy = !again.rows[0].has_categories;
+      if (copy) await seed(client);
+      await client.query("INSERT INTO settings (key, value) VALUES ($1, jsonb_build_object('at', now(), 'copied', $2::boolean)) ON CONFLICT (key) DO NOTHING", [
+        SEEDED_SETTING,
+        copy,
+      ]);
+    }
     await client.query("COMMIT");
     seeded = true;
   } catch (error) {
+    failure = error instanceof Error ? error : new Error(String(error));
     await client.query("ROLLBACK").catch(() => {});
     throw error;
   } finally {
-    client.release();
+    // A connection that failed (a timeout, say) is closed rather than reused.
+    client.release(failure);
   }
 }
 

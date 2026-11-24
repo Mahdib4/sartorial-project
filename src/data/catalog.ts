@@ -1,5 +1,6 @@
 import { cache } from "react";
 import { SIZE_SCALES, type SizeScale } from "@/config/site";
+import { formatPrice } from "@/lib/format";
 import { film, registerUploads, shot, sourceOf, thumb, type Film, type Shot } from "@/lib/media";
 import { COLLECTION_ORDER, COLLECTIONS as BASE_COLLECTIONS } from "./categories";
 import { CATEGORY_EDITORIAL, CATEGORY_FILMS } from "./products";
@@ -38,13 +39,17 @@ export function curatedHref(c: Pick<Curated, "slug">): string {
 // ── View models: plain data handed to client components ───────
 
 export type Pricing = {
-  /** What the piece costs now, or null for "price on request". */
+  /** What the piece costs now (always more than 0), or null for "price on request". */
   price: number | null;
   /** The price before a reduction, when there is one. */
   compareAt: number | null;
-  /** The live offer that applies, if any. */
+  /**
+   * The live offer to name beside the price: the one that set it; a label-only
+   * offer when no offer changed it (the piece's own sale price may have won);
+   * or, for a piece priced on request, the first offer that covers it.
+   */
   offer: { name: string; badge: string; percent: number | null } | null;
-  /** A short label for the card: the offer's badge, or the product's own. */
+  /** A short label for the card: that offer's badge, or the product's own. */
   badge: string | null;
 };
 
@@ -66,7 +71,11 @@ export type CardData = {
   /** A short silent clip played on hover, where the piece has been filmed. */
   clip: Pick<Film, "src" | "portrait"> | null;
   imageCount: number;
-  /** Position in the catalogue, used for the default ("Featured") order. */
+  /**
+   * Position in the list the card was made from (the order the page chose:
+   * featured pieces first in a category, the admin's order in a collection),
+   * used for the default ("Featured") order. See Catalog#toCard.
+   */
   order: number;
 };
 
@@ -82,6 +91,8 @@ export type IndexEntry = {
   reference: string;
   price: number | null;
   compareAt: number | null;
+  /** The name of the offer shown with the price (see Pricing#offer), quoted in enquiries. */
+  offer: string | null;
   keywords: string;
   image: ReturnType<typeof thumb>;
 };
@@ -140,12 +151,14 @@ export class Catalog {
   allProducts(): Product[] {
     return this.prods;
   }
+  /** A category's pieces in their listing order: featured pieces first, then the admin's order. */
   productsIn(categoryKey: string): Product[] {
-    return this.prods.filter((p) => p.category === categoryKey);
+    return featuredFirst(this.prods.filter((p) => p.category === categoryKey));
   }
+  /** A department's pieces in their listing order: featured pieces first, then category by category. */
   productsInCollection(collection: CollectionKey): Product[] {
     const keys = new Set(this.collections[collection].categories);
-    return this.prods.filter((p) => keys.has(p.category));
+    return featuredFirst(this.prods.filter((p) => keys.has(p.category)));
   }
   sizeScaleFor(product: Product): SizeScale {
     return SIZE_SCALES[this.catByKey.get(product.category)?.sizes ?? "one"];
@@ -186,31 +199,46 @@ export class Catalog {
     );
   }
 
+  /**
+   * What a piece costs and how to label it. The customer always gets the best
+   * price: the piece's own sale price or the best live offer, whichever is
+   * lower. A price is never 0 or less: an offer that would take a piece that
+   * far is simply not applied to it. The badge and offer line describe what
+   * was actually applied.
+   */
   pricing(product: Product): Pricing {
-    const base = typeof product.price === "number" ? product.price : null;
-    let price = base;
+    const base = typeof product.price === "number" && product.price > 0 ? product.price : null;
+    const sale = base !== null && typeof product.salePrice === "number" && product.salePrice > 0 && product.salePrice < base ? product.salePrice : null;
+    let price = sale ?? base;
     let chosen: Offer | null = null;
-    if (base !== null && typeof product.salePrice === "number" && product.salePrice < base) price = product.salePrice;
     const applicable = this.offerFor(product);
-    for (const o of applicable) {
-      if (base === null || o.kind === "note") continue;
-      const reduced = o.kind === "percent" ? Math.round(base * (1 - Math.min(o.value, 95) / 100)) : Math.max(0, base - o.value);
-      if (price === null || reduced < price) {
-        price = reduced;
-        chosen = o;
+    if (base !== null) {
+      for (const o of applicable) {
+        const reduced = reducedPrice(base, o);
+        if (reduced !== null && reduced < price!) {
+          price = reduced;
+          chosen = o;
+        }
       }
     }
-    const display = chosen ?? applicable[0] ?? null;
+    const display = chosen ?? (base === null ? applicable[0] : applicable.find((o) => o.kind === "note")) ?? null;
+    const badge = display ? display.badge || defaultBadge(display) : null;
     return {
       price,
       compareAt: base !== null && price !== null && price < base ? base : null,
-      offer: display ? { name: display.name, badge: display.badge || defaultBadge(display), percent: display.kind === "percent" ? display.value : null } : null,
-      badge: display ? display.badge || defaultBadge(display) : (product.badge ?? null),
+      offer: display ? { name: display.name, badge: badge!, percent: display.kind === "percent" ? display.value : null } : null,
+      badge: badge ?? product.badge ?? null,
     };
   }
 
   // View models
-  toCard = (product: Product): CardData => {
+  /**
+   * A product card. Used as `list.map(cat.toCard)`, the card's `order` is its
+   * place in that list, so a listing's default order is the order the page
+   * asked for (featured first in a category, the admin's order in a
+   * collection). Called on its own, it is the piece's place in the catalogue.
+   */
+  toCard = (product: Product, index?: number): CardData => {
     const category = this.catByKey.get(product.category)!;
     const clipId = product.videos?.find((v) => safe(() => film(v).portrait)) ?? null;
     const clip = clipId ? film(clipId) : null;
@@ -232,7 +260,7 @@ export class Catalog {
       hover: product.images[1] && safe(() => shot(product.images[1])) ? shot(product.images[1]) : null,
       clip: clip ? { src: clip.src, portrait: clip.portrait } : null,
       imageCount: product.images.length,
-      order: this.prods.indexOf(product),
+      order: typeof index === "number" ? index : this.prods.indexOf(product),
     };
   };
 
@@ -251,6 +279,7 @@ export class Catalog {
         reference: productReference(p),
         price: pricing.price,
         compareAt: pricing.compareAt,
+        offer: pricing.offer?.name ?? null,
         keywords: [p.name, p.colour, p.colourFamily, p.fabric ?? "", category.name, collection.name, p.code ?? "", ...p.occasions].join(" ").toLowerCase(),
         image: thumb(p.images[0]),
       };
@@ -280,7 +309,7 @@ export class Catalog {
       case "curated":
         return this.curatedList.some((c) => c.slug === target) ? `/collections/${target}` : null;
       case "url":
-        return /^(\/(?!\/)|https?:\/\/)/.test(target) ? target : null;
+        return safeAddress(target);
       default:
         return null;
     }
@@ -292,15 +321,54 @@ export class Catalog {
   getCurated(slug: string): Curated | undefined {
     return this.curatedList.find((c) => c.slug === slug);
   }
+  /** A curated collection's pieces in the order the admin chose (hidden or removed pieces left out, each piece once). */
   productsOf(c: Curated): Product[] {
-    return c.products.map((s) => this.prodBySlug.get(s)).filter((p): p is Product => Boolean(p));
+    const seen = new Set<string>();
+    return c.products.flatMap((s) => {
+      const p = this.prodBySlug.get(s);
+      if (!p || seen.has(s)) return [];
+      seen.add(s);
+      return [p];
+    });
   }
 }
 
+/** What an offer brings a piece's regular price down to, or null when it does not change it (or would take it to 0 or below). */
+function reducedPrice(base: number, o: Offer): number | null {
+  if (!(o.value > 0)) return null;
+  const reduced = o.kind === "percent" ? Math.round(base * (1 - Math.min(o.value, 95) / 100)) : o.kind === "amount" ? base - o.value : null;
+  return reduced !== null && reduced > 0 && reduced < base ? reduced : null;
+}
+
+/** The card label of an offer left without one: how much it takes off ("20% off", "BDT 2,000 off"). */
 function defaultBadge(o: Offer): string {
-  if (o.kind === "percent") return `−${o.value}%`;
-  if (o.kind === "amount") return "Offer";
-  return o.name;
+  if (o.kind === "percent") return `${o.value}% off`;
+  if (o.kind === "amount") return `${formatPrice(o.value)} off`;
+  return "Offer";
+}
+
+/** Featured pieces first; otherwise the order is kept. */
+function featuredFirst(list: Product[]): Product[] {
+  return [...list.filter((p) => p.featured === true), ...list.filter((p) => p.featured !== true)];
+}
+
+/**
+ * A banner's own web address, only when it is safely a page on this website
+ * ("/bespoke") or an ordinary http(s) address. Anything a browser could read as
+ * another site ("//evil.com", "/\evil.com"), any other scheme ("javascript:")
+ * and anything with spaces or control characters gives no link at all.
+ */
+function safeAddress(target: string): string | null {
+  const t = target.trim();
+  if (!t || /[\\\s\u0000-\u001f\u007f]/.test(t)) return null;
+  if (t.startsWith("/")) return t.startsWith("//") ? null : t;
+  if (!/^https?:\/\/[^/]/i.test(t)) return null;
+  try {
+    const url = new URL(t);
+    return url.protocol === "https:" || url.protocol === "http:" ? t : null;
+  } catch {
+    return null;
+  }
 }
 
 function safe<T>(fn: () => T): T | null {

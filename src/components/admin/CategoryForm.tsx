@@ -43,7 +43,11 @@ export function CategoryForm({
   const [sizes, setSizes] = useState<SizeScaleKey>(c?.sizes ?? sizesFor(department));
   const [sizesChosen, setSizesChosen] = useState(Boolean(c));
   const [name, setName] = useState(c?.name ?? "");
+  const [slug, setSlug] = useState("");
   const dept = departments.find((d) => d.key === department) ?? departments[0];
+  // The web address as it will be saved (the server makes it the same way).
+  const fromName = slugify(name);
+  const address = slugify(slug || name);
 
   return (
     <ActionForm action={saveCategory} submitLabel={c ? "Save changes" : "Add category"}>
@@ -62,11 +66,35 @@ export function CategoryForm({
               <Input id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} required maxLength={120} placeholder="e.g. Waistcoats" />
             </Field>
             {!c ? (
-              <Field label="Web address" htmlFor="slug" hint="Leave empty to make it from the name. It cannot be changed later.">
+              <Field label="Web address" htmlFor="slug">
                 <div className="flex items-center">
                   <span className="max-w-[55%] shrink-0 truncate border border-r-0 border-line bg-paper px-3 py-2.5 text-[13px] text-ink-3">{dept.href}/</span>
-                  <Input id="slug" name="slug" placeholder={slugify(name) || "waistcoats"} />
+                  <Input
+                    id="slug"
+                    name="slug"
+                    value={slug}
+                    onChange={(e) => setSlug(e.target.value)}
+                    maxLength={120}
+                    placeholder={fromName || (name.trim() ? "e.g. sherwanis" : "e.g. waistcoats")}
+                    aria-describedby="slug-hint"
+                  />
                 </div>
+                <p id="slug-hint" aria-live="polite" className="mt-1.5 text-[12.5px] leading-relaxed text-ink-3">
+                  {address ? (
+                    <>
+                      The page will be {dept.href}/{address}
+                      {slug ? "" : ", made from the name"}. It cannot be changed later.
+                    </>
+                  ) : slug ? (
+                    <span className="text-accent">Use English letters or numbers, for example “sherwanis”.</span>
+                  ) : name.trim() ? (
+                    <span className="text-accent">
+                      A web address can’t be made from this name, because it has no English letters. Type one here in English letters, for example “sherwanis”.
+                    </span>
+                  ) : (
+                    <>Leave empty to make it from the name: “Waistcoats” becomes {dept.href}/waistcoats. English letters and numbers only. It cannot be changed later.</>
+                  )}
+                </p>
               </Field>
             ) : (
               <p className="text-[13px] text-ink-3">

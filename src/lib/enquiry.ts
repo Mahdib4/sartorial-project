@@ -1,4 +1,5 @@
 import { SITE } from "@/config/site";
+import { formatPrice, pluralise } from "@/lib/format";
 
 export type EnquiryLine = {
   /** The product's slug: its address and its key in the catalogue. */
@@ -11,7 +12,43 @@ export type EnquiryLine = {
   size: string;
   qty: number;
   href: string;
+  /**
+   * The price of one piece as the customer was shown it (null: "Price on
+   * request"), the price before a reduction, and the offer named beside it.
+   * Left out (undefined) for pieces sent without a price, e.g. with a fitting request.
+   */
+  price?: number | null;
+  compareAt?: number | null;
+  offer?: string | null;
 };
+
+/**
+ * The price of a line as the customer saw it, in words:
+ * "BDT 42,500 (was BDT 50,000, Eid offer)", "Price on request", or null when
+ * the line carries no price.
+ */
+export function describePrice(line: Pick<EnquiryLine, "price" | "compareAt" | "offer" | "qty">): string | null {
+  if (line.price === undefined) return null;
+  if (line.price === null) return line.offer ? `${formatPrice(null)} (${line.offer})` : formatPrice(null);
+  const notes = [line.compareAt ? `was ${formatPrice(line.compareAt)}` : "", line.offer ?? ""].filter(Boolean);
+  return `${formatPrice(line.price)}${line.qty > 1 ? " each" : ""}${notes.length ? ` (${notes.join(", ")})` : ""}`;
+}
+
+/** The sum of the priced pieces, and how many pieces are priced on request. */
+export function enquiryTotals(lines: Array<Pick<EnquiryLine, "price" | "qty">>): { subtotal: number | null; onRequest: number } {
+  let subtotal: number | null = null;
+  let onRequest = 0;
+  for (const l of lines) {
+    if (typeof l.price === "number") subtotal = (subtotal ?? 0) + l.price * l.qty;
+    else onRequest += l.qty;
+  }
+  return { subtotal, onRequest };
+}
+
+/** "plus 2 pieces priced on request" */
+export function onRequestNote(count: number): string {
+  return `plus ${pluralise(count, "piece")} priced on request`;
+}
 
 export type EnquiryKind = "order" | "appointment";
 
@@ -84,12 +121,25 @@ export function composeEnquiry(d: EnquiryDetails): string {
       out.push(`${i + 1}. ${line.name} (${line.category})`);
       out.push(`   Product ref: ${line.reference}`);
       out.push(`   Size: ${line.size} · Qty: ${line.qty}`);
+      const price = describePrice(line);
+      if (price) out.push(`   Price: ${price}`);
       out.push(`   ${d.origin}${line.href}`);
     });
   }
   if (d.notes.trim()) {
     out.push("");
     out.push(`Notes: ${d.notes.trim()}`);
+  }
+  // The order ends with what the priced pieces come to, so the house sees what the customer was shown.
+  const priced = d.lines.filter((l) => l.price !== undefined);
+  if (d.kind === "order" && priced.length) {
+    const { subtotal, onRequest } = enquiryTotals(priced);
+    out.push("");
+    out.push(
+      subtotal === null
+        ? `*Total: ${formatPrice(null)}*`
+        : `*Subtotal: ${formatPrice(subtotal)}*${onRequest ? `, ${onRequestNote(onRequest)}` : ""}`,
+    );
   }
   return out.join("\n");
 }

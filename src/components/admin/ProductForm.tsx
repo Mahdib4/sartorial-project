@@ -10,7 +10,8 @@ import { Card, Field, Input, Select, Textarea, Toggle } from "./ui";
 const COLOUR_FAMILIES = ["Black", "Navy", "Blue", "Grey", "Brown", "Green", "Ivory", "Gold", "Pink", "Red", "White", "Multi"];
 const OCCASIONS = ["Wedding", "Festive", "Black tie", "Business", "Casual"];
 
-export type CategoryOption = { key: string; name: string; collection: string };
+/** `visible: false` marks a hidden category: its pieces are not on the website. */
+export type CategoryOption = { key: string; name: string; collection: string; visible?: boolean };
 
 export function ProductForm({ product, categories, images, library, defaultCategory }: { product: Product | null; categories: CategoryOption[]; images: LibraryImage[]; library: LibraryImage[]; defaultCategory?: string }) {
   const p = product;
@@ -29,7 +30,7 @@ export function ProductForm({ product, categories, images, library, defaultCateg
               <Input id="name" name="name" defaultValue={p?.name} required placeholder="e.g. Ivory Paisley Jacquard Achkan" />
             </Field>
             {!p ? (
-              <Field label="Web address" htmlFor="slug" hint="Leave empty to make it from the name. It cannot be changed later.">
+              <Field label="Web address" htmlFor="slug" hint="Leave empty to make it from the name. Use English letters, numbers and dashes. It cannot be changed later.">
                 <div className="flex items-center">
                   <span className="border border-r-0 border-line bg-paper px-3 py-2.5 text-[13px] text-ink-3">/products/</span>
                   <Input id="slug" name="slug" placeholder="ivory-paisley-jacquard-achkan" />
@@ -99,7 +100,7 @@ export function ProductForm({ product, categories, images, library, defaultCateg
                     <optgroup key={g} label={g[0].toUpperCase() + g.slice(1)}>
                       {list.map((c) => (
                         <option key={c.key} value={c.key}>
-                          {c.name}
+                          {c.visible === false ? `${c.name} (hidden)` : c.name}
                         </option>
                       ))}
                     </optgroup>
@@ -108,15 +109,15 @@ export function ProductForm({ product, categories, images, library, defaultCateg
               </Select>
             </Field>
             <Toggle name="visible" label="Show on the website" hint="Turn off to hide it without deleting it." defaultChecked={p ? p.visible !== false : true} />
-            <Toggle name="featured" label="Featured" hint="Marks it as a favourite when choosing home page pieces." defaultChecked={p?.featured} />
+            <Toggle name="featured" label="Featured" hint="Featured pieces come first on their category and department pages (before the others, in the usual order)." defaultChecked={p?.featured} />
           </Card>
 
           <Card title="Price and label" intro="Leave the price empty to show “Price on request”.">
-            <Field label="Price (৳)" htmlFor="price">
-              <Input id="price" name="price" inputMode="numeric" defaultValue={p?.price ?? ""} placeholder="e.g. 45000" />
+            <Field label="Price (৳)" htmlFor="price" hint="In whole taka, e.g. 45000 or 45,000.">
+              <Input id="price" name="price" inputMode="numeric" autoComplete="off" defaultValue={p?.price ?? ""} placeholder="e.g. 45000" />
             </Field>
-            <Field label="Sale price (৳, optional)" htmlFor="salePrice" hint="Shown with the regular price struck through.">
-              <Input id="salePrice" name="salePrice" inputMode="numeric" defaultValue={p?.salePrice ?? ""} />
+            <Field label="Sale price (৳, optional)" htmlFor="salePrice" hint="Lower than the price; shown with the price struck through. Leave it empty for no sale. If a live offer gives a lower price, visitors get that instead.">
+              <Input id="salePrice" name="salePrice" inputMode="numeric" autoComplete="off" defaultValue={p?.salePrice ?? ""} />
             </Field>
             <Field label="Label on the card (optional)" htmlFor="badge" hint="A word or two, e.g. “New” or “Limited”. A live offer's label takes its place.">
               <Input id="badge" name="badge" defaultValue={p?.badge} maxLength={30} />

@@ -11,7 +11,8 @@ import { tooManyRequests } from "@/lib/rate-limit";
  * WhatsApp opens with the same text, so the house has a record of every
  * enquiry under the reference quoted in the message (table `enquiries`).
  * Each piece is checked against the catalogue and stored with its canonical
- * name, product reference and link.
+ * name, product reference, link and the price shown for it (with the price
+ * before a reduction and the offer's name, where there is one).
  *
  * A resend from the same form (same reference and private key) updates the
  * record; any other request for an existing reference is refused with 409.
@@ -61,6 +62,9 @@ export async function POST(request: Request) {
     const product = cat.getProduct(str(l.slug, 160));
     if (!product) return NextResponse.json({ error: "unknown_product" }, { status: 422 });
     const qty = Number.isInteger(l.qty) ? Math.min(Math.max(l.qty as number, 1), 99) : 1;
+    // The price the website showed for one piece at this moment (null: price on request), so the record
+    // still says what was offered if the price or the offer changes before the house replies.
+    const pricing = cat.pricing(product);
     items.push({
       slug: product.slug,
       name: product.name,
@@ -69,6 +73,9 @@ export async function POST(request: Request) {
       size: str(l.size, 60) || "Not given",
       qty,
       url: `${origin}${productHref(product)}`,
+      price: pricing.price,
+      compareAt: pricing.compareAt,
+      offer: pricing.offer?.name ?? null,
     });
   }
 

@@ -11,6 +11,12 @@ import { Pool } from "pg";
  *
  * Returns null when no database is configured, so every caller can degrade
  * gracefully: the site never depends on the database to take an enquiry.
+ *
+ * Timeouts keep a slow or unreachable database from holding a page or a form
+ * for long: getting a connection gives up after 5 seconds, and a query with no
+ * answer after 8 seconds fails. The query limit is kept by this client rather
+ * than set in Postgres (`statement_timeout`), which Neon's pooled connections
+ * do not reliably support. Every query the site makes takes milliseconds.
  */
 let pool: Pool | null | undefined;
 
@@ -21,7 +27,7 @@ export function db(): Pool | null {
     pool = null;
     return pool;
   }
-  pool = new Pool({ connectionString, max: 5, idleTimeoutMillis: 5_000, connectionTimeoutMillis: 8_000 });
+  pool = new Pool({ connectionString, max: 5, idleTimeoutMillis: 5_000, connectionTimeoutMillis: 5_000, query_timeout: 8_000 });
   // Neon closes idle connections when a compute suspends; without a listener that would crash the function.
   pool.on("error", (error) => console.error("db: idle connection error", error.message));
   // On Vercel Fluid compute, release idle connections before the instance is suspended.
