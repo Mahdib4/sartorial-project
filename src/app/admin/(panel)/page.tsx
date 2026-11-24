@@ -3,6 +3,7 @@ import { ButtonLink, PageHead, Pill, when } from "@/components/admin/ui";
 import { dashboardCounts, getSettings, listEnquiries } from "@/lib/admin/data";
 import { cn } from "@/lib/cn";
 import { pluralise } from "@/lib/format";
+import { r2Setup } from "@/lib/r2";
 
 const QUICK_ACTIONS = [
   { href: "/admin/products/new", title: "Add a product", hint: "A new piece, with its photographs, words and price." },
@@ -24,7 +25,8 @@ export default async function OverviewPage() {
   const count = (key: string) => counts[key] ?? 0;
   const fresh = count("enquiries_new");
   const whatsapp = settings.contact.whatsapp.replace(/\D/g, "");
-  const uploads = Boolean(process.env.R2_ACCESS_KEY_ID && process.env.R2_BUCKET);
+  const r2 = r2Setup();
+  const uploads = r2.missing.length === 0;
 
   const glance = [
     { href: "/admin/products", value: count("products_live"), label: "Pieces on the website" },
@@ -143,7 +145,20 @@ export default async function OverviewPage() {
                 Products, orders and settings are saved safely.
               </SetupRow>
               <SetupRow ok={uploads} label="Photo uploads" status={uploads ? "Ready" : "Not set up"}>
-                {uploads ? "New photographs you add are stored online and shown on the website." : "You can still choose from the photographs already in the library. Your developer can switch uploads on by adding the R2 storage keys."}
+                {uploads ? (
+                  "New photographs you add are stored online and shown on the website."
+                ) : (
+                  <>
+                    You can still choose from the photographs already in the library. To switch uploads on, add these settings to the server (Vercel → Settings → Environment Variables, for Production), then redeploy:{" "}
+                    <span className="font-mono text-[12px] text-ink">{r2.missing.join(", ")}</span>.
+                    {r2.lookalikes.length ? (
+                      <>
+                        {" "}
+                        The server has settings with similar names, which may be typing mistakes: <span className="font-mono text-[12px] text-ink">{r2.lookalikes.join(", ")}</span>.
+                      </>
+                    ) : null}
+                  </>
+                )}
               </SetupRow>
               <SetupRow ok={Boolean(whatsapp)} label="WhatsApp number" status={whatsapp ? `+${whatsapp}` : "Not set"}>
                 {whatsapp ? "Orders and fitting requests are sent here. " : "Without it, “Send message” cannot open WhatsApp. "}

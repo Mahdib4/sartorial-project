@@ -8,16 +8,38 @@ import { DeleteObjectsCommand, PutObjectCommand, S3Client } from "@aws-sdk/clien
  */
 let client: S3Client | null | undefined;
 
+/** A setting's value, without spaces or line breaks pasted around it (they would break the keys). */
+function env(name: string): string {
+  return (process.env[name] ?? "").trim();
+}
+
+/** The four settings photo uploads need. */
+export const R2_SETTINGS = ["R2_ACCOUNT_ID", "R2_ACCESS_KEY_ID", "R2_SECRET_ACCESS_KEY", "R2_BUCKET"] as const;
+
+/**
+ * Which of the settings uploads need are missing on this server (names only, never
+ * values), and any other setting whose name looks like an R2 one, which usually
+ * means a typo in a name (e.g. "R2_SECRET_KEY" instead of "R2_SECRET_ACCESS_KEY").
+ */
+export function r2Setup(): { missing: string[]; lookalikes: string[] } {
+  const missing = R2_SETTINGS.filter((name) => !(name === "R2_ACCOUNT_ID" ? env("R2_ACCOUNT_ID") || env("R2_ENDPOINT") : env(name)));
+  const known = new Set<string>([...R2_SETTINGS, "R2_ENDPOINT", "R2_PUBLIC_URL"]);
+  const lookalikes = Object.keys(process.env).filter((name) => /(^|[^a-z0-9])r2([^a-z0-9]|$)/i.test(name) && !known.has(name));
+  return { missing, lookalikes };
+}
+
 export function r2(): { s3: S3Client; bucket: string } | null {
   if (client === undefined) {
-    const { R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET } = process.env;
-    const endpoint = process.env.R2_ENDPOINT || (R2_ACCOUNT_ID ? `https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com` : "");
+    const accountId = env("R2_ACCOUNT_ID");
+    const endpoint = env("R2_ENDPOINT") || (accountId ? `https://${accountId}.r2.cloudflarestorage.com` : "");
+    const accessKeyId = env("R2_ACCESS_KEY_ID");
+    const secretAccessKey = env("R2_SECRET_ACCESS_KEY");
     client =
-      endpoint && R2_ACCESS_KEY_ID && R2_SECRET_ACCESS_KEY && R2_BUCKET
-        ? new S3Client({ region: "auto", endpoint, forcePathStyle: true, credentials: { accessKeyId: R2_ACCESS_KEY_ID, secretAccessKey: R2_SECRET_ACCESS_KEY } })
+      endpoint && accessKeyId && secretAccessKey && env("R2_BUCKET")
+        ? new S3Client({ region: "auto", endpoint, forcePathStyle: true, credentials: { accessKeyId, secretAccessKey } })
         : null;
   }
-  return client ? { s3: client, bucket: process.env.R2_BUCKET! } : null;
+  return client ? { s3: client, bucket: env("R2_BUCKET") } : null;
 }
 
 export async function putObject(key: string, body: Buffer, contentType: string, cacheControl = "public, max-age=31536000, immutable"): Promise<void> {
