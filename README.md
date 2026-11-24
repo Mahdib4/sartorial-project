@@ -36,7 +36,7 @@ Set these environment variables on Vercel (Project → Settings → Environment 
 | --- | --- | --- |
 | `DATABASE_URL`, `DATABASE_URL_UNPOOLED` | Neon's pooled and direct connection strings (Neon console → your project → **Connect**) | The admin cannot be used; the site shows the built-in catalogue; orders still reach WhatsApp but are not logged |
 | `ADMIN_PASSWORD` | The password for `/admin` (choose a long one), until a new one is set in Admin → Settings; from then on only the new password works and this variable can be removed | Nobody can sign in to the admin |
-| `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET` | Cloudflare R2 API token for the `sartorial-media` bucket (Object Read & Write) | Photographs cannot be uploaded in the admin (choosing existing ones still works) |
+| `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY` | Cloudflare R2 API token for the `sartorial-media` bucket (Object Read & Write). `R2_BUCKET` is optional and defaults to `sartorial-media` | Photographs cannot be uploaded in the admin (choosing existing ones still works); Admin → Overview → Setup names whatever is missing |
 | `R2_PUBLIC_URL` (optional) | The bucket's public address. Defaults to `https://pub-815592e32d694078bff17fcd968c91d8.r2.dev` | – |
 | `ADMIN_SESSION_SECRET` (optional) | A long random string used to sign admin sessions | `DATABASE_URL` is used as the secret |
 | `NEXT_PUBLIC_SITE_URL` (optional) | The live address once the site has its own domain | Canonical links use `https://sartorial-bd.vercel.app` |
