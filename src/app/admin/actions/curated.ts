@@ -22,7 +22,9 @@ export async function saveCurated(_prev: FormState, form: FormData): Promise<For
   const slug = original || slugify(typed || title);
   const cover = list(form, "cover", 1)[0] ?? null;
   const products = [...new Set(list(form, "products", 120))];
+  const rawPosition = text(form, "position", 20);
   const position = int(form, "position") ?? 0;
+  if (rawPosition && int(form, "position") === null) return { error: "The position should be a whole number, such as 1, 2 or 3 (or leave it empty)." };
 
   if (title.length < 2) return { error: "Give the collection a title." };
   if (!slug) {

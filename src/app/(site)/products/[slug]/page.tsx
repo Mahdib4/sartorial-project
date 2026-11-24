@@ -127,7 +127,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
               <PriceTag price={pricing.price} compareAt={pricing.compareAt} />
               {pricing.badge ? <span className="bg-accent px-2 py-0.5 text-[11px] tracking-[0.08em] text-white uppercase">{pricing.badge}</span> : null}
             </p>
-            {pricing.offer ? <p className="mt-2 text-[13px] text-accent">{pricing.offer.name}{pricing.offer.percent && pricing.price === null ? `: ${pricing.offer.percent}% off, confirmed with your price` : ""}</p> : null}
+            {pricing.offer ? <p className="mt-2 text-[13px] text-accent">{pricing.offer.name}{pricing.offer.off && pricing.price === null ? `: ${pricing.offer.off}, confirmed with your price` : ""}</p> : null}
             <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-ink-2 md:mt-5 md:text-[15.5px]">{product.summary}</p>
 
             <dl className="mt-6 grid grid-cols-[auto_1fr] gap-x-6 gap-y-1.5 text-[13px]">

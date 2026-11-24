@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { adminReturnPath, checkPassword, createSession, endSession } from "@/lib/admin/auth";
 import { text, type FormState } from "@/lib/admin/form";
-import { passwordAttempt } from "@/lib/rate-limit";
+import { passwordAttempt, WRONG_PASSWORD_DELAY_MS } from "@/lib/rate-limit";
 
 /** What to tell someone signing in when the password could not be checked at all. */
 function unavailable(error: unknown): string {
@@ -19,7 +19,10 @@ export async function signIn(_prev: FormState, form: FormData): Promise<FormStat
   if (!attempt) return { error: "Too many attempts. Wait a minute and try again." };
 
   try {
-    if (!(await checkPassword(text(form, "password", 200)))) return { error: "That password is not right." };
+    if (!(await checkPassword(text(form, "password", 200)))) {
+      await new Promise((resolve) => setTimeout(resolve, WRONG_PASSWORD_DELAY_MS));
+      return { error: "That password is not right." };
+    }
     attempt.undo(); // a right password does not count against the limit
     await createSession();
   } catch (error) {

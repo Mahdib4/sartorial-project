@@ -30,8 +30,9 @@ export type EnquiryLine = {
 export function describePrice(line: Pick<EnquiryLine, "price" | "compareAt" | "offer" | "qty">): string | null {
   if (line.price === undefined) return null;
   if (line.price === null) return line.offer ? `${formatPrice(null)} (${line.offer})` : formatPrice(null);
-  const notes = [line.compareAt ? `was ${formatPrice(line.compareAt)}` : "", line.offer ?? ""].filter(Boolean);
-  return `${formatPrice(line.price)}${line.qty > 1 ? " each" : ""}${notes.length ? ` (${notes.join(", ")})` : ""}`;
+  // "BDT 47,000 each (was BDT 52,000) · Eid offer": the offer is named as a label, apart from
+  // the reduction, since a label-only offer can sit beside a piece's own sale price.
+  return `${formatPrice(line.price)}${line.qty > 1 ? " each" : ""}${line.compareAt ? ` (was ${formatPrice(line.compareAt)})` : ""}${line.offer ? ` · ${line.offer}` : ""}`;
 }
 
 /** The sum of the priced pieces, and how many pieces are priced on request. */

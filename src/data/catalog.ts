@@ -48,7 +48,8 @@ export type Pricing = {
    * offer when no offer changed it (the piece's own sale price may have won);
    * or, for a piece priced on request, the first offer that covers it.
    */
-  offer: { name: string; badge: string; percent: number | null } | null;
+  /** `off`: for a piece priced on request, what the offer takes off once the price is set ("15% off", "BDT 4,000 off"). */
+  offer: { name: string; badge: string; percent: number | null; off: string | null } | null;
   /** A short label for the card: that offer's badge, or the product's own. */
   badge: string | null;
 };
@@ -226,7 +227,9 @@ export class Catalog {
     return {
       price,
       compareAt: base !== null && price !== null && price < base ? base : null,
-      offer: display ? { name: display.name, badge: badge!, percent: display.kind === "percent" ? display.value : null } : null,
+      offer: display
+        ? { name: display.name, badge: badge!, percent: display.kind === "percent" ? display.value : null, off: display.kind === "note" ? null : defaultBadge(display) }
+        : null,
       badge: badge ?? product.badge ?? null,
     };
   }

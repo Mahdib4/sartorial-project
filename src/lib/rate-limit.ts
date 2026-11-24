@@ -43,14 +43,16 @@ export function tooManyRequests(request: Request, bucket: string, limit: number)
   return e.count > limit;
 }
 
-/** Wrong passwords allowed a minute from one address, and from everyone together. */
+/** Wrong passwords allowed a minute from one address. */
 const GUESSES_PER_ADDRESS = 8;
-const GUESSES_FROM_EVERYONE = 30;
 
 /**
  * Count one password attempt (signing in, or the current password when changing
- * it): at most 8 a minute from one address and 30 a minute from all addresses
- * together, so a guesser gains nothing by changing address.
+ * it): at most 8 a minute from one address. On Vercel the address is set by the
+ * platform, so a guesser cannot pick a new one per request. There is deliberately
+ * no limit across all addresses: one would let anyone lock the house out of its
+ * own admin by sending wrong passwords. Wrong answers are also slowed down (see
+ * WRONG_PASSWORD_DELAY_MS), and the password is a long one stored as a scrypt hash.
  *
  * Returns null when the limit is reached: refuse the attempt without checking
  * the password. Otherwise the attempt is counted straight away (so attempts sent
@@ -58,19 +60,18 @@ const GUESSES_FROM_EVERYONE = 30;
  * the password was right or could not be checked.
  */
 export function passwordAttempt(source: Request | Headers): { undo(): void } | null {
-  const now = Date.now();
-  const mine = entry(`password:${clientAddress(source)}`, now);
-  const everyone = entry("password:*", now);
-  if (mine.count >= GUESSES_PER_ADDRESS || everyone.count >= GUESSES_FROM_EVERYONE) return null;
+  const mine = entry(`password:${clientAddress(source)}`, Date.now());
+  if (mine.count >= GUESSES_PER_ADDRESS) return null;
   mine.count += 1;
-  everyone.count += 1;
   let undone = false;
   return {
     undo() {
       if (undone) return;
       undone = true;
       mine.count = Math.max(0, mine.count - 1);
-      everyone.count = Math.max(0, everyone.count - 1);
     },
   };
 }
+
+/** How long a wrong password takes to be answered, to slow guessing from many addresses. */
+export const WRONG_PASSWORD_DELAY_MS = 600;

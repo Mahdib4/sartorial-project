@@ -32,7 +32,7 @@ export default async function OffersPage({ searchParams }: PageProps<"/admin/off
           {sp.ended ? (
             <Notice tone="warning">Saved, but its end date has already passed, so the offer is not running on the website. To run it, open it below and choose a later end date, or clear it.</Notice>
           ) : (
-            <Notice tone="success">Saved. The website shows the change straight away (scheduled offers start and stop within five minutes of their time).</Notice>
+            <Notice tone="success">Saved. The website shows the change straight away (scheduled offers start and stop within about a minute of their time).</Notice>
           )}
         </div>
       ) : null}

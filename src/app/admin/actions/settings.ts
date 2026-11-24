@@ -10,7 +10,7 @@ import { checkPassword, createSession, replacePassword, requireAdmin } from "@/l
 import { bool, dbMessage, lines, list, text, type FormState } from "@/lib/admin/form";
 import { db } from "@/lib/db";
 import { EMAIL_PATTERN } from "@/lib/enquiry";
-import { passwordAttempt } from "@/lib/rate-limit";
+import { passwordAttempt, WRONG_PASSWORD_DELAY_MS } from "@/lib/rate-limit";
 
 /** Write one settings entry (contact, social or home; the admin password is saved by replacePassword). */
 async function store(key: string, value: unknown): Promise<void> {
@@ -132,7 +132,10 @@ export async function changePassword(_prev: FormState, form: FormData): Promise<
   const attempt = passwordAttempt(await headers());
   if (!attempt) return { error: "Too many attempts. Wait a minute and try again." };
   try {
-    if (!(await checkPassword(current))) return { error: "The current password is not right." };
+    if (!(await checkPassword(current))) {
+      await new Promise((resolve) => setTimeout(resolve, WRONG_PASSWORD_DELAY_MS));
+      return { error: "The current password is not right." };
+    }
   } catch (error) {
     attempt.undo();
     console.error("admin: current password could not be checked", error);

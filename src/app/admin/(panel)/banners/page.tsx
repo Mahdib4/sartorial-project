@@ -35,7 +35,7 @@ export default async function BannersPage({ searchParams }: PageProps<"/admin/ba
           {sp.ended ? (
             <Notice tone="warning">Saved, but its “show until” time has already passed, so it will not show on the website. To show it, open it below and choose a later time, or clear that date.</Notice>
           ) : (
-            <Notice tone="success">Saved. The website shows the change straight away (scheduled ones start and stop within five minutes of their time).</Notice>
+            <Notice tone="success">Saved. The website shows the change straight away (scheduled ones start and stop within about a minute of their time).</Notice>
           )}
         </div>
       ) : null}
